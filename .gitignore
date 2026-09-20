@@ -20,6 +20,15 @@ node_modules/
 # ferramenta de aumento de imagem usada só na geração das fotos
 /vendor/realesrgan/
 
+# originais das fotos: ficam no computador, não no commit. O site serve só as versões
+# .webp já geradas (os scripts refazem essas a partir daqui).
+assets/img-produzidas/*.png
+assets/img-produzidas/*.jpg
+assets/img-pessoas/*.png
+assets/img-pessoas/*.jpeg
+assets/marca/emblema*
+assests/img/logo/
+
 # fontes das fotos: o site serve as versões .webp de assests/img/aliancas-web
 assests/img/aliancas-hd/
 assests/img/aliancas-original/
