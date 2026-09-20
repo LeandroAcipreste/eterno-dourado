@@ -1,0 +1,39 @@
+{
+  "codigo": "03LM",
+  "fonte": "assests/img/aliancas-hd/03LM.png (anel maior)",
+  "anelNaFoto": {
+    "x0": 248,
+    "y0": 82,
+    "x1": 445,
+    "y1": 679
+  },
+  "largura": 3,
+  "raioExterno": 10.9123,
+  "raioInterno": 9.2688,
+  "meio": 0.4963,
+  "expoenteExterno": 1.6543,
+  "expoenteInterno": 3.0142,
+  "vistaDaFoto": {
+    "guinada": -77.87,
+    "arfagem": 4.54,
+    "rolagem": 0.83
+  },
+  "ajuste": {
+    "iouSilhueta": 0.9802,
+    "acordoCores": 0.9235
+  },
+  "materiais": {
+    "externo": {
+      "nome": "Ouro amarelo polido",
+      "cor": "#CFB489",
+      "metal": 1,
+      "rugosidade": 0.66
+    },
+    "interno": {
+      "nome": "Aço inoxidável polido",
+      "cor": "#929293",
+      "metal": 1,
+      "rugosidade": 0.55
+    }
+  }
+}

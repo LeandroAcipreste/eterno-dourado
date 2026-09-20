@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eterno Dourado · Atacado de alianças em Salvador</title>
+    <meta name="description" content="Atacado de alianças em Salvador desde 2000. 80 modelos, valor claro por aliança e atendimento direto pelo WhatsApp para lojistas e revendedores." />
+    <meta name="theme-color" content="#050912" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-normal-200-800.woff2" crossorigin />
+    <link rel="stylesheet" href="/style.css" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/assests/img/modelos-3d/vendor/three/build/three.module.js",
+          "three/addons/": "/assests/img/modelos-3d/vendor/three/examples/jsm/"
+        }
+      }
+    </script>
+    <script src="/vendor/gsap/gsap.min.js" defer></script>
+    <script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="/vendor/lenis/lenis.min.js" defer></script>
+  </head>
+
+  <body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Casca: fica por cima de todas as seções ------------------------------- -->
+    <header class="cabecalho" data-cabecalho>
+      <a class="marca" href="/" aria-label="Eterno Dourado, início">
+        <span class="marca__eterno">Eterno</span>
+        <span class="marca__dourado">Dourado</span>
+      </a>
+
+      <div class="cabecalho__acoes">
+        <button class="cabecalho__botao cabecalho__entrar" type="button" data-entrar>Entrar</button>
+        <button class="cabecalho__botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-abrir>
+          <span class="sr">Abrir menu</span>
+          <span aria-hidden="true">Menu</span>
+          <span class="cabecalho__hamburguer" aria-hidden="true"></span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
+      <ol class="menu__lista" role="list">
+        <li><a class="menu__link" href="#home" data-pagina="home"><span class="menu__numero">01</span><span class="menu__nome">Início</span></a></li>
+        <li><a class="menu__link" href="#colecao" data-pagina="colecao"><span class="menu__numero">02</span><span class="menu__nome">Coleção</span></a></li>
+        <li><a class="menu__link" href="#catalogo" data-pagina="catalogo"><span class="menu__numero">03</span><span class="menu__nome">Catálogo</span></a></li>
+        <li><a class="menu__link" href="#como-comprar" data-pagina="como-comprar"><span class="menu__numero">04</span><span class="menu__nome">Como comprar</span></a></li>
+        <li><a class="menu__link" href="#nossa-historia" data-pagina="nossa-historia"><span class="menu__numero">05</span><span class="menu__nome">Nossa história</span></a></li>
+      </ol>
+      <div class="menu__acoes">
+        <a class="btn btn--contorno" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Torne-se cliente</a>
+        <button class="btn btn--ouro" type="button" data-entrar>Entrar na área do cliente</button>
+      </div>
+    </nav>
+
+    <canvas class="anel3d" data-anel3d aria-hidden="true"></canvas>
+
+    <main id="conteudo">
+        <section class="dobra" id="home" data-dobra="home" data-secao-nome="Início" tabindex="-1">
+
+          <section class="abertura" data-abertura aria-labelledby="abertura-titulo">
+            <div class="abertura__palco">
+              <figure class="abertura__fundo">
+                <img
+                  src="/assets/marca/abertura-1440.webp"
+                  srcset="/assets/marca/abertura-640.webp 640w, /assets/marca/abertura-960.webp 960w, /assets/marca/abertura-1440.webp 1440w"
+                  sizes="100vw"
+                  width="1440"
+                  height="1440"
+                  alt="Duas alianças de ouro entrelaçadas sob um coração, com o nome Eterno Dourado"
+                  fetchpriority="high"
+                />
+              </figure>
+
+              <div class="abertura__conteudo">
+                <p class="rotulo" data-anim="entra">Atacado de alianças em Salvador</p>
+                <h1 class="abertura__titulo" id="abertura-titulo" data-anim="giro">A aliança perfeita para o seu cliente</h1>
+                <p class="abertura__linha" data-anim="sobe">
+                  Modelos de alianças lindas, que não desbotam só precisam ser cuidadas com amor e serão eternas
+                </p>
+                <div class="abertura__acoes" data-anim="sobe">
+                  <a class="btn btn--ouro" href="#catalogo">Abrir catálogo</a>
+                  <a class="btn btn--contorno" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Torne-se cliente</a>
+                </div>
+              </div>
+
+              <span class="abertura__role" aria-hidden="true">Role</span>
+            </div>
+          </section>
+        </section>
+
+        <section class="dobra" id="colecao" data-dobra="colecao" data-secao-nome="Coleção" tabindex="-1">
+
+          <section class="colecao" data-colecao aria-labelledby="colecao-titulo">
+            <div class="colecao__palco">
+              <h2 class="colecao__titulo" id="colecao-titulo">Por que comprar com a Eterno Dourado</h2>
+              <ul class="colecao__galeria" role="list">
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/04LM-640.webp"
+                    srcset="/assets/img-produzidas/web/04LM-640.webp 640w, /assets/img-produzidas/web/04LM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/04RDLM-640.webp"
+                    srcset="/assets/img-produzidas/web/04RDLM-640.webp 640w, /assets/img-produzidas/web/04RDLM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/04RLM-640.webp"
+                    srcset="/assets/img-produzidas/web/04RLM-640.webp 640w, /assets/img-produzidas/web/04RLM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/06RDLM-640.webp"
+                    srcset="/assets/img-produzidas/web/06RDLM-640.webp 640w, /assets/img-produzidas/web/06RDLM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/08LM-640.webp"
+                    srcset="/assets/img-produzidas/web/08LM-640.webp 640w, /assets/img-produzidas/web/08LM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/08RLM-640.webp"
+                    srcset="/assets/img-produzidas/web/08RLM-640.webp 640w, /assets/img-produzidas/web/08RLM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/302LM-640.webp"
+                    srcset="/assets/img-produzidas/web/302LM-640.webp 640w, /assets/img-produzidas/web/302LM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/303LM-2-640.webp"
+                    srcset="/assets/img-produzidas/web/303LM-2-640.webp 640w, /assets/img-produzidas/web/303LM-2-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/380CLM-381CLM-640.webp"
+                    srcset="/assets/img-produzidas/web/380CLM-381CLM-640.webp 640w, /assets/img-produzidas/web/380CLM-381CLM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/403RLM-640.webp"
+                    srcset="/assets/img-produzidas/web/403RLM-640.webp 640w, /assets/img-produzidas/web/403RLM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+                <li class="colecao__foto">
+                  <img
+                    src="/assets/img-produzidas/web/406RLM-640.webp"
+                    srcset="/assets/img-produzidas/web/406RLM-640.webp 640w, /assets/img-produzidas/web/406RLM-1280.webp 1024w"
+                    sizes="(max-width: 767px) 30vw, 16vw"
+                    width="1024"
+                    height="1024"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="provas" aria-labelledby="colecao-titulo">
+            <article class="prova" data-anim="cartao">
+              <figure class="prova__foto">
+                <img
+                  src="/assets/img-produzidas/web/casal-640.webp"
+                  srcset="/assets/img-produzidas/web/casal-640.webp 640w, /assets/img-produzidas/web/casal-1280.webp 1024w"
+                  sizes="(min-width: 900px) 40vw, 100vw"
+                  width="1024"
+                  height="1536"
+                  alt="Casal de noivos sorrindo, de mãos dadas"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="prova__bloco">
+                <p class="rotulo prova__numero">01</p>
+                <h2 class="prova__titulo">Desde 2000 em Salvador</h2>
+                <p class="prova__texto">Lojistas e revendedores atendidos pela mesma família.</p>
+              </div>
+            </article>
+
+            <article class="prova" data-anim="cartao">
+              <figure class="prova__foto">
+                <img
+                  src="/assets/img-produzidas/web/maos-1-640.webp"
+                  srcset="/assets/img-produzidas/web/maos-1-640.webp 640w, /assets/img-produzidas/web/maos-1-1280.webp 1024w"
+                  sizes="(min-width: 900px) 40vw, 100vw"
+                  width="1024"
+                  height="1536"
+                  alt="Mãos de um casal com alianças de ouro"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="prova__bloco">
+                <p class="rotulo prova__numero">02</p>
+                <h2 class="prova__titulo">Preço claro por aliança</h2>
+                <p class="prova__texto">Você vê o valor de cada modelo antes de pedir.</p>
+              </div>
+            </article>
+
+            <article class="prova" data-anim="cartao">
+              <figure class="prova__foto">
+                <img
+                  src="/assets/img-produzidas/web/casal-maos-640.webp"
+                  srcset="/assets/img-produzidas/web/casal-maos-640.webp 640w, /assets/img-produzidas/web/casal-maos-1280.webp 506w"
+                  sizes="(min-width: 900px) 40vw, 100vw"
+                  width="506"
+                  height="550"
+                  alt="Noivos de mãos dadas mostrando as alianças"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="prova__bloco">
+                <p class="rotulo prova__numero">03</p>
+                <h2 class="prova__titulo">Atendimento pelo WhatsApp</h2>
+                <p class="prova__texto">Você fala direto com quem conhece cada modelo.</p>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="dobra" id="catalogo" data-dobra="catalogo" data-secao-nome="Catálogo" tabindex="-1">
+
+          <section class="catalogo" data-catalogo aria-labelledby="catalogo-titulo">
+            <div class="catalogo__cabeca container">
+              <p class="rotulo" data-anim="entra">Catálogo de atacado</p>
+              <h2 class="catalogo__titulo" id="catalogo-titulo">Escolha o modelo e veja cada detalhe</h2>
+              <p class="catalogo__contagem" data-catalogo-contagem aria-live="polite">80 modelos</p>
+              <p class="catalogo__adicionais" data-catalogo-adicionais></p>
+            </div>
+
+            <div class="vitrine" data-vitrine>
+              <div class="vitrine__palco" data-vitrine-palco>
+                <div class="filtros">
+                  <div class="filtros__grupo">
+                    <span class="filtros__rotulo" id="rotulo-largura">Largura</span>
+                    <div class="pilulas" role="group" aria-labelledby="rotulo-largura" data-filtro="largura"></div>
+                  </div>
+                  <div class="busca">
+                    <label class="sr" for="busca">Buscar por código</label>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+                    <input id="busca" type="search" placeholder="Buscar por código" autocomplete="off" data-catalogo-busca />
+                  </div>
+                </div>
+
+                <ul class="vitrine__trilho" role="list" data-catalogo-grade></ul>
+                <p class="catalogo__vazio" data-catalogo-vazio hidden>Nenhum modelo com esses filtros. Escolha outra largura ou limpe a busca.</p>
+                <div class="vitrine__progresso" aria-hidden="true"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="dobra" id="como-comprar" data-dobra="como-comprar" data-secao-nome="Como comprar" tabindex="-1">
+
+          <section class="como-comprar" aria-labelledby="como-comprar-titulo">
+            <div class="container como-comprar__grade">
+              <div class="como-comprar__intro">
+                <p class="rotulo" data-anim="entra">Como comprar</p>
+                <h2 class="como-comprar__titulo" id="como-comprar-titulo">Do catálogo ao pedido em três passos</h2>
+                <div class="como-comprar__acoes" data-anim="sobe">
+                  <button class="btn btn--ouro" type="button" data-entrar>Entrar na área do cliente</button>
+                  <a class="btn btn--texto" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Ainda não é cliente? Fale comigo</a>
+                </div>
+              </div>
+
+              <ol class="passos" role="list">
+                <li class="passo" data-anim="cartao">
+                  <span class="passo__numero" aria-hidden="true">1</span>
+                  <h2 class="passo__titulo">Conheça os modelos</h2>
+                </li>
+                <li class="passo" data-anim="cartao">
+                  <span class="passo__numero" aria-hidden="true">2</span>
+                  <h2 class="passo__titulo">Entre em contato com o Leandro</h2>
+                  <p class="passo__texto">Informe seu interesse em adquirir as peças através do WhatsApp</p>
+                </li>
+                <li class="passo" data-anim="cartao">
+                  <span class="passo__numero" aria-hidden="true">3</span>
+                  <h2 class="passo__titulo">Faça seu pedido pelo site</h2>
+                  <p class="passo__texto">
+                    Uma vez que seu cadastro for feito na área do cliente você terá acesso para escolher os modelos e as
+                    numerações após o pagamento em 15 dias úteis o pedido chega no endereço de cadastro
+                  </p>
+                </li>
+              </ol>
+            </div>
+          </section>
+        </section>
+
+        <section class="dobra" id="nossa-historia" data-dobra="nossa-historia" data-secao-nome="Nossa história" tabindex="-1">
+
+          <section class="legado" aria-labelledby="legado-titulo">
+            <div class="container">
+              <div class="legado__cabeca">
+                <p class="rotulo" data-anim="entra">Nossa história</p>
+                <h2 class="legado__titulo" id="legado-titulo">Duas gerações na mesma relação de confiança</h2>
+              </div>
+
+              <article class="relato" data-anim="cartao">
+                <figure class="relato__foto">
+                  <img
+                    src="/assets/img-pessoas/eu-e-pai-800.webp"
+                    srcset="/assets/img-pessoas/eu-e-pai-480.webp 480w, /assets/img-pessoas/eu-e-pai-800.webp 800w, /assets/img-pessoas/eu-e-pai-1123.webp 1123w"
+                    sizes="(min-width: 1240px) 460px, (min-width: 900px) 38vw, calc(100vw - 80px)"
+                    width="1123"
+                    height="1400"
+                    alt="Leandro e seu Jorge"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <div class="relato__textos">
+                  <div class="relato__bloco">
+                    <p class="rotulo">O começo</p>
+                    <p class="relato__texto">
+                      Tudo começou com seu Jorge no ano 2000 que viu em Salvador uma grande oportunidade, atendeu anos
+                      os principais atacadistas de Salvador, sempre com muita dedicação foi representante de várias
+                      empresas, a mais conhecida dos clientes foi a Poly Jóias. Em 2016 começou a relação com as
+                      alianças e aí se iniciou a nossa distribuidora.
+                    </p>
+                  </div>
+
+                  <div class="relato__bloco">
+                    <p class="rotulo">Quem atende hoje</p>
+                    <h2 class="relato__titulo">Eu sou Leandro</h2>
+                    <p class="relato__texto">
+                      Continuo o trabalho do meu pai com a Eterno Dourado. Organizei o catálogo e o pedido online
+                      sem abrir mão do atendimento direto.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="chamada" aria-labelledby="chamada-titulo">
+            <div class="container">
+              <div class="chamada__faixa" data-anim="cartao">
+                <h2 class="chamada__titulo" id="chamada-titulo">Tenha as melhores alianças do mercado, com o melhor acabamento e preço.</h2>
+                <a class="btn btn--ouro" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero comprar alianças no atacado.">Fale comigo no WhatsApp</a>
+              </div>
+            </div>
+          </section>
+        </section>
+    </main>
+
+    <!-- Abertura da visita: o nome girando enquanto a primeira dobra se prepara -->
+    <div class="preloader" data-preloader>
+      <svg class="preloader__roda" viewBox="0 0 200 200" role="img" aria-label="Eterno Dourado">
+        <defs>
+          <path id="preloader-circulo" fill="none" d="M100 100 m -76 0 a 76 76 0 1 1 152 0 a 76 76 0 1 1 -152 0" />
+        </defs>
+        <text>
+          <textPath href="#preloader-circulo" startOffset="0">Eterno Dourado · Eterno Dourado ·</textPath>
+        </text>
+        <circle class="preloader__ponto" cx="100" cy="100" r="3" />
+      </svg>
+    </div>
+
+    <svg class="cortina" data-cortina data-estado="coberta" data-sentido="ir" viewBox="0 0 120 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="cortina-veu" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#050912" stop-opacity="1" />
+          <stop offset="0.78" stop-color="#050912" stop-opacity="1" />
+          <stop offset="1" stop-color="#050912" stop-opacity="0.35" />
+        </linearGradient>
+      </defs>
+      <path class="cortina__arco" d="M0 0 H120 V86 Q60 126 0 86 Z" fill="url(#cortina-veu)" />
+      <path class="cortina__filete" d="M0 86 Q60 126 120 86" />
+    </svg>
+
+    <!-- Área do cliente ----------------------------------------------------- -->
+    <dialog class="modal modal--estreito" data-dialogo-entrar aria-labelledby="entrar-titulo">
+      <div class="entrar">
+        <button class="modal__fechar" type="button" data-fechar aria-label="Fechar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+
+        <div>
+          <p class="rotulo">Área do cliente</p>
+          <h2 class="entrar__titulo" id="entrar-titulo">Entre para fazer seu pedido</h2>
+        </div>
+        <p class="entrar__texto">
+          Com a sua conta você monta pedidos com numeração e quantidade, já com as condições do seu cadastro.
+        </p>
+
+        <form class="entrar__forma" novalidate>
+          <div class="campo">
+            <label for="entrar-usuario">E-mail ou CNPJ</label>
+            <input id="entrar-usuario" name="usuario" type="text" autocomplete="username" required />
+          </div>
+          <div class="campo">
+            <label for="entrar-senha">Senha</label>
+            <input id="entrar-senha" name="senha" type="password" autocomplete="current-password" required />
+          </div>
+          <button class="btn btn--ouro" type="submit">Entrar</button>
+        </form>
+
+        <p class="entrar__status" data-entrar-status role="status" tabindex="-1" hidden>
+          A área do cliente está em implantação. Enquanto isso,
+          <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero fazer um pedido.">faça seu pedido pelo WhatsApp</a>.
+        </p>
+
+        <p class="entrar__rodape">
+          Ainda não é cliente?
+          <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Solicite seu cadastro</a>
+        </p>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

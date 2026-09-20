@@ -1,0 +1,14 @@
+const fs=require('fs'),path=require('path');const dir=path.resolve(__dirname,'..');let html=fs.readFileSync(path.join(dir,'todos.html'),'utf8');
+html=html.replaceAll('./catalogo/','./individuais/').replace("select.value='03LM-1'","select.value='04RDLM'");
+html=html.replace("info.largura ? info.largura+' mm · ' : ''","info.largura ? info.largura+' mm · ' : ''");
+html=html.replace("(info.pedras?'Pedras facetadas · Ouro polido':'Ouro polido')","(info.perfil==='chamfer'?'Quina chanfrada · ':'')+(info.pedras?info.pedras+' pedra'+(info.pedras>1?'s':''):'Lisa')");
+html=html.replace('ctrl.autoRotate=true','ctrl.autoRotate=false').replace('>Pausar giro<','>Retomar giro<');
+html=html.replace('c.position.set(distance*.46,distance*.22,distance*.86)','c.position.set(distance*.78,distance*.33,distance*.53)');
+html=html.replace('alt="Referência 03LM"','alt="Foto de referência"');
+html=html.replace('Arraste para girar · Role para aproximar','Uma aliança por modelo · Arraste para girar');
+html=html.replace('</style>',`header{width:225px;top:28px;left:26px}h1{font-size:38px;margin:10px 0}header p{font-size:13px;line-height:1.6}small{font-size:10px;letter-spacing:.14em}aside{top:260px;left:28px;right:auto}aside:before{content:'FOTO DE REFERÊNCIA';display:block;color:#a9a69f;font-size:10px;letter-spacing:.15em;margin-bottom:12px}aside img{width:140px}canvas{position:absolute;left:230px;top:0;width:calc(100vw - 230px);height:calc(100vh - 100px)}footer{bottom:22px;left:26px}footer span{max-width:250px}@media(max-width:600px){header{top:16px;left:16px;width:180px}h1{font-size:30px}header p{max-width:180px}aside{left:auto;right:16px;top:16px}aside img{width:74px}aside:before{font-size:8px}canvas{left:0;top:190px;width:100vw;height:calc(100vh - 310px)}footer{left:16px;bottom:14px;gap:6px}footer span{font-size:10px}a,button{padding:9px 14px}}</style>`);
+html=html.replace('function size(){r.setSize(innerWidth,innerHeight);c.aspect=innerWidth/innerHeight;c.updateProjectionMatrix()}',"function size(){const canvas=r.domElement;const rect=canvas.getBoundingClientRect();r.setSize(rect.width,rect.height,false);c.aspect=rect.width/rect.height;c.updateProjectionMatrix()}");
+html=html.replace('const radius=size.length()/2,distance=radius/Math.sin(T.MathUtils.degToRad(16))*1.35','const radius=size.length()/2,distance=radius/Math.sin(Math.min(T.MathUtils.degToRad(16),Math.atan(Math.tan(T.MathUtils.degToRad(16))*c.aspect)))*1.12');
+html=html.replace("await show(select.value);","size();await show(select.value);");
+html=html.replace("window.modeloCarregado=code;","document.title=code+' · Uma aliança · Eterno Dourado';window.modeloCarregado=code;");
+fs.writeFileSync(path.join(dir,'individuais.html'),html);

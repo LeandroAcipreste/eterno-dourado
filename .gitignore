@@ -1,0 +1,45 @@
+# O que não vai para o repositório — e, por consequência, não vai para a Vercel.
+# Na Vercel todo arquivo publicado fica acessível por URL, então o que é material de
+# trabalho (tabela de preços, fontes das fotos, ferramentas) fica de fora de propósito.
+
+# ferramentas e configuração local
+/.claude/
+/.vscode/
+node_modules/
+*.log
+
+# referência de design: snapshots de outros sites, 300 MB, nada disso é o site
+/design-system/
+/referencias/
+
+# documentos do negócio: nenhum PDF sobe, em pasta nenhuma — na Vercel todo arquivo
+# publicado fica acessível por URL, e a tabela de preços não pode ficar pública.
+# Só o arquivo, nunca a pasta: o que mais entrar em utils/ continua indo para o repositório.
+*.pdf
+
+# ferramenta de aumento de imagem usada só na geração das fotos
+/vendor/realesrgan/
+
+# fontes das fotos: o site serve as versões .webp de assests/img/aliancas-web
+assests/img/aliancas-hd/
+assests/img/aliancas-original/
+assests/img/aliancas-sem-fundo/
+assests/img/aliancas-ia/
+
+# estudo do 3D: o site precisa só do three.js (vendor) e do 03LM
+assests/img/modelos-3d/glb/
+assests/img/modelos-3d/referencias/
+assests/img/modelos-3d/*.json
+assests/img/modelos-3d/*.ps1
+assests/img/modelos-3d/*.py
+assests/img/modelos-3d/*.cjs
+assests/img/modelos-3d/*.md
+
+# cache do Python das ferramentas de imagem
+__pycache__/
+*.pyc
+
+# saídas de teste
+/scripts/fotos/
+.tmp-*
+assests/img/modelos-3d/index.html

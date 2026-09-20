@@ -1,0 +1,353 @@
+/* Catálogo: a cabeça e, depois, a vitrine presa com os filtros no alto e os
+   modelos numa faixa que corre em x enquanto a página rola em y. O catalogo.js
+   grava --distancia (quanto a faixa anda) e --p (progresso) na vitrine: a altura
+   da seção e o deslocamento da faixa saem só do CSS. */
+
+.catalogo__cabeca {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: start;
+  gap: var(--e-4);
+  padding-block: clamp(120px, 16vh, 180px) var(--e-10);
+}
+
+.catalogo__titulo {
+  max-width: 16ch;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.75rem, 1.2rem + 5.6vw, 7rem);
+  font-weight: 400;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.catalogo__adicionais {
+  max-width: 62ch;
+  font-size: var(--t-corpo-p);
+  color: var(--claro-suave);
+}
+
+.catalogo__contagem {
+  font-family: var(--fonte-mono);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--claro-suave);
+}
+
+/* ---------------------------------------------------------------------------
+   Vitrine
+   --------------------------------------------------------------------------- */
+
+.vitrine {
+  position: relative;
+  z-index: 2;
+  height: calc(100svh + var(--distancia, 0px));
+}
+
+/* minmax(0, 1fr): sem isso a coluna do grid ganha a largura da faixa inteira
+   (dezenas de milhares de px) e leva os filtros e a barra para o meio dela */
+.vitrine__palco {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--e-5);
+  height: 100svh;
+  padding-block: 84px var(--e-6);
+  overflow: clip;
+  background: var(--noite);
+}
+
+.vitrine__trilho {
+  display: flex;
+  /* start, não stretch: esticado, cada cartão ficava com a altura do palco inteiro */
+  align-items: start;
+  gap: clamp(16px, 2vw, 28px);
+  justify-self: start;
+  width: max-content;
+  min-height: 0;
+  margin: 0;
+  padding: 0 max(20px, calc((100vw - 1200px) / 2));
+  list-style: none;
+  translate: calc(var(--p, 0) * var(--distancia, 0px) * -1) 0;
+}
+
+.vitrine__progresso {
+  position: relative;
+  width: var(--container);
+  height: 2px;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--linha-escura);
+}
+
+.vitrine__progresso::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ouro);
+  scale: var(--p, 0) 1;
+  transform-origin: left center;
+}
+
+.catalogo__vazio {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  translate: -50% -50%;
+  width: min(100% - 40px, 460px);
+  text-align: center;
+  color: var(--claro-suave);
+}
+
+/* ---------------------------------------------------------------------------
+   Cartão do modelo: tudo o que o antigo modal mostrava
+   --------------------------------------------------------------------------- */
+
+/* Todos os cartões saem do mesmo molde (cartao.js) e têm exatamente o mesmo
+   tamanho. A altura é fixa: o texto ocupa a parte de baixo, com tipos que
+   encolhem junto com a tela, e a foto fica com todo o espaço que sobra — é assim
+   que a aliança continua grande mesmo num celular estreito. */
+.modelo {
+  --cartao-largura: clamp(220px, 72vw, 300px);
+  --cartao-altura: clamp(320px, 56svh, 440px);
+  flex: none;
+  width: var(--cartao-largura);
+  height: var(--cartao-altura);
+}
+
+@media (min-width: 600px) {
+  .modelo {
+    --cartao-largura: clamp(240px, 24vw, 300px);
+  }
+}
+
+.modelo__cartao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+  height: 100%;
+  padding: var(--e-2);
+  border: 1px solid var(--linha-escura);
+  border-radius: var(--raio-cartao);
+  background: linear-gradient(180deg, var(--safira), var(--noite));
+}
+
+/* altura fixa, não o que sobra: com o nome ocupando uma ou duas linhas, o espaço
+   restante mudava de cartão para cartão e as fotos saíam de tamanhos diferentes */
+.modelo__foto {
+  flex: 0 0 auto;
+  height: clamp(170px, 28svh, 260px);
+  /* caixa com altura própria e a foto presa nela: em grade, a linha se ajusta ao
+     conteúdo e o height: 100% da imagem não prendia nada — cada foto saía de uma
+     altura, que é justamente o que não pode */
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: radial-gradient(circle at 50% 42%, var(--branco) 0%, var(--marfim) 72%);
+}
+
+/* regra: toda foto ocupa exatamente o mesmo quadro. A peça é contida dentro dele,
+   então nenhuma aliança aparece maior que a outra por causa do recorte da imagem. */
+.modelo__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8%;
+}
+
+.modelo__texto {
+  flex: 1 1 auto;
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding: 0 4px 2px;
+}
+
+.modelo__codigo {
+  font-size: clamp(0.62rem, 0.55rem + 0.25vw, 0.75rem);
+}
+
+/* duas linhas no máximo: com três, um nome comprido empurraria a foto para fora */
+.modelo__nome {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-family: var(--fonte-texto);
+  font-size: clamp(0.82rem, 0.74rem + 0.32vw, 1rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--claro-suave);
+}
+
+/* o valor é texto de venda: nunca abaixo de 16px, nem no celular estreito */
+.modelo__preco {
+  font-size: clamp(1rem, 0.94rem + 0.25vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+
+.modelo__preco--consulta {
+  color: var(--ouro);
+}
+.modelo__adicionais {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--claro-suave);
+}
+
+.modelo__acoes {
+  display: grid;
+  gap: var(--e-2);
+  margin-top: auto;
+  padding-top: var(--e-2);
+}
+
+/* ---------------------------------------------------------------------------
+   Filtros
+   --------------------------------------------------------------------------- */
+
+/* acima da faixa: os cartões têm transformação de entrada, e isso os faz pintar por
+   cima dos filtros se eles não tiverem a sua própria camada */
+.filtros {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-3) var(--e-6);
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.filtros__grupo {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  min-width: 0;
+}
+
+.filtros__rotulo {
+  flex: none;
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--claro-suave);
+}
+
+.pilulas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pilula {
+  flex: none;
+  min-height: 44px;
+  padding: 0 var(--e-4);
+  border: 1px solid var(--linha-escura);
+  border-radius: var(--raio-pilula);
+  background: transparent;
+  color: var(--claro);
+  font-family: var(--fonte-mono);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    color var(--dur-rapida) var(--curva);
+}
+
+.pilula:hover {
+  border-color: var(--ouro);
+}
+
+.pilula[aria-pressed="true"] {
+  border-color: var(--ouro);
+  background: var(--ouro);
+  color: var(--tinta);
+}
+
+.busca {
+  position: relative;
+  flex: 1 1 220px;
+  max-width: 320px;
+  margin-inline-start: auto;
+}
+
+.busca svg {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  width: 18px;
+  height: 18px;
+  translate: 0 -50%;
+  fill: none;
+  stroke: var(--claro-suave);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.busca input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--e-4) 0 44px;
+  border: 1px solid var(--linha-escura);
+  border-radius: var(--raio-pilula);
+  background: rgb(255 255 255 / 0.04);
+  color: var(--claro);
+  font-size: 1rem; /* 16 px: o iOS não dá zoom no campo */
+}
+
+.busca input::placeholder {
+  color: var(--claro-suave);
+}
+
+@media (max-width: 767px) {
+  .vitrine__palco {
+    padding-top: 76px;
+  }
+
+  /* nowrap: em flex de coluna com quebra, a fileira de pílulas alargaria a página */
+  .filtros {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+  .filtros__rotulo {
+    display: none;
+  }
+
+  .pilulas {
+    flex-wrap: nowrap;
+    margin-inline: -20px;
+    padding-inline: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .busca {
+    flex: none;
+    max-width: none;
+    margin-inline-start: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .modelo {
+    width: min(82vw, 340px);
+  }
+}
+
+/* atraso da entrada do título, antes em style no HTML */
+.catalogo__titulo {
+  --d: 80;
+}

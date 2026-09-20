@@ -1,0 +1,1393 @@
+/* CSS do site. Tudo o que vale para todas as páginas está aqui, em seções na ordem
+   fontes → reset → variáveis → base → componentes.
+
+   O CSS da home entra por @import, que o CSS obriga a vir no topo do arquivo. Por
+   isso as camadas: o global mora em "global" e a página em "pagina", declarada
+   depois, então a página continua vencendo o global como quando vinha por último. */
+
+@layer global, pagina;
+
+@import url("src/pages/home/home.css") layer(pagina);
+@import url("src/pages/colecao/colecao.css") layer(pagina);
+@import url("src/pages/catalogo/catalogo.css") layer(pagina);
+@import url("src/pages/como-comprar/como-comprar.css") layer(pagina);
+@import url("src/pages/nossa-historia/nossa-historia.css") layer(pagina);
+
+@layer global {
+  /* ---- fontes ------------------------------------------------------------------ */
+
+  /* Cormorant Garamond nos títulos, Manrope na interface. O trecho entre as marcas
+     é gerado por scripts/baixar-fontes.mjs: não editar à mão. */
+  /* fontes:inicio */
+  @font-face {
+    font-family: "Bodoni Moda";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("assets/fonts/bodoni-latin-ext-normal-400-700.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  @font-face {
+    font-family: "Bodoni Moda";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("assets/fonts/bodoni-latin-normal-400-700.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: "DM Mono";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("assets/fonts/dmmono-latin-ext-normal-300.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  @font-face {
+    font-family: "DM Mono";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("assets/fonts/dmmono-latin-normal-300.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: "DM Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/dmmono-latin-ext-normal-400.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  @font-face {
+    font-family: "DM Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/fonts/dmmono-latin-normal-400.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: "DM Mono";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("assets/fonts/dmmono-latin-ext-normal-500.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  @font-face {
+    font-family: "DM Mono";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("assets/fonts/dmmono-latin-normal-500.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url("assets/fonts/manrope-latin-ext-normal-200-800.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  @font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url("assets/fonts/manrope-latin-normal-200-800.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* fontes:fim */
+
+  /* ---- reset ----------------------------------------------------------------- */
+
+  /* Reset enxuto. Só o que o projeto usa. */
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: auto; /* o Lenis cuida da rolagem suave */
+  }
+
+  body {
+    min-height: 100svh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  li,
+  dt,
+  dd {
+    overflow-wrap: break-word;
+  }
+
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+    padding: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  :where(a) {
+    color: inherit;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  /* O foco visível fica em base.css, junto dos tokens da marca. */
+
+  /* Alvo de toque mínimo. Os seletores repetem a classe porque as versões
+     compactas dos controles são definidas por classe, e um seletor de elemento
+     perderia para elas na especificidade. */
+  @media (hover: none) and (pointer: coarse) {
+    button,
+    [role="button"],
+    a[href],
+    summary,
+    label:has(input),
+    .btn.btn,
+    .btn--compacto.btn--compacto,
+    .nav__pedido.nav__pedido,
+    .faceta__rotulo.faceta__rotulo,
+    .planilha__remover.planilha__remover,
+    .planilha__qt.planilha__qt {
+      min-height: 44px;
+    }
+  }
+
+  /* ---- variáveis ------------------------------------------------------------- */
+
+  /* ===========================================================================
+     Eterno Dourado — tokens do sistema visual
+     Fonte: "Design do Marketplace Atacadista" (PDF da marca).
+
+     Cor (pág. 3). Azul dá profundidade, marfim abre as áreas de compra, ouro é
+     ação e seleção. Regra 70/20/10: 70% azul ou marfim, 20% superfícies
+     secundárias, 10% dourado.
+
+     Contraste AA (pág. 17). O ouro da marca não passa AA como texto sobre
+     marfim (1,98:1), então texto dourado em fundo claro usa --ouro-texto
+     (4,8:1). Sobre azul o ouro da marca passa com folga (8,4:1).
+     =========================================================================== */
+
+  :root {
+    /* --- paleta da marca --------------------------------------------------- */
+    --noite: #050912; /* fundos de impacto */
+    --marinho: #091321; /* cabeçalho e abertura */
+    --safira: #0d1c2d; /* cartões escuros */
+    --ouro: #d6a84e; /* ações e seleção */
+    --champagne: #f0cf82; /* destaques suaves, foco */
+    --marfim: #f7f3ea; /* catálogo e checkout */
+    --branco: #ffffff;
+
+    /* --- texto ------------------------------------------------------------- */
+    --tinta: #0b1220; /* texto sobre claro */
+    --tinta-suave: #525c6b; /* secundário sobre marfim, 5,6:1 */
+    --ouro-texto: #8a6420; /* ouro legível sobre marfim, 4,8:1 */
+    --claro: #f3efe6; /* texto sobre azul */
+    --claro-suave: #a3abb8; /* secundário sobre azul, 7:1 */
+
+    /* --- linhas e estados -------------------------------------------------- */
+    --linha-clara: #e4dccb;
+    --linha-escura: #1c2b3e;
+    --sucesso: #5f8f6f;
+    --erro: #b25b5b;
+
+    /* --- tipografia (pág. 4) ----------------------------------------------- */
+    --fonte-titulo: "Bodoni Moda", Georgia, "Times New Roman", serif;
+    --fonte-mono: "DM Mono", ui-monospace, "Cascadia Mono", monospace;
+    --fonte-texto: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    /* Escala web: Display 72/76 · H1 56/62 · H2 40/48 · H3 28/36 · Body 16/26
+       · Small 13/20. No celular o H1 fica entre 38 e 44 px (pág. 5). */
+    --t-display: clamp(2.5rem, 1.55rem + 3.8vw, 4.5rem);
+    --t-h1: clamp(2.375rem, 1.85rem + 2.1vw, 3.5rem);
+    --t-h2: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem);
+    --t-h3: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
+    --t-corpo: 1rem;
+    --t-corpo-g: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    --t-pequeno: 0.8125rem;
+
+    /* --- espaço (pág. 5): unidade de 4 px ---------------------------------- */
+    --e-1: 4px;
+    --e-2: 8px;
+    --e-3: 12px;
+    --e-4: 16px;
+    --e-5: 20px;
+    --e-6: 24px;
+    --e-8: 32px;
+    --e-10: 40px;
+    --e-12: 48px;
+    --e-16: 64px;
+    --e-24: 96px;
+
+    --secao: clamp(48px, 2rem + 4vw, 96px); /* respiro de seção 48–96 */
+    --container: min(100% - 40px, 1200px); /* margem mínima de 20 px, máximo 1200 */
+
+    /* --- forma ------------------------------------------------------------- */
+    --raio-pilula: 999px;
+    --raio-cartao: 16px;
+    --raio-campo: 10px;
+
+    /* --- movimento --------------------------------------------------------- */
+    --curva: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --curva-longa: cubic-bezier(0.16, 1, 0.3, 1); /* começa rápido e assenta devagar: títulos e fotos */
+    --dur-rapida: 160ms;
+    --dur-media: 320ms;
+    --dur-entrada: 1100ms; /* entrada e saída dos elementos: sem pressa */
+
+    /* --- camadas ----------------------------------------------------------- */
+    --z-cabecalho: 50;
+    --z-menu: 45; /* abaixo do cabeçalho: o botão de fechar fica por cima */
+    --z-anel: 1;
+    --z-cortina: 90;
+    --z-preloader: 95; /* a abertura da visita fica acima até do véu */
+
+    color-scheme: light;
+  }
+
+  /* ---- base ------------------------------------------------------------------ */
+
+  /* Base: tipografia, seções, botões, foco e entrada dos elementos. */
+
+  html {
+    /* o cabeçalho é fixo: âncoras não podem esconder o título da seção */
+    scroll-padding-top: 88px;
+    scrollbar-gutter: stable;
+  }
+
+  /* Rolagem suave do Lenis (mesma biblioteca e mesmos ajustes do novo-site): ela
+     precisa do scroll nativo cru, então scroll-behavior fica em auto. As regras
+     abaixo são as do lenis.css. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  html.lenis:not(.lenis-autoToggle).lenis-stopped {
+    overflow: clip;
+  }
+
+  .lenis [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--noite);
+    color: var(--claro);
+    font-family: var(--fonte-texto);
+    font-size: var(--t-corpo);
+    line-height: 1.625;
+  }
+
+  ::selection {
+    background: var(--champagne);
+    color: var(--tinta);
+  }
+
+  /* ---------------------------------------------------------------------------
+     Estrutura
+     --------------------------------------------------------------------------- */
+
+  .container {
+    width: var(--container);
+    margin-inline: auto;
+  }
+
+  .secao {
+    padding-block: var(--secao);
+  }
+
+  .secao--clara {
+    background: var(--marfim);
+    color: var(--tinta);
+  }
+
+  .secao--escura {
+    background: var(--marinho);
+    color: var(--claro);
+  }
+
+  /* ---------------------------------------------------------------------------
+     Tipografia
+     --------------------------------------------------------------------------- */
+
+  .rotulo {
+    font-family: var(--fonte-mono);
+    font-size: var(--t-pequeno);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ouro);
+  }
+
+  .secao--clara .rotulo,
+  .modal .rotulo {
+    color: var(--ouro-texto);
+  }
+
+  .titulo-1,
+  .titulo-2,
+  .titulo-3 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-synthesis: none; /* os pesos vêm da fonte variável: nada de negrito falso */
+    text-wrap: balance;
+  }
+
+  .titulo-1 {
+    font-size: var(--t-h1);
+    line-height: 1.1;
+  }
+
+  .titulo-2 {
+    font-size: var(--t-h2);
+    line-height: 1.18;
+  }
+
+  .titulo-3 {
+    font-size: var(--t-h3);
+    line-height: 1.28;
+  }
+
+  .texto-intro {
+    font-size: var(--t-corpo-g);
+    line-height: 1.6;
+    max-width: 60ch;
+    color: var(--claro-suave);
+    text-wrap: pretty;
+  }
+
+  .secao--clara .texto-intro {
+    color: var(--tinta-suave);
+  }
+
+  /* ---------------------------------------------------------------------------
+     Marca: ETERNO grande sobre DOURADO espaçado, como no logotipo
+     --------------------------------------------------------------------------- */
+
+  .marca {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 44px;
+    color: var(--ouro);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .marca__eterno {
+    font-family: var(--fonte-titulo);
+    font-size: 1.625rem;
+    font-weight: 400;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .marca__dourado {
+    font-family: var(--fonte-titulo);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    /* o espaçamento sobra à direita da última letra: compensa para centralizar */
+    margin-inline-end: -0.3em;
+    text-transform: uppercase;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Botões (pág. 7): pílula, alvo de 52 px, caixa alta
+     --------------------------------------------------------------------------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--e-2);
+    min-height: 52px;
+    padding: 0 clamp(20px, 3vw, 30px);
+    border: 1.5px solid transparent;
+    border-radius: var(--raio-pilula);
+    font-family: var(--fonte-texto);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--dur-rapida) var(--curva),
+      border-color var(--dur-rapida) var(--curva),
+      color var(--dur-rapida) var(--curva);
+  }
+
+  .btn--compacto {
+    min-height: 44px;
+    padding-inline: 18px;
+  }
+
+  /* ação principal */
+  .btn--ouro {
+    background: var(--ouro);
+    color: var(--tinta);
+  }
+
+  .btn--ouro:hover {
+    background: var(--champagne);
+  }
+
+  .btn--ouro:active {
+    background: #c89a40;
+  }
+
+  /* secundária sobre azul */
+  .btn--contorno {
+    border-color: var(--ouro);
+    color: var(--ouro);
+  }
+
+  .btn--contorno:hover {
+    border-color: var(--champagne);
+    background: rgb(214 168 78 / 0.12);
+    color: var(--champagne);
+  }
+
+  /* secundária sobre claro: o "Ver detalhes" da pág. 7 */
+  .btn--safira {
+    border-color: var(--ouro);
+    background: var(--safira);
+    color: var(--ouro);
+  }
+
+  .btn--safira:hover {
+    background: var(--marinho);
+    color: var(--champagne);
+  }
+
+  /* sobre a faixa dourada */
+  .btn--marinho {
+    background: var(--marinho);
+    color: var(--marfim);
+  }
+
+  .btn--marinho:hover {
+    background: var(--safira);
+    color: var(--champagne);
+  }
+
+  /* terciária: só texto */
+  .btn--texto {
+    min-height: 48px;
+    padding-inline: 4px;
+    border-radius: 6px;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--ouro);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 6px;
+  }
+
+  .btn--texto:hover {
+    color: var(--champagne);
+  }
+
+  /* ---------------------------------------------------------------------------
+     Foco (pág. 7 e 17): champagne visível no azul, anel marinho visível no claro
+     --------------------------------------------------------------------------- */
+
+  :focus-visible {
+    outline: 3px solid var(--champagne);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 9px var(--safira);
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Utilitários
+     --------------------------------------------------------------------------- */
+
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .pular {
+    position: fixed;
+    top: var(--e-3);
+    left: var(--e-3);
+    z-index: calc(var(--z-menu) + 1);
+    padding: var(--e-3) var(--e-5);
+    border-radius: var(--raio-pilula);
+    background: var(--ouro);
+    color: var(--tinta);
+    font-weight: 700;
+    text-decoration: none;
+    translate: 0 -200%;
+  }
+
+  .pular:focus-visible {
+    translate: 0 0;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Entrada e saída de tudo o que aparece. O CSS desenha os dois estados; o GSAP
+     (ScrollTrigger) só troca data-dentro e data-de. Sem JS, nada disso se aplica e a
+     página nasce inteira e legível.
+     --------------------------------------------------------------------------- */
+
+  [data-anim] {
+    transition:
+      opacity var(--dur-entrada) var(--curva),
+      translate var(--dur-entrada) var(--curva-longa),
+      scale var(--dur-entrada) var(--curva-longa);
+    transition-delay: calc(var(--d, 0) * 1ms);
+  }
+
+  /* Estado fora: para que lado o elemento está, antes de entrar ou depois de sair.
+     data-de vem do ScrollTrigger e diz se o encontro é por baixo ou por cima, para
+     a saída nunca desfazer o caminho da entrada. */
+  [data-anim=sobe],
+  [data-anim=palavras],
+  [data-anim=foto],
+  [data-anim=cartao],
+  [data-anim=aparece],
+  [data-anim=entra] {
+    opacity: 0;
+  }
+
+  [data-anim=sobe] {
+    translate: 0 24px;
+  }
+
+  [data-anim=sobe][data-de=cima] {
+    translate: 0 -24px;
+  }
+
+  /* rótulos chegam da esquerda, no sentido da leitura */
+  [data-anim=entra] {
+    translate: -20px 0;
+  }
+
+  /* fotos crescem um pouco ao assentar */
+  [data-anim=foto] {
+    translate: 0 20px;
+    scale: 1.04;
+  }
+
+  [data-anim=foto][data-de=cima] {
+    translate: 0 -20px;
+  }
+
+  /* cartões sobem mais e crescem um pouco ao assentar */
+  [data-anim=cartao] {
+    translate: 0 40px;
+    scale: 0.96;
+  }
+
+  [data-anim=cartao][data-de=cima] {
+    translate: 0 -40px;
+  }
+
+  [data-anim][data-dentro] {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+
+  /* Abertura: cada letra chega girando como uma aliança — uma volta e meia em torno do
+     próprio eixo, uma depois da outra. A perspectiva no título é o que faz o giro ter
+     profundidade em vez de parecer um achatamento. */
+  [data-anim="giro"] {
+    perspective: 900px;
+  }
+
+  [data-anim="giro"] .letras-palavra {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  [data-anim="giro"] .letra {
+    display: inline-block;
+    opacity: 0;
+    rotate: y -540deg;
+    transition:
+      opacity 520ms var(--curva),
+      rotate 1400ms var(--curva-longa);
+    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 95ms);
+  }
+
+  [data-anim="giro"][data-de="cima"] .letra {
+    rotate: y 540deg;
+  }
+
+  [data-anim="giro"][data-dentro] .letra {
+    opacity: 1;
+    rotate: y 0deg;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim="giro"] .letra,
+    [data-anim="giro"][data-de="cima"] .letra {
+      rotate: y -160deg;
+      transition-duration: 700ms;
+    }
+  }
+
+  /* títulos de seção: cada letra aparece na sua vez, em ordem embaralhada (o --i vem
+     do JS). É o efeito de caractere do webHub, feito por transição. */
+  /* a palavra inteira numa caixa: assim a linha só quebra nos espaços, nunca no meio
+     de uma palavra */
+  [data-anim="letras"] .letras-palavra {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  [data-anim="letras"] .letra {
+    display: inline-block;
+    opacity: 0;
+    translate: 0 0.12em;
+    transition:
+      opacity 700ms var(--curva),
+      translate 820ms var(--curva-longa);
+    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 42ms);
+  }
+
+  [data-anim="letras"][data-de="cima"] .letra {
+    translate: 0 -0.12em;
+  }
+
+  [data-anim="letras"][data-dentro] .letra {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  /* títulos: cada palavra sobe de dentro da própria máscara, uma depois da outra.
+     O padding de baixo, compensado na margem, deixa os descendentes (ç, g, p) inteiros. */
+  [data-anim=palavras] .palavra {
+    display: inline-block;
+    overflow: clip;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+    vertical-align: top;
+  }
+
+  [data-anim=palavras] .palavra > span {
+    display: inline-block;
+    translate: 0 110%;
+    transition: translate 1300ms var(--curva-longa);
+    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 110ms);
+  }
+
+  [data-anim=palavras][data-de=cima] .palavra > span {
+    translate: 0 -110%;
+  }
+
+  [data-anim=palavras][data-dentro] .palavra > span {
+    translate: 0 0;
+  }
+  /* Movimento reduzido significa MENOS movimento, não nenhum: as distâncias caem e
+     as durações encurtam, mas nada no site fica estático. */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --dur-entrada: 700ms;
+    }
+
+    [data-anim=sobe],
+    [data-anim=sobe][data-de=cima],
+    [data-anim=foto],
+    [data-anim=foto][data-de=cima],
+    [data-anim=cartao],
+    [data-anim=cartao][data-de=cima] {
+      translate: 0 0;
+      scale: 1;
+    }
+
+    [data-anim=entra] {
+      translate: 0 0;
+    }
+
+    [data-anim=palavras] .palavra > span,
+    [data-anim=palavras][data-de=cima] .palavra > span {
+      translate: 0 40%;
+      transition-duration: 700ms;
+    }
+  }
+
+  /* ---- cabeçalho ------------------------------------------------------------- */
+
+  /* Cabeçalho fixo de todas as dobras, no desenho do ateliê: marca à esquerda,
+     número e nome da dobra no centro, entrar e menu à direita. Fica fora do
+     contêiner do Barba. A barra deixa a página por baixo livre: só os controles
+     recebem clique. */
+
+  .cabecalho {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: var(--z-cabecalho);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--e-3);
+    padding: var(--e-3) clamp(16px, 3vw, 40px);
+    background: linear-gradient(to bottom, rgb(5 9 18 / 0.72), transparent);
+    color: var(--claro);
+    pointer-events: none;
+    /* desce quando a abertura termina e a primeira dobra já entrou */
+    translate: 0 -110%;
+    transition: translate 1100ms var(--curva-longa);
+  }
+
+  html[data-pronto] .cabecalho {
+    translate: 0 0;
+  }
+
+  .cabecalho > .marca,
+  .cabecalho__acoes {
+    pointer-events: auto;
+  }
+
+  .cabecalho > .marca {
+    justify-self: start;
+  }
+
+  .cabecalho__acoes {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: var(--e-2);
+  }
+
+  .cabecalho__botao {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-3);
+    min-height: 44px;
+    padding: 0 var(--e-4);
+    border: 1px solid rgb(214 168 78 / 0.45);
+    border-radius: var(--raio-pilula);
+    background: rgb(5 9 18 / 0.4);
+    backdrop-filter: blur(8px);
+    color: var(--claro);
+    font-family: var(--fonte-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition:
+      border-color var(--dur-rapida) var(--curva),
+      color var(--dur-rapida) var(--curva);
+  }
+
+  .cabecalho__botao:hover {
+    border-color: var(--ouro);
+    color: var(--champagne);
+  }
+
+  /* dois traços que viram X */
+  .cabecalho__hamburguer {
+    position: relative;
+    width: 18px;
+    height: 8px;
+  }
+
+  .cabecalho__hamburguer::before,
+  .cabecalho__hamburguer::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: currentColor;
+    transition:
+      translate var(--dur-media) var(--curva),
+      rotate var(--dur-media) var(--curva);
+  }
+
+  .cabecalho__hamburguer::before {
+    top: 0;
+  }
+
+  .cabecalho__hamburguer::after {
+    bottom: 0;
+  }
+
+  [aria-expanded="true"] .cabecalho__hamburguer::before {
+    translate: 0 3.25px;
+    rotate: 45deg;
+  }
+
+  [aria-expanded="true"] .cabecalho__hamburguer::after {
+    translate: 0 -3.25px;
+    rotate: -45deg;
+  }
+
+  @media (max-width: 599px) {
+    .cabecalho {
+      grid-template-columns: 1fr auto;
+    }
+
+    /* no celular o número da dobra e o entrar vão para o menu */
+    .cabecalho__entrar {
+      display: none;
+    }
+  }
+
+  /* ---- menu ------------------------------------------------------------------ */
+
+  /* Menu em tela cheia com as cinco dobras. Abre por data-aberto (o JS também
+     liga inert); visibility deixa a saída animar e impede clique quando fechado. */
+
+  html.menu-aberto {
+    overflow: hidden;
+  }
+
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-menu);
+    display: grid;
+    align-content: center;
+    gap: var(--e-10);
+    padding: 96px clamp(20px, 6vw, 96px) var(--e-10);
+    background: var(--noite);
+    color: var(--claro);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity var(--dur-media) var(--curva),
+      visibility 0s linear var(--dur-media);
+  }
+
+  .menu[data-aberto="sim"] {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity var(--dur-media) var(--curva),
+      visibility 0s;
+  }
+
+  /* a escada do menu vem da posição na lista; antes era um style em cada <li> */
+  .menu__lista li:nth-child(1) { --i: 0; }
+  .menu__lista li:nth-child(2) { --i: 1; }
+  .menu__lista li:nth-child(3) { --i: 2; }
+  .menu__lista li:nth-child(4) { --i: 3; }
+  .menu__lista li:nth-child(5) { --i: 4; }
+  .menu__lista {
+    display: grid;
+    gap: var(--e-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu__link {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-5);
+    min-height: 56px;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.25rem, 1.3rem + 4vw, 5rem);
+    line-height: 1.05;
+    color: var(--claro);
+    text-decoration: none;
+    transition: color var(--dur-rapida) var(--curva);
+  }
+
+  .menu__link:hover,
+  .menu__link[aria-current="page"] {
+    color: var(--ouro);
+  }
+
+  .menu__numero {
+    font-family: var(--fonte-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.16em;
+    color: var(--ouro);
+  }
+
+  .menu__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-3);
+  }
+
+  .menu__lista li {
+    opacity: 0;
+    translate: 0 28px;
+    transition:
+      opacity var(--dur-media) var(--curva),
+      translate 700ms var(--curva-longa);
+  }
+
+  .menu[data-aberto="sim"] .menu__lista li {
+    opacity: 1;
+    translate: 0 0;
+    transition-delay: calc(80ms + var(--i, 0) * 60ms);
+  }
+
+  /* ---- seções ------------------------------------------------------------------ */
+
+  /* O site é uma página só: cada seção se empilha e a 03LM atravessa todas elas. */
+  .dobra {
+    position: relative;
+  }
+
+  /* ---- preloader --------------------------------------------------------------- */
+
+  /* Abertura: o nome em círculo dá uma volta completa em 8 s e sai. Acontece em toda
+     carga da página, como o preloader do novo-site. */
+
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-preloader);
+    display: grid;
+    place-items: center;
+    background: var(--noite);
+  }
+
+  .preloader__roda {
+    width: min(62vmin, 460px);
+    /* no compositor: a roda continua girando mesmo se o fio principal engasgar */
+    will-change: transform;
+    height: auto;
+  }
+
+  .preloader__roda text {
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    /* o espaçamento fecha a volta: o nome duas vezes ocupa a circunferência inteira,
+       sem sobrar vão nem sobrepor letra (o textLength do SVG o Chrome ignora aqui) */
+    letter-spacing: 0.355em;
+    text-transform: uppercase;
+    fill: var(--ouro);
+  }
+
+  .preloader__ponto {
+    fill: var(--ouro);
+  }
+
+  /* O efeito inteiro é do CSS e vale para todo mundo: a roda gira e a abertura sai
+     sozinha aos 8 s. O JS só tira o elemento quando a animação termina — e, se o JS
+     não rodar, visibility: hidden já libera a página.
+
+     Uma volta a cada 3,2 s: com uma volta só em 8 s, o nome repetido no círculo
+     parecia parado. Quem pediu menos movimento no sistema recebe a mesma abertura,
+     girando bem devagar, em vez de uma roda congelada. */
+  .preloader {
+    animation: preloader-sair 900ms cubic-bezier(0.5, 0, 0.75, 0) 8s forwards;
+  }
+
+  .preloader__roda {
+    animation: preloader-girar 3.2s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .preloader__roda {
+      animation-duration: 12s;
+    }
+  }
+
+  @keyframes preloader-sair {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes preloader-girar {
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  /* ---- cortina --------------------------------------------------------------- */
+
+  /* O arco em SVG com filete de ouro abre a visita: ele revela a primeira dobra e
+     não volta a aparecer, como o arco do preloader do novo-site.
+     O JS só troca data-estado (coberta → revelando → parada).
+
+     A troca entre dobras é o painel logo abaixo: a aliança vai até o canto e a
+     dobra nova sobe por cima da atual; voltando, a atual desce e revela a
+     anterior, já no ponto em que a pessoa a deixou. */
+
+  .cortina {
+    position: fixed;
+    top: -10vh;
+    left: 0;
+    z-index: var(--z-cortina);
+    width: 100%;
+    height: 120vh;
+    pointer-events: none;
+    translate: 0 -105%; /* indo, o véu espera acima da tela */
+    will-change: transform;
+  }
+
+  /* o degradê do véu vem no atributo fill do SVG: em CSS, url(#id) procuraria o
+     degradê dentro do style.css, e o arco ficaria sem pintura */
+
+  .cortina__filete {
+    fill: none;
+    stroke: var(--ouro);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .cortina[data-estado="coberta"],
+  .cortina[data-estado="cobrindo"] {
+    translate: 0 0;
+  }
+
+  .cortina[data-estado="revelando"] {
+    translate: 0 105%;
+  }
+
+  /* voltando, o véu sobe: espera abaixo da tela, sai por cima e vem espelhado, para
+     a borda curva ser sempre a da frente (escala depois do translate: espelha o
+     desenho no lugar, sem mexer na posição) */
+  .cortina[data-sentido="voltar"] {
+    scale: 1 -1;
+  }
+
+  .cortina[data-sentido="voltar"][data-estado="parada"] {
+    translate: 0 105%;
+  }
+
+  .cortina[data-sentido="voltar"][data-estado="revelando"] {
+    translate: 0 -105%;
+  }
+
+  /* sem pressa, como folhear uma revista: entra e sai com aceleração macia */
+  .cortina[data-estado="cobrindo"] {
+    transition: translate 900ms cubic-bezier(0.4, 0, 0.22, 1);
+  }
+
+  .cortina[data-estado="revelando"] {
+    transition: translate 1000ms cubic-bezier(0.22, 1, 0.3, 1);
+  }
+
+  /* se o JS não rodar, o arco da primeira carga não prende a página */
+  .cortina[data-estado="coberta"] {
+    animation: cortina-seguranca 0s linear 8s forwards;
+  }
+
+  @keyframes cortina-seguranca {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  /* ---- anel 3D --------------------------------------------------------------- */
+
+  /* A 03LM que acompanha a rolagem: canvas fixo por cima dos fundos das dobras e
+     por baixo do conteúdo que precisa vencer o anel (z-index 2 nas páginas). */
+
+  .anel3d {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-anel);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .anel3d.is-pronto {
+    opacity: 1;
+  }
+
+  .anel3d {
+    transition: opacity 1200ms var(--curva-longa);
+  }
+
+  /* ---- modal ----------------------------------------------------------------- */
+
+  /* Modais: a base comum a todos e a área do cliente. O modal da peça é da home. */
+
+  .modal {
+    width: min(100% - 32px, 1080px);
+    max-width: none;
+    max-height: calc(100% - 32px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 20px;
+    /* azul da marca com texto claro; o dourado continua sendo a ação */
+    border: 1px solid var(--linha-escura);
+    background: var(--safira);
+    color: var(--claro);
+    box-shadow: 0 40px 90px -30px rgb(0 0 0 / 0.7);
+    overflow: hidden;
+  }
+
+  .modal[open] {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .modal::backdrop {
+    background: rgb(5 9 18 / 0.74);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal__fechar {
+    position: absolute;
+    top: var(--e-3);
+    right: var(--e-3);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--linha-escura);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.06);
+    color: var(--claro);
+    transition: border-color var(--dur-rapida) var(--curva);
+  }
+
+  .modal__fechar:hover {
+    border-color: var(--ouro);
+  }
+
+  .modal__fechar svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+
+  /* --- área do cliente ----------------------------------------------------- */
+
+  .modal--estreito {
+    width: min(100% - 32px, 460px);
+    overflow-y: auto;
+  }
+
+  .entrar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-5);
+    padding: clamp(28px, 5vw, 40px);
+  }
+
+  .entrar__titulo {
+    padding-inline-end: var(--e-10);
+    font-family: var(--fonte-titulo);
+    font-size: var(--t-h2);
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  .entrar__texto {
+    color: var(--claro-suave);
+  }
+
+  .campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--e-2);
+  }
+
+  .campo label {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .campo input {
+    min-height: 52px;
+    padding: 0 var(--e-4);
+    border: 1px solid var(--linha-escura);
+    border-radius: var(--raio-campo);
+    background: var(--marinho);
+    color: var(--claro);
+    font-size: 1rem;
+    transition: border-color var(--dur-rapida) var(--curva);
+  }
+
+  .campo input:hover {
+    border-color: var(--champagne);
+  }
+
+  .campo input:focus-visible {
+    border-color: var(--ouro);
+  }
+
+  .entrar__status {
+    padding: 14px var(--e-4);
+    border: 1px solid rgb(214 168 78 / 0.5);
+    border-radius: 12px;
+    background: rgb(214 168 78 / 0.12);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .entrar__status a,
+  .entrar__rodape a {
+    font-weight: 700;
+    color: var(--claro);
+    text-decoration-color: var(--ouro);
+    text-underline-offset: 3px;
+  }
+
+  .entrar__rodape {
+    font-size: 0.9375rem;
+    color: var(--claro-suave);
+  }
+
+  /* ---- rodapé ---------------------------------------------------------------- */
+
+  /* Rodapé (pág. 8): fundo noite, marca, atalhos e atendimento. */
+
+  .rodape {
+    padding-block: var(--e-16) var(--e-8);
+    background: var(--noite);
+    color: var(--claro-suave);
+  }
+
+  .rodape__grade {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--e-10);
+  }
+
+  .rodape__marca {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--e-4);
+  }
+
+  .rodape__marca .marca {
+    align-items: center;
+  }
+
+  .rodape__titulo {
+    margin-bottom: var(--e-3);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--claro);
+  }
+
+  .rodape__lista {
+    display: grid;
+    gap: var(--e-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rodape__lista a,
+  .rodape__lista button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--claro-suave);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color var(--dur-rapida) var(--curva);
+  }
+
+  .rodape__lista a:hover,
+  .rodape__lista button:hover {
+    color: var(--champagne);
+  }
+
+  .rodape__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--e-2) var(--e-6);
+    margin-top: var(--e-12);
+    padding-top: var(--e-6);
+    border-top: 1px solid var(--linha-escura);
+    font-size: var(--t-pequeno);
+  }
+
+  @media (min-width: 768px) {
+    .rodape__grade {
+      grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
+    }
+  }
+}

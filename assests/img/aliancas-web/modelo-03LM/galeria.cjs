@@ -1,0 +1,12 @@
+const fs=require('fs'),path=require('path');const p=path.join(__dirname,'index.html');let s=fs.readFileSync(p,'utf8');
+s=s.replace('<h1>03LM</h1>','<h1 id="codigo">03LM</h1><select id="modelos" aria-label="Modelo" style="pointer-events:auto;background:#292823;color:#eee;padding:10px;width:200px;border:1px solid #625943;border-radius:8px"></select>');
+s=s.replace('<a href="03LM.stl" download>Baixar STL</a>','');s=s.replace('Ø interno 18 mm e espessura 1,35 mm estimados','Medidas não confirmadas para fabricação');s=s.replace("import{modelo}from'./modelo.js?v=referencia1';",'');
+const start=s.indexOf('new GLTFLoader().load('),end=s.indexOf("document.querySelector('#giro')",start);
+if(start<0||end<0)throw Error('Viewer loader not found');
+s=s.slice(0,start)+`const loader=new GLTFLoader();let current=null,sequence=0;
+const data=await fetch('./catalogo/catalogo.json').then(x=>x.json());const select=document.querySelector('#modelos');
+for(const m of data){const o=document.createElement('option');o.value=m.codigo;o.textContent=m.codigo+(m.pedras?' · com pedra':'');select.append(o);}
+async function show(code){const request=++sequence;const info=data.find(m=>m.codigo===code);try{const g=await loader.loadAsync('./catalogo/'+code+'.glb');if(request!==sequence)return;if(current){s.remove(current);current.traverse(o=>{if(o.isMesh){o.geometry.dispose();(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose());}});}current=g.scene;s.add(current);const bounds=new T.Box3().setFromObject(current),center=bounds.getCenter(new T.Vector3()),size=bounds.getSize(new T.Vector3());current.position.sub(center);const radius=size.length()/2,distance=radius/Math.sin(T.MathUtils.degToRad(16))*1.15;c.position.set(distance*.46,distance*.22,distance*.86);ctrl.target.set(0,0,0);ctrl.minDistance=radius*1.3;ctrl.maxDistance=distance*3;c.updateProjectionMatrix();document.querySelector('#codigo').textContent=code;document.querySelector('header p').textContent=info.largura+' mm · '+(info.pedras?'Pedras facetadas · Ouro polido':'Ouro polido');document.querySelector('aside img').src='../'+code+'-760.webp';document.querySelector('a[download]').href='./catalogo/'+code+'.glb';window.modeloCarregado=code;}catch(e){document.querySelector('header p').textContent='Erro ao carregar '+code;console.error(e);}}
+select.onchange=()=>show(select.value);select.value='03LM-1';await show(select.value);
+`+s.slice(end);
+fs.writeFileSync(path.join(__dirname,'todos.html'),s);

@@ -1,0 +1,4156 @@
+{
+  "03LM-1": {
+    "code": "03LM-1",
+    "width": 3,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 3mm C/ Pedra",
+    "sourceTable": "03-1LM",
+    "notes": []
+  },
+  "03LM": {
+    "code": "03LM",
+    "width": 3,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 3mm",
+    "sourceTable": "03LM",
+    "notes": []
+  },
+  "04-1LM": {
+    "code": "04-1LM",
+    "width": 4,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 4mm Com Pedra",
+    "sourceTable": "04-1LM",
+    "notes": []
+  },
+  "04-1RDLM": {
+    "code": "04-1RDLM",
+    "width": 4,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 4mm Diamantada Com Pedra",
+    "sourceTable": "04-1RDLM",
+    "notes": []
+  },
+  "04-1RLM": {
+    "code": "04-1RLM",
+    "width": 4,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 4mm Com Pedra",
+    "sourceTable": "04-1RLM",
+    "notes": []
+  },
+  "04LM": {
+    "code": "04LM",
+    "width": 4,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 4mm",
+    "sourceTable": "04LM",
+    "notes": []
+  },
+  "04RDLM": {
+    "code": "04RDLM",
+    "width": 4,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 4mm Diamantada",
+    "sourceTable": "04RDLM",
+    "notes": []
+  },
+  "04RLM": {
+    "code": "04RLM",
+    "width": 4,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 4mm",
+    "sourceTable": "04RLM",
+    "notes": []
+  },
+  "05-1LM": {
+    "code": "05-1LM",
+    "width": 5,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 5mm Com Pedra",
+    "sourceTable": "05-1LM",
+    "notes": []
+  },
+  "05-1RLM": {
+    "code": "05-1RLM",
+    "width": 5,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 5mm Com Pedra",
+    "sourceTable": "05-1RLM",
+    "notes": []
+  },
+  "05RDLM": {
+    "code": "05RDLM",
+    "width": 5,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 5mm Diamantada",
+    "sourceTable": "05RDLM",
+    "notes": []
+  },
+  "06-1LM": {
+    "code": "06-1LM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 6mm Com Pedra",
+    "sourceTable": "06-1LM",
+    "notes": []
+  },
+  "06-1RDLM": {
+    "code": "06-1RDLM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Diamantada Com Pedra",
+    "sourceTable": "06-1RDLM",
+    "notes": []
+  },
+  "06-1RLM": {
+    "code": "06-1RLM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Com Pedra",
+    "sourceTable": "06-1RLM",
+    "notes": []
+  },
+  "06LM": {
+    "code": "06LM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 6mm",
+    "sourceTable": "06LM",
+    "notes": []
+  },
+  "06RCLM": {
+    "code": "06RCLM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [],
+    "heart": true,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Com Coracao",
+    "sourceTable": "06RCLM",
+    "notes": []
+  },
+  "06RDLM": {
+    "code": "06RDLM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Diamantada",
+    "sourceTable": "06RDLM",
+    "notes": []
+  },
+  "06RLM": {
+    "code": "06RLM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm",
+    "sourceTable": "06RLM",
+    "notes": []
+  },
+  "08-1RDLM": {
+    "code": "08-1RDLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Diamantada Com Pedra",
+    "sourceTable": "08-1RDLM",
+    "notes": []
+  },
+  "08-1RILM": {
+    "code": "08-1RILM",
+    "width": 8.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0.0,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.5705260089212247,
+        "z": 0.899306066057961,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.6094946260468544,
+        "z": 1.661700935788387,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.6454083092746034,
+        "z": 2.171116901401524,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.6768869158986548,
+        "z": 2.35,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.7027207407198524,
+        "z": 2.171116901401524,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.7219170043380934,
+        "z": 1.661700935788387,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.7337380051079174,
+        "z": 0.8993060660579613,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.7377294685990339,
+        "z": 2.8779199779962803e-16,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.7337380051079174,
+        "z": -0.8993060660579606,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.7219170043380934,
+        "z": -1.6617009357883865,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.7027207407198525,
+        "z": -2.1711169014015232,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.6768869158986548,
+        "z": -2.35,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.6454083092746034,
+        "z": -2.1711169014015237,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.6094946260468544,
+        "z": -1.6617009357883872,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.5705260089212248,
+        "z": -0.8993060660579625,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.53,
+        "z": -5.755839955992561e-16,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.4894739910787753,
+        "z": 0.8993060660579614,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.45050537395314566,
+        "z": 1.6617009357883863,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.4145916907253967,
+        "z": 2.1711169014015232,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.38311308410134526,
+        "z": 2.35,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.35727925928014764,
+        "z": 2.171116901401524,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.3380829956619067,
+        "z": 1.6617009357883887,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.32626199489208263,
+        "z": 0.8993060660579627,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.3222705314009662,
+        "z": 8.63375993398884e-16,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.32626199489208263,
+        "z": -0.8993060660579612,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.3380829956619067,
+        "z": -1.6617009357883876,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.3572792592801476,
+        "z": -2.1711169014015232,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.3831130841013452,
+        "z": -2.35,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.4145916907253967,
+        "z": -2.171116901401524,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.4505053739531455,
+        "z": -1.661700935788389,
+        "diameter": 0.56
+      },
+      {
+        "angle": 0.4894739910787752,
+        "z": -0.8993060660579629,
+        "diameter": 0.56
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm C/ Infinito Em Pedras W",
+    "sourceTable": "08-1RILM",
+    "notes": [],
+    "motif": "infinity"
+  },
+  "08LM": {
+    "code": "08LM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 8mm",
+    "sourceTable": "08LM",
+    "notes": []
+  },
+  "08RCLM": {
+    "code": "08RCLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [],
+    "heart": true,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Com Coração",
+    "sourceTable": "08RCLM",
+    "notes": []
+  },
+  "08RDLM": {
+    "code": "08RDLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Diamantada",
+    "sourceTable": "08RDLM",
+    "notes": []
+  },
+  "08RLM-ALT0-RELEVO": {
+    "code": "08RLM-ALT0-RELEVO",
+    "width": 8.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ],
+    "motif": "AMOR"
+  },
+  "08RLM": {
+    "code": "08RLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm",
+    "sourceTable": "08RLM",
+    "notes": []
+  },
+  "096LM": {
+    "code": "096LM",
+    "width": 4.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.15,
+        "depth": 0.16
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "096ZLM": {
+    "code": "096ZLM",
+    "width": 4,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": -2.5401928205536617,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -2.3973931544813984,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -2.254593488409135,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -2.111793822336871,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -1.968994156264608,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -1.8261944901923448,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -1.6833948241200816,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -1.5405951580478183,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -1.3977954919755549,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -1.2549958259032914,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -1.1121961598310284,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -0.9693964937587649,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -0.8265968276865017,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -0.6837971616142384,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -0.5409974955419747,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -0.3981978294697115,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -0.25539816339744825,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": -0.11259849732518501,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 0.03020116874707851,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 0.17300083481934175,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 0.315800500891605,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 0.45860016696386824,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 0.6013998330361319,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 0.7441994991083947,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 0.8869991651806584,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 1.0297988312529218,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 1.1725984973251848,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 1.3153981633974483,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 1.4581978294697118,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 1.6009974955419748,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 1.7437971616142385,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 1.8865968276865013,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 2.0293964937587647,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 2.1721961598310284,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 2.3149958259032912,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 2.457795491975555,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 2.6005951580478186,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 2.743394824120082,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 2.886194490192345,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 3.0289941562646083,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 3.1717938223368716,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 3.314593488409135,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 3.457393154481398,
+        "z": 0,
+        "diameter": 1.12
+      },
+      {
+        "angle": 3.6001928205536613,
+        "z": 0,
+        "diameter": 1.12
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 4mm Zirconia Branca",
+    "sourceTable": "096ZLM",
+    "notes": [
+      "Quantidade de zircônias estimada pela distribuição da foto; não consta na tabela."
+    ]
+  },
+  "10-1LM": {
+    "code": "10-1LM",
+    "width": 10,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 10mm Com Pedra",
+    "sourceTable": "10-1LM",
+    "notes": []
+  },
+  "10-1RDLM": {
+    "code": "10-1RDLM",
+    "width": 10,
+    "widthConfirmed": true,
+    "profile": "chamfer",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 10mm Diamantada Com Pedra",
+    "sourceTable": "10-1RDLM",
+    "notes": []
+  },
+  "10-1RLM": {
+    "code": "10-1RLM",
+    "width": 10,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 10mm Com Pedra",
+    "sourceTable": "10-1RLM",
+    "notes": []
+  },
+  "10LM": {
+    "code": "10LM",
+    "width": 10,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 10mm",
+    "sourceTable": "10LM",
+    "notes": []
+  },
+  "189-1LM": {
+    "code": "189-1LM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.26,
+        "depth": 0.22
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 6mm 1 Canal C/ 1 Pedra",
+    "sourceTable": "189-1LM",
+    "notes": []
+  },
+  "189LM": {
+    "code": "189LM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.26,
+        "depth": 0.22
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "289-1LM": {
+    "code": "289-1LM",
+    "width": 8.0,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.1,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 8mm Com Risco Central e Pedra",
+    "sourceTable": "289-1LM",
+    "notes": []
+  },
+  "289LM": {
+    "code": "289LM",
+    "width": 8.0,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.1,
+        "depth": 0.14
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 8mm Com Risco Central",
+    "sourceTable": "289LM",
+    "notes": []
+  },
+  "289ZLM": {
+    "code": "289ZLM",
+    "width": 8.0,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.1,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": -2.5330528372500485,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -2.375973204570559,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -2.218893571891069,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -2.0618139392115795,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -1.9047343065320896,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -1.7476546738526,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -1.5905750411731103,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -1.4334954084936204,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -1.276415775814131,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -1.1193361431346414,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -0.9622565104551519,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -0.805176877775662,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -0.6480972450961724,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -0.49101761241668296,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -0.3339379797371931,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -0.1768583470577033,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": -0.01977871437821388,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 0.13730091830127594,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 0.2943805509807657,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 0.45146018366025514,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 0.6085398163397446,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 0.7656194490192343,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 0.9226990816987242,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 1.079778714378214,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 1.2368583470577037,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 1.3939379797371934,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 1.5510176124166826,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 1.7080972450961724,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 1.865176877775662,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 2.022256510455152,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 2.1793361431346416,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 2.336415775814131,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 2.4934954084936205,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 2.65057504117311,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 2.8076546738526,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 2.9647343065320895,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 3.12181393921158,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 3.278893571891069,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 3.4359732045705584,
+        "z": 0,
+        "diameter": 1.27
+      },
+      {
+        "angle": 3.593052837250048,
+        "z": 0,
+        "diameter": 1.27
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 8mm Zirconia Branca",
+    "sourceTable": "289ZLM",
+    "notes": [
+      "Quantidade de zircônias estimada pela distribuição da foto."
+    ]
+  },
+  "302-15WLM": {
+    "code": "302-15WLM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.1,
+        "width": 0.18,
+        "depth": 0.2
+      },
+      {
+        "z": 1.1,
+        "width": 0.18,
+        "depth": 0.2
+      }
+    ],
+    "stones": [
+      {
+        "angle": -0.97,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": -0.7557142857142858,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": -0.5414285714285714,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": -0.32714285714285707,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": -0.11285714285714288,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.10142857142857148,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.31571428571428567,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.7442857142857142,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.9585714285714287,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 1.172857142857143,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 1.387142857142857,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 1.6014285714285712,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 1.8157142857142858,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 2.0300000000000002,
+        "z": 0,
+        "diameter": 1.45
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "302ALM": {
+    "code": "302ALM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.1,
+        "width": 0.18,
+        "depth": 0.2
+      },
+      {
+        "z": 1.1,
+        "width": 0.18,
+        "depth": 0.2
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm 2 Canal Separados",
+    "sourceTable": "302ALM",
+    "notes": []
+  },
+  "303-10LM": {
+    "code": "303-10LM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6800000000000002,
+        "width": 0.085,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": -2.2974333882308136,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": -1.6691148575128552,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": -1.0407963267948965,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": -0.412477796076938,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": 0.21584073464102055,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": 0.8441592653589796,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": 1.4724777960769377,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": 2.100796326794897,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": 2.7291148575128545,
+        "z": -1.68,
+        "diameter": 1.23
+      },
+      {
+        "angle": 3.357433388230814,
+        "z": -1.68,
+        "diameter": 1.23
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Risco Lateral Com 10 Pedras",
+    "sourceTable": "303-10LM",
+    "notes": []
+  },
+  "303-15WLM": {
+    "code": "303-15WLM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6800000000000002,
+        "width": 0.085,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": -0.8699999999999999,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.6699999999999999,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.47,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.2699999999999999,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.06999999999999995,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.13000000000000006,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.32999999999999996,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.53,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.73,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.9300000000000002,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.13,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.33,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.5299999999999998,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.73,
+        "z": -1.68,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.93,
+        "z": -1.68,
+        "diameter": 1.16
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "303-15WLMC8": {
+    "code": "303-15WLMC8",
+    "width": 8.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.24,
+        "width": 0.085,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": -0.8699999999999999,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.6699999999999999,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.47,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.2699999999999999,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": -0.06999999999999995,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.13000000000000006,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.32999999999999996,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.53,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.73,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 0.9300000000000002,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.13,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.33,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.5299999999999998,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.73,
+        "z": -2.24,
+        "diameter": 1.16
+      },
+      {
+        "angle": 1.93,
+        "z": -2.24,
+        "diameter": 1.16
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "303-1LM": {
+    "code": "303-1LM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6800000000000002,
+        "width": 0.085,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0.35,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Risco Lateral Com Pedra",
+    "sourceTable": "303-1LM",
+    "notes": []
+  },
+  "303LM": {
+    "code": "303LM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6800000000000002,
+        "width": 0.085,
+        "depth": 0.14
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Risco Lateral",
+    "sourceTable": "303LM",
+    "notes": []
+  },
+  "303LMC8": {
+    "code": "303LMC8",
+    "width": 8.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.24,
+        "width": 0.085,
+        "depth": 0.14
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "303ZLM": {
+    "code": "303ZLM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6800000000000002,
+        "width": 0.085,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": -2.5401928205536617,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.3973931544813984,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.254593488409135,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.111793822336871,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.968994156264608,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.8261944901923448,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.6833948241200816,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.5405951580478183,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.3977954919755549,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.2549958259032914,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.1121961598310284,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.9693964937587649,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.8265968276865017,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.6837971616142384,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.5409974955419747,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.3981978294697115,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.25539816339744825,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.11259849732518501,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.03020116874707851,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.17300083481934175,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.315800500891605,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.45860016696386824,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.6013998330361319,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.7441994991083947,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.8869991651806584,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.0297988312529218,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.1725984973251848,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.3153981633974483,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.4581978294697118,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.6009974955419748,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.7437971616142385,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.8865968276865013,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.0293964937587647,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.1721961598310284,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.3149958259032912,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.457795491975555,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.6005951580478186,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.743394824120082,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.886194490192345,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.0289941562646083,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.1717938223368716,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.314593488409135,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.457393154481398,
+        "z": -1.68,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.6001928205536613,
+        "z": -1.68,
+        "diameter": 1.15
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Zirconia Branca Canal Lat.",
+    "sourceTable": "303ZLM",
+    "notes": [
+      "Quantidade de zircônias estimada pela distribuição da foto."
+    ]
+  },
+  "30415WDLMC8": {
+    "code": "30415WDLMC8",
+    "width": 8.0,
+    "widthConfirmed": false,
+    "profile": "chamfer",
+    "grooves": [
+      {
+        "z": -2.25,
+        "width": 0.075,
+        "depth": 0.13
+      },
+      {
+        "z": -1.05,
+        "width": 0.075,
+        "depth": 0.13
+      }
+    ],
+    "stones": [
+      {
+        "angle": -0.8699999999999999,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.6699999999999999,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.47,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.2699999999999999,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.06999999999999995,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 0.13000000000000006,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 0.32999999999999996,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 0.53,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 0.73,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 0.9300000000000002,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.13,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.33,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.5299999999999998,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.73,
+        "z": -1.65,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.93,
+        "z": -1.65,
+        "diameter": 0.92
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "304LMC8": {
+    "code": "304LMC8",
+    "width": 8.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.25,
+        "width": 0.075,
+        "depth": 0.13
+      },
+      {
+        "z": -1.05,
+        "width": 0.075,
+        "depth": 0.13
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "305-1LM": {
+    "code": "305-1LM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": -2.05,
+        "width": 0.065,
+        "depth": 0.13
+      },
+      {
+        "z": 2.05,
+        "width": 0.065,
+        "depth": 0.13
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "305LM": {
+    "code": "305LM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": -2.05,
+        "width": 0.065,
+        "depth": 0.13
+      },
+      {
+        "z": 2.05,
+        "width": 0.065,
+        "depth": 0.13
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "310-1LM": {
+    "code": "310-1LM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.05,
+        "width": 0.065,
+        "depth": 0.12
+      },
+      {
+        "z": -1.45,
+        "width": 0.065,
+        "depth": 0.12
+      },
+      {
+        "z": 1.45,
+        "width": 0.065,
+        "depth": 0.12
+      },
+      {
+        "z": 2.05,
+        "width": 0.065,
+        "depth": 0.12
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "330LM": {
+    "code": "330LM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.0,
+        "width": 0.065,
+        "depth": 0.12
+      },
+      {
+        "z": -1.25,
+        "width": 0.065,
+        "depth": 0.12
+      },
+      {
+        "z": -0.5,
+        "width": 0.065,
+        "depth": 0.12
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm 3 Friso Lateral",
+    "sourceTable": "330LM",
+    "notes": []
+  },
+  "331-15WLM": {
+    "code": "331-15WLM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.2,
+        "width": 0.075,
+        "depth": 0.14
+      },
+      {
+        "z": 0,
+        "width": 0.075,
+        "depth": 0.14
+      },
+      {
+        "z": 1.2,
+        "width": 0.075,
+        "depth": 0.14
+      }
+    ],
+    "stones": [
+      {
+        "angle": -0.8699999999999999,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": -0.6699999999999999,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": -0.47,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": -0.2699999999999999,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": -0.06999999999999995,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 0.13000000000000006,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 0.32999999999999996,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 0.73,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 0.9300000000000002,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 1.13,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 1.33,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 1.5299999999999998,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 1.73,
+        "z": 0,
+        "diameter": 0.97
+      },
+      {
+        "angle": 1.93,
+        "z": 0,
+        "diameter": 0.97
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ],
+    "grooveTilt": 0.33
+  },
+  "331LM": {
+    "code": "331LM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.2,
+        "width": 0.075,
+        "depth": 0.14
+      },
+      {
+        "z": 0,
+        "width": 0.075,
+        "depth": 0.14
+      },
+      {
+        "z": 1.2,
+        "width": 0.075,
+        "depth": 0.14
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Com 3 Riscos A",
+    "sourceTable": "331LM",
+    "notes": [],
+    "grooveTilt": 0.33
+  },
+  "332-15WLM": {
+    "code": "332-15WLM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": -1.1,
+        "width": 0.075,
+        "depth": 0.13
+      },
+      {
+        "z": 1.1,
+        "width": 0.075,
+        "depth": 0.13
+      }
+    ],
+    "stones": [
+      {
+        "angle": -0.8699999999999999,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": -0.6699999999999999,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": -0.47,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": -0.2699999999999999,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": -0.06999999999999995,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 0.13000000000000006,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 0.32999999999999996,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 0.73,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 0.9300000000000002,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 1.13,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 1.33,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 1.5299999999999998,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 1.73,
+        "z": 0,
+        "diameter": 1.13
+      },
+      {
+        "angle": 1.93,
+        "z": 0,
+        "diameter": 1.13
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "332LM": {
+    "code": "332LM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [
+      {
+        "z": -1.1,
+        "width": 0.075,
+        "depth": 0.13
+      },
+      {
+        "z": 1.1,
+        "width": 0.075,
+        "depth": 0.13
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 6mm 2 Riscos Separados",
+    "sourceTable": "332LM",
+    "notes": []
+  },
+  "380CLM": {
+    "code": "380CLM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [],
+    "heart": true,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Friso Lisa Com Coracao",
+    "sourceTable": "380CLM",
+    "notes": []
+  },
+  "380LM": {
+    "code": "380LM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Friso Lisa",
+    "sourceTable": "380LM",
+    "notes": []
+  },
+  "381CLM": {
+    "code": "381CLM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.26,
+        "z": 0,
+        "diameter": 1.28
+      },
+      {
+        "angle": 0.8,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": true,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Friso Lisa Com Coracao e 2 Pedras",
+    "sourceTable": "381CLM",
+    "notes": []
+  },
+  "381LM": {
+    "code": "381LM",
+    "width": 6,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 1.7999999999999998,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Friso Lisa Com Pedra",
+    "sourceTable": "381LM",
+    "notes": []
+  },
+  "389LM": {
+    "code": "389LM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.24,
+        "depth": 0.18
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "389ZLM": {
+    "code": "389ZLM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": 0,
+        "width": 0.24,
+        "depth": 0.18
+      }
+    ],
+    "stones": [
+      {
+        "angle": -2.5367928285043213,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -2.387193178333379,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -2.237593528162437,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -2.0879938779914937,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.9383942278205517,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.788794577649609,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.6391949274786664,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.4895952773077237,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.3399956271367814,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.190395976965839,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.0407963267948963,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.8911966766239539,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.7415970264530114,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.5919973762820687,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.44239772611112615,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.2927980759401838,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.14319842576924124,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.0064012244017011,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.15600087457264372,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.3056005247435864,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.4552001749145287,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.6047998250854714,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.754399475256414,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.9039991254273567,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.0535987755982985,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.2031984257692412,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.3527980759401839,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.5023977261111265,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.6519973762820692,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.8015970264530112,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.951196676623954,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.1007963267948964,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.250395976965839,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.3999956271367817,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.5495952773077235,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.6991949274786666,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.848794577649609,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.998394227820552,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.147993877991494,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.2975935281624364,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.4471931783333787,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.596792828504322,
+        "z": 0,
+        "diameter": 1.18
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Zirconia Branca",
+    "sourceTable": "389ZLM",
+    "notes": [
+      "Quantidade de zircônias estimada pela distribuição da foto."
+    ]
+  },
+  "390-10WCLM": {
+    "code": "390-10WCLM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6,
+        "width": 0.22,
+        "depth": 0.2
+      },
+      {
+        "z": 1.6,
+        "width": 0.22,
+        "depth": 0.2
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.91,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 1.4623185307179587,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 2.0146370614359173,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 2.566955592153876,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 3.119274122871835,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 3.6715926535897934,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 4.2239111843077515,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 4.7762297150257105,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 5.3285482457436695,
+        "z": 0,
+        "diameter": 1.1
+      },
+      {
+        "angle": 5.8808667764616285,
+        "z": 0,
+        "diameter": 1.1
+      }
+    ],
+    "heart": true,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "390LM": {
+    "code": "390LM",
+    "width": 6.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6,
+        "width": 0.22,
+        "depth": 0.2
+      },
+      {
+        "z": 1.6,
+        "width": 0.22,
+        "depth": 0.2
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "390ZLM": {
+    "code": "390ZLM",
+    "width": 6.0,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6,
+        "width": 0.22,
+        "depth": 0.2
+      },
+      {
+        "z": 1.6,
+        "width": 0.22,
+        "depth": 0.2
+      }
+    ],
+    "stones": [
+      {
+        "angle": -2.5367928285043213,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -2.387193178333379,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -2.237593528162437,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -2.0879938779914937,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.9383942278205517,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.788794577649609,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.6391949274786664,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.4895952773077237,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.3399956271367814,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.190395976965839,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -1.0407963267948963,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.8911966766239539,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.7415970264530114,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.5919973762820687,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.44239772611112615,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.2927980759401838,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": -0.14319842576924124,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.0064012244017011,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.15600087457264372,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.3056005247435864,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.4552001749145287,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.6047998250854714,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.754399475256414,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 0.9039991254273567,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.0535987755982985,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.2031984257692412,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.3527980759401839,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.5023977261111265,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.6519973762820692,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.8015970264530112,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 1.951196676623954,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.1007963267948964,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.250395976965839,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.3999956271367817,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.5495952773077235,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.6991949274786666,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.848794577649609,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 2.998394227820552,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.147993877991494,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.2975935281624364,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.4471931783333787,
+        "z": 0,
+        "diameter": 1.18
+      },
+      {
+        "angle": 3.596792828504322,
+        "z": 0,
+        "diameter": 1.18
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 6mm Zirconia Branca Canal, 2 Frisos",
+    "sourceTable": "390ZLM",
+    "notes": [
+      "Quantidade de zircônias estimada pela distribuição da foto."
+    ]
+  },
+  "402LM": {
+    "code": "402LM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.0,
+        "width": 0.1,
+        "depth": 0.16
+      },
+      {
+        "z": 1.0,
+        "width": 0.1,
+        "depth": 0.16
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. 8mm 2 Friso Central",
+    "sourceTable": "402LM",
+    "notes": []
+  },
+  "403-3LM": {
+    "code": "403-3LM",
+    "width": 8.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2,
+        "width": 0.085,
+        "depth": 0.15
+      },
+      {
+        "z": 0,
+        "width": 0.085,
+        "depth": 0.15
+      },
+      {
+        "z": 2,
+        "width": 0.085,
+        "depth": 0.15
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": -2,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.53,
+        "z": 2,
+        "diameter": 1.15
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "403LM": {
+    "code": "403LM",
+    "width": 8.0,
+    "widthConfirmed": false,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2,
+        "width": 0.085,
+        "depth": 0.15
+      },
+      {
+        "z": 0,
+        "width": 0.085,
+        "depth": 0.15
+      },
+      {
+        "z": 2,
+        "width": 0.085,
+        "depth": 0.15
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": null,
+    "sourceTable": null,
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ]
+  },
+  "406RLM": {
+    "code": "406RLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6,
+        "width": 0.11,
+        "depth": 0.15
+      },
+      {
+        "z": 1.6,
+        "width": 0.11,
+        "depth": 0.15
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Com 2 Riscos",
+    "sourceTable": "406RLM",
+    "notes": []
+  },
+  "406ZLM": {
+    "code": "406ZLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -1.6,
+        "width": 0.11,
+        "depth": 0.15
+      },
+      {
+        "z": 1.6,
+        "width": 0.11,
+        "depth": 0.15
+      }
+    ],
+    "stones": [
+      {
+        "angle": -2.5330528372500485,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.375973204570559,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.218893571891069,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.0618139392115795,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.9047343065320896,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.7476546738526,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.5905750411731103,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.4334954084936204,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.276415775814131,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.1193361431346414,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.9622565104551519,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.805176877775662,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.6480972450961724,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.49101761241668296,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.3339379797371931,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.1768583470577033,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.01977871437821388,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.13730091830127594,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.2943805509807657,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.45146018366025514,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.6085398163397446,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.7656194490192343,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.9226990816987242,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.079778714378214,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.2368583470577037,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.3939379797371934,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.5510176124166826,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.7080972450961724,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.865176877775662,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.022256510455152,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.1793361431346416,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.336415775814131,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.4934954084936205,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.65057504117311,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.8076546738526,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.9647343065320895,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.12181393921158,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.278893571891069,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.4359732045705584,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.593052837250048,
+        "z": -1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.5330528372500485,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.375973204570559,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.218893571891069,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -2.0618139392115795,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.9047343065320896,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.7476546738526,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.5905750411731103,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.4334954084936204,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.276415775814131,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -1.1193361431346414,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.9622565104551519,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.805176877775662,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.6480972450961724,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.49101761241668296,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.3339379797371931,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.1768583470577033,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": -0.01977871437821388,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.13730091830127594,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.2943805509807657,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.45146018366025514,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.6085398163397446,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.7656194490192343,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 0.9226990816987242,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.079778714378214,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.2368583470577037,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.3939379797371934,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.5510176124166826,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.7080972450961724,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 1.865176877775662,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.022256510455152,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.1793361431346416,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.336415775814131,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.4934954084936205,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.65057504117311,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.8076546738526,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 2.9647343065320895,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.12181393921158,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.278893571891069,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.4359732045705584,
+        "z": 1.6,
+        "diameter": 1.15
+      },
+      {
+        "angle": 3.593052837250048,
+        "z": 1.6,
+        "diameter": 1.15
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Zirconia Branca 2 Canais",
+    "sourceTable": "406ZLM",
+    "notes": [
+      "Quantidade de zircônias estimada pela distribuição da foto."
+    ]
+  },
+  "421-1LM": {
+    "code": "421-1LM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.38,
+        "z": -1.15,
+        "diameter": 1.28
+      },
+      {
+        "angle": 0.68,
+        "z": 1.15,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Friso Em G, C/ 2 Pedras",
+    "sourceTable": "421-1LM",
+    "notes": [],
+    "motif": "G"
+  },
+  "421LM": {
+    "code": "421LM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Friso, Em G",
+    "sourceTable": "421LM",
+    "notes": [],
+    "motif": "G"
+  },
+  "480CLM": {
+    "code": "480CLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.4,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 2.4,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [],
+    "heart": true,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Friso Lisa Com Coracao",
+    "sourceTable": "480CLM",
+    "notes": []
+  },
+  "480LM": {
+    "code": "480LM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.4,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 2.4,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Friso Lisa",
+    "sourceTable": "480LM",
+    "notes": []
+  },
+  "481CLM": {
+    "code": "481CLM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.4,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 2.4,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.26,
+        "z": 0,
+        "diameter": 1.28
+      },
+      {
+        "angle": 0.8,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": true,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Friso Lisa Com Coracao e 2 Pedras",
+    "sourceTable": "481CLM",
+    "notes": []
+  },
+  "481LM": {
+    "code": "481LM",
+    "width": 8,
+    "widthConfirmed": true,
+    "profile": "flat",
+    "grooves": [
+      {
+        "z": -2.4,
+        "width": 0.06,
+        "depth": 0.13
+      },
+      {
+        "z": 2.4,
+        "width": 0.06,
+        "depth": 0.13
+      }
+    ],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.28
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Aliança Anat. Reta 8mm Friso Lisa Com Pedra",
+    "sourceTable": "481LM",
+    "notes": []
+  },
+  "APW2MM": {
+    "code": "APW2MM",
+    "width": 2.0,
+    "widthConfirmed": true,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": -0.44499999999999995,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": -0.25,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": -0.05499999999999994,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.14,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.3350000000000001,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.725,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 0.9199999999999999,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 1.1150000000000002,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 1.31,
+        "z": 0,
+        "diameter": 1.45
+      },
+      {
+        "angle": 1.505,
+        "z": 0,
+        "diameter": 1.45
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Anel Aparador Aro 2mm 11 Pedras Laterais",
+    "sourceTable": "APW2MM",
+    "notes": [],
+    "allGold": true
+  },
+  "SG7MM": {
+    "code": "SG7MM",
+    "width": 2.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 4.7,
+        "shape": "pear",
+        "length": 7.0
+      },
+      {
+        "angle": 0.8585024154589372,
+        "z": 0.0,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.8144914369919896,
+        "z": 1.1749999999999998,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.6942512077294687,
+        "z": 2.035159698893431,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.53,
+        "z": 2.35,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.3657487922705315,
+        "z": 2.035159698893431,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.2455085630080105,
+        "z": 1.1749999999999998,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.2014975845410628,
+        "z": 2.8779199779962803e-16,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.2455085630080105,
+        "z": -1.1749999999999994,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.36574879227053125,
+        "z": -2.0351596988934304,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.5299999999999999,
+        "z": -2.35,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.6942512077294687,
+        "z": -2.035159698893431,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.8144914369919894,
+        "z": -1.1750000000000012,
+        "diameter": 0.8,
+        "halo": true
+      },
+      {
+        "angle": 0.08000000000000002,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.025000000000000022,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.13,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.235,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.33999999999999997,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 0.98,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.085,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.19,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.295,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.4,
+        "z": 0,
+        "diameter": 0.92
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Anel Solitário Pedra Gota 7mm 22 Pedras Lateras",
+    "sourceTable": "SG7MM",
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ],
+    "allGold": true,
+    "solitaire": true
+  },
+  "SL4MM": {
+    "code": "SL4MM",
+    "width": 2.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 4.0
+      }
+    ],
+    "heart": false,
+    "silver": true,
+    "description": "Anel Solitário Pedra 4mm",
+    "sourceTable": "SL4MM",
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ],
+    "allGold": true,
+    "solitaire": true
+  },
+  "SLF4MM": {
+    "code": "SLF4MM",
+    "width": 2.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 4.0
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Anel Solitário Fundição Pedra 4mm",
+    "sourceTable": "SLF4MM",
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ],
+    "allGold": true,
+    "solitaire": true
+  },
+  "SLW4MM": {
+    "code": "SLW4MM",
+    "width": 2.0,
+    "widthConfirmed": false,
+    "profile": "round",
+    "grooves": [],
+    "stones": [
+      {
+        "angle": 0.53,
+        "z": 0,
+        "diameter": 4.0
+      },
+      {
+        "angle": 0.08000000000000002,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.025000000000000022,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.13,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.235,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": -0.33999999999999997,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 0.98,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.085,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.19,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.295,
+        "z": 0,
+        "diameter": 0.92
+      },
+      {
+        "angle": 1.4,
+        "z": 0,
+        "diameter": 0.92
+      }
+    ],
+    "heart": false,
+    "silver": false,
+    "description": "Anel Solitário 4mm 10 Pedras Laterais",
+    "sourceTable": "SLW4MM",
+    "notes": [
+      "Largura inferida da família e da foto; código da imagem sem correspondência exata de largura na tabela."
+    ],
+    "allGold": true,
+    "solitaire": true
+  }
+}

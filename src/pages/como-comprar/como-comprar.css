@@ -1,0 +1,108 @@
+/* Como comprar: título preso à esquerda no desktop e os três passos entrando à
+   direita. O número de cada passo aparece com um pequeno salto depois do cartão. */
+
+.como-comprar {
+  padding-block: clamp(120px, 16vh, 180px) var(--secao);
+}
+
+.como-comprar__grade {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: var(--e-10);
+}
+
+.como-comprar__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-5);
+}
+
+.como-comprar__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.75rem, 1.2rem + 5vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.como-comprar__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-3) var(--e-5);
+  margin-top: var(--e-2);
+}
+
+.passos {
+  display: grid;
+  gap: var(--e-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.passo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--e-5);
+  row-gap: var(--e-2);
+  padding: var(--e-6);
+  border: 1px solid var(--linha-escura);
+  border-radius: var(--raio-cartao);
+  background: var(--safira); /* sólido, para a 03LM não borrar por trás */
+}
+
+.passo__numero {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--ouro);
+  border-radius: 50%;
+  background: var(--ouro);
+  color: var(--tinta);
+  font-family: var(--fonte-mono);
+  font-weight: 500;
+}
+
+.passo__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.passo__texto {
+  color: var(--claro-suave);
+}
+
+@media (min-width: 1024px) {
+  .como-comprar__grade {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: var(--e-16);
+  }
+
+  .como-comprar__intro {
+    position: sticky;
+    top: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .passo__numero {
+    opacity: 0;
+    scale: 0.4;
+    transition:
+      opacity 300ms var(--curva),
+      scale 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(var(--d, 0) * 1ms + 220ms);
+  }
+
+  .passo.is-in .passo__numero {
+    opacity: 1;
+    scale: 1;
+  }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>GLB × foto</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/assests/img/modelos-3d/vendor/three/build/three.module.js",
+          "three/addons/": "/assests/img/modelos-3d/vendor/three/examples/jsm/"
+        }
+      }
+    </script>
+    <style>
+      body {
+        margin: 0;
+        background: #fff;
+      }
+      .comparacao {
+        display: flex;
+        gap: 8px;
+        width: max-content;
+        padding: 8px;
+      }
+      .palco {
+        position: relative;
+        background: #fff;
+      }
+      .palco canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="comparacao">
+      <canvas data-foto></canvas>
+      <div class="palco" data-palco><canvas></canvas></div>
+    </div>
+    <script type="module" src="comparar.js"></script>
+  </body>
+</html>

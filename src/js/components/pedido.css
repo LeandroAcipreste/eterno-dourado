@@ -1,0 +1,451 @@
+/* ===========================================================================
+   Dobra do pedido.
+
+   O mandril é o elemento-assinatura do site: a régua de numeração da bancada
+   do joalheiro, servindo ao mesmo tempo de entrada e de gráfico. Cada
+   numeração com quantidade cresce em marcas empilhadas, então o comprador vê
+   a forma do pedido dele desenhada sobre a régua.
+
+   As marcas são ouro porque representam peças de ouro contadas. O botão em si
+   usa aço, como todo controle do site.
+   =========================================================================== */
+
+.mandril {
+  margin-bottom: var(--e-8);
+}
+
+.mandril__cabeca {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--e-4);
+}
+
+.mandril__modelo {
+  color: var(--ouro);
+  font-size: var(--t-dado);
+}
+
+.mandril__ajuda {
+  color: var(--papel-fraco);
+}
+
+/* --- a régua -------------------------------------------------------------- */
+
+.mandril__regua {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  padding-bottom: 0;
+  /* o friso gravado é a base da régua */
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to bottom, #0a0906 0 1px, var(--ouro-fosco) 1px 2px) 1;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  /* 27 numerações não cabem num telefone: o snap suave ajuda a parar em cima
+     de um risco de 34px, e a máscara nas bordas avisa que a régua continua. */
+  scroll-snap-type: x proximity;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 24px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+.mandril[data-inativo="sim"] .mandril__regua {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* --- cada numeração ------------------------------------------------------- */
+
+.aro {
+  flex: 1 1 0;
+  min-width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 0 var(--e-2);
+  border-radius: var(--raio) var(--raio) 0 0;
+  scroll-snap-align: center;
+  transition: background-color var(--t-rapido) var(--curva);
+}
+
+.aro:hover {
+  background: color-mix(in oklab, var(--aco-fundo) 60%, transparent);
+}
+
+.aro:focus-visible {
+  outline: 2px solid var(--aco-vivo);
+  outline-offset: -2px;
+}
+
+/* Pilha de marcas. A altura do berço é fixa, então mudar a quantidade não
+   mexe no layout: só a pilha dentro dele cresce. */
+.aro__berco {
+  display: flex;
+  align-items: flex-end;
+  height: clamp(56px, 9vh, 104px);
+  width: 100%;
+  justify-content: center;
+}
+
+.aro__pilha {
+  width: min(100%, 18px);
+  /* --q é a quantidade. Cada peça vale 10px: marca de 6px e folga de 4px. */
+  height: min(100%, calc(var(--q, 0) * 10px));
+  background: repeating-linear-gradient(
+    to top,
+    var(--ouro) 0 6px,
+    transparent 6px 10px
+  );
+  transition: height var(--t-medio) var(--curva);
+}
+
+/* quando a pilha encosta no teto do berço, o número passa a contar por ela */
+.aro__estouro {
+  position: absolute;
+  font-family: var(--fonte-dado);
+  font-size: var(--t-rotulo);
+  font-weight: 600;
+  color: var(--ouro-claro);
+}
+
+.aro__risco {
+  width: 1px;
+  height: 10px;
+  background: var(--papel-fraco);
+  transition: height var(--t-rapido) var(--curva), background-color var(--t-rapido) var(--curva);
+}
+
+/* as larguras do catálogo ganham risco maior, como numa régua de verdade:
+   as numerações de 5 em 5 são as marcas de referência */
+.aro[data-marco="sim"] .aro__risco {
+  height: 16px;
+  background: var(--ouro-fosco);
+}
+
+.aro__num {
+  font-size: var(--t-rotulo);
+  color: var(--papel-fraco);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--t-rapido) var(--curva);
+}
+
+.aro[data-marco="sim"] .aro__num {
+  color: var(--papel-medio);
+}
+
+.aro[data-tem-peca="sim"] .aro__num {
+  color: var(--ouro);
+  font-weight: 600;
+}
+
+.aro[data-tem-peca="sim"] .aro__risco {
+  background: var(--ouro);
+}
+
+/* --- planilha ------------------------------------------------------------- */
+
+.planilha__rolagem {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+/* A planilha tem seis colunas e não encolhe abaixo de 560px: no telefone ela
+   rola, e a máscara na borda direita avisa que há coluna depois do Qt. */
+@media (max-width: 640px) {
+  .planilha__rolagem {
+    mask-image: linear-gradient(to right, black 0, black calc(100% - 28px), transparent 100%);
+  }
+}
+
+.planilha {
+  width: 100%;
+  min-width: 560px;
+  font-family: var(--fonte-dado);
+  font-size: var(--t-dado);
+}
+
+.planilha caption {
+  text-align: left;
+  padding-bottom: var(--e-3);
+  color: var(--papel-fraco);
+}
+
+.planilha th,
+.planilha td {
+  padding: var(--e-3) var(--e-3);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.planilha thead th {
+  font-family: var(--fonte-ui);
+  font-size: var(--t-rotulo);
+  font-weight: 600;
+  letter-spacing: var(--tracking-rotulo);
+  text-transform: uppercase;
+  color: var(--papel-fraco);
+  border-bottom: var(--fio) solid var(--navy-600);
+  white-space: nowrap;
+}
+
+.planilha__num {
+  text-align: right !important;
+}
+
+.planilha tbody tr {
+  border-bottom: var(--fio) solid var(--navy-700);
+}
+
+.planilha tbody tr:hover {
+  background: color-mix(in oklab, var(--navy-850) 70%, transparent);
+}
+
+.planilha tbody td:nth-child(1) {
+  color: var(--papel);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.planilha tbody td:nth-child(3),
+.planilha tbody td:nth-child(4),
+.planilha tbody td:nth-child(5) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.planilha tbody td:nth-child(5) {
+  color: var(--ouro);
+  font-weight: 600;
+}
+
+/* linha de grupo: separa os modelos como na folha de pedido */
+.planilha__grupo th {
+  padding-top: var(--e-6);
+  font-family: var(--fonte-ui);
+  font-size: var(--t-rotulo);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--aco);
+  border-bottom: var(--fio) solid var(--navy-600);
+}
+
+.planilha__subtotal td {
+  padding-top: var(--e-2);
+  color: var(--papel-medio);
+  font-weight: 600;
+}
+
+/* quantidade editável na linha: campo discreto que só ganha moldura no foco */
+.planilha__qt {
+  width: 5ch;
+  min-height: 36px;
+  padding-inline: var(--e-2);
+  background: transparent;
+  border: var(--fio) solid var(--navy-700);
+  border-radius: var(--raio);
+  color: var(--papel);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  transition: border-color var(--t-rapido) var(--curva);
+}
+
+.planilha__qt:hover {
+  border-color: var(--aco-borda);
+}
+
+.planilha__qt:focus {
+  border-color: var(--aco-vivo);
+  outline: none;
+}
+
+.planilha__remover {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  color: var(--papel-fraco);
+  border: var(--fio) solid transparent;
+  border-radius: var(--raio);
+  font-family: var(--fonte-dado);
+  transition:
+    color var(--t-rapido) var(--curva),
+    border-color var(--t-rapido) var(--curva);
+}
+
+.planilha__remover:hover {
+  color: var(--alerta);
+  border-color: var(--alerta);
+}
+
+.planilha__vazia {
+  padding-block: var(--e-10);
+  max-width: 48ch;
+}
+
+.planilha__vazia[hidden] {
+  display: none;
+}
+
+/* --- fechamento ----------------------------------------------------------- */
+
+.fechamento {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--e-6);
+  margin-top: var(--e-8);
+  padding-top: var(--e-6);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(to bottom, #0a0906 0 1px, var(--ouro) 1px 2px) 1;
+}
+
+.fechamento__ajustes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-5);
+  align-content: start;
+}
+
+.fechamento__campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+}
+
+.fechamento__entrada {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  min-height: 44px;
+  padding-inline: var(--e-3);
+  background: var(--navy-850);
+  border: var(--fio) solid var(--navy-600);
+  border-radius: var(--raio);
+  transition: border-color var(--t-rapido) var(--curva);
+}
+
+.fechamento__entrada:focus-within {
+  border-color: var(--aco-vivo);
+}
+
+/* O campo preenche a moldura inteira: tocar na borda também dá foco. */
+.fechamento__entrada input {
+  width: 7ch;
+  align-self: stretch;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  color: var(--papel);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.fechamento__entrada input:focus {
+  outline: none;
+}
+
+/* --- totais --------------------------------------------------------------- */
+
+.totais {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.totais__linha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e-5);
+  padding-block: var(--e-2);
+  border-bottom: var(--fio) solid var(--navy-700);
+}
+
+.totais__linha dd {
+  font-size: var(--t-corpo);
+}
+
+.totais__linha--fecha {
+  margin-top: var(--e-3);
+  padding-top: var(--e-3);
+  border-bottom: 0;
+  border-top: var(--fio) solid var(--navy-600);
+}
+
+.totais__linha--fecha dt {
+  color: var(--papel);
+}
+
+.totais__linha--fecha dd {
+  font-size: var(--t-secao);
+  line-height: 1;
+  color: var(--ouro-claro);
+}
+
+.fechamento__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-3);
+  align-content: start;
+}
+
+.fechamento__consulta {
+  grid-column: 1 / -1;
+  color: var(--alerta);
+  font-size: var(--t-corpo);
+  max-width: 60ch;
+}
+
+.fechamento__consulta em {
+  font-style: italic;
+}
+
+/* --- desktop -------------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .fechamento {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px) auto;
+    gap: var(--e-10);
+    align-items: start;
+  }
+
+  .fechamento__acoes {
+    flex-direction: column;
+  }
+}
+
+/* --- mobile --------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .aro {
+    min-width: 34px; /* alvo de toque confortável na régua */
+  }
+
+  .aro__berco {
+    height: clamp(44px, 7vh, 64px);
+  }
+
+  .mandril__ajuda {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .planilha th,
+  .planilha td {
+    padding: var(--e-2);
+  }
+
+  .fechamento__acoes .btn {
+    flex: 1 1 auto;
+  }
+}

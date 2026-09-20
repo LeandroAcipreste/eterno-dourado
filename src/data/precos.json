@@ -1,0 +1,3672 @@
+{
+ "origem": "utils/TAB LM 26.pdf",
+ "categorias": [
+  "Da categoria de produtos: Bronze."
+ ],
+ "extraidoEm": "2026-09-12",
+ "itens": [
+  {
+   "code": "004",
+   "descricao": "Aliança Anatomica Bronze",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 1
+  },
+  {
+   "code": "02-15WLM",
+   "descricao": "Aliança Anat. 2mm C/ 15 Peddra W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 66.6,
+   "pagina": 1
+  },
+  {
+   "code": "02-1LM",
+   "descricao": "Aliança Anat. 2mm C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 28.1,
+   "pagina": 1
+  },
+  {
+   "code": "02-1RDLM",
+   "descricao": "Aliança Anat. Reta 2mm, C/ Pedra, Diamantada.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 30.7,
+   "pagina": 1
+  },
+  {
+   "code": "02-1RLM",
+   "descricao": "Aliança Anat. Reta 2mm, C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 28,
+   "pagina": 1
+  },
+  {
+   "code": "023-1LM",
+   "descricao": "Aliança Anat. 6mm Aço e L M C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 1
+  },
+  {
+   "code": "023LM",
+   "descricao": "Aliança Anat. 6mm Aço e L M",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 1
+  },
+  {
+   "code": "02LM",
+   "descricao": "Aliança Anat. 2mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 26.7,
+   "pagina": 1
+  },
+  {
+   "code": "02RDLM",
+   "descricao": "Aliança Anat. Reta 2mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 1
+  },
+  {
+   "code": "02RLM",
+   "descricao": "Aliança Anat. Reta 2mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 26.7,
+   "pagina": 1
+  },
+  {
+   "code": "03-15WRLM",
+   "descricao": "Aliança Anat. Reta 3mm, 15 Pedras, Riscos, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 66.6,
+   "pagina": 1
+  },
+  {
+   "code": "03-1LM",
+   "descricao": "Aliança Anat. 3mm C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 28.1,
+   "pagina": 1
+  },
+  {
+   "code": "03-1RDLM",
+   "descricao": "Aliança Anat. Reta 3mm Diamantada C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 30.7,
+   "pagina": 1
+  },
+  {
+   "code": "03-1RLM",
+   "descricao": "Aliança Anat. Reta 3mm C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 28,
+   "pagina": 1
+  },
+  {
+   "code": "033LM",
+   "descricao": "Aliança Anat. 8mm Aço L M Bicolor",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 53.3,
+   "pagina": 1
+  },
+  {
+   "code": "03LM",
+   "descricao": "Aliança Anat. 3mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 26.7,
+   "pagina": 1
+  },
+  {
+   "code": "03QLM",
+   "descricao": "Aliança Anat. 3mm Quadrada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 1
+  },
+  {
+   "code": "03R10W",
+   "descricao": "Aliança Anat. Reta 3mm, 10 Pedras, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 56,
+   "pagina": 1
+  },
+  {
+   "code": "03RDLM",
+   "descricao": "Aliança Anat. Reta 3mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 1
+  },
+  {
+   "code": "03RLM",
+   "descricao": "Aliança Anat. Reta 3mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 26.7,
+   "pagina": 1
+  },
+  {
+   "code": "03SLM",
+   "descricao": "Aliança Anat. 3mm - S",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 1
+  },
+  {
+   "code": "04-15WRDLM",
+   "descricao": "Aliança Anat. Reta 4mm, 15 Pedras W, Chanfrada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 72,
+   "pagina": 1
+  },
+  {
+   "code": "04-15WRLM",
+   "descricao": "Aliança Anat. Reta 4mm, 15 Pedras W.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 69.3,
+   "pagina": 1
+  },
+  {
+   "code": "04-1LM",
+   "descricao": "Aliança Anat. 4mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 30.7,
+   "pagina": 1
+  },
+  {
+   "code": "04-1LMF/PR",
+   "descricao": "Aliança Anat. 4mm L. M. 1 Pedra, C/ Fio, Prata.",
+   "ref": "PR",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 44,
+   "pagina": 1
+  },
+  {
+   "code": "04-1RDLM",
+   "descricao": "Aliança Anat. Reta 4mm Diamantada Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 1
+  },
+  {
+   "code": "04-1RLM",
+   "descricao": "Aliança Anat. Reta 4mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 30.7,
+   "pagina": 1
+  },
+  {
+   "code": "04-2WRDLM",
+   "descricao": "Aliança Anat. Reta 4mm, Diamntada, 2 Pedras W.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 1
+  },
+  {
+   "code": "04DRKTLM",
+   "descricao": "Aliança Anat. Reta 4mm, Chanfrada, Recartilhada.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 1
+  },
+  {
+   "code": "04LM",
+   "descricao": "Aliança Anat. 4mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 1
+  },
+  {
+   "code": "04LMF/PR",
+   "descricao": "Aliança Anat. 4mm L. M. C/ Fio, Prata",
+   "ref": "PR",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 1
+  },
+  {
+   "code": "04RDLM",
+   "descricao": "Aliança Anat. Reta 4mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 1
+  },
+  {
+   "code": "04RLM",
+   "descricao": "Aliança Anat. Reta 4mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 1
+  },
+  {
+   "code": "05-15WLM",
+   "descricao": "Aliança Anat. 5mm C/ 15 Pedra W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 71.5,
+   "pagina": 1
+  },
+  {
+   "code": "05-1LM",
+   "descricao": "Aliança Anat. 5mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 1
+  },
+  {
+   "code": "05-1LMO",
+   "descricao": "Aliança Anat. 5mm Em Onda C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 1
+  },
+  {
+   "code": "05-1RCLM",
+   "descricao": "Aliança Anat. Reta 5mm, Coração, 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 1
+  },
+  {
+   "code": "05-1RDLM",
+   "descricao": "Aliança Anat. Reta 5mm Diamantada Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 1
+  },
+  {
+   "code": "05-1RLM",
+   "descricao": "Aliança Anat. Reta 5mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 1
+  },
+  {
+   "code": "05-3WR",
+   "descricao": "Aliança Anat. Reta, 5mm C/ 3 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 1
+  },
+  {
+   "code": "05LM",
+   "descricao": "Aliança Anat. 5mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 1
+  },
+  {
+   "code": "05LMO",
+   "descricao": "Aliança Anat. 5mm Em Onda",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 1
+  },
+  {
+   "code": "05PRO",
+   "descricao": "Aliança 5mm Broze Promoção",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 63.8,
+   "pagina": 1
+  },
+  {
+   "code": "05RCLM",
+   "descricao": "Aliança Anat. Reta, Coração, 5mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 1
+  },
+  {
+   "code": "05RDLM",
+   "descricao": "Aliança Anat. Reta 5mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 1
+  },
+  {
+   "code": "05RDPLM",
+   "descricao": "Aliança Anat. Reta 5mm Diamantada Personalizada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 1
+  },
+  {
+   "code": "05RLM",
+   "descricao": "Aliança Anat. Reta 5mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 1
+  },
+  {
+   "code": "05RPLM",
+   "descricao": "Aliança Anat. Reta 5mm Personalizada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 1
+  },
+  {
+   "code": "06-10WCLM",
+   "descricao": "Aliança Anat. 6mm C/ 10 Pedras e Coração, Canal Central Raso W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 64,
+   "pagina": 1
+  },
+  {
+   "code": "06-15WLM",
+   "descricao": "Aliança Anat. 6mm C/ 15 Peddra W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 1
+  },
+  {
+   "code": "06-15WRD",
+   "descricao": "Aliança Anat. 6mm Reta, Ch, C/ 15 Pedra W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 1
+  },
+  {
+   "code": "06-15WRLM",
+   "descricao": "Aliança Anat. 6mm Reta, C/ 15 Pedra W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 1
+  },
+  {
+   "code": "06-1CLM",
+   "descricao": "Aliança Anat. 6mm Com Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 1
+  },
+  {
+   "code": "06-1LM",
+   "descricao": "Aliança Anat. 6mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 2
+  },
+  {
+   "code": "06-1LMO",
+   "descricao": "Aliança Anat. 6mm Em Onda C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 2
+  },
+  {
+   "code": "06-1RCLM",
+   "descricao": "Aliança Anat. Reta 6mm Com Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 2
+  },
+  {
+   "code": "06-1RDCLM",
+   "descricao": "Aliança Anat. Reta 6mm Diamantada C/ 2 Pedras e Coração",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 2
+  },
+  {
+   "code": "06-1RDLM",
+   "descricao": "Aliança Anat. Reta 6mm Diamantada Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 2
+  },
+  {
+   "code": "06-1RLM",
+   "descricao": "Aliança Anat. Reta 6mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 2
+  },
+  {
+   "code": "06-2RDCRSLM",
+   "descricao": "Aliança Anat. Reta 6mm, S/ Quina, Risco Central, Coração e 2 Pedras.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 44,
+   "pagina": 2
+  },
+  {
+   "code": "06-3WCLM",
+   "descricao": "Aliança Anat. 6mm C/ 3 Pedras e Coração, Canal Central Raso W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 45.3,
+   "pagina": 2
+  },
+  {
+   "code": "06-7WLM",
+   "descricao": "Aliança Anat. 6mm C/ 7 Peddra W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 56,
+   "pagina": 2
+  },
+  {
+   "code": "06CLM",
+   "descricao": "Aliança Anat. 6mm Com Coracao",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 2
+  },
+  {
+   "code": "06LM",
+   "descricao": "Aliança Anat. 6mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 2
+  },
+  {
+   "code": "06LMO",
+   "descricao": "Aliança Anat. 6mm Em Onda",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 2
+  },
+  {
+   "code": "06LMR",
+   "descricao": "Aliança Anat. 6mm, 2 Riscos Diagonal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "06LMTK",
+   "descricao": "Aliança Anat. 6mm, Tk - Espessura Maior",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 2
+  },
+  {
+   "code": "06PLM",
+   "descricao": "Aliança Anat. Personalizada 6mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 2
+  },
+  {
+   "code": "06RBCLM",
+   "descricao": "Aliança Anat. Reta C/ Batimento Card. e Coração 6mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 49.3,
+   "pagina": 2
+  },
+  {
+   "code": "06RBLM",
+   "descricao": "Aliança Anat. Reta C/ Batimento Card. 6mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 2
+  },
+  {
+   "code": "06RCLM",
+   "descricao": "Aliança Anat. Reta 6mm Com Coracao",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 2
+  },
+  {
+   "code": "06RDLM",
+   "descricao": "Aliança Anat. Reta 6mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "06RDPLM",
+   "descricao": "Aliança Anat. Reta 6mm Diamantada Personalizada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 50.6,
+   "pagina": 2
+  },
+  {
+   "code": "06RDRSLM",
+   "descricao": "Aliança Anat. Reta 6mm, S/ Quina, Risco Central.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "06RLM",
+   "descricao": "Aliança Anat. Reta 6mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 2
+  },
+  {
+   "code": "06RPLM",
+   "descricao": "Aliança Anat. Reta 6mm Personlizada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 2
+  },
+  {
+   "code": "07-15WLM",
+   "descricao": "Aliança Anat. 7mm C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 2
+  },
+  {
+   "code": "07-1LM",
+   "descricao": "Aliança Anat. 7mm C/pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "07-1RDLM",
+   "descricao": "Aliança Anat. Reta 7mm Diamantada C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 2
+  },
+  {
+   "code": "07-1RLM",
+   "descricao": "Aliança Anat. Reta 7mm C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "07LM",
+   "descricao": "Aliança Anat. 7mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 2
+  },
+  {
+   "code": "07R-60WLM",
+   "descricao": "Aliança Anat. Reta 7mm, 60 Pedras, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 193,
+   "pagina": 2
+  },
+  {
+   "code": "07RDLM",
+   "descricao": "Aliança Anat. Reta 7mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 2
+  },
+  {
+   "code": "07RLM",
+   "descricao": "Aliança Anat. Reta 7mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 2
+  },
+  {
+   "code": "08-10WDIAG",
+   "descricao": "Aliança Anat. 8mm, 10 Pedras W. Risco Diagonal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 64,
+   "pagina": 2
+  },
+  {
+   "code": "08-15RWLM",
+   "descricao": "Aliança Anat. 8mm, Reta, C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 2
+  },
+  {
+   "code": "08-15WLM",
+   "descricao": "Aliança Anat. 8mm C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 2
+  },
+  {
+   "code": "08-1ILM",
+   "descricao": "Aliança Anat. 8mm C/ Infinito Em Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 87.9,
+   "pagina": 2
+  },
+  {
+   "code": "08-1LM",
+   "descricao": "Aliança Anat. 8mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 2
+  },
+  {
+   "code": "08-1RDLM",
+   "descricao": "Aliança Anat. Reta 8mm Diamantada Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 2
+  },
+  {
+   "code": "08-1RILM",
+   "descricao": "Aliança Anat. Reta 8mm C/ Infinito Em Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 87.9,
+   "pagina": 2
+  },
+  {
+   "code": "08-1RLM",
+   "descricao": "Aliança Anat. Reta 8mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 2
+  },
+  {
+   "code": "08-5WLM",
+   "descricao": "Aliança Anat. 8mm C/ 5 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 50.6,
+   "pagina": 2
+  },
+  {
+   "code": "08-8WINCL",
+   "descricao": "Aliança Anat. 8mm 2 Riscos Inclinados, 8 Pedras W.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 61.3,
+   "pagina": 2
+  },
+  {
+   "code": "089-1ALM",
+   "descricao": "Aliança Anat. 5mm C/ Pedra, Canal Central",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 2
+  },
+  {
+   "code": "089ALM",
+   "descricao": "Aliança Anat. 5mm C/ Canal Central",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 2
+  },
+  {
+   "code": "089ZLM",
+   "descricao": "Aliança Anat. 5mm Zirconia Cravada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 72,
+   "pagina": 2
+  },
+  {
+   "code": "08LM",
+   "descricao": "Aliança Anat. 8mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "08LMDIAG",
+   "descricao": "Aliança Anat. 8mm Risco Diagonal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "08RCLM",
+   "descricao": "Aliança Anat. Reta 8mm Com Coração",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 2
+  },
+  {
+   "code": "08RDLM",
+   "descricao": "Aliança Anat. Reta 8mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 2
+  },
+  {
+   "code": "08RDPLM",
+   "descricao": "Aliança Anat. Reta 8mm Diamantada Personagens",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 53.3,
+   "pagina": 2
+  },
+  {
+   "code": "08RLM",
+   "descricao": "Aliança Anat. Reta 8mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 2
+  },
+  {
+   "code": "08RPLM",
+   "descricao": "Aliança Anat. Reta 8mm Personalizada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 50.6,
+   "pagina": 2
+  },
+  {
+   "code": "08WINCL",
+   "descricao": "Aliança Anat. 8mm 2 Riscos Inclinados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 2
+  },
+  {
+   "code": "096-15W3MM",
+   "descricao": "Aliança Anat. Reta 3mm, 15 Pedras W, 1 Risco",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 69.3,
+   "pagina": 2
+  },
+  {
+   "code": "096-1ALM",
+   "descricao": "Aliança Anat. Reta 4mm 1 Pedra, Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 2
+  },
+  {
+   "code": "096-3MM",
+   "descricao": "Aliança Anat. Reta 3mm 1risco",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 2
+  },
+  {
+   "code": "096ALM",
+   "descricao": "Aliança Anat. Reta 4mm 1canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 2
+  },
+  {
+   "code": "096LM5MM",
+   "descricao": "Aliança Anat. Reta 5mm 1canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 2
+  },
+  {
+   "code": "096LMSQ",
+   "descricao": "Aliança Anat. Reta 4mm, Canal Central, S/ Quina",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 2
+  },
+  {
+   "code": "096ZLM",
+   "descricao": "Aliança Anat. Reta 4mm Zirconia Branca",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 69.3,
+   "pagina": 3
+  },
+  {
+   "code": "096ZLMSQ",
+   "descricao": "Aliança Anat. Reta 4mm Zirconia Branca, S/ Quina",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 72,
+   "pagina": 3
+  },
+  {
+   "code": "10-15WLM",
+   "descricao": "Aliança Anat. 10mm C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 3
+  },
+  {
+   "code": "10-1LM",
+   "descricao": "Aliança Anat. 10mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 3
+  },
+  {
+   "code": "10-1RDLM",
+   "descricao": "Aliança Anat. Reta 10mm Diamantada Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 44,
+   "pagina": 3
+  },
+  {
+   "code": "10-1RLM",
+   "descricao": "Aliança Anat. Reta 10mm Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 3
+  },
+  {
+   "code": "10-30WLM",
+   "descricao": "Aliança Anat. 10mm C/ 30 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 119.8,
+   "pagina": 3
+  },
+  {
+   "code": "100-15WLM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Canal, 15 Pedras Central W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 3
+  },
+  {
+   "code": "100-30WLM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Canal, 30 Pedras Central W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 117.2,
+   "pagina": 3
+  },
+  {
+   "code": "100-40WLM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Canal, 40 Pedras Central W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 143.8,
+   "pagina": 3
+  },
+  {
+   "code": "100LM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 3
+  },
+  {
+   "code": "10LM",
+   "descricao": "Aliança Anat. 10mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 3
+  },
+  {
+   "code": "10PLM",
+   "descricao": "Aliança Anat. Personalizada 10mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 93.2,
+   "pagina": 3
+  },
+  {
+   "code": "10RDLM",
+   "descricao": "Aliança Anat. Reta 10mm Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 3
+  },
+  {
+   "code": "10RLM",
+   "descricao": "Aliança Anat. Reta 10mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 3
+  },
+  {
+   "code": "10RPLM",
+   "descricao": "Aliança Anat. Reta 10mm Personalizada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 53.3,
+   "pagina": 3
+  },
+  {
+   "code": "110-15WLM",
+   "descricao": "Aliança Anat. Reta 6mm 3 Canal, 15 Pedras Sequenciais W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 78.6,
+   "pagina": 3
+  },
+  {
+   "code": "110LM",
+   "descricao": "Aliança Anat. Reta 6mm 3 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 3
+  },
+  {
+   "code": "12-1CBLM",
+   "descricao": "Aliança Anat. 12mm Batimento Coração e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 60,
+   "pagina": 3
+  },
+  {
+   "code": "12BLM",
+   "descricao": "Aliança Anat. 12mm C/ Batimento",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 56,
+   "pagina": 3
+  },
+  {
+   "code": "12LM",
+   "descricao": "Aliança Anat. 12mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.8,
+   "pagina": 3
+  },
+  {
+   "code": "12RLM",
+   "descricao": "Aliança Anat. Reta 12mm Borda Alta",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 56,
+   "pagina": 3
+  },
+  {
+   "code": "14-1LM",
+   "descricao": "Aliança Anat. 14mm C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 46.7,
+   "pagina": 3
+  },
+  {
+   "code": "14-30RW",
+   "descricao": "Aliança Anat. Reta 14mm, 30 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 125.2,
+   "pagina": 3
+  },
+  {
+   "code": "14LM",
+   "descricao": "Aliança Anat. 14mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 45.4,
+   "pagina": 3
+  },
+  {
+   "code": "14R90WBICO",
+   "descricao": "Aliança Anat. Reta 14mm, 90 Pedras, W, Bico.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 305,
+   "pagina": 3
+  },
+  {
+   "code": "14RLM",
+   "descricao": "Aliança Anat. Reta 14mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 45.4,
+   "pagina": 3
+  },
+  {
+   "code": "189-10CW",
+   "descricao": "Aliança Anat. 6mm 1 Canal C/ 10 Pedra , Coração, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 64,
+   "pagina": 3
+  },
+  {
+   "code": "189-1AC/5MM",
+   "descricao": "Aliança Anat. 5mm C/pedra e Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 3
+  },
+  {
+   "code": "189-1ADLM",
+   "descricao": "Aliança Anat. 6mm 1 Canal C/ 1 Pedra, Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 3
+  },
+  {
+   "code": "189-1CLM",
+   "descricao": "Aliança Anat. 6mm 1 Canal Coração, 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 3
+  },
+  {
+   "code": "189-1LM",
+   "descricao": "Aliança Anat. 6mm 1 Canal C/ 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 3
+  },
+  {
+   "code": "189-2LM",
+   "descricao": "Aliança Anat. 6mm 1 Canal C/ 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 3
+  },
+  {
+   "code": "189-3LM",
+   "descricao": "Aliança Anat. 6mm 1 Canal C/ 3 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 3
+  },
+  {
+   "code": "189A5MM",
+   "descricao": "Aliança Anat. 5mm 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 3
+  },
+  {
+   "code": "189ALM",
+   "descricao": "Aliança Anat. 6mm 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 3
+  },
+  {
+   "code": "189Z-5MM",
+   "descricao": "Aliança Anat. 5mm Zirconia Branca",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 3
+  },
+  {
+   "code": "189ZLM",
+   "descricao": "Aliança Anat. 6mm Zirconia Branca",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 3
+  },
+  {
+   "code": "289-1LM",
+   "descricao": "Aliança Anat. 8mm Com Risco Central e Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 3
+  },
+  {
+   "code": "289-3LM",
+   "descricao": "Aliança Anat. 8mm Com Risco Central Com 3 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 3
+  },
+  {
+   "code": "289ALM",
+   "descricao": "Aliança Anat. 8mm 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 3
+  },
+  {
+   "code": "289LM",
+   "descricao": "Aliança Anat. 8mm Com Risco Central",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 3
+  },
+  {
+   "code": "289ZLM",
+   "descricao": "Aliança Anat. 8mm Zirconia Branca",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 3
+  },
+  {
+   "code": "302-1/5MM",
+   "descricao": "Aliança Anat. Reta 5mm 2 Riscos Separados C/ 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 3
+  },
+  {
+   "code": "302-12WLM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Riscos Separados, 12 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 69.3,
+   "pagina": 3
+  },
+  {
+   "code": "302-15W5MM",
+   "descricao": "Aliança Anat. Reta 5mm 2 Riscos Separados, 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 71.5,
+   "pagina": 3
+  },
+  {
+   "code": "302-15W6MM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Riscos Separados, 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 3
+  },
+  {
+   "code": "302-1RSLM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Riscos Separados, C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 3
+  },
+  {
+   "code": "302-3LM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Riscos Separados C/ 3 Pedras Vertical",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 3
+  },
+  {
+   "code": "302-3WLM",
+   "descricao": "Aliança Anat. Reta 6mm Com 2 Riscos Separados C/ 3 Pedras Vertical W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 3
+  },
+  {
+   "code": "302-4MM",
+   "descricao": "Aliança Anat. Reta 4mm 2 Riscos Separados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 3
+  },
+  {
+   "code": "302-5MM",
+   "descricao": "Aliança Anat. Reta 5mm 2 Riscos Separados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 3
+  },
+  {
+   "code": "302A-1LM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Canal, Separados C/ 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 3
+  },
+  {
+   "code": "302ALM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Canal Separados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 3
+  },
+  {
+   "code": "302DLM",
+   "descricao": "Aliança Anat. Reta 6mm, Diamantada, 2 Riscos Separados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 3
+  },
+  {
+   "code": "302RSLM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Riscos Separados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 3
+  },
+  {
+   "code": "303-1/3MM",
+   "descricao": "Aliança Anat. Reta 3mm, C/ Pedra, Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 3
+  },
+  {
+   "code": "303-1/4MM",
+   "descricao": "Aliança Anat. Reta 4mm Risco Lateral C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 3
+  },
+  {
+   "code": "303-1/5MM",
+   "descricao": "Aliança Anat. Reta 5mm Risco Lateral Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 4
+  },
+  {
+   "code": "303-1/7MM",
+   "descricao": "Aliança Anat. Reta 7mm Risco Lateral Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-1/8MM",
+   "descricao": "Aliança Anat. Reta 8mm Risco Lateral Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-10LM",
+   "descricao": "Aliança Anat. Reta 6mm Risco Lateral Com 10 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 4
+  },
+  {
+   "code": "303-10MM",
+   "descricao": "Aliança Anat. Reta 10mm Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 4
+  },
+  {
+   "code": "303-10W4MM",
+   "descricao": "Aliança Anat. Reta 4mm Risco Lateral C/ 10 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 57.4,
+   "pagina": 4
+  },
+  {
+   "code": "303-10WLM",
+   "descricao": "Aliança Anat. Reta 6mm Risco Lateral C/ 10 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 61.3,
+   "pagina": 4
+  },
+  {
+   "code": "303-15W10MM",
+   "descricao": "Aliança Anat. Reta 10mm Risco Lateral C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 4
+  },
+  {
+   "code": "303-15W4MM",
+   "descricao": "Aliança Anat. Reta 4mm Risco Lateral C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 69.3,
+   "pagina": 4
+  },
+  {
+   "code": "303-15W5MM",
+   "descricao": "Aliança Anat. Reta 5mm Risco Lateral C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 72,
+   "pagina": 4
+  },
+  {
+   "code": "303-15W6MM",
+   "descricao": "Aliança Anat. Reta 6mm Risco Lateral C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 4
+  },
+  {
+   "code": "303-15W8MM",
+   "descricao": "Aliança Anat. Reta 8mm Risco Lateral C/ 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 4
+  },
+  {
+   "code": "303-15W8MMALPR",
+   "descricao": "Aliança Anat. Reta 8mm Risco Lateral C/ 15 Pedras W, Aliança Prata 2mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 111.8,
+   "pagina": 4
+  },
+  {
+   "code": "303-15WRKTLM",
+   "descricao": "Aliança Anat. Reta 6mm Recartilhada, Risco Lateral C/ 15 W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.2,
+   "pagina": 4
+  },
+  {
+   "code": "303-15WSQ6MM",
+   "descricao": "Aliança Anat. Reta 6mm, Risco Lateral C/ 15 Pedras, S/ Quina W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 87.2,
+   "pagina": 4
+  },
+  {
+   "code": "303-16W8MM",
+   "descricao": "Aliança Anat. Reta 8mm Risco Lateral C/ 16 Pedras W, Uma Na Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 4
+  },
+  {
+   "code": "303-1ANATF/PR",
+   "descricao": "Aliança Anat. L. M. Abaulada 6mm Canal Lateral, C/ Fio de Prata, 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 50.6,
+   "pagina": 4
+  },
+  {
+   "code": "303-1ANATF/PR5M",
+   "descricao": "Aliança Anat. L. M. Abaulada 5mm Canal Lateral, C/ Fio de Prata, 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 46.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-1DUO",
+   "descricao": "Aliança Anat. Reta 6mm Bronze , Aço, C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 4
+  },
+  {
+   "code": "303-1F/PR5MM",
+   "descricao": "Aliança Anat. L. M. Reta 5mm Canal Lateral, C/ Fio de Prata, 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 46.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-1FPR6MM",
+   "descricao": "Aliança Anat., 6mm , C/ Pedra e Canal Lateral, C/ Fio de Prata",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 49.3,
+   "pagina": 4
+  },
+  {
+   "code": "303-1LM",
+   "descricao": "Aliança Anat. Reta 6mm Risco Lateral Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 4
+  },
+  {
+   "code": "303-30W8MM",
+   "descricao": "Aliança Anat. Reta 8mm Risco Lateral C/ 30 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 117.2,
+   "pagina": 4
+  },
+  {
+   "code": "303-30WEP4MM",
+   "descricao": "Aliança Anat. Reta 4mm Risco Lateral C/ 30 Pedras Wep",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 110.6,
+   "pagina": 4
+  },
+  {
+   "code": "303-30WEP7MM",
+   "descricao": "Aliança Anat. Reta 7mm Risco Lateral C/ 30 Pedras Wep",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 117.2,
+   "pagina": 4
+  },
+  {
+   "code": "303-3EWLM",
+   "descricao": "Aliança Anat. Reta 6mm, Escovada, Risco Lateral C/ 3 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 45.4,
+   "pagina": 4
+  },
+  {
+   "code": "303-3LM",
+   "descricao": "Aliança Anat. Reta 6mm Risco Lateral C/ 3 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-3MM",
+   "descricao": "Aliança Anat. Reta 3mm Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 30.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-3WLM",
+   "descricao": "Aliança Anat. Reta 6mm Risco Lateral C/ 3 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-4MM",
+   "descricao": "Aliança Anat. Reta 4mm Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 30.7,
+   "pagina": 4
+  },
+  {
+   "code": "303-5MM",
+   "descricao": "Aliança Anat. Reta 5mm Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 4
+  },
+  {
+   "code": "303-7MM",
+   "descricao": "Aliança Anat. Reta 7mm Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 4
+  },
+  {
+   "code": "303-8MM",
+   "descricao": "Aliança Anat. Reta 8mm Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.6,
+   "pagina": 4
+  },
+  {
+   "code": "303-8MMALPR",
+   "descricao": "Aliança Anat. Reta 8mm Risco Lateral, Aliança Prata 2mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 72.2,
+   "pagina": 4
+  },
+  {
+   "code": "303-F/PR5MM",
+   "descricao": "Aliança Anat. L. M. Reta 5mm Canal Lateral, C/ Fio de Prata",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 45.4,
+   "pagina": 4
+  },
+  {
+   "code": "303ALM",
+   "descricao": "Aliança Anat. Reta 6mm 1 Canal Lat.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 4
+  },
+  {
+   "code": "303ANATF/PR",
+   "descricao": "Aliança Anat. L. M. Abaulada 6mm Canal Lateral, C/ Fio de Prata",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 4
+  },
+  {
+   "code": "303ANATF/PR5MM",
+   "descricao": "Aliança Anat. L. M. Abaulada 5mm Canal Lateral, C/ Fio de Prata",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 45.4,
+   "pagina": 4
+  },
+  {
+   "code": "303DLM",
+   "descricao": "Aliança Anat. Reta 6mm, Diamantada, Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 4
+  },
+  {
+   "code": "303DUO",
+   "descricao": "Aliança Anat. Reta 6mm Bronze , Aço",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 4
+  },
+  {
+   "code": "303ELM",
+   "descricao": "Aliança Anat. Reta 6mm, Escovada, Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 4
+  },
+  {
+   "code": "303FPRLM",
+   "descricao": "Aliança Anat. 6mm Canal Lateral, C/ Fio de Prata",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 4
+  },
+  {
+   "code": "303LM",
+   "descricao": "Aliança Anat. Reta 6mm Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 4
+  },
+  {
+   "code": "303LMPR",
+   "descricao": "Aliança Anat. Reta 6mm, Canal Lateral, Alian. Prata.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 68.7,
+   "pagina": 4
+  },
+  {
+   "code": "303RKTLM",
+   "descricao": "Aliança Anat. Reta 6mm Recartilhada, Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 4
+  },
+  {
+   "code": "303ZLM",
+   "descricao": "Aliança Anat. Reta 6mm Zirconia Branca Canal Lat.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 4
+  },
+  {
+   "code": "304-1/4MM",
+   "descricao": "Aliança Anat. Reta 4mm 2 Riscos, Pedra, Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.3,
+   "pagina": 4
+  },
+  {
+   "code": "304-1/8MM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Riscos Lateral 1 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 4
+  },
+  {
+   "code": "304-10MM",
+   "descricao": "Aliança Anat. Reta 10mm 2 Riscos Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 4
+  },
+  {
+   "code": "304-15W8MM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Riscos Laterais C/15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 4
+  },
+  {
+   "code": "304-15WD7MM",
+   "descricao": "Aliança Anat. Reta 7mm Diamantado 2 Riscos Laterais C/15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 4
+  },
+  {
+   "code": "304-15WDDLM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Riscos Laterais C/15 Pedras, Diam., Rolin., W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 85.3,
+   "pagina": 4
+  },
+  {
+   "code": "304-1LM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Riscos Lateral 1 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 4
+  },
+  {
+   "code": "304-3/8MM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Riscos Lateral 3 Pedras Horiz.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 44,
+   "pagina": 4
+  },
+  {
+   "code": "304-4MM",
+   "descricao": "Aliança Anat. Reta 4mm 2 Riscos Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 4
+  },
+  {
+   "code": "304-5MM",
+   "descricao": "Aliança Anat. Reta 5mm 2 Riscos Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 4
+  },
+  {
+   "code": "304-7WD8MM",
+   "descricao": "Aliança Anat. Reta 8mm Diamantado 2 Riscos Laterais C/7 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 58.7,
+   "pagina": 4
+  },
+  {
+   "code": "304-8MM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Riscos Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 4
+  },
+  {
+   "code": "304A7MM",
+   "descricao": "Aliança Anat. Reta 7mm, 2 Riscos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "304ACLM7MM",
+   "descricao": "Aliança Anat. Reta 7mm, C/ Coração, 2 Riscos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "304D-7MM",
+   "descricao": "Aliança Anat. Reta 7mm Diamantado 2 Riscos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "304D-8MM",
+   "descricao": "Aliança Anat. Reta 8mm Diamantado 2 Riscos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 5
+  },
+  {
+   "code": "304D4MM",
+   "descricao": "Aliança Anat. Reta 4mm 2 Riscos Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 5
+  },
+  {
+   "code": "304DDLM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Riscos Laterais, Diam., Rolin., W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 45.4,
+   "pagina": 5
+  },
+  {
+   "code": "304DLM",
+   "descricao": "Aliança Anat. Reta 6mm Diamantado 2 Riscos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 5
+  },
+  {
+   "code": "304LM",
+   "descricao": "Aliança Anat. Reta 6mm 2 Riscos Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "305-1/6MM",
+   "descricao": "Aliança Anat. 6mm 2 Friso Lateral C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 5
+  },
+  {
+   "code": "305-1/8MM",
+   "descricao": "Aliança Anat. 8mm 2 Friso Lat. C/ 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "305-15W6MM",
+   "descricao": "Aliança Anat. 6mm 15 Pedras W, Entre Frisos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 5
+  },
+  {
+   "code": "305-15W8MM",
+   "descricao": "Aliança Anat. 8mm 15 Pedras W, Entre Frisos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 5
+  },
+  {
+   "code": "305-3LM",
+   "descricao": "Aliança Anat. 8mm 2 Friso Lat. C/ 3 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 5
+  },
+  {
+   "code": "305-6MM",
+   "descricao": "Aliança Anat. 6mm 2 Friso Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 5
+  },
+  {
+   "code": "305-8MM",
+   "descricao": "Aliança Anat. 8mm 2 Friso Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "308-15W6MM",
+   "descricao": "Aliança Anat. 6mm Concava, 15 Pedras W, Na Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 5
+  },
+  {
+   "code": "308-15WLAT",
+   "descricao": "Aliança Anat. 8mm Concava, 15 Pedras W, Na Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 5
+  },
+  {
+   "code": "308-15WO",
+   "descricao": "Aliança Anat. 8mm Concava, 15 Pedras W, Onda",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 5
+  },
+  {
+   "code": "308-1LM",
+   "descricao": "Aliança Anat. 6mm Concava, C/ Pedra Lm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 5
+  },
+  {
+   "code": "308-8MM",
+   "descricao": "Aliança Anat. 8mm Concava, L. M.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 5
+  },
+  {
+   "code": "308LM",
+   "descricao": "Aliança Anat. 6mm Concava, Lm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "308SQ4MM",
+   "descricao": "Aliança Anat. 4mm Concava, S/ Quina, L. M.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 5
+  },
+  {
+   "code": "309-1/8MM",
+   "descricao": "Aliança Anat. 8mm Concava, C/ Pedra, Risco Central.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 44,
+   "pagina": 5
+  },
+  {
+   "code": "309-1LM",
+   "descricao": "Aliança Anat. 6mm Concava C/ Pedra, Risco Central.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 5
+  },
+  {
+   "code": "309-8MM",
+   "descricao": "Aliança Anat. 8mm Concava, C/ Risco Central.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 5
+  },
+  {
+   "code": "309LM",
+   "descricao": "Aliança Anat. 6mm Concava C/ Risco Central",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 5
+  },
+  {
+   "code": "311-15W6MM",
+   "descricao": "Aliança Anat. Reta 6mm Com 3 Riscos, 15 Pedras Central, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 5
+  },
+  {
+   "code": "311-1LM",
+   "descricao": "Aliança Anat. Reta 6mm Com 3 Riscos, C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "311LM",
+   "descricao": "Aliança Anat. Reta 6mm Com 3 Riscos",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "330-1/5MM",
+   "descricao": "Aliança Anat. Reta 5mm C/ Pedra, 3 Friso Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "330-1/8MM",
+   "descricao": "Aliança Anat. Reta 8mm 3 Friso Lateral C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 5
+  },
+  {
+   "code": "330-1LM",
+   "descricao": "Aliança Anat. Reta 6mm 3 Friso Lateral C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "330-5MM",
+   "descricao": "Aliança Anat. Reta 5mm 3 Friso Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 5
+  },
+  {
+   "code": "330-8MM",
+   "descricao": "Aliança Anat. Reta 8mm 3 Friso Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 5
+  },
+  {
+   "code": "330LM",
+   "descricao": "Aliança Anat. Reta 6mm 3 Friso Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "331-15W6MM",
+   "descricao": "Aliança Anat. Reta 6mm Com 3 Riscos Diagonal, 15 Pedras Central, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 5
+  },
+  {
+   "code": "331LM",
+   "descricao": "Aliança Anat. Reta 6mm Com 3 Riscos A",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "332-10WLM",
+   "descricao": "Aliança Anat. 6mm C/ 10 Pedras 2 Riscos Separados W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 64,
+   "pagina": 5
+  },
+  {
+   "code": "332-15W5MM",
+   "descricao": "Aliança Anat. 5mm C/ 15 Pedras 2 Riscos Separados W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 71.5,
+   "pagina": 5
+  },
+  {
+   "code": "332-15W6MM",
+   "descricao": "Aliança Anat. 6mm C/ 15 Pedras 2 Riscos Separados W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 5
+  },
+  {
+   "code": "332-1LM",
+   "descricao": "Aliança Anat. 6mm 2 Riscos Separados C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "332-5MM",
+   "descricao": "Aliança Anat. 5mm 2 Riscos Separados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 5
+  },
+  {
+   "code": "332LM",
+   "descricao": "Aliança Anat. 6mm 2 Riscos Separados",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "339-1RKTLM",
+   "descricao": "Aliança Recartilhada 5mm Canal, 1 Pedra.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "339RKTLM",
+   "descricao": "Aliança Recartilhada 5mm Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 5
+  },
+  {
+   "code": "380-4MM",
+   "descricao": "Aliança Anat. Reta 4mm Friso Lisa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 5
+  },
+  {
+   "code": "380-7MM",
+   "descricao": "Aliança Anat. Reta 7mm Friso Lisa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.2,
+   "pagina": 5
+  },
+  {
+   "code": "380CLM",
+   "descricao": "Aliança Anat. Reta 6mm Friso Lisa Com Coracao",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 5
+  },
+  {
+   "code": "380DUO",
+   "descricao": "Aliança Anat. Reta 6mm Friso Lisa, Bronze, Aço",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 5
+  },
+  {
+   "code": "380LM",
+   "descricao": "Aliança Anat. Reta 6mm Friso Lisa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 5
+  },
+  {
+   "code": "381-4MM",
+   "descricao": "Aliança Anat. Reta 4mm Friso Lisa Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 5
+  },
+  {
+   "code": "381C4MM",
+   "descricao": "Aliança Anat. Reta 4mm Friso Lisa Com Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 5
+  },
+  {
+   "code": "381CDUO",
+   "descricao": "Aliança Anat. Reta 6mm Friso Lisa, Bronze,aço, 2 Pedras e Coração",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 55.7,
+   "pagina": 5
+  },
+  {
+   "code": "381CLM",
+   "descricao": "Aliança Anat. Reta 6mm Friso Lisa Com Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 5
+  },
+  {
+   "code": "381CLM7MM",
+   "descricao": "Aliança Anat. Reta 7mm Friso Lisa Com Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 5
+  },
+  {
+   "code": "381DUO",
+   "descricao": "Aliança Anat. Reta 6mm Friso Lisa. Bronze, Aço C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 43.3,
+   "pagina": 5
+  },
+  {
+   "code": "381LM",
+   "descricao": "Aliança Anat. Reta 6mm Friso Lisa Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 5
+  },
+  {
+   "code": "389-1/4MM",
+   "descricao": "Aliança Anat. Reta 4mm , C/1 Pedras, 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 5
+  },
+  {
+   "code": "389-1/5MM",
+   "descricao": "Aliança Anat. Reta 5mm 1 Canal, 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 6
+  },
+  {
+   "code": "389-1/8MM",
+   "descricao": "Aliança Anat. Reta 8mm 1 Canal C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "389-1ADLM",
+   "descricao": "Aliança Anat. Reta 6mm, Diamantada, 1 Canal Central, 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "389-1LM",
+   "descricao": "Aliança Anat. Reta 6mm 1 Canal C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 6
+  },
+  {
+   "code": "389-1LMALPR",
+   "descricao": "Aliança Anat. Reta 6mm, C/ Pedra, Canal Central Alian. Prata.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 72.4,
+   "pagina": 6
+  },
+  {
+   "code": "389-1LMFPR",
+   "descricao": "Aliança Anat. Reta 6mm, C/ Pedra, Canal Central C/ Fio. Prata.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 49.3,
+   "pagina": 6
+  },
+  {
+   "code": "389-1SQLM",
+   "descricao": "Aliança Anat. Reta 6mm, Canal Central, S/ Quina, C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "389-4MM",
+   "descricao": "Aliança Anat. Reta 4mm 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 6
+  },
+  {
+   "code": "389-5MM",
+   "descricao": "Aliança Anat. Reta 5mm 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 33.4,
+   "pagina": 6
+  },
+  {
+   "code": "389-8MM",
+   "descricao": "Aliança Anat. Reta 8mm 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "389ADLM",
+   "descricao": "Aliança Anat. Reta 6mm, Diamantada, 1 Canal Central",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "389ALM",
+   "descricao": "Aliança Anat. Reta 6mm 1 Canal",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 6
+  },
+  {
+   "code": "389LMALPR",
+   "descricao": "Aliança Anat. Reta 6mm, Canal Central Alian. Prata.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 68.7,
+   "pagina": 6
+  },
+  {
+   "code": "389LMFPR",
+   "descricao": "Aliança Anat. Reta 6mm, Canal Central C/ Fio. Prata.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 6
+  },
+  {
+   "code": "389SQLM",
+   "descricao": "Aliança Anat. Reta 6mm, Canal Central, S/ Quina",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "389ZLM",
+   "descricao": "Aliança Anat. Reta 6mm Zirconia Branca",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 6
+  },
+  {
+   "code": "389ZSQLM",
+   "descricao": "Aliança Anat. Reta 6mm, S/ Quina, Zirconia Branca",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 6
+  },
+  {
+   "code": "390-10CW",
+   "descricao": "Aliança Anat. Reta 6mm Canal, 10 Pedras e Coração Rebaixo Lat. W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 64,
+   "pagina": 6
+  },
+  {
+   "code": "390ALM",
+   "descricao": "Aliança Anat. Reta 6mm Canal, 2 Frisos",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 6
+  },
+  {
+   "code": "390W",
+   "descricao": "Aliança Anat. Reta 6mm Canal, Rebaixo Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 6
+  },
+  {
+   "code": "390ZLM",
+   "descricao": "Aliança Anat. Reta 6mm Zirconia Branca Canal, 2 Frisos",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 74.6,
+   "pagina": 6
+  },
+  {
+   "code": "391W",
+   "descricao": "Aliança Anat. Reta 6mm Canal, Rebaixo Lateral C/ 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 6
+  },
+  {
+   "code": "402-15WLM",
+   "descricao": "Aliança Anat. 8mm 2 Friso Central, 15 Pedras, W.",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 6
+  },
+  {
+   "code": "402DLM",
+   "descricao": "Aliança Anat. 8mm 2 Friso Central Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 6
+  },
+  {
+   "code": "402L-1LM",
+   "descricao": "Aliança Anat. 10mm 2 Friso Central C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 6
+  },
+  {
+   "code": "402LLM",
+   "descricao": "Aliança Anat. 10mm 2 Friso Central",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 6
+  },
+  {
+   "code": "402LM",
+   "descricao": "Aliança Anat. 8mm 2 Friso Central",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "403-1CLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 3 Riscos C/ 2 Pedras, Coração",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 6
+  },
+  {
+   "code": "403-1RLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 3 Riscos C/ Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "403RDLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 3 Riscos Diamantada",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 6
+  },
+  {
+   "code": "403RLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 3 Riscos",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "406-1R10MM",
+   "descricao": "Aliança Anat. Reta 10mm 2 Riscos C/ 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 6
+  },
+  {
+   "code": "406-1RCLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 2 Riscos C/ Coração e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 6
+  },
+  {
+   "code": "406-1RLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 2 Riscos Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "406-4R10MM",
+   "descricao": "Aliança Anat. Reta 10mm Com 2 Riscos Separados C/ 4 Pedras Vertical W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 50.6,
+   "pagina": 6
+  },
+  {
+   "code": "406-4RW",
+   "descricao": "Aliança Anat. Reta 8mm Com 2 Riscos Separados C/ 4 Pedras Vertical W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 6
+  },
+  {
+   "code": "406-6MM",
+   "descricao": "Aliança Anat. Reta 6mm Com 2 Riscos",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 6
+  },
+  {
+   "code": "406ALM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Canais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "406DLM",
+   "descricao": "Aliança Anat. Reta 8mm 2 Canais Diamantado",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 6
+  },
+  {
+   "code": "406R10MM",
+   "descricao": "Aliança Anat. Reta 10mm Com 2 Riscos",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 6
+  },
+  {
+   "code": "406R15W8MM",
+   "descricao": "Aliança Anat. Reta 8mm 15 Pedras C/ 2 Riscos W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 6
+  },
+  {
+   "code": "406R30W10MM",
+   "descricao": "Aliança Anat. Reta 10mm C/ 15 Pedras Cada Lado W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 119.8,
+   "pagina": 6
+  },
+  {
+   "code": "406R30W8MM",
+   "descricao": "Aliança Anat. Reta 8mm C/ 15 Pedras Cada Lado W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 117.2,
+   "pagina": 6
+  },
+  {
+   "code": "406R31W8MM",
+   "descricao": "Aliança Anat. Reta 8mm C/ 15 Pedras Cada Lado, Pedra Central W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 119.8,
+   "pagina": 6
+  },
+  {
+   "code": "406R60WLM",
+   "descricao": "Aliança Anat. Reta 8mm C/ 30 Pedras Cada Lado W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 197,
+   "pagina": 6
+  },
+  {
+   "code": "406RCLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 2 Riscos C/ Coração",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "406RLM",
+   "descricao": "Aliança Anat. Reta 8mm Com 2 Riscos",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "406ZLM",
+   "descricao": "Aliança Anat. Reta 8mm Zirconia Branca 2 Canais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 110,
+   "pagina": 6
+  },
+  {
+   "code": "407-15WDLM",
+   "descricao": "Aliança Anat. Reta 8mm Ch. 15 Pedras Entre Riscos Laterais W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 6
+  },
+  {
+   "code": "407-15WLM",
+   "descricao": "Aliança Piramide 8mm 15 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 77.3,
+   "pagina": 6
+  },
+  {
+   "code": "407DLM",
+   "descricao": "Aliança Anat. Reta 8mm Riscos Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 6
+  },
+  {
+   "code": "421-1LM",
+   "descricao": "Aliança Anat. Reta 8mm Friso Em G, C/ 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 6
+  },
+  {
+   "code": "421LM",
+   "descricao": "Aliança Anat. Reta 8mm Friso, Em G",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "480-10MM",
+   "descricao": "Aliança Anat. Reta 10mm Friso Lisa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 6
+  },
+  {
+   "code": "480CLM",
+   "descricao": "Aliança Anat. Reta 8mm Friso Lisa Com Coracao",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 6
+  },
+  {
+   "code": "480LM",
+   "descricao": "Aliança Anat. Reta 8mm Friso Lisa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "480LM-ANAT",
+   "descricao": "Aliança Anat. 8mm Friso Lisa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 6
+  },
+  {
+   "code": "481CLM",
+   "descricao": "Aliança Anat. Reta 8mm Friso Lisa Com Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 6
+  },
+  {
+   "code": "481CLM-ANAT",
+   "descricao": "Aliança Anat. 8mm Friso Lisa Com Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 41.4,
+   "pagina": 7
+  },
+  {
+   "code": "481LM",
+   "descricao": "Aliança Anat. Reta 8mm Friso Lisa Com Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 38.7,
+   "pagina": 7
+  },
+  {
+   "code": "490LM",
+   "descricao": "Aliança Anat. 8mm Friso Central Rebaixo Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 7
+  },
+  {
+   "code": "491CLM",
+   "descricao": "Aliança Anat. 8mm Friso Central C/ Coracao e 2 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 44,
+   "pagina": 7
+  },
+  {
+   "code": "503DLM",
+   "descricao": "Aliança Anat. Reta 11mm 4 Riscos, Diamantado Entre Eles",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 53.3,
+   "pagina": 7
+  },
+  {
+   "code": "600-22W8MM",
+   "descricao": "Aliança Anat. 8mm 1/2 Lua C/ 22 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 96,
+   "pagina": 7
+  },
+  {
+   "code": "600-22WLLM",
+   "descricao": "Aliança Anat. 10mm 1/2 Lua C/22 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 98.6,
+   "pagina": 7
+  },
+  {
+   "code": "600LLM",
+   "descricao": "Aliança Anat. 10mm 1/2 Lua",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "600LLM8MM",
+   "descricao": "Aliança Anat. 8mm 1/2 Lua",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "602-22WLM",
+   "descricao": "Aliança Anat. Reta 6mm 4 Risco C/22 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 93.2,
+   "pagina": 7
+  },
+  {
+   "code": "602LM",
+   "descricao": "Aliança Anat. Reta 6mm 4 Risco",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 7
+  },
+  {
+   "code": "603-60AWLM",
+   "descricao": "Aliança Anat. Reta 8mm B.a. C/ 30 Pedras Lateral, 30 Pedras Borda W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 239.6,
+   "pagina": 7
+  },
+  {
+   "code": "603LM",
+   "descricao": "Aliança Anat. Reta 8mm Grossa Risco Lateral",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 53.3,
+   "pagina": 7
+  },
+  {
+   "code": "AL310DSF",
+   "descricao": "Aliança Anat. 6mm Diamantada Sem Filetes",
+   "ref": "AÇO",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 23.4,
+   "pagina": 7
+  },
+  {
+   "code": "ANC2MM",
+   "descricao": "Anel Coração, Aro 2mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "APW1MM",
+   "descricao": "Anel Aparador Aro 1mm 15 Pedras Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "APW2MM",
+   "descricao": "Anel Aparador Aro 2mm 11 Pedras Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "APW2MM-30",
+   "descricao": "Anel Aparador Aro 2mm , 30 Pedras Cravadas",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 82.5,
+   "pagina": 7
+  },
+  {
+   "code": "BGI12M",
+   "descricao": "Aliança Anat. 12mm Big",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 93.2,
+   "pagina": 7
+  },
+  {
+   "code": "BIG-1/8MM",
+   "descricao": "Aliança Anat. 8mm Big C/ 1 Pedra",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 69.2,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10FW30",
+   "descricao": "Aliança Anat. 10mm Big C/ 30 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 159.8,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10FW40",
+   "descricao": "Aliança Anat. 10mm Big C/ 40 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 186.4,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10FW45",
+   "descricao": "Aliança Anat. 10mm Big C/ 45 Pedras 3 Fileiras, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 199.7,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10FW60",
+   "descricao": "Aliança Anat. 10mm Big C/ 30 Pedras Cada Lado, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 239.6,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10FW90",
+   "descricao": "Aliança Anat. 10mm Big C/ 90 Pedras, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 332.8,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10M",
+   "descricao": "Aliança Anat. 10mm Big",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10MB/BX",
+   "descricao": "Aliança Anat. 10mm Big B/ Baixa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48.4,
+   "pagina": 7
+  },
+  {
+   "code": "BIG10MMB",
+   "descricao": "Aliança Anat. 10mm Big Bico",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 79.9,
+   "pagina": 7
+  },
+  {
+   "code": "BIG12MB/BX",
+   "descricao": "Aliança Anat. 12mm Big B/ Baixa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 54.5,
+   "pagina": 7
+  },
+  {
+   "code": "BIG14MMB",
+   "descricao": "Aliança Anat. 14mm Big Bico",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 106.5,
+   "pagina": 7
+  },
+  {
+   "code": "BIG6M",
+   "descricao": "Aliança Anat. 6mm Big",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 66.6,
+   "pagina": 7
+  },
+  {
+   "code": "BIG8FW30",
+   "descricao": "Aliança Anat. 8mm Big C/ 30 Pedras W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 146.4,
+   "pagina": 7
+  },
+  {
+   "code": "BIG8FW60",
+   "descricao": "Aliança Anat. 8mm Big C/ 30 Pedras Cada Lado, W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 239.6,
+   "pagina": 7
+  },
+  {
+   "code": "BIG8M",
+   "descricao": "Aliança Anat. 8mm Big",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 66.6,
+   "pagina": 7
+  },
+  {
+   "code": "BIG8MB/BX",
+   "descricao": "Aliança Anat. 8mm Big B/ Baixa",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.4,
+   "pagina": 7
+  },
+  {
+   "code": "CHLM03",
+   "descricao": "Anel de Chapinha 3mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 7
+  },
+  {
+   "code": "CHLM04",
+   "descricao": "Anel de Chapinha 4mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 7
+  },
+  {
+   "code": "CHLM05",
+   "descricao": "Anel de Chapinha 5mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 7
+  },
+  {
+   "code": "CHLM06",
+   "descricao": "Anel de Chapinha 6mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "CHLM08",
+   "descricao": "Anel de Chapinha 8mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 7
+  },
+  {
+   "code": "CPL001",
+   "descricao": "Colar Ponto de Luz",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48.4,
+   "pagina": 7
+  },
+  {
+   "code": "CR002",
+   "descricao": "Corrente Monograma 4cm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 73.3,
+   "pagina": 7
+  },
+  {
+   "code": "GR001",
+   "descricao": "Aliança Acessorio Gv",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 59.9,
+   "pagina": 7
+  },
+  {
+   "code": "NF001",
+   "descricao": "Nome Folheado Simples",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.4,
+   "pagina": 7
+  },
+  {
+   "code": "NF002",
+   "descricao": "Nome Folheado Composto",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 63.6,
+   "pagina": 7
+  },
+  {
+   "code": "NF003",
+   "descricao": "Nome Folheado Composto C/ 3",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 84.7,
+   "pagina": 7
+  },
+  {
+   "code": "NF004",
+   "descricao": "Nome Simples, Corrente Veneziana, 1 Ping Cravejado",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 90.8,
+   "pagina": 7
+  },
+  {
+   "code": "NF005",
+   "descricao": "Nome Simples, Corrente Veneziana, 2 Ping Cravejado",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 121,
+   "pagina": 7
+  },
+  {
+   "code": "NF006",
+   "descricao": "Nome Simples, Corrente Veneziana",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 60.5,
+   "pagina": 7
+  },
+  {
+   "code": "PCH001",
+   "descricao": "Pulseira Chapinha 15 Cm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 36,
+   "pagina": 7
+  },
+  {
+   "code": "PS42",
+   "descricao": "42 Peças de Mostruario",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 1730.3,
+   "pagina": 7
+  },
+  {
+   "code": "SG7MM",
+   "descricao": "Anel Solitário Pedra Gota 7mm 22 Pedras Lateras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 48,
+   "pagina": 7
+  },
+  {
+   "code": "SL4MM",
+   "descricao": "Anel Solitário Pedra 4mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "SL5-5MM",
+   "descricao": "Anel Solitário 5mm C/ 5 Pedras",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 43.8,
+   "pagina": 7
+  },
+  {
+   "code": "SL5MM",
+   "descricao": "Anel Solitário Pedra 5mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.7,
+   "pagina": 7
+  },
+  {
+   "code": "SL6-4MM",
+   "descricao": "Anel Solitário 4mm C/ 6 Pedras, Aro 2mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.6,
+   "pagina": 7
+  },
+  {
+   "code": "SLC4MM",
+   "descricao": "Anel Solitário 4mm, Quadrado Cart. W",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "SLF4MM",
+   "descricao": "Anel Solitário Fundição Pedra 4mm",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 7
+  },
+  {
+   "code": "SLW4MM",
+   "descricao": "Anel Solitário 4mm 10 Pedras Laterais",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 42.6,
+   "pagina": 8
+  },
+  {
+   "code": "XLM03",
+   "descricao": "Anel Modelo X 3mm L M",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 29.4,
+   "pagina": 8
+  },
+  {
+   "code": "XLM04",
+   "descricao": "Anel Modelo X 4mm L M",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 31.9,
+   "pagina": 8
+  },
+  {
+   "code": "XLM05",
+   "descricao": "Anel Modelo X 5mm L M",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 34.7,
+   "pagina": 8
+  },
+  {
+   "code": "XLM06",
+   "descricao": "Anel Modelo X 6mm L M",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 37.3,
+   "pagina": 8
+  },
+  {
+   "code": "XLM08",
+   "descricao": "Anel Modelo X 8mm L M",
+   "ref": "LM",
+   "unidade": "UN",
+   "alterado": "12/01/2026",
+   "preco": 40,
+   "pagina": 8
+  }
+ ]
+}

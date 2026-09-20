@@ -1,0 +1,157 @@
+/* Nossa história: a foto dos dois com "O começo" e "Quem atende hoje" num cartão
+   só, a chamada final em ouro e, depois, o rodapé (estilo global no style.css). */
+
+.legado {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(120px, 16vh, 180px) var(--secao);
+}
+
+.legado__cabeca {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+  max-width: 880px;
+  margin-bottom: var(--e-10);
+}
+
+.legado__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.375rem, 1.1rem + 5vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+/* um cartão só: a foto dos dois e as duas partes da história */
+.relato {
+  display: grid;
+  gap: var(--e-6);
+  padding: clamp(20px, 4vw, 48px);
+  border: 1px solid var(--linha-escura);
+  border-radius: 20px;
+  /* fundo sólido: translúcido, a 03LM por trás virava uma mancha borrada */
+  background: var(--marinho);
+  color: var(--claro);
+}
+
+.relato .rotulo {
+  color: var(--ouro);
+}
+
+/* no celular, recorte quadrado com os dois rostos no terço de cima */
+.relato__foto {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  background: var(--ouro);
+}
+
+.relato__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.relato__textos {
+  display: grid;
+  align-content: center;
+  gap: var(--e-8);
+}
+
+.relato__bloco {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+
+.relato__bloco + .relato__bloco {
+  padding-top: var(--e-8);
+  border-top: 1px solid var(--linha-escura);
+}
+
+.relato__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.relato__texto {
+  font-size: var(--t-corpo-g);
+  line-height: 1.65;
+  color: var(--claro-suave);
+}
+
+@media (min-width: 900px) {
+  .relato {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(32px, 5vw, 64px);
+  }
+
+  .relato__foto {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Chamada final
+   --------------------------------------------------------------------------- */
+
+.chamada {
+  position: relative;
+  /* abaixo da camada da 03LM (z 1): é ela que termina o percurso por cima da faixa */
+  z-index: 0;
+  padding-bottom: var(--secao);
+}
+
+.chamada__faixa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-5) var(--e-8);
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 20px;
+  /* invertida: o azul da marca com a frase em ouro, e a peça 3D parando à direita */
+  border: 1px solid var(--linha-escura);
+  background: var(--safira);
+  color: var(--ouro);
+  /* espaço à direita para a 03LM terminar o percurso dentro da faixa */
+  padding-right: clamp(28px, 16vw, 260px);
+}
+
+.chamada__titulo {
+  max-width: 30ch;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.875rem, 1.3rem + 2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+@media (max-width: 599px) {
+  .chamada__faixa .btn {
+    width: 100%;
+  }
+}
+
+/* o rodapé desta dobra fica acima da 03LM, que desce até o fim da página */
+.rodape {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .relato__foto img {
+    scale: 1.12;
+    transition: scale 1400ms var(--curva-longa);
+  }
+
+  .relato.is-in .relato__foto img {
+    scale: 1;
+  }
+}

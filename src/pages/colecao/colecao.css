@@ -1,0 +1,230 @@
+/* Coleção: as fotos produzidas numa galeria que corre em velocidades diferentes
+   enquanto o título fica preso no centro (--p do colecao.js), e depois as três
+   provas, cada uma com uma foto de pessoas. */
+
+.colecao {
+  position: relative;
+  height: 320svh;
+}
+
+.colecao__palco {
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  overflow: clip;
+}
+
+.colecao__titulo {
+  position: relative;
+  z-index: 2;
+  max-width: 13ch;
+  padding-inline: 20px;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.375rem, 0.9rem + 5.8vw, 7.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.colecao__galeria {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* cada foto recebe posição (--x, --y), largura (--w) e velocidade (--v) no HTML */
+.colecao__foto {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  z-index: var(--z, 0);
+  width: var(--w);
+  translate: -50% calc((0.5 - var(--p, 0)) * var(--v) * 100svh);
+}
+
+/* A composição: onde cada foto entra, que largura tem e a que velocidade sobe na
+   rolagem. Ficava em style no HTML; direção de arte é CSS. */
+.colecao__foto:nth-child(1) {
+  --x: 14%;
+  --y: 20%;
+  --w: 15vw;
+  --v: 1.3;
+}
+
+.colecao__foto:nth-child(2) {
+  --x: 38%;
+  --y: 6%;
+  --w: 11vw;
+  --v: 0.8;
+}
+
+.colecao__foto:nth-child(3) {
+  --x: 82%;
+  --y: 16%;
+  --w: 14vw;
+  --v: 1.1;
+}
+
+.colecao__foto:nth-child(4) {
+  --x: 64%;
+  --y: 34%;
+  --w: 12vw;
+  --v: 1.6;
+  --z: 3;
+}
+
+.colecao__foto:nth-child(5) {
+  --x: 22%;
+  --y: 60%;
+  --w: 13vw;
+  --v: 0.9;
+}
+
+.colecao__foto:nth-child(6) {
+  --x: 88%;
+  --y: 62%;
+  --w: 13vw;
+  --v: 1.4;
+}
+
+.colecao__foto:nth-child(7) {
+  --x: 50%;
+  --y: 78%;
+  --w: 12vw;
+  --v: 1.2;
+}
+
+.colecao__foto:nth-child(8) {
+  --x: 8%;
+  --y: 88%;
+  --w: 12vw;
+  --v: 1.7;
+  --z: 3;
+}
+
+.colecao__foto:nth-child(9) {
+  --x: 72%;
+  --y: 92%;
+  --w: 15vw;
+  --v: 0.7;
+}
+
+.colecao__foto:nth-child(10) {
+  --x: 34%;
+  --y: 108%;
+  --w: 13vw;
+  --v: 1.5;
+}
+
+.colecao__foto:nth-child(11) {
+  --x: 60%;
+  --y: 118%;
+  --w: 11vw;
+  --v: 1;
+}
+
+.colecao__foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.85);
+}
+
+@media (max-width: 767px) {
+  .colecao__foto {
+    width: calc(var(--w) * 1.9);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Provas
+   --------------------------------------------------------------------------- */
+
+.provas {
+  display: grid;
+  gap: clamp(72px, 12vw, 160px);
+  padding-block: var(--secao);
+}
+
+.prova {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+  gap: var(--e-8);
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.prova__foto {
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+}
+
+.prova__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prova__bloco {
+  display: grid;
+  gap: var(--e-4);
+}
+
+.prova__numero {
+  font-family: var(--fonte-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  color: var(--ouro);
+}
+
+.prova__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.prova__texto {
+  max-width: 36ch;
+  font-size: var(--t-corpo-g);
+  color: var(--claro-suave);
+}
+
+@media (min-width: 900px) {
+  .prova {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(48px, 8vw, 120px);
+  }
+
+  .prova:nth-child(even) .prova__foto {
+    order: 2;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* a foto aproxima enquanto a prova sobe */
+  .prova__foto img {
+    scale: 1.1;
+    transition: scale 1400ms var(--curva-longa);
+  }
+
+  .prova.is-in .prova__foto img {
+    scale: 1;
+  }
+}
+
+/* atraso da entrada do título, antes em style no HTML */
+.colecao__titulo {
+  --d: 200;
+}
