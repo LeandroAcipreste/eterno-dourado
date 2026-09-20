@@ -4,27 +4,31 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/assests/(.*)",
+      "source": "/assests/:caminho*",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/:caminho*",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/vendor/(.*)",
+      "source": "/vendor/:caminho*",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/(.*).glb",
+      "source": "/assests/img/aliancas-web/modelo-03LM/individuais/03LM.glb",
       "headers": [{ "key": "Content-Type", "value": "model/gltf-binary" }]
     },
     {
-      "source": "/(index.html)?",
+      "source": "/",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     },
     {
-      "source": "/(style.css|src/(.*))",
+      "source": "/style.css",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/src/:caminho*",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
     }
   ]
