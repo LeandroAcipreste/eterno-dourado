@@ -73,8 +73,19 @@ function ligarMenu() {
     // marca na hora: esperar a rolagem chegar deixaria o menu sem resposta no clique
     cabecalho.marcarPagina(link.dataset.pagina);
     rolagem.ir(destino.getBoundingClientRect().top + window.scrollY, { suave: true });
-    history.replaceState(null, '', `#${link.dataset.pagina}`);
+    // sem gravar #seção na URL: recarregar a página tem que voltar para a abertura
   });
+}
+
+/**
+ * A visita começa sempre na abertura. Nem a posição guardada pelo navegador, nem uma
+ * âncora na URL (que o navegador reaplica no load), nem o Lenis, que nasce com a
+ * posição antiga, podem jogar a pessoa no meio da página.
+ */
+function irParaAbertura() {
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo(0, 0);
+  rolagem.ir(0);
 }
 
 /**
@@ -145,7 +156,17 @@ async function iniciar() {
   // a visita começa sempre na abertura: nem a posição guardada pelo navegador nem uma
   // âncora na URL podem jogar a pessoa no meio da página enquanto o nome ainda gira
   history.scrollRestoration = 'manual';
-  window.scrollTo(0, 0);
+  irParaAbertura();
+  // o load reaplica a posição antiga; numa rede lenta, quem já rolou fica onde está
+  let mexeu = false;
+  for (const tipo of ['wheel', 'touchstart', 'keydown', 'pointerdown']) {
+    window.addEventListener(tipo, () => (mexeu = true), { once: true, passive: true });
+  }
+  window.addEventListener('load', () => mexeu || irParaAbertura(), { once: true });
+  // voltando pelo botão Voltar, a página sai do cache já rolada
+  window.addEventListener('pageshow', (evento) => {
+    if (evento.persisted) irParaAbertura();
+  });
   const abertura = preloader.abrir(); // começa a contar já, não depois de montar tudo
   ligarLinksWhatsApp(document);
   prepararAnimacao(document); // o texto já nasce escondido, atrás da abertura

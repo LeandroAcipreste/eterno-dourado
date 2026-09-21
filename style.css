@@ -1115,6 +1115,13 @@
     animation: preloader-girar 3.2s linear infinite;
   }
 
+  /* no celular a roda fica perto do olho e a mesma volta parece corrida */
+  @media (max-width: 767px) {
+    .preloader__roda {
+      animation-duration: 6s;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .preloader__roda {
       animation-duration: 12s;

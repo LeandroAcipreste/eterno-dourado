@@ -6,6 +6,12 @@
     <title>Eterno Dourado · Atacado de alianças em Salvador</title>
     <meta name="description" content="Atacado de alianças em Salvador desde 2000. 80 modelos, valor claro por aliança e atendimento direto pelo WhatsApp para lojistas e revendedores." />
     <meta name="theme-color" content="#050912" />
+    <!-- a visita começa sempre na abertura: isto precisa rodar antes do corpo existir,
+         senão o navegador já agendou a volta à posição antiga ou à âncora da URL -->
+    <script>
+      history.scrollRestoration = 'manual';
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    </script>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
