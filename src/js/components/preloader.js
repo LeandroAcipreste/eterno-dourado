@@ -1,6 +1,7 @@
 /**
- * Abertura do site: o nome em círculo girando por 8 segundos, e só então a cortina
- * revela a página. Acontece em toda carga da página.
+ * Abertura do site: o nome em círculo girando por 8 segundos. Quando ele começa a sair,
+ * a cortina já começa a revelar a página: as duas coisas se sobrepõem, e a passagem é
+ * um movimento só em vez de dois tempos mortos.
  *
  * Quem faz o efeito é o CSS: a roda gira e a abertura esmaece sozinha ao fim dos
  * 8 s (e some de vez, com visibility). Isso vale inclusive para quem pediu menos
@@ -15,6 +16,7 @@ import { el, movimentoReduzido } from '../utils/dom.js';
 
 const ANIMACAO = 'preloader-sair';
 const LIMITE = 11000; // rede de segurança: aba em segundo plano não dispara animação
+const TEMPO_ATE_SAIR = 8000; // o que o CSS espera antes de começar a esmaecer
 const CHAVE_TESTE = 'eterno-dourado:sem-abertura';
 
 const desligadaNoTeste = () => {
@@ -61,19 +63,28 @@ export function montarPreloader() {
       if (!preloader?.isConnected) return;
       conferirGiro(preloader);
 
+      // some do documento sozinha quando a animação acaba; quem chamou não espera por
+      // isso, para a cortina poder começar a sair junto com o nome, num movimento só
+      const aoTerminar = (evento) => {
+        if (evento.target !== preloader || evento.animationName !== ANIMACAO) return;
+        preloader.removeEventListener('animationend', aoTerminar);
+        preloader.remove();
+      };
+      preloader.addEventListener('animationend', aoTerminar);
+      setTimeout(() => preloader.remove(), LIMITE); // aba em segundo plano não anima
+
+      // devolve quando o CSS COMEÇA a apagar o nome. Cronômetro no JS não serve: ele
+      // começa a contar quando a página monta, e a animação começou na primeira pintura.
       await new Promise((resolver) => {
-        const terminar = () => {
-          preloader.removeEventListener('animationend', aoTerminar);
+        const aoComecar = (evento) => {
+          if (evento.target !== preloader || evento.animationName !== ANIMACAO) return;
+          preloader.removeEventListener('animationstart', aoComecar);
           clearTimeout(reserva);
           resolver();
         };
-        const aoTerminar = (evento) => {
-          if (evento.target === preloader && evento.animationName === ANIMACAO) terminar();
-        };
-        const reserva = setTimeout(terminar, LIMITE);
-        preloader.addEventListener('animationend', aoTerminar);
+        const reserva = setTimeout(resolver, TEMPO_ATE_SAIR + 2000);
+        preloader.addEventListener('animationstart', aoComecar);
       });
-      preloader.remove();
     },
   };
 }

@@ -7,8 +7,7 @@
  * pessoa está; quem decide isso é a rolagem, não uma troca de página.
  */
 
-import { el, els } from './utils/dom.js';
-import { linkWhatsApp } from './utils/whatsapp.js';
+import { debounce, el, els } from './utils/dom.js';
 import { montarCabecalho } from './components/cabecalho.js';
 import { montarAreaCliente } from './components/area-cliente.js';
 import { liberarPrimeiraDobra, montarAnimacao, prepararAnimacao, remedirAnimacao } from './components/animacao.js';
@@ -19,7 +18,7 @@ import { aCadaQuadroDeRolagem } from './utils/rolagem.js';
 
 // seções com JS próprio; as outras são só HTML e CSS
 const SECOES_COM_JS = ['home', 'colecao', 'catalogo'];
-const ESPERA_PELO_ANEL = 3000; // teto da espera pelo 3D antes de revelar a página
+const ESPERA_PELO_ANEL = 1200; // o 3D só começa a carregar depois que a abertura entra
 
 const areaCliente = montarAreaCliente();
 const cabecalho = montarCabecalho();
@@ -49,12 +48,16 @@ document.addEventListener('click', (evento) => {
   if (evento.target.closest('[data-entrar]')) areaCliente.abrir();
 });
 
-/** Os links já apontam para o WhatsApp no HTML; aqui ganham a mensagem pronta. */
+/**
+ * Os links já apontam para o WhatsApp no HTML, e funcionam assim se o JS não rodar.
+ * Com JS, eles passam por /obrigado levando a mensagem: é essa página no próprio site
+ * que permite medir o contato (o Google Ads não conta uma saída direta para o wa.me).
+ */
 function ligarLinksWhatsApp(raiz) {
   for (const link of els('[data-whatsapp]', raiz)) {
-    link.href = linkWhatsApp(link.dataset.whatsapp);
-    link.target = '_blank';
-    link.rel = 'noopener';
+    link.href = `/obrigado?texto=${encodeURIComponent(link.dataset.whatsapp)}`;
+    link.removeAttribute('target');
+    link.removeAttribute('rel');
   }
 }
 
@@ -139,7 +142,10 @@ function conferirAbertura() {
 }
 
 async function iniciar() {
+  // a visita começa sempre na abertura: nem a posição guardada pelo navegador nem uma
+  // âncora na URL podem jogar a pessoa no meio da página enquanto o nome ainda gira
   history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
   const abertura = preloader.abrir(); // começa a contar já, não depois de montar tudo
   ligarLinksWhatsApp(document);
   prepararAnimacao(document); // o texto já nasce escondido, atrás da abertura
@@ -161,21 +167,36 @@ async function iniciar() {
   montarAnimacao(document, { segurar: true });
   remedirAnimacao();
 
-  // a 03LM começa a subir agora, com a abertura ainda cobrindo a tela: o three.js e o
-  // GLB custam segundos de fio principal, e é aqui que ninguém vê. A roda do nome gira
-  // no compositor, então ela continua girando mesmo com o fio travado.
-  const anel3d = subirAnel();
 
-  await abertura; // os 8 s do nome girando correm desde a primeira pintura
-  // se o 3D ainda estiver travando o fio, a dobra espera um pouco: ela não pode entrar
-  // em cima de um engasgo. Mas espera com teto, senão uma máquina lenta prenderia
-  // a pessoa na abertura.
-  await Promise.race([anel3d, new Promise((resolver) => setTimeout(resolver, ESPERA_PELO_ANEL))]);
-  await cortina.revelar();
+  await abertura; // volta assim que o nome começa a apagar
+  await cortina.revelar(); // a cortina sai junto com ele: um movimento só
 
   liberarPrimeiraDobra(); // agora sim, a abertura entra: nada a medir, nada a travar
+
+  // A página só tem a altura final depois das fontes, das imagens e dos cartões do
+  // catálogo. As faixas de rolagem dos títulos são contas em cima dessa geometria:
+  // sem refazê-las aqui, elas apontam para onde a página não está mais, e o título
+  // nunca chega a aparecer.
+  const remedirTudo = () => {
+    rolagem.medir();
+    remedirAnimacao();
+    anel?.medirTrilha();
+  };
+  remedirTudo();
+  document.fonts?.ready.then(remedirTudo).catch(() => {});
+  window.addEventListener('resize', debounce(remedirTudo, 200));
+  setTimeout(remedirTudo, 2500);
+
+  // O giro das letras é da chegada, e só dela: na volta do scroll o CSS já traz a letra
+  // sem rotação ([data-anim="giro"][data-de="cima"]). Trocar o data-anim por aqui, como
+  // se fazia, cortava a chegada no meio: as regras do giro paravam de valer e toda letra
+  // que ainda não tinha tido a vez perdia o opacity: 0 e surgia de uma vez.
   await new Promise((resolver) => setTimeout(resolver, 700));
   document.documentElement.dataset.pronto = ''; // e o cabeçalho desce por último
+
+  // a 03LM por último: o three.js e o GLB custam segundos de fio principal nesta
+  // máquina, e durante a abertura isso congelava o nome girando
+  setTimeout(subirAnel, ESPERA_PELO_ANEL);
   setTimeout(conferirAbertura, 1400); // com a entrada já terminada, o relato é o que se vê
 }
 

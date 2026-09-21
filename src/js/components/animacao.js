@@ -46,8 +46,20 @@ const INICIO = {
  * documento — e mandava sair quem ainda estava à vista. Vale para a vitrine e para a
  * abertura, que também tem palco preso. O gatilho passa a ser a seção inteira.
  */
-const PALCO_PRESO = '[data-vitrine], [data-abertura]';
+const PALCO_PRESO = '[data-vitrine], [data-abertura], [data-colecao]';
 const gatilhoDe = (alvo) => alvo.closest(PALCO_PRESO) ?? alvo;
+
+/**
+ * No pé da página não existe rolagem que traga o elemento até "top 82%": o documento
+ * acaba antes, e o último atalho do rodapé e a linha do © ficavam invisíveis para
+ * sempre. Ali o começo vai preso (clamp) ao que a página tem de rolagem. Só ali: no
+ * topo, o clamp prenderia o começo em zero, e a página parada em zero contaria como
+ * "antes do começo" — a abertura sairia em vez de entrar.
+ */
+const comecoDe = (alvo) => {
+  const inicio = INICIO[alvo.dataset.anim] ?? INICIO.padrao;
+  return alvo.closest('.rodape') ? `clamp(${inicio})` : inicio;
+};
 
 /** Dentro de um cartão nada anima sozinho: o cartão inteiro é que entra. */
 const DENTRO_DE_CARTAO = '.modelo, [class*="cartao"]';
@@ -58,6 +70,11 @@ function marcar(raiz) {
       if (alvo.dataset.anim) continue;
       if (alvo.closest(DENTRO_DE_CARTAO) && !alvo.matches(DENTRO_DE_CARTAO)) continue;
       if (alvo.closest('[data-cabecalho], [data-menu], [data-preloader], dialog')) continue;
+      // a arte do rodapé ocupa a largura inteira: crescer 4% na entrada empurraria a
+      // página para o lado
+      if (alvo.closest('.rodape__arte')) continue;
+      // foto dentro de foto ganharia a escala duas vezes (a figure e a img dentro dela)
+      if (tipo === 'foto' && alvo.parentElement?.closest('[data-anim="foto"]')) continue;
       alvo.dataset.anim = tipo;
     }
   }
@@ -133,7 +150,16 @@ function dividirEmLetras(titulo, { embaralhar = true } = {}) {
 let segurando = false;
 const segurados = [];
 
+/**
+ * Enquanto a página é remedida, ninguém entra nem sai. O refresh do ScrollTrigger
+ * reavalia todos os gatilhos e dispara saída e entrada em quem já estava na tela — e
+ * isso, no meio da chegada do título da abertura, reiniciava a contagem das letras que
+ * ainda não tinham tido a vez: começava certo, travava, e o resto aparecia em bloco.
+ */
+let remedindo = false;
+
 const entrar = (alvo, de) => {
+  if (remedindo) return;
   if (segurando) {
     // vale para qualquer caminho, inclusive o onEnter que o ScrollTrigger dispara ao
     // remedir a página: sem isto, a primeira dobra animava atrás da cortina e aparecia
@@ -146,6 +172,7 @@ const entrar = (alvo, de) => {
 };
 
 const sair = (alvo, para) => {
+  if (remedindo) return;
   delete alvo.dataset.dentro;
   alvo.dataset.de = para;
 };
@@ -167,6 +194,7 @@ export function prepararAnimacao(raiz = document) {
     if (alvo.dataset.anim === 'palavras') dividirEmPalavras(alvo);
     if (alvo.dataset.anim === 'letras') dividirEmLetras(alvo);
     if (alvo.dataset.anim === 'giro') dividirEmLetras(alvo, { embaralhar: false });
+    if (alvo.dataset.anim === 'onda') dividirEmLetras(alvo, { embaralhar: false });
   }
   return alvos;
 }
@@ -208,7 +236,7 @@ export function montarAnimacao(raiz = document, { segurar = false } = {}) {
   for (const alvo of alvos) {
     const gatilho = ScrollTrigger.create({
       trigger: gatilhoDe(alvo),
-      start: INICIO[alvo.dataset.anim] ?? INICIO.padrao,
+      start: comecoDe(alvo),
       end: 'bottom 18%',
       onEnter: () => entrar(alvo, 'baixo'),
       onEnterBack: () => entrar(alvo, 'cima'),
@@ -221,7 +249,15 @@ export function montarAnimacao(raiz = document, { segurar = false } = {}) {
   }
 }
 
-/** A página mudou de altura (cartões novos, fontes): os gatilhos remedem. */
+/** A página mudou de altura (cartões, fontes, imagens): os gatilhos remedem. */
 export function remedirAnimacao() {
-  window.ScrollTrigger?.refresh();
+  if (!window.ScrollTrigger) return;
+  // o refresh reavalia e chama os callbacks na mesma linha, então o pino sai aqui
+  // mesmo: por quadro, uma aba fora de foco o deixaria preso e nada mais entraria
+  remedindo = true; // medir a página não pode mexer no que já está acontecendo nela
+  try {
+    window.ScrollTrigger.refresh();
+  } finally {
+    remedindo = false;
+  }
 }

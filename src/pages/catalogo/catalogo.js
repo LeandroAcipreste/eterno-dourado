@@ -48,11 +48,13 @@ export async function init({ container }) {
     alvos.adicionais.textContent = `Em qualquer modelo: forro de aço inoxidável + ${dinheiro(ADICIONAL_FORRO)} por aliança; pedra acrescentada + ${dinheiro(ADICIONAL_PEDRA)} cada.`;
   }
 
-  const filtro = { largura: 'todas', busca: '' };
+  // a vitrine abre nos 4 mm, com o botão aceso: a pessoa vê modelos de cara e troca
+  // a largura nos botões. Clicar na largura acesa desmarca e esvazia a faixa.
+  const LARGURA_INICIAL = '4';
+  const filtro = { largura: LARGURA_INICIAL, busca: '' };
 
-  // fora da tabela não há largura escrita: esses modelos aparecem só em "Todas"
   const larguras = [...new Set(modelos.map((m) => m.larguraMm).filter((l) => l != null))].sort((a, b) => a - b);
-  montarPilulas(el('[data-filtro="largura"]', raiz), [['todas', 'Todas'], ...larguras.map((l) => [String(l), milimetro(l)])]);
+  montarPilulas(el('[data-filtro="largura"]', raiz), larguras.map((l) => [String(l), milimetro(l)]), LARGURA_INICIAL);
 
   const topoDaVitrine = () => alvos.vitrine.getBoundingClientRect().top + window.scrollY;
 
@@ -64,14 +66,13 @@ export async function init({ container }) {
   const acompanhar = () => alvos.vitrine.style.setProperty('--p', progressoDaSecao(alvos.vitrine).toFixed(4));
 
   const desenhar = () => {
-    const lista = filtrar(modelos, filtro);
+    const lista = filtro.largura || filtro.busca.trim() ? filtrar(modelos, filtro) : [];
     const visiveis = lista.slice(0, MOSTRAR);
     alvos.trilho.replaceChildren(...visiveis.map(criarCartao));
-    alvos.vazio.hidden = lista.length > 0;
-    alvos.contagem.textContent =
-      lista.length > MOSTRAR
-        ? `${MOSTRAR} de ${lista.length} modelos · filtre pela largura ou busque o código`
-        : `${lista.length} de ${modelos.length} modelos`;
+    alvos.vazio.hidden = lista.length > 0 || (!filtro.largura && !filtro.busca.trim());
+    if (lista.length === 0) alvos.contagem.textContent = '';
+    else if (lista.length > MOSTRAR) alvos.contagem.textContent = `${MOSTRAR} de ${lista.length} modelos nesta largura`;
+    else alvos.contagem.textContent = `${lista.length} de ${modelos.length} modelos`;
     medir();
     montarAnimacao(alvos.trilho); // os cartões novos também entram e saem
     remedirAnimacao();
@@ -84,13 +85,28 @@ export async function init({ container }) {
     const pilula = evento.target.closest('[data-valor]');
     if (!pilula) return;
     const grupo = pilula.closest('[data-filtro]');
-    filtro[grupo.dataset.filtro] = pilula.dataset.valor;
-    for (const outra of grupo.querySelectorAll('[data-valor]')) outra.setAttribute('aria-pressed', String(outra === pilula));
+    // clicar de novo na largura escolhida desmarca: sem o botão "Todas", é assim que
+    // a pessoa volta atrás
+    const jaEscolhida = pilula.getAttribute('aria-pressed') === 'true';
+    filtro[grupo.dataset.filtro] = jaEscolhida ? null : pilula.dataset.valor;
+    for (const outra of grupo.querySelectorAll('[data-valor]')) {
+      outra.setAttribute('aria-pressed', String(!jaEscolhida && outra === pilula));
+    }
     desenhar();
   };
 
+  /**
+   * Buscar manda na largura: quem digita um código quer aquele modelo, não o cruzamento
+   * com o filtro. Com 4 mm aceso, procurar um código de 3 mm não devolvia nada. Ao
+   * limpar a busca, a vitrine volta para a largura de abertura.
+   */
   const aoBuscar = debounce((evento) => {
     filtro.busca = evento.target.value;
+    const procurando = filtro.busca.trim() !== '';
+    filtro.largura = procurando ? null : LARGURA_INICIAL;
+    for (const pilula of raiz.querySelectorAll('[data-filtro="largura"] [data-valor]')) {
+      pilula.setAttribute('aria-pressed', String(!procurando && pilula.dataset.valor === LARGURA_INICIAL));
+    }
     desenhar();
   }, 160);
 
@@ -127,11 +143,17 @@ export async function init({ container }) {
   };
 }
 
-function montarPilulas(grupo, opcoes) {
+function montarPilulas(grupo, opcoes, escolhido) {
   if (!grupo) return;
   grupo.replaceChildren(
-    ...opcoes.map(([valor, texto], indice) =>
-      criar('button', { class: 'pilula', type: 'button', texto, dataset: { valor }, 'aria-pressed': String(indice === 0) }),
+    ...opcoes.map(([valor, texto]) =>
+      criar('button', {
+        class: 'pilula',
+        type: 'button',
+        texto,
+        dataset: { valor },
+        'aria-pressed': String(valor === escolhido),
+      }),
     ),
   );
 }
@@ -139,7 +161,7 @@ function montarPilulas(grupo, opcoes) {
 function filtrar(modelos, filtro) {
   const palavras = achatar(filtro.busca).trim().split(/\s+/).filter(Boolean);
   return modelos.filter((m) => {
-    if (filtro.largura !== 'todas' && String(m.larguraMm) !== filtro.largura) return false;
+    if (filtro.largura && String(m.larguraMm) !== filtro.largura) return false;
     if (palavras.length === 0) return true;
     const alvo = achatar([m.code, m.descricaoTabela].filter(Boolean).join(' '));
     return palavras.every((p) => alvo.includes(p));

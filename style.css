@@ -290,7 +290,7 @@
     --curva-longa: cubic-bezier(0.16, 1, 0.3, 1); /* começa rápido e assenta devagar: títulos e fotos */
     --dur-rapida: 160ms;
     --dur-media: 320ms;
-    --dur-entrada: 1100ms; /* entrada e saída dos elementos: sem pressa */
+    --dur-entrada: 700ms; /* entrada e saída dos elementos fora da abertura */
 
     /* --- camadas ----------------------------------------------------------- */
     --z-cabecalho: 50;
@@ -672,6 +672,47 @@
     scale: 1;
   }
 
+  /* Onda: as letras sobem uma atrás da outra, rente. É mais rápido e mais discreto
+     que o giro da abertura — serve para título de dobra no meio da página. */
+  [data-anim="onda"] .letras-palavra {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  [data-anim="onda"] .letra {
+    display: inline-block;
+    opacity: 0;
+    translate: 0 0.5em;
+    transition:
+      opacity 320ms var(--curva),
+      translate 520ms var(--curva-longa);
+    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 26ms);
+  }
+
+  [data-anim="onda"][data-de="cima"] .letra {
+    translate: 0 -0.5em;
+  }
+
+  [data-anim="onda"][data-dentro] .letra {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  /* Revelação: o texto é descoberto da esquerda para a direita, sem dividir nada. O
+     recorte não muda o tamanho do elemento, então o gatilho de rolagem continua certo. */
+  [data-anim="revelar"] {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 760ms var(--curva-longa);
+  }
+
+  [data-anim="revelar"][data-de="cima"] {
+    clip-path: inset(0 0 0 100%);
+  }
+
+  [data-anim="revelar"][data-dentro] {
+    clip-path: inset(0 0 0 0);
+  }
+
   /* Abertura: cada letra chega girando como uma aliança — uma volta e meia em torno do
      próprio eixo, uma depois da outra. A perspectiva no título é o que faz o giro ter
      profundidade em vez de parecer um achatamento. */
@@ -694,20 +735,27 @@
     transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 95ms);
   }
 
+  /* Voltando pelo scroll, a letra dá mais uma volta inteira e para de frente: uma volta
+     cheia (-360°) começa e termina na mesma face, então não se vê o espelhado no meio do
+     caminho — só o giro. Na chegada o deslocamento também zera, senão a letra voltava
+     0,4em abaixo da linha e ficava lá. */
   [data-anim="giro"][data-de="cima"] .letra {
-    rotate: y 540deg;
+    rotate: y -360deg;
+    translate: 0 0.4em;
   }
 
+  /* depois das duas de cima, para vencer as duas ao mesmo tempo */
   [data-anim="giro"][data-dentro] .letra {
     opacity: 1;
     rotate: y 0deg;
+    translate: 0 0;
   }
 
+  /* Menos movimento é menos tempo, não menos giro: a volta é o efeito. */
   @media (prefers-reduced-motion: reduce) {
-    [data-anim="giro"] .letra,
-    [data-anim="giro"][data-de="cima"] .letra {
-      rotate: y -160deg;
-      transition-duration: 700ms;
+    [data-anim="giro"] .letra {
+      rotate: y -360deg;
+      transition-duration: 520ms, 900ms;
     }
   }
 
@@ -725,9 +773,9 @@
     opacity: 0;
     translate: 0 0.12em;
     transition:
-      opacity 700ms var(--curva),
-      translate 820ms var(--curva-longa);
-    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 42ms);
+      opacity 420ms var(--curva),
+      translate 520ms var(--curva-longa);
+    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 24ms);
   }
 
   [data-anim="letras"][data-de="cima"] .letra {
@@ -739,25 +787,33 @@
     translate: 0 0;
   }
 
-  /* títulos: cada palavra sobe de dentro da própria máscara, uma depois da outra.
-     O padding de baixo, compensado na margem, deixa os descendentes (ç, g, p) inteiros. */
+  /* Títulos: cada palavra sobe de dentro da própria máscara, uma depois da outra.
+     Duas medidas que precisam bater, senão sobra letra à mostra:
+
+     A máscara (--folga) tem que caber a letra INTEIRA — o til e o acento em cima, o
+     ç e o g embaixo. A margem negativa devolve o que a folga tomou, então o texto
+     continua no mesmo lugar da página.
+
+     A viagem é de uma altura de palavra MAIS essa folga: o deslocamento é relativo ao
+     próprio span, e 100% dele para na borda do texto, não na borda da máscara. */
   [data-anim=palavras] .palavra {
+    --folga: 0.3em;
     display: inline-block;
     overflow: clip;
-    padding-bottom: 0.14em;
-    margin-bottom: -0.14em;
+    padding: var(--folga) 0.08em;
+    margin: calc(var(--folga) * -1) -0.08em;
     vertical-align: top;
   }
 
   [data-anim=palavras] .palavra > span {
     display: inline-block;
-    translate: 0 110%;
-    transition: translate 1300ms var(--curva-longa);
-    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 110ms);
+    translate: 0 calc(100% + var(--folga));
+    transition: translate 850ms var(--curva-longa);
+    transition-delay: calc(var(--d, 0) * 1ms + var(--i, 0) * 65ms);
   }
 
   [data-anim=palavras][data-de=cima] .palavra > span {
-    translate: 0 -110%;
+    translate: 0 calc(-100% - var(--folga));
   }
 
   [data-anim=palavras][data-dentro] .palavra > span {
@@ -784,10 +840,10 @@
       translate: 0 0;
     }
 
-    [data-anim=palavras] .palavra > span,
-    [data-anim=palavras][data-de=cima] .palavra > span {
-      translate: 0 40%;
-      transition-duration: 700ms;
+    /* Aqui a distância NÃO encurta: 40% deixava a palavra meio à mostra dentro da
+       máscara, que é o contrário de estar escondida. O que encurta é o tempo. */
+    [data-anim=palavras] .palavra > span {
+      transition-duration: 620ms;
     }
   }
 
@@ -1314,14 +1370,76 @@
     color: var(--claro-suave);
   }
 
+  /* ---- página de contato ------------------------------------------------------ */
+
+  /* /obrigado: a parada de um segundo entre o clique e o WhatsApp. É uma página do
+     próprio site, e é ela que permite medir o contato. */
+  .obrigado {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: var(--e-5);
+    min-height: 100svh;
+    padding: var(--e-8) 20px;
+    text-align: center;
+  }
+
+  .obrigado__titulo {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .obrigado__texto {
+    max-width: 46ch;
+    color: var(--claro-suave);
+  }
+
+  .obrigado__texto a {
+    color: var(--ouro);
+    text-underline-offset: 3px;
+  }
+
   /* ---- rodapé ---------------------------------------------------------------- */
 
   /* Rodapé (pág. 8): fundo noite, marca, atalhos e atendimento. */
 
+  /* A arte da marca abre o rodapé: ela é uma composição fechada — o logo no centro,
+     com ar em cima e embaixo —, então aparece inteira. Recortar a altura cortava o
+     "Alianças" ao meio. As quatro bordas se dissolvem no azul da noite pela máscara:
+     assim a foto clara flutua no escuro, sem nenhuma emenda reta. */
   .rodape {
-    padding-block: var(--e-16) var(--e-8);
+    overflow: hidden; /* nada do rodapé empurra a página para o lado */
+    padding-bottom: var(--e-10);
     background: var(--noite);
     color: var(--claro-suave);
+  }
+
+  .rodape__arte {
+    margin: 0 0 var(--e-12);
+  }
+
+  .rodape__arte img {
+    width: 100%;
+    height: auto;
+    /* a máscara lê o alfa: o preto guarda, o transparente apaga. O trecho cheio vai
+       até os 86%, abaixo do logo, para nenhuma letra da arte entrar na dissolvência. */
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 15%, #000 86%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+  }
+
+  /* No celular a arte inteira vira um filete de 145px e o logo não se lê. Ali ela ganha
+     altura e o recorte vai pelas laterais — o logo ocupa o meio e fica todo à vista. */
+  @media (max-width: 767px) {
+    .rodape__arte img {
+      height: clamp(220px, 62vw, 300px);
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   .rodape__grade {
@@ -1341,13 +1459,29 @@
     align-items: center;
   }
 
+  .rodape__marca p {
+    max-width: 32ch;
+    color: var(--claro-suave);
+  }
+
+  /* rótulo de coluna no ouro, com o fio que o ateliê usa em toda etiqueta */
   .rodape__titulo {
-    margin-bottom: var(--e-3);
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    margin-bottom: var(--e-5);
+    color: var(--ouro);
+    font-family: var(--fonte-mono);
+    font-size: var(--t-pequeno);
+    font-weight: 400;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--claro);
+  }
+
+  .rodape__titulo::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    margin-top: var(--e-3);
+    background: linear-gradient(to right, var(--ouro), transparent);
   }
 
   .rodape__lista {
@@ -1358,6 +1492,8 @@
     list-style: none;
   }
 
+  /* O fio dourado do hover nasce debaixo do texto, não do fundo da caixa: a caixa tem
+     44px para o dedo alcançar, e o fio seguiria longe da palavra. */
   .rodape__lista a,
   .rodape__lista button {
     display: inline-flex;
@@ -1366,28 +1502,41 @@
     color: var(--claro-suave);
     font-size: 1rem;
     text-decoration: none;
-    transition: color var(--dur-rapida) var(--curva);
+    background-image: linear-gradient(var(--ouro), var(--ouro));
+    background-repeat: no-repeat;
+    background-position: 0 calc(50% + 0.85em);
+    background-size: 0 1px;
+    transition:
+      color var(--dur-rapida) var(--curva),
+      background-size 320ms var(--curva);
   }
 
   .rodape__lista a:hover,
-  .rodape__lista button:hover {
+  .rodape__lista button:hover,
+  .rodape__lista a:focus-visible,
+  .rodape__lista button:focus-visible {
     color: var(--champagne);
+    background-size: 100% 1px;
   }
 
   .rodape__base {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--e-2) var(--e-6);
     margin-top: var(--e-12);
     padding-top: var(--e-6);
     border-top: 1px solid var(--linha-escura);
+    color: var(--claro-suave);
+    font-family: var(--fonte-mono);
     font-size: var(--t-pequeno);
+    letter-spacing: 0.08em;
   }
 
   @media (min-width: 768px) {
     .rodape__grade {
-      grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
+      gap: var(--e-12);
     }
   }
 }

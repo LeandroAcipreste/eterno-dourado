@@ -99,7 +99,7 @@
 
           <section class="colecao" data-colecao aria-labelledby="colecao-titulo">
             <div class="colecao__palco">
-              <h2 class="colecao__titulo" id="colecao-titulo">Por que comprar com a Eterno Dourado</h2>
+              <h2 class="colecao__titulo" id="colecao-titulo" data-anim="palavras">Por que ter as alianças da Eterno Dourado na sua loja?</h2>
               <ul class="colecao__galeria" role="list">
                 <li class="colecao__foto">
                   <img
@@ -253,8 +253,8 @@
               </figure>
               <div class="prova__bloco">
                 <p class="rotulo prova__numero">01</p>
-                <h2 class="prova__titulo">Desde 2000 em Salvador</h2>
-                <p class="prova__texto">Lojistas e revendedores atendidos pela mesma família.</p>
+                <h2 class="prova__titulo">Acabamento e preço</h2>
+                <p class="prova__texto">Você vai proporcionar para os seus clientes as melhores alianças do mercado, com melhor acabamento e preço para esse momento tão único na vida deles.</p>
               </div>
             </article>
 
@@ -273,8 +273,8 @@
               </figure>
               <div class="prova__bloco">
                 <p class="rotulo prova__numero">02</p>
-                <h2 class="prova__titulo">Preço claro por aliança</h2>
-                <p class="prova__texto">Você vê o valor de cada modelo antes de pedir.</p>
+                <h2 class="prova__titulo">Liga ourosint</h2>
+                <p class="prova__texto">Estamos no mercado de alianças com liga ourosint há 10 anos.</p>
               </div>
             </article>
 
@@ -293,8 +293,8 @@
               </figure>
               <div class="prova__bloco">
                 <p class="rotulo prova__numero">03</p>
-                <h2 class="prova__titulo">Atendimento pelo WhatsApp</h2>
-                <p class="prova__texto">Você fala direto com quem conhece cada modelo.</p>
+                <h2 class="prova__titulo">Direto da fábrica</h2>
+                <p class="prova__texto">As alianças saem direto da fábrica para sua loja.</p>
               </div>
             </article>
           </section>
@@ -305,8 +305,10 @@
           <section class="catalogo" data-catalogo aria-labelledby="catalogo-titulo">
             <div class="catalogo__cabeca container">
               <p class="rotulo" data-anim="entra">Catálogo de atacado</p>
-              <h2 class="catalogo__titulo" id="catalogo-titulo">Escolha o modelo e veja cada detalhe</h2>
-              <p class="catalogo__contagem" data-catalogo-contagem aria-live="polite">80 modelos</p>
+              <h2 class="catalogo__titulo" id="catalogo-titulo" data-anim="onda">Selecione nos botões os milímetros das alianças e conheça os modelos</h2>
+              <p class="catalogo__regua">é interessante ter uma régua em mãos para ter a real noção da largura</p>
+              <p class="catalogo__subtitulo">São 80 modelos no catálogo, além dos modelos existe a possibilidade de personalizar um modelo exclusivo para sua loja</p>
+              <p class="catalogo__contagem" data-catalogo-contagem aria-live="polite"></p>
               <p class="catalogo__adicionais" data-catalogo-adicionais></p>
             </div>
 
@@ -338,7 +340,7 @@
             <div class="container como-comprar__grade">
               <div class="como-comprar__intro">
                 <p class="rotulo" data-anim="entra">Como comprar</p>
-                <h2 class="como-comprar__titulo" id="como-comprar-titulo">Do catálogo ao pedido em três passos</h2>
+                <h2 class="como-comprar__titulo" data-anim="revelar" id="como-comprar-titulo">Do catálogo ao pedido em três passos</h2>
                 <div class="como-comprar__acoes" data-anim="sobe">
                   <button class="btn btn--ouro" type="button" data-entrar>Entrar na área do cliente</button>
                   <a class="btn btn--texto" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Ainda não é cliente? Fale comigo</a>
@@ -374,7 +376,7 @@
             <div class="container">
               <div class="legado__cabeca">
                 <p class="rotulo" data-anim="entra">Nossa história</p>
-                <h2 class="legado__titulo" id="legado-titulo">Duas gerações na mesma relação de confiança</h2>
+                <h2 class="legado__titulo" data-anim="onda" id="legado-titulo">Duas gerações na mesma relação de confiança</h2>
               </div>
 
               <article class="relato" data-anim="cartao">
@@ -417,13 +419,65 @@
           <section class="chamada" aria-labelledby="chamada-titulo">
             <div class="container">
               <div class="chamada__faixa" data-anim="cartao">
-                <h2 class="chamada__titulo" id="chamada-titulo">Tenha as melhores alianças do mercado, com o melhor acabamento e preço.</h2>
+                <h2 class="chamada__titulo" data-anim="revelar" id="chamada-titulo">Tenha as melhores alianças do mercado, com o melhor acabamento e preço.</h2>
                 <a class="btn btn--ouro" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero comprar alianças no atacado.">Fale comigo no WhatsApp</a>
               </div>
             </div>
           </section>
         </section>
     </main>
+
+    <!-- Rodapé: fecha a página com a marca, as seções e o contato -->
+    <footer class="rodape">
+      <figure class="rodape__arte">
+        <img
+          src="/assets/marca/rodape-1600.webp"
+          srcset="/assets/marca/rodape-900.webp 900w, /assets/marca/rodape-1600.webp 1600w"
+          sizes="100vw"
+          width="2056"
+          height="765"
+          alt="Alianças Eterno Dourado"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <div class="container">
+        <div class="rodape__grade">
+          <div class="rodape__marca">
+            <a class="marca" href="#home" aria-label="Eterno Dourado, início">
+              <span class="marca__eterno">Eterno</span>
+              <span class="marca__dourado">Dourado</span>
+            </a>
+            <p>Atacado de alianças em Salvador desde 2000.</p>
+          </div>
+
+          <div>
+            <p class="rodape__titulo">Seções</p>
+            <ul class="rodape__lista">
+              <li><a href="#colecao">Coleção</a></li>
+              <li><a href="#catalogo">Catálogo</a></li>
+              <li><a href="#como-comprar">Como comprar</a></li>
+              <li><a href="#nossa-historia">Nossa história</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="rodape__titulo">Contato</p>
+            <ul class="rodape__lista">
+              <li>
+                <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero comprar alianças no atacado.">WhatsApp (71) 99183-8595</a>
+              </li>
+              <li><button type="button" data-entrar>Área do cliente</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rodape__base">
+          <p>© 2026 Eterno Dourado</p>
+        </div>
+      </div>
+    </footer>
 
     <!-- Abertura da visita: o nome girando enquanto a primeira dobra se prepara -->
     <div class="preloader" data-preloader>

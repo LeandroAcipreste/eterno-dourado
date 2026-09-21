@@ -118,6 +118,42 @@ export default async function testarSite(ctx) {
     await esperar(400);
   });
 
+  await passo(ctx, 'os títulos entram escondidos e se escrevem', async () => {
+    // CSS anima, GSAP dispara: antes da dobra entrar o título está escondido; com ela
+    // na tela, e dado o tempo da transição, ele está inteiro no lugar
+    for (const secao of ['colecao', 'catalogo', 'nossa-historia']) {
+      // uma parte só está escrita quando está opaca E no lugar: a máscara esconde pelo
+      // deslocamento, então medir opacidade sozinha diria "pronta" com a letra fora dela
+      const contar = `(() => {
+        const titulo = document.querySelector('#${secao} h2');
+        const partes = [...titulo.querySelectorAll('.letra, .palavra > span')];
+        const prontas = partes.filter((p) => {
+          const e = getComputedStyle(p);
+          const desloca = e.translate === 'none' ? 0 : parseFloat(e.translate.split(' ')[1] || '0');
+          return Number(e.opacity) > 0.9 && Math.abs(desloca) < 5;
+        }).length;
+        return prontas + '/' + partes.length;
+      })()`;
+      const irPara = (fracao) => `(() => {
+        const alvo = document.querySelector('#${secao}');
+        const topo = alvo.getBoundingClientRect().top + scrollY;
+        scrollTo({ top: topo - innerHeight * ${fracao}, behavior: 'instant' });
+      })()`;
+
+      await d.ev(irPara(1.6)); // bem antes da dobra
+      await esperar(900);
+      const antes = await d.ev(contar);
+      exigir(antes.startsWith('0/'), `${secao}: o título já estava escrito antes de entrar (${antes})`);
+
+      await d.ev(irPara(0.2)); // dobra na tela
+      await esperar(2200); // a transição do CSS é de 850 ms mais a escada dos atrasos
+      const depois = await d.ev(contar);
+      const [prontas, total] = depois.split('/');
+      exigir(prontas === total, `${secao}: o título não terminou de se escrever (${depois})`);
+    }
+    await d.ev('scrollTo({ top: 0, behavior: "instant" })');
+    await esperar(400);
+  });
   await passo(ctx, 'menu leva a qualquer seção', async () => {
     exigir(await d.esperarQue(CABECALHO_NO_LUGAR, 20000), 'o cabeçalho não desceu');
     await d.clicar('document.querySelector("[data-menu-abrir]")');
@@ -141,11 +177,23 @@ export default async function testarSite(ctx) {
     exigir(await d.ev(`!${LOGIN}.open`), 'X não fechou');
   });
 
-  await passo(ctx, 'filtro de largura', async () => {
-    await d.clicar(pilula('4 mm'));
+  await passo(ctx, 'a vitrine abre nos 4 mm e o filtro troca a largura', async () => {
+    // abre já com modelos de 4 mm e o botão aceso
     const nomes = await d.ev('[...document.querySelectorAll(".modelo__nome")].map((e) => e.textContent)');
-    exigir(nomes.length > 0 && nomes.every((n) => n.includes(' 4mm')), `cartões fora do filtro: ${nomes.slice(0, 3)}`);
-    await d.clicar(pilula('Todas'));
+    exigir(nomes.length > 0 && nomes.every((n) => n.includes(' 4mm')), `a vitrine não abriu nos 4 mm: ${nomes.slice(0, 3)}`);
+    exigir(await d.ev(`${pilula('4 mm')}.getAttribute("aria-pressed") === "true"`), 'o botão de 4 mm não está aceso');
+
+    await d.clicar(pilula('6 mm'));
+    await esperar(600);
+    const seis = await d.ev('[...document.querySelectorAll(".modelo__nome")].map((e) => e.textContent)');
+    exigir(seis.length > 0 && seis.every((n) => n.includes(' 6mm')), `trocar a largura não filtrou: ${seis.slice(0, 3)}`);
+
+    // clicar na largura acesa desmarca e esvazia
+    await d.clicar(pilula('6 mm'));
+    await esperar(600);
+    exigir((await d.ev('document.querySelectorAll(".modelo").length')) === 0, 'clicar de novo na largura não desmarcou');
+    await d.clicar(pilula('4 mm'));
+    await esperar(600);
   });
 
   await passo(ctx, 'busca', async () => {
@@ -163,6 +211,9 @@ export default async function testarSite(ctx) {
   });
 
   await passo(ctx, 'vitrine corre em x', async () => {
+    // a faixa só tem percurso com modelos na tela: escolhe uma largura cheia
+    await d.clicar(pilula('6 mm'));
+    await esperar(700);
     const percurso = await d.ev(`(() => {
       const vitrine = document.querySelector("[data-vitrine]");
       const topo = vitrine.getBoundingClientRect().top + scrollY;
@@ -210,6 +261,49 @@ export default async function testarSite(ctx) {
     exigir(medidas.quadros.length === 1, `quadros de foto diferentes: ${medidas.quadros.join(', ')}`);
     exigir(medidas.fotos.length === 1, `fotos de tamanhos diferentes: ${medidas.fotos.join(', ')}`);
   });
+
+  await passo(ctx, 'no pé da página nada fica invisível', async () => {
+    // o que fica no fim do documento não tem rolagem para alcançar o gatilho: sem o
+    // clamp, o último atalho do rodapé e a linha do © nunca apareciam
+    await d.ev('scrollTo({ top: document.body.scrollHeight, behavior: "instant" })');
+    await esperar(1800);
+    const sumidos = await d.ev(`[...document.querySelectorAll('.rodape [data-anim]')]
+      .filter((e) => Number(getComputedStyle(e).opacity) < 0.9)
+      .map((e) => e.textContent.trim().slice(0, 28))`);
+    exigir(sumidos.length === 0, `no rodapé ficou invisível: ${sumidos.join(' · ')}`);
+  });
+
+  await passo(ctx, 'voltando à abertura, a letra dá mais uma volta', async () => {
+    // o ângulo vem de getComputedStyle: uma matriz não serviria, porque uma volta
+    // inteira e ângulo nenhum dão a mesma matriz
+    const angulo = `(() => {
+      const letra = document.querySelector('#home h1 .letra');
+      const r = getComputedStyle(letra).rotate;
+      const grau = /(-?[\\d.]+)deg/.exec(r);
+      return grau ? Math.round(Number(grau[1])) : 0;
+    })()`;
+    const deslocamento = `(() => {
+      const letra = document.querySelector('#home h1 .letra');
+      const t = getComputedStyle(letra).translate;
+      return t === 'none' ? 0 : Math.round(parseFloat(t.split(' ')[1] || '0'));
+    })()`;
+
+    await d.ev('scrollTo({ top: innerHeight * 2.2, behavior: "instant" })'); // sai por cima
+    await esperar(1400);
+    const fora = await d.ev(angulo);
+    exigir(Math.abs(fora) >= 300, `fora da tela a letra não está com uma volta guardada (${fora}°)`);
+
+    await d.ev('scrollTo({ top: 0, behavior: "instant" })'); // volta
+    await esperar(900); // no meio da volta: a letra só parte depois do atraso dela
+    const meio = await d.ev(angulo);
+    exigir(Math.abs(meio) > 5 && Math.abs(meio) < Math.abs(fora), `a letra não girou na volta (${fora}° → ${meio}°)`);
+
+    await esperar(2600);
+    const parada = await d.ev(angulo);
+    const altura = await d.ev(deslocamento);
+    exigir(parada === 0, `a letra parou torta (${parada}°)`);
+    exigir(altura === 0, `a letra voltou fora da linha (${altura}px abaixo)`);
+  });
   await d.fechar();
 
   // a abertura da visita é a única aba que não pula o preloader
@@ -220,6 +314,34 @@ export default async function testarSite(ctx) {
     exigir(roda === 'preloader-girar', `a roda do nome não está girando (${roda})`);
     exigir(await a.esperarQue('!document.querySelector("[data-preloader]")', 16000), 'a abertura não saiu depois dos 8 s');
     exigir(await a.esperarQue('document.querySelector("[data-cortina]").dataset.estado === "parada"', 12000), 'a cortina não revelou a página');
+  });
+
+  await passo(ctx, 'o título da abertura chega letra a letra', async () => {
+    // A falha que isto pega: alguma coisa mexer no data-anim do título no meio da
+    // chegada. As regras do giro param de valer e toda letra que ainda não teve a vez
+    // perde o opacity: 0 de uma vez — começa certo, trava, e aparece tudo junto.
+    // Contar o salto de letras por quadro não serve de régua: num quadro longo (o 3D
+    // carregando) várias vencem o atraso ao mesmo tempo sem nada estar errado. A régua
+    // é o estado do título: ele não pode piscar no meio da entrada.
+    const relato = await a.ev(`(() => new Promise((ok) => {
+      const titulo = document.querySelector('#home h1');
+      const letras = [...titulo.querySelectorAll('.letra')];
+      const mexidas = [];
+      new MutationObserver((lista) => {
+        for (const m of lista) {
+          const valor = titulo.getAttribute(m.attributeName);
+          mexidas.push(m.attributeName + (valor === null ? ' saiu' : '=' + valor));
+        }
+      }).observe(titulo, { attributes: true, attributeFilter: ['data-anim', 'data-dentro'] });
+      setTimeout(() => {
+        const prontas = letras.filter((l) => Number(getComputedStyle(l).opacity) > 0.9).length;
+        ok(prontas + '/' + letras.length + ' ' + (mexidas.join(', ') || 'nada mexeu'));
+      }, 5200);
+    }))()`);
+    const [chegada, ...mexidas] = relato.split(' ');
+    const [prontas, total] = chegada.split('/');
+    exigir(prontas === total, `o título da abertura não chegou inteiro (${chegada})`);
+    exigir(mexidas.join(' ') === 'nada mexeu', `mexeram no título no meio da chegada: ${mexidas.join(' ')}`);
   });
   await a.fechar();
 
@@ -249,7 +371,7 @@ export default async function testarSite(ctx) {
     await esperar(700);
     await m.clicar(`document.querySelector('[data-menu] [data-pagina="catalogo"]')`);
     exigir(await m.esperarQue(chegouNoAlto('catalogo'), 14000), 'o menu não levou ao catálogo');
-    exigir(await m.esperarQue('document.querySelectorAll(".modelo").length > 0', 15000), 'os cartões não apareceram');
+    exigir(await m.esperarQue('document.querySelectorAll("#catalogo .pilula").length > 0', 15000), 'os cartões não apareceram');
   });
   await m.fechar();
 }
