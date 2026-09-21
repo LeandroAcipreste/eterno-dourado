@@ -157,12 +157,6 @@ async function iniciar() {
   // âncora na URL podem jogar a pessoa no meio da página enquanto o nome ainda gira
   history.scrollRestoration = 'manual';
   irParaAbertura();
-  // o load reaplica a posição antiga; numa rede lenta, quem já rolou fica onde está
-  let mexeu = false;
-  for (const tipo of ['wheel', 'touchstart', 'keydown', 'pointerdown']) {
-    window.addEventListener(tipo, () => (mexeu = true), { once: true, passive: true });
-  }
-  window.addEventListener('load', () => mexeu || irParaAbertura(), { once: true });
   // voltando pelo botão Voltar, a página sai do cache já rolada
   window.addEventListener('pageshow', (evento) => {
     if (evento.persisted) irParaAbertura();

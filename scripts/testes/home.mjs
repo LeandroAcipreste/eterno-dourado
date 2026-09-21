@@ -373,5 +373,21 @@ export default async function testarSite(ctx) {
     exigir(await m.esperarQue(chegouNoAlto('catalogo'), 14000), 'o menu não levou ao catálogo');
     exigir(await m.esperarQue('document.querySelectorAll("#catalogo .pilula").length > 0', 15000), 'os cartões não apareceram');
   });
+
+  await passo(ctx, 'no celular a vitrine anda com o dedo para o lado', async () => {
+    // quem arrasta o cartão para a esquerda anda a mesma rolagem de quem sobe o dedo
+    const medir = `(() => ({ y: Math.round(scrollY), faixa: Math.round(parseFloat(getComputedStyle(document.querySelector("[data-catalogo-grade]")).translate) || 0) }))()`;
+    await m.ev(`(() => {
+      const vitrine = document.querySelector("[data-vitrine]");
+      scrollTo({ top: vitrine.getBoundingClientRect().top + scrollY + 40, behavior: "instant" });
+    })()`);
+    await esperar(500);
+    const antes = await m.ev(medir);
+    await m.arrastar('document.querySelector("[data-vitrine-palco]")', -220);
+    await esperar(900);
+    const depois = await m.ev(medir);
+    exigir(depois.y - antes.y > 150, `a página não andou com o dedo para o lado (${antes.y} → ${depois.y})`);
+    exigir(antes.faixa - depois.faixa > 150, `a faixa não andou com o dedo para o lado (${antes.faixa} → ${depois.faixa}px)`);
+  });
   await m.fechar();
 }

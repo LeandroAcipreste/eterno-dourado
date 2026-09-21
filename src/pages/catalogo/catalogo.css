@@ -83,6 +83,9 @@
   padding: 0 max(20px, calc((100vw - 1200px) / 2));
   list-style: none;
   translate: calc(var(--p, 0) * var(--distancia, 0px) * -1) 0;
+  /* o navegador cuida só do dedo para cima e para baixo; para o lado, o JS anda a
+     mesma rolagem (catalogo.js) */
+  touch-action: pan-y;
 }
 
 .vitrine__progresso {

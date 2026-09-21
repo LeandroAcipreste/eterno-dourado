@@ -123,6 +123,63 @@ export async function init({ container }) {
     window.scrollTo({ top: topoDaVitrine() + progresso * percurso, behavior: 'instant' });
   };
 
+  /**
+   * Toque: arrastar a faixa para o lado anda a mesma rolagem que arrastar para cima.
+   * A seção tem 1 px de rolagem por px de faixa, então o cartão acompanha o dedo, e os
+   * dois gestos nunca se desencontram. Só vale com a vitrine presa na tela; ao soltar,
+   * a faixa segue embalada e vai parando, como o arrasto do celular.
+   */
+  let toque = null;
+  let embalo = 0;
+
+  const faixaDaRolagem = () => {
+    const inicio = topoDaVitrine();
+    return [inicio, inicio + alvos.vitrine.offsetHeight - window.innerHeight];
+  };
+
+  const aoTocar = (evento) => {
+    cancelAnimationFrame(embalo);
+    const t = evento.touches[0];
+    toque = evento.touches.length === 1 ? { x: t.clientX, y: t.clientY, topo: window.scrollY, lado: null, ultimo: t.clientX, quando: evento.timeStamp, velocidade: 0 } : null;
+  };
+
+  const aoArrastar = (evento) => {
+    if (!toque) return;
+    const t = evento.touches[0];
+    const dx = toque.x - t.clientX;
+    const dy = toque.y - t.clientY;
+    if (toque.lado === null) {
+      if (Math.hypot(dx, dy) < 8) return;
+      const [inicio, fim] = faixaDaRolagem();
+      toque.lado = Math.abs(dx) > Math.abs(dy) && toque.topo >= inicio - 4 && toque.topo <= fim + 4;
+    }
+    if (!toque.lado) return;
+    if (evento.cancelable) evento.preventDefault();
+    const [inicio, fim] = faixaDaRolagem();
+    window.scrollTo({ top: Math.min(fim, Math.max(inicio, toque.topo + dx)), behavior: 'instant' });
+    const tempo = evento.timeStamp - toque.quando;
+    if (tempo > 0) toque.velocidade = (toque.ultimo - t.clientX) / tempo;
+    toque.ultimo = t.clientX;
+    toque.quando = evento.timeStamp;
+  };
+
+  const aoSoltar = () => {
+    const lado = toque?.lado;
+    let velocidade = toque?.velocidade ?? 0; // px por ms
+    toque = null;
+    if (!lado) return;
+    let antes = performance.now();
+    const seguir = (agora) => {
+      const [inicio, fim] = faixaDaRolagem();
+      const y = window.scrollY + velocidade * (agora - antes);
+      window.scrollTo({ top: Math.min(fim, Math.max(inicio, y)), behavior: 'instant' });
+      velocidade *= 0.95;
+      antes = agora;
+      if (Math.abs(velocidade) > 0.02 && y > inicio && y < fim) embalo = requestAnimationFrame(seguir);
+    };
+    embalo = requestAnimationFrame(seguir);
+  };
+
   const aoRedimensionar = debounce(() => {
     medir();
     acompanhar();
@@ -131,12 +188,17 @@ export async function init({ container }) {
   raiz.addEventListener('click', aoClicar);
   alvos.busca?.addEventListener('input', aoBuscar);
   alvos.trilho.addEventListener('focusin', aoFocar);
+  alvos.trilho.addEventListener('touchstart', aoTocar, { passive: true });
+  alvos.trilho.addEventListener('touchmove', aoArrastar, { passive: false });
+  alvos.trilho.addEventListener('touchend', aoSoltar);
+  alvos.trilho.addEventListener('touchcancel', aoSoltar);
   window.addEventListener('resize', aoRedimensionar);
   const pararRolagem = aCadaQuadroDeRolagem(acompanhar);
   desenhar();
 
   return () => {
     pararRolagem();
+    cancelAnimationFrame(embalo);
     aoBuscar.cancelar();
     aoRedimensionar.cancelar();
     window.removeEventListener('resize', aoRedimensionar);
