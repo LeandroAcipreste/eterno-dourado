@@ -246,6 +246,20 @@ export default async function testarSite(ctx) {
     exigir(partes.altura < 620, `o cartão não cabe na tela (${partes.altura}px)`);
   });
 
+  await passo(ctx, 'o forro marcado soma R$ 8,00 no preço', async () => {
+    const preco = `(() => {
+      const texto = [...document.querySelectorAll(".modelo:has(.modelo__forro-marcar)")].find((c) => { const r = c.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; }).querySelector(".modelo__preco").textContent;
+      return Number(texto.replace(/[^\\d,]/g, "").replace(",", "."));
+    })()`;
+    const antes = await d.ev(preco);
+    await d.clicar('[...document.querySelectorAll(".modelo:has(.modelo__forro-marcar)")].find((c) => { const r = c.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; }).querySelector(".modelo__forro")', { rolar: false });
+    const marcado = await d.ev(preco);
+    await d.clicar('[...document.querySelectorAll(".modelo:has(.modelo__forro-marcar)")].find((c) => { const r = c.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; }).querySelector(".modelo__forro")', { rolar: false });
+    const desmarcado = await d.ev(preco);
+    exigir(Math.abs(marcado - antes - 8) < 0.001, `o forro não somou R$ 8,00 (${antes} → ${marcado})`);
+    exigir(desmarcado === antes, `desmarcar não voltou ao valor da tabela (${desmarcado})`);
+  });
+
   await passo(ctx, 'toda foto do mesmo tamanho', async () => {
     const medidas = await d.ev(`(() => {
       // offset, não getBoundingClientRect: o retângulo inclui a transformação da
@@ -376,7 +390,16 @@ export default async function testarSite(ctx) {
 
   await passo(ctx, 'no celular a vitrine anda com o dedo para o lado', async () => {
     // quem arrasta o cartão para a esquerda anda a mesma rolagem de quem sobe o dedo
-    const medir = `(() => ({ y: Math.round(scrollY), faixa: Math.round(parseFloat(getComputedStyle(document.querySelector("[data-catalogo-grade]")).translate) || 0) }))()`;
+    const medir = `(() => {
+      const vitrine = document.querySelector("[data-vitrine]");
+      return {
+        y: Math.round(scrollY),
+        faixa: Math.round(parseFloat(getComputedStyle(document.querySelector("[data-catalogo-grade]")).translate) || 0),
+        p: vitrine.style.getPropertyValue("--p"),
+        topo: Math.round(vitrine.getBoundingClientRect().top + scrollY),
+      };
+    })()`;
+    await esperar(1600); // o menu leva ao catálogo deslizando (1,4 s): espera assentar
     await m.ev(`(() => {
       const vitrine = document.querySelector("[data-vitrine]");
       scrollTo({ top: vitrine.getBoundingClientRect().top + scrollY + 40, behavior: "instant" });
@@ -387,7 +410,7 @@ export default async function testarSite(ctx) {
     await esperar(900);
     const depois = await m.ev(medir);
     exigir(depois.y - antes.y > 150, `a página não andou com o dedo para o lado (${antes.y} → ${depois.y})`);
-    exigir(antes.faixa - depois.faixa > 150, `a faixa não andou com o dedo para o lado (${antes.faixa} → ${depois.faixa}px)`);
+    exigir(antes.faixa - depois.faixa > 150, `a faixa não andou com o dedo para o lado (${JSON.stringify(antes)} → ${JSON.stringify(depois)})`);
   });
   await m.fechar();
 }

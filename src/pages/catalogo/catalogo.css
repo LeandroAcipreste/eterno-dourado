@@ -209,6 +209,66 @@
 .modelo__preco--consulta {
   color: var(--ouro);
 }
+
+/* Forro no preço: a linha inteira é o alvo de toque (44px); o input invisível cobre
+   a linha e a caixa desenhada ao lado do texto mostra o estado. */
+.modelo__forro {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--claro-suave);
+  cursor: pointer;
+}
+
+.modelo__forro-marcar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.modelo__forro-caixa {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--ouro);
+  border-radius: 5px;
+  transition: background-color 180ms var(--curva);
+}
+
+.modelo__forro-caixa::after {
+  content: '';
+  width: 10px;
+  height: 5px;
+  border: solid var(--noite);
+  border-width: 0 0 2px 2px;
+  rotate: -45deg;
+  translate: 0 -1px;
+  opacity: 0;
+  transition: opacity 180ms var(--curva);
+}
+
+.modelo__forro-marcar:checked + .modelo__forro-caixa {
+  background: var(--ouro);
+}
+
+.modelo__forro-marcar:checked + .modelo__forro-caixa::after {
+  opacity: 1;
+}
+
+.modelo__forro-marcar:focus-visible + .modelo__forro-caixa {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
 .modelo__adicionais {
   font-size: 1rem;
   line-height: 1.5;
