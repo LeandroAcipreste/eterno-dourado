@@ -15,9 +15,8 @@ import { montarCortina } from './components/cortina.js';
 import { montarPreloader } from './components/preloader.js';
 import { montarRolagemSuave } from './components/rolagem-suave.js';
 import { aCadaQuadroDeRolagem } from './utils/rolagem.js';
+import { quemEstaLogado, sair } from './utils/api.js';
 
-// seções com JS próprio; as outras são só HTML e CSS
-const SECOES_COM_JS = ['home', 'colecao', 'catalogo'];
 const ESPERA_PELO_ANEL = 1200; // o 3D só começa a carregar depois que a abertura entra
 
 const areaCliente = montarAreaCliente();
@@ -43,6 +42,13 @@ async function subirAnel() {
   }
 }
 
+// sair vale de qualquer lugar: o menu do administrador tem o botão
+document.addEventListener('click', async (evento) => {
+  if (!evento.target.closest('[data-sair]')) return;
+  await sair().catch(() => {});
+  location.reload();
+});
+
 // botões de entrar existem no cabeçalho, no menu e em cada cartão criado depois
 document.addEventListener('click', (evento) => {
   if (evento.target.closest('[data-entrar]')) areaCliente.abrir();
@@ -55,23 +61,28 @@ document.addEventListener('click', (evento) => {
  */
 function ligarLinksWhatsApp(raiz) {
   for (const link of els('[data-whatsapp]', raiz)) {
-    link.href = `/obrigado?texto=${encodeURIComponent(link.dataset.whatsapp)}`;
+    link.href = `/src/pages/obrigado/obrigado.html?texto=${encodeURIComponent(link.dataset.whatsapp)}`;
     link.removeAttribute('target');
     link.removeAttribute('rel');
   }
 }
 
-/** O menu leva a uma seção com a mesma rolagem suave do resto do site. */
+/**
+ * Todo link para uma seção desta página desliza até ela, venha do menu ou de um botão
+ * no meio do conteúdo ("Abrir catálogo", "Torne-se cliente"). Pular para o conteúdo
+ * fica de fora: quem usa teclado quer chegar no ato, não assistir à viagem.
+ */
 function ligarMenu() {
   document.addEventListener('click', (evento) => {
-    const link = evento.target.closest('[data-menu] [data-pagina]');
+    const link = evento.target.closest('a[href^="#"]:not(.pular)');
     if (!link) return;
-    const destino = el(`#${link.dataset.pagina}`);
+    const secao = link.dataset.pagina ?? link.getAttribute('href').slice(1);
+    const destino = el(`#${secao}`);
     if (!destino) return;
     evento.preventDefault();
     cabecalho.fecharMenu();
     // marca na hora: esperar a rolagem chegar deixaria o menu sem resposta no clique
-    cabecalho.marcarPagina(link.dataset.pagina);
+    cabecalho.marcarPagina(secao);
     rolagem.ir(destino.getBoundingClientRect().top + window.scrollY, { suave: true });
     // sem gravar #seção na URL: recarregar a página tem que voltar para a abertura
   });
@@ -166,14 +177,15 @@ async function iniciar() {
   prepararAnimacao(document); // o texto já nasce escondido, atrás da abertura
   ligarMenu();
   acompanharSecoes();
+  // quem já entrou vê o menu da conta dele, não as cinco seções do visitante
+  quemEstaLogado().then((cliente) => cabecalho.mostrarConta(cliente));
 
-  for (const nome of SECOES_COM_JS) {
-    try {
-      const { init } = await import(`../pages/${nome}/${nome}.js`);
-      await init({ container: document, areaCliente });
-    } catch (erro) {
-      console.error(`a seção ${nome} não subiu por completo:`, erro);
-    }
+  // a página cuida das dobras dela; daqui para baixo, só o que é global
+  try {
+    const { init } = await import(`../pages/${document.body.dataset.page}/${document.body.dataset.page}.js`);
+    await init({ container: document, areaCliente });
+  } catch (erro) {
+    console.error('a página não subiu por completo:', erro);
   }
 
   rolagem.medir();

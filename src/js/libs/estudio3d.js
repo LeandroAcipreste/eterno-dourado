@@ -1,6 +1,6 @@
 /**
  * Cena de estúdio do estudo 3D aprovado
- * (assests/img/aliancas-web/modelo-03LM/individuais.html): sala com as caixas de
+ * (assets/img/aliancas-web/modelo-03LM/individuais.html): sala com as caixas de
  * luz ampliadas, ACES com exposição 1,15 e reflexo quase sem desfoque.
  * Compartilhada pela 03LM que acompanha a rolagem e pelo visualizador das
  * ferramentas de GLB.

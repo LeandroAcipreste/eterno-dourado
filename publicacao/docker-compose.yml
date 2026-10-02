@@ -1,0 +1,37 @@
+# O site no mesmo VPS do ERP e do n8n.
+#
+#   /docker/site/eterno-dourado   o clone do GitHub, que é o que o nginx serve
+#   /docker/site/nginx.conf       cópia viva de publicacao/nginx.conf, que o script mantém
+#   /docker/site/atualizar.sh     puxa o que foi enviado para o main, de minuto em minuto
+#
+# Subir:  docker compose -f /docker/site/docker-compose.yml up -d
+#
+# O Traefik que já serve o n8n e o ERP cuida do HTTPS. O nginx entra também na rede do
+# ERP, porque é ele quem repassa /api — assim site e API respondem no mesmo endereço.
+services:
+  site:
+    image: nginx:alpine
+    container_name: eterno-dourado-site
+    restart: unless-stopped
+    volumes:
+      - /docker/site/eterno-dourado:/usr/share/nginx/html:ro
+      - /docker/site/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - default
+      - erp
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.site.rule=Host(`eternodourado.com`) || Host(`www.eternodourado.com`)
+      - traefik.http.routers.site.entrypoints=websecure
+      - traefik.http.routers.site.tls.certresolver=letsencrypt
+      - traefik.http.services.site.loadbalancer.server.port=80
+      # quem chega no domínio sem www é levado para o www, que é o endereço da marca
+      - traefik.http.routers.site.middlewares=para-www
+      - traefik.http.middlewares.para-www.redirectregex.regex=^https://eternodourado\.com/(.*)
+      - traefik.http.middlewares.para-www.redirectregex.replacement=https://www.eternodourado.com/$${1}
+      - traefik.http.middlewares.para-www.redirectregex.permanent=true
+
+networks:
+  erp:
+    external: true
+    name: erp_default

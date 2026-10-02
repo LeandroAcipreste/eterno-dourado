@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de clientes · Eterno Dourado</title>
+    <meta name="description" content="Cadastro dos lojistas do atacado, com o desconto e o frete de cada um." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#050912" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/src/pages/admin/admin.css" />
+  </head>
+
+  <body data-page="admin">
+    <!-- Página do Leandro: é aqui que nasce o desconto e o frete de cada lojista, e os
+         dois entram no pedido dele sozinhos. Quem não é administrador não passa daqui. -->
+    <main class="admin" id="conteudo">
+      <header class="admin__topo">
+        <a class="marca" href="/" aria-label="Eterno Dourado, início">
+          <span class="marca__eterno">Eterno</span>
+          <span class="marca__dourado">Dourado</span>
+        </a>
+        <div class="admin__conta">
+          <span data-quem></span>
+          <button class="btn btn--contorno btn--compacto" type="button" data-sair hidden>Sair</button>
+        </div>
+      </header>
+
+      <p class="admin__aviso" data-aviso role="status" hidden></p>
+
+      <div class="admin__conteudo" data-painel hidden>
+        <section class="admin__bloco" id="clientes">
+          <h1 class="admin__titulo">Cadastro de clientes</h1>
+          <p class="admin__texto">
+            O desconto, o frete e a observação daqui entram sozinhos no pedido do lojista. Desconto zero não aparece na folha.
+          </p>
+
+          <form class="admin__forma" data-forma-cliente novalidate>
+            <div class="campo">
+              <label for="novo-nome">Nome</label>
+              <input id="novo-nome" name="nome" type="text" required />
+            </div>
+            <div class="campo">
+              <label for="novo-email">E-mail</label>
+              <input id="novo-email" name="email" type="email" autocomplete="off" required />
+            </div>
+            <div class="campo">
+              <label for="novo-cnpj">CNPJ</label>
+              <input id="novo-cnpj" name="cnpj" type="text" inputmode="numeric" />
+            </div>
+            <div class="campo">
+              <label for="novo-cidade">Cidade</label>
+              <input id="novo-cidade" name="cidade" type="text" />
+            </div>
+            <div class="campo">
+              <label for="novo-senha">Senha</label>
+              <input id="novo-senha" name="senha" type="text" autocomplete="off" minlength="8" required />
+            </div>
+            <div class="campo">
+              <label for="novo-desconto">Desconto %</label>
+              <input id="novo-desconto" name="desconto" type="number" min="0" max="100" step="0.5" value="0" />
+            </div>
+            <div class="campo">
+              <label for="novo-frete">Frete R$</label>
+              <input id="novo-frete" name="frete" type="number" min="0" step="0.01" value="74" />
+            </div>
+            <div class="campo campo--larga">
+              <label for="nova-observacao">Observação fixa</label>
+              <input id="nova-observacao" name="observacao" type="text" maxlength="200" placeholder="1/4 DA NOTA / COM FORRO DE AÇO" />
+            </div>
+            <label class="admin__marcar">
+              <input type="checkbox" name="pagaFrete" />
+              <span>O cliente paga o frete</span>
+            </label>
+            <button class="btn btn--ouro" type="submit">Cadastrar cliente</button>
+          </form>
+        </section>
+
+        <section class="admin__bloco">
+          <h2 class="admin__subtitulo">Clientes <span data-contagem></span></h2>
+          <div class="admin__tabela">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Acesso</th>
+                  <th scope="col">Desconto %</th>
+                  <th scope="col">Frete R$</th>
+                  <th scope="col">Situação</th>
+                  <th scope="col">Observação fixa</th>
+                </tr>
+              </thead>
+              <tbody data-clientes></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin__bloco admin__bloco--linha" id="precos">
+          <div>
+            <h2 class="admin__subtitulo">Tabela de preço</h2>
+            <p class="admin__texto">As 80 referências, com o valor de uma aliança.</p>
+          </div>
+          <a class="btn btn--ouro btn--compacto" href="/src/pages/tabela/tabela.html">Visualizar tabela</a>
+        </section>
+
+        <section class="admin__bloco admin__bloco--linha" id="financeiro">
+          <div>
+            <h2 class="admin__subtitulo">Financeiro</h2>
+            <p class="admin__texto" data-resumo-financeiro>—</p>
+          </div>
+          <a class="btn btn--ouro btn--compacto" href="/src/pages/carteira/carteira.html">Abrir carteira</a>
+        </section>
+
+        <section class="admin__bloco" id="meu-cadastro">
+          <h2 class="admin__subtitulo">Meu cadastro</h2>
+          <dl class="admin__ficha" data-minha-ficha></dl>
+          <form class="admin__forma" data-forma-senha novalidate>
+            <div class="campo">
+              <label for="senha-nova">Nova senha</label>
+              <input id="senha-nova" name="senha" type="password" autocomplete="new-password" minlength="8" required />
+            </div>
+            <button class="btn btn--contorno" type="submit">Trocar minha senha</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="/src/pages/admin/admin.js"></script>
+  </body>
+</html>

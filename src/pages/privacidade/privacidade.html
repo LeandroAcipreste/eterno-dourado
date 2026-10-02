@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Política de segurança e privacidade · Eterno Dourado</title>
+    <meta name="description" content="Que dados o Eterno Dourado guarda do lojista, por quanto tempo, onde ficam e como pedir para corrigir ou apagar." />
+    <meta name="theme-color" content="#050912" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/src/pages/privacidade/privacidade.css" />
+  </head>
+
+  <body data-page="privacidade">
+    <!-- O que esta página descreve é o que o código faz hoje: cookie de sessão no
+         login, cadastro feito pelo Leandro e pedidos guardados no banco. Quando o site
+         ganhar medição ou outro dado, a página muda no mesmo passo. -->
+    <main class="politica" id="conteudo">
+      <a class="marca" href="/" aria-label="Eterno Dourado, início">
+        <span class="marca__eterno">Eterno</span>
+        <span class="marca__dourado">Dourado</span>
+      </a>
+
+      <h1 class="politica__titulo">Política de segurança e privacidade</h1>
+      <p class="rotulo politica__data">Em vigor desde 28 de setembro de 2026</p>
+
+      <section class="politica__bloco">
+        <h2>Quem cuida dos seus dados</h2>
+        <p>
+          Eterno Dourado, atacado de alianças em Salvador. Quem responde é o Leandro, pelo WhatsApp
+          <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Tenho uma dúvida sobre a política de privacidade.">(71) 99183-8595</a>.
+        </p>
+      </section>
+
+      <section class="politica__bloco">
+        <h2>O que guardamos</h2>
+        <p>Só o que o atacado precisa para atender e faturar:</p>
+        <ul class="politica__lista">
+          <li><strong>Do cadastro do lojista:</strong> nome, CNPJ, cidade, e-mail e senha, mais o desconto e o frete combinados com ele.</li>
+          <li><strong>Dos pedidos:</strong> referência, numeração, quantidade e os valores do dia do pedido.</li>
+        </ul>
+        <p>
+          A senha nunca é guardada como você digita: fica um resultado de cálculo (scrypt) que não permite voltar à
+          senha original. Nem quem tem acesso ao banco consegue lê-la.
+        </p>
+      </section>
+
+      <section class="politica__bloco">
+        <h2>Quem entrega esses dados</h2>
+        <p>
+          Quem cadastra cada lojista é o Leandro, com os dados que o próprio lojista passa pelo WhatsApp. Não há
+          formulário aberto de cadastro no site, e ninguém entra na área do cliente sem ele ter criado o acesso.
+        </p>
+      </section>
+
+      <section class="politica__bloco">
+        <h2>Cookies</h2>
+        <p>
+          Um só, e ele nasce quando você entra na área do cliente: guarda a sua sessão por 14 dias para você não
+          digitar a senha a cada visita. Ele é HttpOnly, então nenhum script da página consegue lê-lo, e sai quando
+          você clica em sair.
+        </p>
+        <p>
+          O site não usa cookies de publicidade, nem ferramenta de medição de audiência. Se um dia usar, esta página
+          muda antes.
+        </p>
+      </section>
+
+      <section class="politica__bloco">
+        <h2>Onde os dados ficam</h2>
+        <ul class="politica__lista">
+          <li>O banco de dados fica na Neon, em servidores no Brasil (região de São Paulo).</li>
+          <li>O site é publicado na Vercel.</li>
+          <li>Ao clicar para falar conosco, a conversa acontece no WhatsApp, que é da Meta e tem a política própria dela.</li>
+        </ul>
+        <p>Seus dados não são vendidos nem repassados para ninguém fazer propaganda.</p>
+      </section>
+
+      <section class="politica__bloco">
+        <h2>Como protegemos</h2>
+        <ul class="politica__lista">
+          <li>O site e a área do cliente só funcionam por conexão criptografada (HTTPS).</li>
+          <li>Senha guardada por scrypt; a sessão anda por um código aleatório, do qual o banco só conhece o resumo.</li>
+          <li>Cada lojista enxerga apenas os pedidos dele.</li>
+          <li>O valor do pedido é sempre recalculado no servidor, com a tabela e o seu desconto — o que vem do navegador não define preço.</li>
+        </ul>
+      </section>
+
+      <section class="politica__bloco">
+        <h2>Seus direitos</h2>
+        <p>
+          Pela Lei Geral de Proteção de Dados (Lei 13.709/2018), você pode pedir para ver, corrigir ou apagar seus
+          dados, e pode retirar o consentimento a qualquer momento. É só falar com o Leandro pelo WhatsApp
+          <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero falar sobre os meus dados no site.">(71) 99183-8595</a>.
+        </p>
+        <p>
+          Pedido apagado não apaga a nota fiscal nem o histórico de compra que a lei obriga a guardar: essa parte
+          continua onde a contabilidade exige.
+        </p>
+      </section>
+
+      <a class="btn btn--contorno" href="/">Voltar ao catálogo</a>
+    </main>
+  </body>
+</html>

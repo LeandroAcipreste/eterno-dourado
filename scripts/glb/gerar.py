@@ -23,7 +23,7 @@ vista = parametros['vistaDaFoto']
 orientacao = rotacao(vista['guinada'], vista['arfagem'], vista['rolagem'])
 v, normais = v @ orientacao.T, normais @ orientacao.T
 
-destino = RAIZ / 'assests/img/modelos-3d/glb' / f'{CODIGO}.glb'
+destino = RAIZ / 'assets/img/modelos-3d/glb' / f'{CODIGO}.glb'
 gravar_glb(
     destino,
     f'Aliança {CODIGO}',

@@ -9,7 +9,7 @@
 
 import os from 'node:os';
 import path from 'node:path';
-import { abrirAba, abrirChrome, subirServidor } from '../cdp.mjs';
+import { abrirAba, abrirChrome, subirServidor } from '../teste/cdp.mjs';
 
 const codigo = process.argv[2];
 if (!codigo) throw new Error('uso: node scripts/glb/comparar.mjs <codigo>');

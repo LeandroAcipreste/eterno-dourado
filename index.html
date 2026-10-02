@@ -21,8 +21,8 @@
     <script type="importmap">
       {
         "imports": {
-          "three": "/assests/img/modelos-3d/vendor/three/build/three.module.js",
-          "three/addons/": "/assests/img/modelos-3d/vendor/three/examples/jsm/"
+          "three": "/assets/img/modelos-3d/vendor/three/build/three.module.js",
+          "three/addons/": "/assets/img/modelos-3d/vendor/three/examples/jsm/"
         }
       }
     </script>
@@ -31,7 +31,7 @@
     <script src="/vendor/lenis/lenis.min.js" defer></script>
   </head>
 
-  <body>
+  <body data-page="home">
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
     <!-- Casca: fica por cima de todas as seções ------------------------------- -->
@@ -92,7 +92,9 @@
                 </p>
                 <div class="abertura__acoes" data-anim="sobe">
                   <a class="btn btn--ouro" href="#catalogo">Abrir catálogo</a>
-                  <a class="btn btn--contorno" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Torne-se cliente</a>
+                  <!-- quem não é cliente ainda precisa saber como se torna um: a dobra
+                       dos três passos é a resposta, e o WhatsApp está no fim dela -->
+                  <a class="btn btn--contorno" href="#como-comprar">Torne-se cliente</a>
                 </div>
               </div>
 
@@ -280,7 +282,10 @@
               <div class="prova__bloco">
                 <p class="rotulo prova__numero">02</p>
                 <h2 class="prova__titulo">Liga ourosint</h2>
-                <p class="prova__texto">Estamos no mercado de alianças com liga ourosint há 10 anos.</p>
+                <p class="prova__texto">
+                  É uma liga dourada maciça que não descasca como as alianças folheadas, é só manter a limpeza com
+                  massa de polir à base d'água. Como o relacionamento é só cuidar direitinho que ela dura para sempre.
+                </p>
               </div>
             </article>
 
@@ -481,6 +486,7 @@
 
         <div class="rodape__base">
           <p>© 2026 Eterno Dourado</p>
+          <a href="/src/pages/privacidade/privacidade.html">Política de segurança e privacidade</a>
         </div>
       </div>
     </footer>
@@ -518,12 +524,9 @@
         </button>
 
         <div>
-          <p class="rotulo">Área do cliente</p>
-          <h2 class="entrar__titulo" id="entrar-titulo">Entre para fazer seu pedido</h2>
+          <p class="rotulo">Realiza seu login</p>
+          <h2 class="entrar__titulo" id="entrar-titulo">Entre com seu usuário e sua senha</h2>
         </div>
-        <p class="entrar__texto">
-          Com a sua conta você monta pedidos com numeração e quantidade, já com as condições do seu cadastro.
-        </p>
 
         <form class="entrar__forma" novalidate>
           <div class="campo">
@@ -537,10 +540,8 @@
           <button class="btn btn--ouro" type="submit">Entrar</button>
         </form>
 
-        <p class="entrar__status" data-entrar-status role="status" tabindex="-1" hidden>
-          A área do cliente está em implantação. Enquanto isso,
-          <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero fazer um pedido.">faça seu pedido pelo WhatsApp</a>.
-        </p>
+        <!-- o JS escreve aqui: erro do login, ou o nome de quem entrou -->
+        <p class="entrar__status" data-entrar-status role="status" tabindex="-1" hidden></p>
 
         <p class="entrar__rodape">
           Ainda não é cliente?

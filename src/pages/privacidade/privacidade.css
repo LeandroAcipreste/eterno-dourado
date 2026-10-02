@@ -1,0 +1,60 @@
+/* ===========================================================================
+   Página /privacidade: texto corrido, largura de leitura.
+
+   Nada de coluna larga: linha comprida cansa e é aqui que a pessoa procura uma
+   informação específica. O resto (tokens, marca, botão) vem do style.css.
+   =========================================================================== */
+
+.politica {
+  display: grid;
+  justify-items: start;
+  gap: var(--e-5);
+  width: min(68ch, 100% - 40px);
+  margin-inline: auto;
+  padding-block: clamp(48px, 10vh, 96px) var(--e-10);
+}
+
+.politica__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.politica__data {
+  color: var(--ouro);
+}
+
+.politica__bloco {
+  display: grid;
+  gap: var(--e-3);
+  margin-top: var(--e-4);
+}
+
+.politica__bloco h2 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  font-weight: 400;
+}
+
+.politica__bloco p,
+.politica__lista {
+  color: var(--claro-suave);
+  line-height: 1.7;
+}
+
+.politica__lista {
+  display: grid;
+  gap: var(--e-2);
+  padding-left: var(--e-4);
+}
+
+.politica__lista strong {
+  color: var(--claro);
+  font-weight: 600;
+}
+
+.politica__bloco a {
+  color: var(--ouro);
+  text-underline-offset: 3px;
+}

@@ -1,20 +1,36 @@
 /**
- * Início: a abertura presa, com o progresso da rolagem em --p para o CSS
- * empurrar o título e apagar a arte, e a contagem de modelos.
+ * JS da home, que é o site inteiro: uma página com cinco dobras.
+ *
+ * Monta as dobras que têm JS próprio, cada uma da pasta dela. Como-comprar e
+ * nossa-história são só HTML e CSS, e por isso não aparecem aqui.
+ *
+ * Quem chama este arquivo é o main.js, que não conhece as dobras: ele liga o que é
+ * global (cabeçalho, menu, rolagem, 03LM) e entrega a página para cá.
  */
 
-import { el, els } from '../../js/utils/dom.js';
-import { carregarModelos } from '../../js/utils/modelos.js';
-import { aCadaQuadroDeRolagem, progressoDaSecao } from '../../js/utils/rolagem.js';
+import { init as iniciarAbertura } from './abertura/abertura.js';
+import { init as iniciarColecao } from './colecao/colecao.js';
+import { init as iniciarCatalogo } from './catalogo/catalogo.js';
 
-export function init({ container }) {
-  carregarModelos()
-    .then(({ modelos }) => {
-      for (const alvo of els('[data-contagem-modelos]', container)) alvo.textContent = String(modelos.length);
-    })
-    .catch((erro) => console.error('contagem de modelos indisponível:', erro));
+const DOBRAS = [
+  ['abertura', iniciarAbertura],
+  ['coleção', iniciarColecao],
+  ['catálogo', iniciarCatalogo],
+];
 
-  const abertura = el('[data-abertura]', container);
-  if (!abertura) return undefined;
-  return aCadaQuadroDeRolagem(() => abertura.style.setProperty('--p', progressoDaSecao(abertura).toFixed(4)));
+/**
+ * @param {{container: ParentNode, areaCliente: object}} contexto
+ * @returns {Promise<Array<Function|undefined>>} o que cada dobra devolve para desligar
+ */
+export async function init(contexto) {
+  const desligar = [];
+  for (const [nome, iniciar] of DOBRAS) {
+    // uma dobra que falha não pode levar as outras junto: o resto da página continua
+    try {
+      desligar.push(await iniciar(contexto));
+    } catch (erro) {
+      console.error(`a dobra ${nome} não subiu por completo:`, erro);
+    }
+  }
+  return desligar;
 }

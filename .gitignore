@@ -27,28 +27,27 @@ assets/img-produzidas/*.jpg
 assets/img-pessoas/*.png
 assets/img-pessoas/*.jpeg
 assets/marca/emblema*
-assests/img/logo/
+assets/img/logo/
 
-# fontes das fotos: o site serve as versões .webp de assests/img/aliancas-web
-assests/img/aliancas-hd/
-assests/img/aliancas-original/
-assests/img/aliancas-sem-fundo/
-assests/img/aliancas-ia/
+# fontes das fotos: o site serve as versões .webp de assets/img/aliancas-web
+assets/img/aliancas-hd/
+assets/img/aliancas-original/
+assets/img/aliancas-sem-fundo/
+assets/img/aliancas-ia/
 
 # estudo do 3D: o site precisa só do three.js (vendor) e do 03LM
-assests/img/modelos-3d/glb/
-assests/img/modelos-3d/referencias/
-assests/img/modelos-3d/*.json
-assests/img/modelos-3d/*.ps1
-assests/img/modelos-3d/*.py
-assests/img/modelos-3d/*.cjs
-assests/img/modelos-3d/*.md
+assets/img/modelos-3d/glb/
+assets/img/modelos-3d/referencias/
+assets/img/modelos-3d/*.json
+assets/img/modelos-3d/*.ps1
+assets/img/modelos-3d/*.py
+assets/img/modelos-3d/*.cjs
+assets/img/modelos-3d/*.md
 
 # cache do Python das ferramentas de imagem
 __pycache__/
 *.pyc
 
 # saídas de teste
-/scripts/fotos/
 .tmp-*
-assests/img/modelos-3d/index.html
+assets/img/modelos-3d/index.html

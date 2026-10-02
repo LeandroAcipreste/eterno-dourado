@@ -41,6 +41,11 @@ function typeFor(p) {
 http.createServer((req, res) => {
   let p = decodeURIComponent(url.parse(req.url).pathname);
   if (p.endsWith('/')) p += 'index.html';
+  // /obrigado abre src/pages/obrigado/obrigado.html, como o rewrite da Vercel faz
+  const pagina = /^\/([a-z0-9-]+)$/.exec(p)?.[1];
+  if (pagina && fs.existsSync(path.join(ROOT, 'src/pages', pagina, pagina + '.html'))) {
+    p = `/src/pages/${pagina}/${pagina}.html`;
+  }
   const file = path.join(ROOT, p);
   if (!file.startsWith(ROOT)) { res.writeHead(403).end(); return; }
   fs.stat(file, (err, st) => {

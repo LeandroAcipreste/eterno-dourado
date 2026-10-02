@@ -4,7 +4,7 @@
  * Regras do cliente, para atacado:
  *   · o valor da tabela é de UMA aliança; o par é o dobro;
  *   · forro de aço inoxidável soma R$ 8,00 por aliança;
- *   · cada pedra acrescentada soma R$ 2,00, e isso vale só para modelo liso
+ *   · cada pedra acrescentada soma R$ 2,50, e isso vale só para modelo liso
  *     ou de pedra única. Em solitário e meia aliança as pedras já estão no
  *     valor da tabela, então não somam nada.
  *
@@ -13,8 +13,11 @@
  */
 
 export const ADICIONAL_FORRO = 8;
-export const ADICIONAL_PEDRA = 2;
+export const ADICIONAL_PEDRA = 2.5;
 export const ALIANCAS_POR_PAR = 2;
+
+/** A fábrica fica com metade do valor de tabela do pedido. A outra metade é do Leandro. */
+export const PARTE_DA_FABRICA = 0.5;
 
 /** Centavos, para a soma não acumular erro de ponto flutuante. */
 const centavos = (reais) => Math.round(reais * 100);
@@ -122,6 +125,29 @@ export function fecharPedido(itens, ajustes = {}) {
     comDesconto: reais(comDesconto),
     frete,
     pedido: reais(pedido),
+  };
+}
+
+/**
+ * Como o dinheiro do pedido se divide, regra do Leandro:
+ *
+ *   · a fábrica fica com 50% do valor de tabela, mais o frete;
+ *   · a comissão dele é os outros 50%, menos o desconto que ele deu ao cliente e,
+ *     quando o frete está incluso, menos o frete — que sai do bolso dele.
+ *
+ * O desconto e o frete incluso saem sempre da parte do Leandro: a fábrica recebe o
+ * mesmo em qualquer negociação.
+ *
+ * @param {{bruto: number, abatimento?: number, frete?: number, clientePagaFrete?: boolean}} pedido
+ */
+export function dividirPedido({ bruto, abatimento = 0, frete = 0, clientePagaFrete = true }) {
+  const metade = centavos(bruto) * PARTE_DA_FABRICA;
+  const fretePorConta = clientePagaFrete ? 0 : centavos(frete);
+  const comissao = metade - centavos(abatimento) - fretePorConta;
+  return {
+    fabrica: reais(Math.round(metade + centavos(frete))),
+    comissao: reais(Math.round(comissao)),
+    freteNaComissao: reais(fretePorConta),
   };
 }
 

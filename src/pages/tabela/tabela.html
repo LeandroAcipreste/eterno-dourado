@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabela de preço · Eterno Dourado</title>
+    <meta name="description" content="A tabela de preço das 80 referências, com alteração por referência." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#050912" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/src/pages/admin/admin.css" />
+    <link rel="stylesheet" href="/src/pages/tabela/tabela.css" />
+  </head>
+
+  <body data-page="tabela">
+    <!-- A tabela inteira mora aqui, fora do painel: lá o Leandro cadastra cliente e vê
+         o financeiro; aqui ele confere preço. Alterar é um clique ao lado da referência. -->
+    <main class="admin" id="conteudo">
+      <header class="admin__topo">
+        <a class="marca" href="/" aria-label="Eterno Dourado, início">
+          <span class="marca__eterno">Eterno</span>
+          <span class="marca__dourado">Dourado</span>
+        </a>
+        <div class="admin__conta">
+          <a class="btn btn--contorno btn--compacto" href="/src/pages/admin/admin.html">Voltar ao painel</a>
+        </div>
+      </header>
+
+      <p class="admin__aviso" data-aviso role="status" hidden></p>
+
+      <section class="admin__bloco" data-painel hidden>
+        <h1 class="admin__titulo">Tabela de preço</h1>
+        <p class="admin__texto">
+          O valor é de uma aliança; o par é o dobro. Preço alterado aqui continua valendo quando o catálogo for
+          recarregado do PDF.
+        </p>
+
+        <div class="tabela__acoes">
+          <div class="campo">
+            <label for="busca">Buscar referência ou nome</label>
+            <input id="busca" type="search" data-busca autocomplete="off" />
+          </div>
+          <button class="btn btn--contorno btn--compacto" type="button" data-abrir-novo aria-expanded="false">
+            Adicionar modelo
+          </button>
+        </div>
+
+        <!-- Referência da tabela que nunca ganhou foto, ou peça nova. Ela passa a valer
+             no pedido; na vitrine do site só entra quando tiver foto. -->
+        <form class="tabela__novo" data-forma-novo novalidate hidden>
+          <div class="campo">
+            <label for="novo-codigo">Referência</label>
+            <input id="novo-codigo" name="codigo" type="text" required />
+          </div>
+          <div class="campo">
+            <label for="novo-descricao">Nome na tabela</label>
+            <input id="novo-descricao" name="descricao" type="text" required />
+          </div>
+          <div class="campo">
+            <label for="novo-largura">Largura mm</label>
+            <input id="novo-largura" name="largura" type="number" min="0" step="0.5" />
+          </div>
+          <div class="campo">
+            <label for="novo-preco">Preço R$</label>
+            <input id="novo-preco" name="preco" type="number" min="0" step="0.01" required />
+          </div>
+          <button class="btn btn--ouro btn--compacto" type="submit">Cadastrar modelo</button>
+        </form>
+
+        <div class="admin__tabela">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Referência</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Largura</th>
+                <th scope="col">Acréscimos</th>
+                <th scope="col">Preço R$</th>
+              </tr>
+            </thead>
+            <tbody data-precos></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/pages/tabela/tabela.js"></script>
+  </body>
+</html>

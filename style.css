@@ -7,17 +7,14 @@
 
 @layer global, pagina;
 
+/* o CSS da home, que por sua vez importa o de cada dobra (src/pages/home/) */
 @import url("src/pages/home/home.css") layer(pagina);
-@import url("src/pages/colecao/colecao.css") layer(pagina);
-@import url("src/pages/catalogo/catalogo.css") layer(pagina);
-@import url("src/pages/como-comprar/como-comprar.css") layer(pagina);
-@import url("src/pages/nossa-historia/nossa-historia.css") layer(pagina);
 
 @layer global {
   /* ---- fontes ------------------------------------------------------------------ */
 
   /* Cormorant Garamond nos títulos, Manrope na interface. O trecho entre as marcas
-     é gerado por scripts/baixar-fontes.mjs: não editar à mão. */
+     veio do Google Fonts junto com os .woff2 em assets/fonts. */
   /* fontes:inicio */
   @font-face {
     font-family: "Bodoni Moda";
@@ -213,7 +210,7 @@
 
   /* ---- variáveis ------------------------------------------------------------- */
 
-  /* ===========================================================================
+/* ===========================================================================
      Eterno Dourado — tokens do sistema visual
      Fonte: "Design do Marketplace Atacadista" (PDF da marca).
 
@@ -240,6 +237,9 @@
     --tinta: #0b1220; /* texto sobre claro */
     --tinta-suave: #525c6b; /* secundário sobre marfim, 5,6:1 */
     --ouro-texto: #8a6420; /* ouro legível sobre marfim, 4,8:1 */
+
+    /* o degradê do título da abertura; também é a borda do campo em foco */
+    --degrade-hero: linear-gradient(180deg, var(--ouro) 0%, var(--champagne) 26%, var(--marfim) 66%, #fff 100%);
     --claro: #f3efe6; /* texto sobre azul */
     --claro-suave: #a3abb8; /* secundário sobre azul, 7:1 */
 
@@ -494,42 +494,63 @@
     padding-inline: 18px;
   }
 
-  /* ação principal */
+  /* Ação principal: a mesma faixa que desce nas letras da abertura — ouro em cima,
+     marfim embaixo. O texto continua na tinta escura, que é o contraste que passa. */
   .btn--ouro {
-    background: var(--ouro);
+    background-image: var(--degrade-hero);
     color: var(--tinta);
   }
 
+  /* claro e escuro em vez de trocar a cor: o degradê continua o mesmo */
   .btn--ouro:hover {
-    background: var(--champagne);
+    filter: brightness(1.06);
   }
 
   .btn--ouro:active {
-    background: #c89a40;
+    filter: brightness(0.94);
   }
 
-  /* secundária sobre azul */
-  .btn--contorno {
-    border-color: var(--ouro);
-    color: var(--ouro);
+  /* Secundária sobre azul. A borda é o mesmo degradê, desenhada por uma máscara:
+     border-image ignoraria o arredondamento e deixaria a pílula quadrada. */
+  .btn--contorno,
+  .btn--safira {
+    position: relative;
+    border-color: transparent;
+    color: var(--champagne);
+  }
+
+  .btn--contorno::before,
+  .btn--safira::before {
+    content: "";
+    position: absolute;
+    inset: -1.5px;
+    padding: 1.5px;
+    border-radius: inherit;
+    background-image: var(--degrade-hero);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
   }
 
   .btn--contorno:hover {
-    border-color: var(--champagne);
     background: rgb(214 168 78 / 0.12);
-    color: var(--champagne);
+    color: var(--marfim);
   }
 
   /* secundária sobre claro: o "Ver detalhes" da pág. 7 */
   .btn--safira {
-    border-color: var(--ouro);
     background: var(--safira);
-    color: var(--ouro);
   }
 
   .btn--safira:hover {
     background: var(--marinho);
-    color: var(--champagne);
+    color: var(--marfim);
   }
 
   /* sobre a faixa dourada */
@@ -596,7 +617,7 @@
     z-index: calc(var(--z-menu) + 1);
     padding: var(--e-3) var(--e-5);
     border-radius: var(--raio-pilula);
-    background: var(--ouro);
+    background-image: var(--degrade-hero);
     color: var(--tinta);
     font-weight: 700;
     text-decoration: none;
@@ -1321,14 +1342,20 @@
     line-height: 1.15;
   }
 
-  .entrar__texto {
-    color: var(--claro-suave);
-  }
-
   .campo {
     display: flex;
     flex-direction: column;
     gap: var(--e-2);
+  }
+
+  /* o botão não encosta no campo: entrar é uma decisão, e decisão pede respiro */
+  .entrar__forma {
+    display: grid;
+    gap: var(--e-4);
+  }
+
+  .entrar__forma button[type="submit"] {
+    margin-top: var(--e-2);
   }
 
   .campo label {
@@ -1336,23 +1363,43 @@
     font-weight: 700;
   }
 
+  /* A borda é desenhada em duas camadas: o fundo do campo até a borda interna e a
+     cor (ou o degradê) na faixa da borda. É o que permite a borda em degradê, coisa
+     que outline e border-color não fazem. */
   .campo input {
     min-height: 52px;
     padding: 0 var(--e-4);
-    border: 1px solid var(--linha-escura);
+    border: 2px solid transparent;
     border-radius: var(--raio-campo);
-    background: var(--marinho);
+    background:
+      linear-gradient(var(--marinho), var(--marinho)) padding-box,
+      linear-gradient(var(--linha-escura), var(--linha-escura)) border-box;
     color: var(--claro);
     font-size: 1rem;
-    transition: border-color var(--dur-rapida) var(--curva);
   }
 
   .campo input:hover {
-    border-color: var(--champagne);
+    background:
+      linear-gradient(var(--marinho), var(--marinho)) padding-box,
+      linear-gradient(var(--champagne), var(--champagne)) border-box;
   }
 
+  /* Em foco, a mesma faixa dourada do título da abertura. O anel de foco geral não
+     serve aqui: com 3px de folga mais a sombra, ele cobria o rótulo do campo de baixo. */
   .campo input:focus-visible {
-    border-color: var(--ouro);
+    outline: none;
+    box-shadow: none;
+    background:
+      linear-gradient(var(--marinho), var(--marinho)) padding-box,
+      var(--degrade-hero) border-box;
+  }
+
+  /* o preenchimento automático do Chrome pinta o campo de branco por padrão */
+  .campo input:-webkit-autofill,
+  .campo input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--claro);
+    -webkit-box-shadow: 0 0 0 100px var(--marinho) inset;
+    caret-color: var(--claro);
   }
 
   .entrar__status {
@@ -1372,41 +1419,15 @@
     text-underline-offset: 3px;
   }
 
+  /* o "Ainda não é cliente?" é outro assunto: respira longe do botão de entrar, para
+     ninguém clicar nele achando que está confirmando o login */
   .entrar__rodape {
+    margin-top: var(--e-3);
     font-size: 0.9375rem;
     color: var(--claro-suave);
   }
 
   /* ---- página de contato ------------------------------------------------------ */
-
-  /* /obrigado: a parada de um segundo entre o clique e o WhatsApp. É uma página do
-     próprio site, e é ela que permite medir o contato. */
-  .obrigado {
-    display: grid;
-    place-content: center;
-    justify-items: center;
-    gap: var(--e-5);
-    min-height: 100svh;
-    padding: var(--e-8) 20px;
-    text-align: center;
-  }
-
-  .obrigado__titulo {
-    font-family: var(--fonte-titulo);
-    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.1;
-  }
-
-  .obrigado__texto {
-    max-width: 46ch;
-    color: var(--claro-suave);
-  }
-
-  .obrigado__texto a {
-    color: var(--ouro);
-    text-underline-offset: 3px;
-  }
 
   /* ---- rodapé ---------------------------------------------------------------- */
 

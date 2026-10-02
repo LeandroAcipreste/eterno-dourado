@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fazer pedido · Eterno Dourado</title>
+    <meta name="description" content="Monte seu pedido por referência, com numeração e quantidade." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#050912" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/src/pages/admin/admin.css" />
+    <link rel="stylesheet" href="/src/pages/pedido/pedido.css" />
+  </head>
+
+  <body data-page="pedido">
+    <!-- A página do lojista. Ele procura a referência, vê a foto, escolhe numeração e
+         quantidade, e o pé da folha mostra soma, desconto e frete do cadastro dele.
+         Nenhum valor sai daqui: quem soma é o servidor. -->
+    <main class="admin pedido" id="conteudo">
+      <header class="admin__topo">
+        <a class="marca" href="/" aria-label="Eterno Dourado, início">
+          <span class="marca__eterno">Eterno</span>
+          <span class="marca__dourado">Dourado</span>
+        </a>
+        <div class="admin__conta">
+          <span data-quem></span>
+          <button class="btn btn--contorno btn--compacto" type="button" data-sair hidden>Sair</button>
+        </div>
+      </header>
+
+      <p class="admin__aviso" data-aviso role="status" hidden></p>
+
+      <div class="pedido__colunas" data-painel hidden>
+        <section class="admin__bloco">
+          <h1 class="admin__titulo">Fazer pedido</h1>
+
+          <div class="campo pedido__busca">
+            <label for="referencia">Referência ou nome do modelo</label>
+            <input
+              id="referencia"
+              type="search"
+              autocomplete="off"
+              role="combobox"
+              aria-expanded="false"
+              aria-controls="sugestoes"
+              data-busca
+            />
+            <ul class="pedido__sugestoes" id="sugestoes" role="listbox" data-sugestoes hidden></ul>
+          </div>
+
+          <!-- a peça escolhida: foto grande, opções e quantidade -->
+          <div class="pedido__escolha" data-escolha hidden>
+            <figure class="pedido__foto">
+              <img alt="" data-foto-peca />
+            </figure>
+
+            <div class="pedido__dados">
+              <p class="rotulo" data-codigo></p>
+              <h2 class="pedido__nome" data-nome></h2>
+              <p class="pedido__valor" data-valor></p>
+
+              <label class="tabela__opcao">
+                <input type="checkbox" data-forro />
+                <span>Com forro de aço inoxidável</span>
+              </label>
+              <label class="tabela__opcao" data-pedra-linha hidden>
+                <input type="checkbox" data-pedra />
+                <span>Com pedra acrescentada</span>
+              </label>
+
+              <!-- uma numeração por vez, como na folha: ele vai somando as que quer
+                   deste modelo antes de passar para o próximo -->
+              <div class="pedido__medidas">
+                <div class="campo">
+                  <label for="numeracao">Numeração</label>
+                  <input id="numeracao" type="number" min="8" max="34" step="1" value="18" data-numeracao />
+                </div>
+                <div class="campo">
+                  <label for="quantidade">Quantidade de alianças</label>
+                  <input id="quantidade" type="number" min="1" step="1" value="2" data-quantidade />
+                </div>
+                <button class="btn btn--contorno btn--compacto" type="button" data-adicionar-numeracao>
+                  Adicionar numeração
+                </button>
+              </div>
+              <p class="pedido__dica">O valor é de uma aliança; o par são duas.</p>
+
+              <ul class="pedido__numeracoes" data-numeracoes></ul>
+
+              <p class="pedido__subtotal" data-subtotal hidden></p>
+
+              <button class="btn btn--ouro" type="button" data-finalizar-modelo hidden>Finalizar modelo</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin__bloco pedido__folha">
+          <h2 class="admin__subtitulo">Seu pedido <span data-contagem></span></h2>
+          <p class="pedido__observacao" data-observacao hidden></p>
+
+          <div class="admin__tabela">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Referência</th>
+                  <th scope="col">Numeração</th>
+                  <th scope="col">Qt</th>
+                  <th scope="col">Valor R$</th>
+                  <th scope="col"><span class="sr">Remover</span></th>
+                </tr>
+              </thead>
+              <tbody data-itens></tbody>
+            </table>
+          </div>
+
+          <p class="pedido__vazio" data-vazio>Nenhuma peça ainda. Procure a referência ao lado.</p>
+
+          <dl class="pedido__resumo" data-resumo hidden>
+            <div><dt>Soma</dt><dd data-soma></dd></div>
+            <div data-linha-desconto hidden><dt data-rotulo-desconto>Desconto</dt><dd data-desconto></dd></div>
+            <div data-linha-frete hidden><dt data-rotulo-frete>Frete</dt><dd data-frete></dd></div>
+            <div class="pedido__total"><dt>Total</dt><dd data-total></dd></div>
+          </dl>
+
+          <button class="btn btn--ouro" type="button" data-enviar hidden>Finalizar pedido</button>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="/src/pages/pedido/pedido.js"></script>
+  </body>
+</html>

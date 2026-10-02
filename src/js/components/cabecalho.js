@@ -31,12 +31,59 @@ export function montarCabecalho() {
   document.addEventListener('keydown', (evento) => {
     if (evento.key === 'Escape' && menu?.dataset.aberto === 'sim') {
       definirMenu(false);
-      botao?.focus();
+      botao?.focus({ preventScroll: true });
     }
   });
 
+  /**
+   * O menu do administrador. Logado, as cinco seções do site não dizem nada a quem
+   * entrou para trabalhar: o que ele precisa é cadastrar cliente, mexer na tabela,
+   * ver o financeiro e sair.
+   */
+  const MENU_ADMIN = [
+    ['Cadastrar cliente', '/src/pages/admin/admin.html#clientes'],
+    ['Alterar tabela de preço', '/src/pages/tabela/tabela.html'],
+    ['Financeiro', '/src/pages/carteira/carteira.html'],
+    ['Meu cadastro', '/src/pages/admin/admin.html#meu-cadastro'],
+  ];
+
+  /** O menu de quem entrou para comprar. */
+  const MENU_LOJISTA = [['Fazer pedido', '/src/pages/pedido/pedido.html']];
+
+  const numero = (i) => String(i + 1).padStart(2, '0');
+
   return {
     fecharMenu: () => definirMenu(false),
+
+    /**
+     * Troca o menu e o botão do cabeçalho pelo que a conta pede. Sem conta, nada muda:
+     * o menu das seções continua sendo o certo para quem está conhecendo o catálogo.
+     *
+     * @param {{nome: string, admin: boolean}|null} cliente
+     */
+    mostrarConta(cliente) {
+      const entrar = el('.cabecalho__entrar');
+      if (!cliente) return;
+
+      // quem já entrou não precisa do botão de entrar
+      if (entrar) entrar.hidden = true;
+
+      const lista = el('.menu__lista', menu);
+      const acoes = el('.menu__acoes', menu);
+      if (!lista) return;
+
+      const itens = cliente.admin ? MENU_ADMIN : MENU_LOJISTA;
+      lista.innerHTML = itens
+        .map(
+          ([texto, destino], i) =>
+            `<li><a class="menu__link" href="${destino}"><span class="menu__numero">${numero(i)}</span><span class="menu__nome">${texto}</span></a></li>`,
+        )
+        .join('');
+
+      if (acoes) {
+        acoes.innerHTML = `<button class="btn btn--contorno" type="button" data-sair>Sair</button>`;
+      }
+    },
 
     /** Marca no menu a seção em que a pessoa está. */
     marcarPagina(pagina) {

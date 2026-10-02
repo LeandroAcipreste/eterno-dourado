@@ -1,0 +1,35 @@
+/* ===========================================================================
+   Página /obrigado: a parada de um segundo entre o clique e o WhatsApp.
+
+   Só o que é exclusivo dela. O resto (tokens, marca, botões) vem do style.css.
+   =========================================================================== */
+
+/* /obrigado: a parada de um segundo entre o clique e o WhatsApp. É uma página do
+   próprio site, e é ela que permite medir o contato. */
+.obrigado {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--e-5);
+  min-height: 100svh;
+  padding: var(--e-8) 20px;
+  text-align: center;
+}
+
+.obrigado__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.obrigado__texto {
+  max-width: 46ch;
+  color: var(--claro-suave);
+}
+
+.obrigado__texto a {
+  color: var(--ouro);
+  text-underline-offset: 3px;
+}
+

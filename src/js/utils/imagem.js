@@ -4,7 +4,7 @@ import { criar } from './dom.js';
  * Monta a <img> de uma peça com srcset.
  *
  * As fotos aprimoradas saem em três larguras (190, 380 e 570) por
- * scripts/aprimorar-imagens.mjs. O `sizes` diz ao navegador a largura de
+ * geração das fotos. O `sizes` diz ao navegador a largura de
  * exibição em CSS, e ele escolhe a densidade certa — sem isso ele baixaria
  * sempre a maior.
  *

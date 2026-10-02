@@ -1,0 +1,52 @@
+/* ===========================================================================
+   Minha carteira: os totais grandes em cima, o pedido a pedido embaixo.
+   O resto do visual vem do admin.css, que esta página também carrega.
+   =========================================================================== */
+
+.carteira__totais {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--e-4);
+}
+
+.carteira__total {
+  display: grid;
+  gap: 4px;
+  padding: var(--e-4);
+  border: 1px solid var(--linha-escura);
+  border-radius: var(--raio-cartao);
+  background: var(--marinho);
+}
+
+.carteira__total dt {
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--claro-suave);
+}
+
+.carteira__total dd {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  font-variant-numeric: tabular-nums;
+}
+
+/* a comissão é o número que ele abre a página para ver */
+.carteira__total--destaque {
+  border-color: rgb(214 168 78 / 0.5);
+}
+
+.carteira__total--destaque dt {
+  color: var(--ouro);
+}
+
+.carteira__total--destaque dd,
+.carteira__comissao {
+  color: var(--champagne);
+}
+
+.carteira__comissao {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}

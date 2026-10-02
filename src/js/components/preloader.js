@@ -13,19 +13,11 @@
  */
 
 import { el, movimentoReduzido } from '../utils/dom.js';
+import { emTeste } from '../config.js';
 
 const ANIMACAO = 'preloader-sair';
 const LIMITE = 11000; // rede de segurança: aba em segundo plano não dispara animação
 const TEMPO_ATE_SAIR = 8000; // o que o CSS espera antes de começar a esmaecer
-const CHAVE_TESTE = 'eterno-dourado:sem-abertura';
-
-const desligadaNoTeste = () => {
-  try {
-    return sessionStorage.getItem(CHAVE_TESTE) === 'sim';
-  } catch {
-    return false; // navegação privada com armazenamento bloqueado
-  }
-};
 
 /**
  * Diz no console se a roda está mesmo girando na tela, e não só se o código rodou:
@@ -56,7 +48,7 @@ export function montarPreloader() {
   const preloader = el('[data-preloader]');
   // no teste ela sai do documento aqui, antes de a página montar: parada por cima
   // da tela, bloquearia o conteúdo e a medição
-  if (preloader && desligadaNoTeste()) preloader.remove();
+  if (preloader && emTeste()) preloader.remove();
 
   return {
     async abrir() {

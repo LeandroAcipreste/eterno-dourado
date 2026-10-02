@@ -27,7 +27,7 @@ let ctx = null;
 async function preparar() {
   const parametros = await (await fetch(`/scripts/glb/parametros/${codigo}.json`)).json();
   const imagem = new Image();
-  imagem.src = `/assests/img/aliancas-hd/${codigo}.png`;
+  imagem.src = `/assets/img/aliancas-hd/${codigo}.png`;
   await imagem.decode();
 
   const { x0, y0, x1, y1 } = parametros.anelNaFoto;
@@ -53,7 +53,7 @@ async function preparar() {
   // a ferramenta desenha quando pede, na câmera dela: nada de laço nem redimensionamento automático
   visualizador.observadorVisao.disconnect();
   visualizador.observadorTamanho.disconnect();
-  await visualizador.abrir(`/assests/img/modelos-3d/glb/${codigo}.glb`);
+  await visualizador.abrir(`/assets/img/modelos-3d/glb/${codigo}.glb`);
   visualizador.parar();
   visualizador.redimensionar();
 

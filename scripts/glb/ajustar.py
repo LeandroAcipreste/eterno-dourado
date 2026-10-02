@@ -2,7 +2,7 @@
 
     py scripts/glb/ajustar.py 03LM
 
-Isola o anel maior de assests/img/aliancas-hd/<codigo>.png e procura a seção
+Isola o anel maior de assets/img/aliancas-hd/<codigo>.png e procura a seção
 (diâmetro, espessura, posição da borda, cúpulas) e a vista (guinada, arfagem,
 rolagem) cuja silhueta e divisão ouro/branco mais coincidem com a foto. A
 largura em mm vem do código (03 = 3 mm) e fixa a escala.
@@ -30,7 +30,7 @@ LARGURA = float(sys.argv[2]) if len(sys.argv) > 2 else float(CODIGO[:2])
 SAIDA = Path(__file__).parent / 'parametros' / f'{CODIGO}.json'
 PASTA_TMP = Path(tempfile.gettempdir()) / 'eterno-dourado-glb'
 
-imagem = cv2.imread(str(RAIZ / 'assests/img/aliancas-hd' / f'{CODIGO}.png'), cv2.IMREAD_UNCHANGED)
+imagem = cv2.imread(str(RAIZ / 'assets/img/aliancas-hd' / f'{CODIGO}.png'), cv2.IMREAD_UNCHANGED)
 alfa = imagem[:, :, 3] > 128
 rotulos_foto, total = ndi.label(alfa)
 maior = 1 + int(np.argmax(ndi.sum(alfa, rotulos_foto, range(1, total + 1))))
@@ -117,7 +117,7 @@ iou, acordo = medir(tela)
 anterior = json.loads(SAIDA.read_text(encoding='utf-8')) if SAIDA.exists() else {}
 resultado = {
     'codigo': CODIGO,
-    'fonte': f'assests/img/aliancas-hd/{CODIGO}.png (anel maior)',
+    'fonte': f'assets/img/aliancas-hd/{CODIGO}.png (anel maior)',
     'anelNaFoto': {'x0': int(xs.min()), 'y0': int(ys.min()), 'x1': int(xs.max()), 'y1': int(ys.max())},
     **{chave: round(float(valor), 4) for chave, valor in geometria.items()},
     'vistaDaFoto': dict(zip(('guinada', 'arfagem', 'rolagem'), (round(float(t), 2) for t in vista))),

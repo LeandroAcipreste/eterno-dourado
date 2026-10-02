@@ -1,0 +1,259 @@
+/* ===========================================================================
+   Página de pedido: escolher à esquerda, folha à direita.
+
+   Em tela estreita vira uma coluna só, com a folha embaixo — é a ordem em que a
+   pessoa trabalha. O resto do visual vem do admin.css, que esta página carrega.
+   =========================================================================== */
+
+.pedido__colunas {
+  display: grid;
+  gap: var(--e-6);
+}
+
+@media (min-width: 1000px) {
+  .pedido__colunas {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: start;
+  }
+
+  /* a folha acompanha quem rola procurando a próxima peça */
+  .pedido__folha {
+    position: sticky;
+    top: var(--e-6);
+  }
+}
+
+/* ---- busca com sugestões --------------------------------------------------- */
+
+.pedido__busca {
+  position: relative;
+}
+
+.pedido__sugestoes {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 3;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--linha-escura);
+  border-radius: var(--raio-cartao);
+  background: var(--marinho);
+  box-shadow: 0 18px 40px rgb(5 9 18 / 0.55);
+}
+
+.pedido__sugestoes li {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--e-3);
+  min-height: 56px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pedido__sugestoes li:hover,
+.pedido__sugestoes li:focus-visible {
+  background: var(--safira);
+}
+
+.pedido__sugestoes img,
+.pedido__sem-foto {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: radial-gradient(circle at 50% 42%, var(--branco) 0%, var(--marfim) 72%);
+}
+
+.pedido__sem-foto {
+  display: block;
+  background: var(--safira);
+  border: 1px dashed var(--linha-escura);
+}
+
+.pedido__sugestao-texto {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pedido__sugestao-texto span {
+  overflow: hidden;
+  font-size: 0.875rem;
+  color: var(--claro-suave);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pedido__sugestao-valor {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--champagne);
+}
+
+/* ---- a peça escolhida ------------------------------------------------------ */
+
+.pedido__escolha {
+  display: grid;
+  gap: var(--e-5);
+  padding-top: var(--e-2);
+}
+
+@media (min-width: 640px) {
+  .pedido__escolha {
+    grid-template-columns: 240px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.pedido__foto {
+  margin: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--raio-cartao);
+  background: radial-gradient(circle at 50% 42%, var(--branco) 0%, var(--marfim) 72%);
+}
+
+.pedido__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8%;
+}
+
+.pedido__dados {
+  display: grid;
+  gap: var(--e-3);
+}
+
+.pedido__nome {
+  font-family: var(--fonte-texto);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.pedido__valor {
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--champagne);
+}
+
+.pedido__medidas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--e-4);
+}
+
+.pedido__dica {
+  font-size: 0.875rem;
+  color: var(--claro-suave);
+}
+
+/* ---- a folha ---------------------------------------------------------------- */
+
+.pedido__vazio {
+  color: var(--claro-suave);
+}
+
+.pedido__remover {
+  min-height: 44px;
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--claro-suave);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.pedido__remover:hover {
+  color: var(--champagne);
+}
+
+/* o pé da folha, na ordem do pedido da JGT: soma, desconto, frete, total */
+.pedido__resumo {
+  display: grid;
+  gap: var(--e-2);
+  margin: 0;
+  padding-top: var(--e-4);
+  border-top: 1px solid var(--linha-escura);
+}
+
+.pedido__resumo > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e-4);
+}
+
+.pedido__resumo dt {
+  color: var(--claro-suave);
+}
+
+.pedido__resumo dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.pedido__total {
+  padding-top: var(--e-2);
+  border-top: 1px solid var(--linha-escura);
+}
+
+.pedido__total dt {
+  font-weight: 700;
+  color: var(--claro);
+}
+
+.pedido__total dd {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  color: var(--champagne);
+}
+
+/* as numerações escolhidas deste modelo, antes de fechá-lo */
+.pedido__numeracoes {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pedido__numeracoes li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-4);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--linha-escura);
+}
+
+.pedido__subtotal {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--champagne);
+}
+
+.pedido__medidas .btn {
+  align-self: end;
+}
+
+/* a observação combinada com o cliente: a mesma faixa que sai na folha da fábrica */
+.pedido__observacao {
+  margin: 0 0 var(--e-4);
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--safira);
+  color: var(--ouro);
+  font-weight: 600;
+  line-height: 1.4;
+}

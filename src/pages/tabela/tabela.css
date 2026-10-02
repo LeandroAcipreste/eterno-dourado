@@ -1,0 +1,107 @@
+/* ===========================================================================
+   Tabela de preço: leitura primeiro, alteração a um clique.
+
+   O resto do visual vem do admin.css, que esta página também carrega.
+   =========================================================================== */
+
+.tabela__alterar {
+  display: block;
+  margin-top: 4px;
+  min-height: 44px;
+  padding: 0;
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tabela__alterar:hover {
+  color: var(--champagne);
+}
+
+.tabela__valor {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tabela__valor input {
+  width: 110px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background:
+    linear-gradient(var(--marinho), var(--marinho)) padding-box,
+    var(--degrade-hero) border-box;
+  color: var(--claro);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabela__valor input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Busca e ação na mesma linha; quando não couber, a ação desce — e desce com o
+   espaço do gap, nunca colada no campo. */
+.tabela__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--e-4);
+}
+
+.tabela__acoes .campo {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.tabela__acoes .btn {
+  flex: 0 0 auto;
+}
+
+.tabela__novo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: end;
+  gap: var(--e-4);
+  padding: var(--e-4);
+  border: 1px solid var(--linha-escura);
+  border-radius: var(--raio-cartao);
+}
+
+.tabela__novo .btn {
+  justify-self: start;
+}
+
+/* Forro e pedra: a mesma conta do cartão do catálogo, aqui para o Leandro conferir
+   quanto sai a peça com cada acréscimo. Pedra só aparece em quem a aceita. */
+.tabela__opcoes {
+  display: grid;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.tabela__opcao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 0.875rem;
+  color: var(--claro-suave);
+  cursor: pointer;
+}
+
+.tabela__opcao input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--ouro);
+}
+
+/* com acréscimo marcado o valor muda de cor: ele deixou de ser o da tabela */
+.tabela__valor[data-com-opcao="sim"] {
+  color: var(--champagne);
+}

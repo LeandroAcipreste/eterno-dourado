@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { abrirAba, abrirChrome, subirServidor } from '../cdp.mjs';
+import { abrirAba, abrirChrome, subirServidor } from '../teste/cdp.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const codigo = process.argv[2];

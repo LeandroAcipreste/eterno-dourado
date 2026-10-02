@@ -16,7 +16,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { aplicarReflexo, aplicarTons, temWebGL } from '../libs/estudio3d.js';
 import { el, els, movimentoReduzido } from '../utils/dom.js';
 
-const GLB = '/assests/img/aliancas-web/modelo-03LM/individuais/03LM.glb';
+const GLB = '/assets/img/aliancas-web/modelo-03LM/individuais/03LM.glb';
 
 const mix = (a, b, t) => a + (b - a) * t;
 const limitar = (v) => Math.min(1, Math.max(0, v));

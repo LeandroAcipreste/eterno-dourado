@@ -4,15 +4,6 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/assests/:caminho*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
       "source": "/assets/:caminho*",
       "headers": [
         {
@@ -31,7 +22,7 @@
       ]
     },
     {
-      "source": "/assests/img/aliancas-web/modelo-03LM/individuais/03LM.glb",
+      "source": "/assets/img/aliancas-web/modelo-03LM/individuais/03LM.glb",
       "headers": [
         {
           "key": "Content-Type",
@@ -65,6 +56,32 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/obrigado",
+      "destination": "/src/pages/obrigado/obrigado.html"
+    },
+    {
+      "source": "/privacidade",
+      "destination": "/src/pages/privacidade/privacidade.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/src/pages/admin/admin.html"
+    },
+    {
+      "source": "/tabela",
+      "destination": "/src/pages/tabela/tabela.html"
+    },
+    {
+      "source": "/carteira",
+      "destination": "/src/pages/carteira/carteira.html"
+    },
+    {
+      "source": "/pedido",
+      "destination": "/src/pages/pedido/pedido.html"
     }
   ],
   "redirects": [
