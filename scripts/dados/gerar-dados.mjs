@@ -17,8 +17,9 @@ import path from 'node:path';
 
 const RAIZ = path.resolve(import.meta.dirname, '../..');
 const CATALOGO = path.join(RAIZ, 'assets', 'img', 'modelos-3d', 'catalogo.json');
-const PRECOS = path.join(RAIZ, 'src', 'data', 'precos.json');
-const EXTRAS = path.join(RAIZ, 'src', 'data', 'precos-extras.json');
+const TABELA = path.join(RAIZ, '..', 'eterno-dourado-backend', 'dados');
+const PRECOS = path.join(TABELA, 'precos.json');
+const EXTRAS = path.join(TABELA, 'precos-extras.json');
 const SAIDA = path.join(RAIZ, 'src', 'data', 'modelos.json');
 
 // uma aliança por referência, do estudo 3D aprovado
@@ -114,7 +115,7 @@ export function larguraNaDescricao(descricao) {
 
 /**
  * Peças que o Leandro informou e que ainda não estão no PDF da tabela
- * (src/data/precos-extras.json). Quando o preço que ele passa já vem com o forro de
+ * (dados/precos-extras.json, no backend). Quando o preço que ele passa já vem com o forro de
  * aço, o forro sai daqui: o site soma os R$ 8,00 de volta quando a pessoa marca a
  * opção, e somar duas vezes cobraria a mais.
  */

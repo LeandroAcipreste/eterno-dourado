@@ -1,4 +1,4 @@
-// Lê a tabela de preços em PDF e grava src/data/precos.json.
+// Lê a tabela de preços em PDF e grava ../eterno-dourado-backend/dados/precos.json.
 //
 //   node scripts/dados/extrair-precos.mjs
 //
@@ -14,7 +14,8 @@ import path from 'node:path';
 
 const RAIZ = path.resolve(import.meta.dirname, '../..');
 const PDF = path.join(RAIZ, 'utils', 'TAB LM 26.pdf');
-const SAIDA = path.join(RAIZ, 'src', 'data', 'precos.json');
+// a tabela não é dado do site: ela mora no backend, junto do banco que a recebe
+const SAIDA = path.join(RAIZ, '..', 'eterno-dourado-backend', 'dados', 'precos.json');
 
 // posição x de cada coluna: [início, fim)
 const COLUNAS = {

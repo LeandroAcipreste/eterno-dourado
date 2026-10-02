@@ -34,10 +34,11 @@ style.css                     todo o CSS global em @layer global + @import de sr
 src/pages/home/               a home inteira: home.css e home.js reúnem as dobras, cada uma na pasta dela — abertura, colecao (fotos + provas), catalogo (vitrine em x, 12 cartões + filtro), como-comprar, nossa-historia (com rodapé)
 src/pages/obrigado/           a página /obrigado: html, css e js dela. A URL sem extensão vem do rewrite no vercel.json e do mesmo atalho no servidor.js
 vendor/lenis/                 Lenis: rolagem suave com os ajustes do novo-site (duração 1,2 s, curva exponencial)
-src/data/precos.json          as 407 linhas da TAB LM 26, lidas do PDF por scripts/dados/extrair-precos.mjs
-src/data/modelos.json         os 80 modelos com foto e 3D, que sao a vitrine do site (gerar-dados.mjs)
+publicacao/                   como o site sobe no VPS: nginx atrás do Traefik, /api repassado ao ERP, e atualizar.sh puxando o main a cada minuto
+src/data/modelos.json         os 80 modelos com foto e 3D, que sao a vitrine do site (gerar-dados.mjs).
+                              A tabela de preço NÃO fica aqui: ela mora em ../eterno-dourado-backend/dados/,
+                              junto do banco. Publicada, qualquer um baixaria o atacado inteiro
                               o banco do ERP recebe as 408 referencias (tabela + precos-extras); a foto se junta pela referencia
-src/data/precos-extras.json   preços que o Leandro informou e ainda não estão no PDF; com forroIncluso, o gerador tira os R$ 8,00 para o site não somar duas vezes
 assets/                       marca, fontes, favicon, img-pessoas, img-produzidas (as .webp que o site serve)
 assets/img/                  fotos e GLB das alianças (grafia errada mantida: os dados apontam para ela)
 assets/img/aliancas-ia/      fotos refeitas no estilo de estúdio pelo Gemini, recortadas; bruto/ guarda as tentativas
