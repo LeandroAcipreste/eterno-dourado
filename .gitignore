@@ -29,6 +29,8 @@ assets/img-produzidas/*.jpg
 assets/img-pessoas/*.png
 assets/img-pessoas/*.jpeg
 assets/marca/emblema*
+# o emblema é a marca, e o logo dos dados estruturados aponta para ele: precisa ter URL
+!assets/marca/emblema.png
 assets/img/logo/
 
 # fontes das fotos: o site serve as versões .webp de assets/img/aliancas-web
