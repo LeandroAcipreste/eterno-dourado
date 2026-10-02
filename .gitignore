@@ -24,6 +24,8 @@ node_modules/
 # .webp já geradas (os scripts refazem essas a partir daqui).
 assets/img-produzidas/*.png
 assets/img-produzidas/*.jpg
+# a imagem de compartilhamento é do site, não material de trabalho: ela precisa ter URL
+!assets/img-produzidas/og.jpg
 assets/img-pessoas/*.png
 assets/img-pessoas/*.jpeg
 assets/marca/emblema*
