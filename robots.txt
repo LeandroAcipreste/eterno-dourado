@@ -1,0 +1,12 @@
+# O que o buscador pode ler. As páginas de trabalho não são conteúdo: elas exigem
+# login e não interessam a quem procura alianças no atacado.
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /tabela
+Disallow: /carteira
+Disallow: /pedido
+Disallow: /obrigado
+Disallow: /src/
+
+Sitemap: https://www.eternodourado.com/sitemap.xml
