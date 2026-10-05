@@ -28,10 +28,21 @@ const FADE = 420; // o tempo em que a roda apaga, igual ao do CSS
 const DESCIDA = 1600; // o tempo em que o painel desce, igual ao do CSS
 
 // A abertura é uma chegada, não um pedágio: ela vale a primeira vez da visita. Quem
-// recarrega, volta do pedido ou abre outra página não espera de novo.
+// recarrega, volta pelo histórico ou já a viu nesta sessão entra direto na página.
 const CHAVE_VISTA = 'eterno-dourado:abertura-vista';
 
+/**
+ * Recarga, volta pelo histórico ou aba restaurada: o navegador diz isso direto, e é
+ * mais confiável que a marca de sessão — vale inclusive em aba nova, onde o
+ * armazenamento está vazio mas a pessoa só apertou F5.
+ */
+const ehRecarga = () => {
+  const navegacao = performance.getEntriesByType('navigation')[0];
+  return navegacao?.type === 'reload' || navegacao?.type === 'back_forward';
+};
+
 const jaViu = () => {
+  if (ehRecarga()) return true;
   try {
     return sessionStorage.getItem(CHAVE_VISTA) === 'sim';
   } catch {
