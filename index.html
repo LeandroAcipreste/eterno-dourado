@@ -55,6 +55,17 @@
     <link rel="preload" as="image" href="/assets/marca/nome-circular.png" fetchpriority="high" />
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-normal-200-800.woff2" crossorigin />
+    <!-- O CSS da home entra por @import encadeado, que o navegador só descobre depois de
+         baixar e ler cada nível: style.css → home.css → as cinco dobras. Medido, um
+         arquivo de 2 KB terminava aos 7 s. Buscando todos aqui, em paralelo, eles já
+         estão prontos quando a corrente chega neles. O @import continua existindo,
+         porque é ele que põe cada um na camada certa. -->
+    <link rel="preload" as="style" href="/src/pages/home/home.css" />
+    <link rel="preload" as="style" href="/src/pages/home/abertura/abertura.css" />
+    <link rel="preload" as="style" href="/src/pages/home/colecao/colecao.css" />
+    <link rel="preload" as="style" href="/src/pages/home/catalogo/catalogo.css" />
+    <link rel="preload" as="style" href="/src/pages/home/como-comprar/como-comprar.css" />
+    <link rel="preload" as="style" href="/src/pages/home/nossa-historia/nossa-historia.css" />
     <link rel="stylesheet" href="/style.css" />
 
     <script type="importmap">
