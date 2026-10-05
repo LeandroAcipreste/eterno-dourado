@@ -20,6 +20,26 @@ const ANIMACAO = 'preloader-sair';
 const LIMITE = 11000; // rede de segurança: aba em segundo plano não dispara animação
 const TEMPO_ATE_SAIR = 8000; // o que o CSS espera antes de começar a esmaecer
 
+// A abertura é uma chegada, não um pedágio: ela vale a primeira vez da visita. Quem
+// recarrega, volta do pedido ou abre outra página não espera os 8 s de novo.
+const CHAVE_VISTA = 'eterno-dourado:abertura-vista';
+
+const jaViu = () => {
+  try {
+    return sessionStorage.getItem(CHAVE_VISTA) === 'sim';
+  } catch {
+    return false; // navegação privada com armazenamento bloqueado: mostra a abertura
+  }
+};
+
+const anotarQueViu = () => {
+  try {
+    sessionStorage.setItem(CHAVE_VISTA, 'sim');
+  } catch {
+    /* sem armazenamento: a abertura volta na próxima, e tudo bem */
+  }
+};
+
 /**
  * Diz no console se a roda está mesmo girando na tela, e não só se o código rodou:
  * mede o ângulo duas vezes e compara. Serve para separar "o CSS não se aplicou" de
@@ -51,13 +71,14 @@ function conferirGiro(preloader) {
 
 export function montarPreloader() {
   const preloader = el('[data-preloader]');
-  // no teste ela sai do documento aqui, antes de a página montar: parada por cima
-  // da tela, bloquearia o conteúdo e a medição
-  if (preloader && emTeste()) preloader.remove();
+  // sai do documento aqui, antes de a página montar: parada por cima da tela, ela
+  // bloquearia o conteúdo. Vale para o teste e para quem já viu a abertura nesta visita.
+  if (preloader && (emTeste() || jaViu())) preloader.remove();
 
   return {
     async abrir() {
       if (!preloader?.isConnected) return;
+      anotarQueViu();
       conferirGiro(preloader);
 
       // some do documento sozinha quando a animação acaba; quem chamou não espera por
