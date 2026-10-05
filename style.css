@@ -1118,8 +1118,24 @@
      Uma volta a cada 3,2 s: com uma volta só em 8 s, o nome repetido no círculo
      parecia parado. Quem pediu menos movimento no sistema recebe a mesma abertura,
      girando bem devagar, em vez de uma roda congelada. */
+  /* A saída não tem relógio: quem decide a hora é o JS, quando a hero está pronta.
+     O atraso fixo que havia aqui saía no tempo certo só por acaso, enquanto o site
+     era lento — com o carregamento rápido, ele passou a sair antes da hero existir.
+
+     A linha de baixo é a rede: sem JS, a abertura libera a página aos 14 s. */
   .preloader {
-    animation: preloader-sair 900ms cubic-bezier(0.5, 0, 0.75, 0) 8s forwards;
+    animation: preloader-seguranca 0s linear 14s forwards;
+  }
+
+  .preloader[data-sair] {
+    animation: preloader-sair 900ms cubic-bezier(0.5, 0, 0.75, 0) forwards;
+  }
+
+  @keyframes preloader-seguranca {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 
   .preloader__roda {
@@ -1188,6 +1204,12 @@
   }
 
   .cortina[data-estado="revelando"] {
+    transform: translate3d(0, 105%, 0);
+  }
+
+  /* terminou de descer, fica onde parou. Sem esta regra, o estado "parada" caía na
+     posição inicial da folha — ela descia e saltava de volta para cima no fim. */
+  .cortina[data-estado="parada"] {
     transform: translate3d(0, 105%, 0);
   }
 

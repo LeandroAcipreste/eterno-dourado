@@ -172,7 +172,7 @@ async function iniciar() {
   window.addEventListener('pageshow', (evento) => {
     if (evento.persisted) irParaAbertura();
   });
-  const abertura = preloader.abrir(); // começa a contar já, não depois de montar tudo
+  preloader.abrir(); // começa a contar o tempo mínimo já, não depois de montar tudo
   ligarLinksWhatsApp(document);
   prepararAnimacao(document); // o texto já nasce escondido, atrás da abertura
   ligarMenu();
@@ -195,8 +195,10 @@ async function iniciar() {
   remedirAnimacao();
 
 
-  await abertura; // volta assim que o nome começa a apagar
-  await cortina.revelar(); // a cortina sai junto com ele: um movimento só
+  // só agora a abertura pode sair: a página está medida, a fonte chegou e a primeira
+  // dobra tem o que mostrar. Antes disso, sair é entregar uma tela se montando.
+  await preloader.sair();
+  await cortina.revelar(); // a cortina desce junto com ele: um movimento só
 
   liberarPrimeiraDobra(); // agora sim, a abertura entra: nada a medir, nada a travar
 
