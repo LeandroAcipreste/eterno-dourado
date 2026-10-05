@@ -116,9 +116,15 @@ export function montarPreloader() {
      * o nome apagando, e a passagem é um movimento só em vez de dois tempos mortos.
      */
     async sair() {
-      if (!preloader?.isConnected) return;
+      // A hero precisa estar pronta mesmo quando a abertura não aparece — na segunda
+      // visita ela é pulada, e sem esta espera a cortina subia sobre uma hero ainda
+      // sem fonte e sem imagem: a pessoa via a página se montando.
+      if (!preloader?.isConnected) {
+        await Promise.race([heroPronta(), esperar(TETO)]);
+        return;
+      }
 
-      // as duas condições correm juntas: o que demorar mais manda
+      // com a abertura na tela, as duas condições correm juntas: manda a que demorar mais
       await Promise.all([
         esperar(Math.max(0, MINIMO - (performance.now() - comecou))),
         Promise.race([heroPronta(), esperar(MINIMO + TETO)]),

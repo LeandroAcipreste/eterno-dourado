@@ -198,9 +198,12 @@ async function iniciar() {
   // só agora a abertura pode sair: a página está medida, a fonte chegou e a primeira
   // dobra tem o que mostrar. Antes disso, sair é entregar uma tela se montando.
   await preloader.sair();
-  await cortina.revelar(); // a cortina desce junto com ele: um movimento só
 
-  liberarPrimeiraDobra(); // agora sim, a abertura entra: nada a medir, nada a travar
+  // A dobra é liberada ANTES de a folha descer, não depois: assim ela já está entrando
+  // enquanto o véu sai, e a pessoa vê movimento em vez de uma hero parada esperando a
+  // vez dela. Liberar depois era o que fazia a segunda visita mostrar a hero desmontada.
+  liberarPrimeiraDobra();
+  await cortina.revelar(); // a folha desce sobre a dobra que já começou a entrar
 
   // A página só tem a altura final depois das fontes, das imagens e dos cartões do
   // catálogo. As faixas de rolagem dos títulos são contas em cima dessa geometria:
