@@ -1177,16 +1177,9 @@
     transform: translate3d(0, -105%, 0); /* indo, o véu espera acima da tela */
     will-change: transform;
     backface-visibility: hidden;
-  }
-
-  /* o degradê do véu vem no atributo fill do SVG: em CSS, url(#id) procuraria o
-     degradê dentro do style.css, e o arco ficaria sem pintura */
-
-  .cortina__filete {
-    fill: none;
-    stroke: var(--ouro);
-    stroke-width: 2;
-    vector-effect: non-scaling-stroke;
+    /* estica como o SVG esticava (preserveAspectRatio="none"): a curva acompanha a
+       largura da tela em vez de aparecer cortada */
+    object-fit: fill;
   }
 
   .cortina[data-estado="coberta"],

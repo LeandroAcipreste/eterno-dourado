@@ -53,6 +53,7 @@
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
     <link rel="preload" as="image" href="/assets/marca/nome-circular.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/marca/veu-abertura.png" fetchpriority="high" />
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-normal-200-800.woff2" crossorigin />
     <!-- O CSS da home entra por @import encadeado, que o navegador só descobre depois de
@@ -553,19 +554,19 @@
       />
     </div>
 
-    <svg class="cortina" data-cortina data-estado="coberta" data-sentido="ir" viewBox="0 0 120 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-      <defs>
-        <linearGradient id="cortina-veu" x1="0" y1="0" x2="0" y2="1">
-          <!-- o véu é sólido até a curva: a faixa semitransparente que havia aqui
-               aparecia como um borrão atravessando a tela. Quem marca a borda é o
-               filete de ouro, não um esmaecimento. -->
-          <stop offset="0" stop-color="#050912" stop-opacity="1" />
-          <stop offset="1" stop-color="#091321" stop-opacity="1" />
-        </linearGradient>
-      </defs>
-      <path class="cortina__arco" d="M0 0 H120 V86 Q60 126 0 86 Z" fill="url(#cortina-veu)" />
-      <path class="cortina__filete" d="M0 86 Q60 126 120 86" />
-    </svg>
+    <!-- A folha que cobre a hero e desce quando a abertura sai. É um PNG, não um SVG:
+         o navegador o desenha uma vez e depois só desloca a camada, em vez de
+         recalcular curva, degradê e traço a cada quadro. -->
+    <img
+      class="cortina"
+      data-cortina
+      data-estado="coberta"
+      data-sentido="ir"
+      src="/assets/marca/veu-abertura.png"
+      alt=""
+      aria-hidden="true"
+      fetchpriority="high"
+    />
 
     <!-- Área do cliente ----------------------------------------------------- -->
     <dialog class="modal modal--estreito" data-dialogo-entrar aria-labelledby="entrar-titulo">
