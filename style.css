@@ -296,7 +296,6 @@
     --z-cabecalho: 50;
     --z-menu: 45; /* abaixo do cabeçalho: o botão de fechar fica por cima */
     --z-anel: 1;
-    --z-cortina: 90;
     --z-preloader: 95; /* a abertura da visita fica acima até do véu */
 
     color-scheme: light;
@@ -1091,57 +1090,46 @@
   /* Abertura: o nome em círculo dá uma volta completa em 8 s e sai. Acontece em toda
      carga da página, como o preloader do novo-site. */
 
-  /* Sem fundo próprio: quem cobre a tela é a folha, logo atrás. Quando o preloader
-     tinha fundo, eram duas camadas escuras fazendo dois movimentos — o painel apagava
-     e só então a folha descia, e isso se via como duas quedas com um vazio no meio. */
+  /* A ABERTURA É UM PAINEL SÓ.
+     Antes eram dois: o preloader com fundo próprio e, atrás dele, uma folha também
+     escura. Um apagava, a outra descia — e isso se via como duas quedas com um vazio
+     no meio. Tirar o fundo do preloader abriu outro buraco: a folha não cobria os
+     últimos 4vh da tela, e a hero aparecia por baixo durante toda a abertura.
+
+     Agora o painel cobre a tela inteira e a borda curva fica colada embaixo dele, numa
+     tira que desce junto. Uma camada, um movimento. */
   .preloader {
     position: fixed;
     inset: 0;
     z-index: var(--z-preloader);
     display: grid;
     place-items: center;
-    pointer-events: none;
+    background: linear-gradient(180deg, var(--noite) 0%, var(--marinho) 100%);
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
-  /* A roda é uma imagem, não um SVG com texto curvo. O navegador desenha o PNG uma
-     vez e depois só gira a camada — não há curva para recalcular a cada quadro nem
-     fonte para trocar no meio do giro, que eram as duas causas do tranco. */
+  /* a borda curva com o filete de ouro, logo abaixo do painel */
+  .preloader::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    background: url("assets/marca/veu-borda.png") center top / 100% 100% no-repeat;
+  }
+
+  /* A roda é uma imagem, não um SVG com texto curvo: o navegador a desenha uma vez e
+     depois só gira a camada — não há curva para recalcular a cada quadro nem fonte
+     para trocar no meio do giro, que eram as duas causas do tranco. */
   .preloader__roda {
     display: block;
     width: min(62vmin, 460px);
     height: auto;
     will-change: transform;
     transform: translateZ(0);
-  }
-
-  /* O efeito inteiro é do CSS e vale para todo mundo: a roda gira e a abertura sai
-     sozinha aos 8 s. O JS só tira o elemento quando a animação termina — e, se o JS
-     não rodar, visibility: hidden já libera a página.
-
-     Uma volta a cada 3,2 s: com uma volta só em 8 s, o nome repetido no círculo
-     parecia parado. Quem pediu menos movimento no sistema recebe a mesma abertura,
-     girando bem devagar, em vez de uma roda congelada. */
-  /* A saída não tem relógio: quem decide a hora é o JS, quando a hero está pronta.
-     O atraso fixo que havia aqui saía no tempo certo só por acaso, enquanto o site
-     era lento — com o carregamento rápido, ele passou a sair antes da hero existir.
-
-     A linha de baixo é a rede: sem JS, a abertura libera a página aos 14 s. */
-  .preloader {
-    animation: preloader-seguranca 0s linear 14s forwards;
-  }
-
-  .preloader[data-sair] {
-    animation: preloader-sair 420ms ease-out forwards;
-  }
-
-  @keyframes preloader-seguranca {
-    to {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
-  .preloader__roda {
     animation: preloader-girar 3.2s linear infinite;
   }
 
@@ -1158,98 +1146,32 @@
     }
   }
 
-  @keyframes preloader-sair {
-    to {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
   @keyframes preloader-girar {
     to {
       transform: translateZ(0) rotate(360deg);
     }
   }
 
-  /* ---- cortina --------------------------------------------------------------- */
-
-  /* O arco em SVG com filete de ouro abre a visita: ele revela a primeira dobra e
-     não volta a aparecer, como o arco do preloader do novo-site.
-     O JS só troca data-estado (coberta → revelando → parada).
-
-     A troca entre dobras é o painel logo abaixo: a aliança vai até o canto e a
-     dobra nova sobe por cima da atual; voltando, a atual desce e revela a
-     anterior, já no ponto em que a pessoa a deixou. */
-
-  .cortina {
-    position: fixed;
-    top: -10vh;
-    left: 0;
-    z-index: var(--z-cortina);
-    width: 100%;
-    height: 120vh;
-    pointer-events: none;
-    /* Anima transform, não a propriedade translate: o will-change precisa nomear a
-       mesma propriedade que anima, senão o navegador não promove a camada e redesenha
-       o SVG inteiro — tela cheia, com degradê e traço — a cada quadro. Era isso que
-       fazia o véu engasgar. */
-    transform: translate3d(0, -105%, 0); /* indo, o véu espera acima da tela */
-    will-change: transform;
-    backface-visibility: hidden;
-    /* estica como o SVG esticava (preserveAspectRatio="none"): a curva acompanha a
-       largura da tela em vez de aparecer cortada */
-    object-fit: fill;
+  /* a saída tem dois tempos, nunca ao mesmo tempo: primeiro a roda apaga… */
+  .preloader[data-sair] .preloader__roda {
+    opacity: 0;
+    transition: opacity 420ms ease-out;
   }
 
-  .cortina[data-estado="coberta"],
-  .cortina[data-estado="cobrindo"] {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .cortina[data-estado="revelando"] {
-    transform: translate3d(0, 105%, 0);
-  }
-
-  /* terminou de descer, fica onde parou. Sem esta regra, o estado "parada" caía na
-     posição inicial da folha — ela descia e saltava de volta para cima no fim. */
-  .cortina[data-estado="parada"] {
-    transform: translate3d(0, 105%, 0);
-  }
-
-  /* voltando, o véu sobe: espera abaixo da tela, sai por cima e vem espelhado, para
-     a borda curva ser sempre a da frente (escala depois do translate: espelha o
-     desenho no lugar, sem mexer na posição) */
-  .cortina[data-sentido="voltar"][data-estado="parada"] {
-    transform: translate3d(0, 105%, 0) scaleY(-1);
-  }
-
-  .cortina[data-sentido="voltar"][data-estado="coberta"],
-  .cortina[data-sentido="voltar"][data-estado="cobrindo"] {
-    transform: translate3d(0, 0, 0) scaleY(-1);
-  }
-
-  .cortina[data-sentido="voltar"][data-estado="revelando"] {
-    transform: translate3d(0, -105%, 0) scaleY(-1);
-  }
-
-  /* sem pressa, como folhear uma revista: entra e sai com aceleração macia */
-  .cortina[data-estado="cobrindo"] {
-    transition: transform 900ms cubic-bezier(0.4, 0, 0.22, 1);
-  }
-
-  /* A descida é o movimento da abertura: sem pressa, saindo macio no fim. Era aqui
-     que ela parecia cair em vez de descer. */
-  .cortina[data-estado="revelando"] {
+  /* …e só então o painel inteiro desce, sem pressa e saindo macio */
+  .preloader[data-desce] {
+    transform: translate3d(0, 121%, 0);
     transition: transform 1500ms cubic-bezier(0.33, 0, 0.1, 1);
   }
 
-  /* se o JS não rodar, o arco da primeira carga não prende a página */
-  .cortina[data-estado="coberta"] {
-    animation: cortina-seguranca 0s linear 8s forwards;
+  /* sem JS, a abertura libera a página aos 14 s */
+  .preloader:not([data-desce]) {
+    animation: preloader-seguranca 0s linear 14s forwards;
   }
 
-  @keyframes cortina-seguranca {
+  @keyframes preloader-seguranca {
     to {
+      opacity: 0;
       visibility: hidden;
     }
   }

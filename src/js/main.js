@@ -11,7 +11,6 @@ import { debounce, el, els } from './utils/dom.js';
 import { montarCabecalho } from './components/cabecalho.js';
 import { montarAreaCliente } from './components/area-cliente.js';
 import { liberarPrimeiraDobra, montarAnimacao, prepararAnimacao, remedirAnimacao } from './components/animacao.js';
-import { montarCortina } from './components/cortina.js';
 import { montarPreloader } from './components/preloader.js';
 import { montarRolagemSuave } from './components/rolagem-suave.js';
 import { aCadaQuadroDeRolagem } from './utils/rolagem.js';
@@ -21,7 +20,6 @@ const ESPERA_PELO_ANEL = 1200; // o 3D só começa a carregar depois que a abert
 
 const areaCliente = montarAreaCliente();
 const cabecalho = montarCabecalho();
-const cortina = montarCortina();
 const preloader = montarPreloader();
 const rolagem = montarRolagemSuave();
 let anel = null;
@@ -154,7 +152,6 @@ function conferirAbertura() {
     `marcados na abertura=${els('[data-anim]', secao).length}`,
     `título=${titulo.dataset.dentro !== undefined ? 'dentro' : 'fora'}`,
     `palavras=${titulo.querySelectorAll('.palavra').length}`,
-    `cortina=${el('[data-cortina]')?.dataset.estado}`,
     `cabeçalho=${document.documentElement.dataset.pronto !== undefined ? 'desceu' : 'ainda em cima'}`,
     `anel=${el('[data-anel3d]')?.classList.contains('is-pronto') ? 'pronto' : 'não subiu'}`,
   ].join(' · ');
@@ -197,13 +194,13 @@ async function iniciar() {
 
   // só agora a abertura pode sair: a página está medida, a fonte chegou e a primeira
   // dobra tem o que mostrar. Antes disso, sair é entregar uma tela se montando.
-  await preloader.sair();
+  // a roda apaga primeiro; o painel ainda cobre a tela
+  await preloader.apagarRoda();
 
-  // A dobra é liberada ANTES de a folha descer, não depois: assim ela já está entrando
-  // enquanto o véu sai, e a pessoa vê movimento em vez de uma hero parada esperando a
-  // vez dela. Liberar depois era o que fazia a segunda visita mostrar a hero desmontada.
+  // a dobra é liberada com o painel ainda em cima: quando ele descer, a hero já está
+  // entrando, em vez de aparecer parada esperando a vez dela
   liberarPrimeiraDobra();
-  await cortina.revelar(); // a folha desce sobre a dobra que já começou a entrar
+  await preloader.descer();
 
   // A página só tem a altura final depois das fontes, das imagens e dos cartões do
   // catálogo. As faixas de rolagem dos títulos são contas em cima dessa geometria:

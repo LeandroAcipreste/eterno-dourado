@@ -10,8 +10,9 @@
  * cobriam a demora por acaso; quando o carregamento ficou rápido, a abertura passou a
  * sair antes de a hero existir, e a pessoa via a página se montando.
  *
- * A roda é um PNG com fundo transparente: o navegador o desenha uma vez e só gira a
- * camada. Quem faz o movimento é o CSS; o JS só diz quando sair.
+ * A abertura é um painel só: ele cobre a tela, carrega a roda e desce revelando a
+ * página. A roda é um PNG com fundo transparente, girando por CSS. A saída tem dois
+ * tempos, nunca ao mesmo tempo: a roda apaga, e só então o painel desce.
  *
  * A suíte de testes desliga a abertura pela chave de config.js, senão seriam 8 segundos
  * em cada aba medida.
@@ -23,7 +24,8 @@ import { emTeste } from '../config.js';
 const ANIMACAO = 'preloader-sair';
 const MINIMO = 8000; // o tempo da marca: a chegada não pode ser atropelada
 const TETO = 6000; // o quanto se espera pela hero DEPOIS do mínimo, e não mais
-const LIMITE = 4000; // rede de segurança depois do pedido de saída
+const FADE = 420; // o tempo em que a roda apaga, igual ao do CSS
+const DESCIDA = 1500; // o tempo em que o painel desce, igual ao do CSS
 
 // A abertura é uma chegada, não um pedágio: ela vale a primeira vez da visita. Quem
 // recarrega, volta do pedido ou abre outra página não espera de novo.
@@ -115,39 +117,41 @@ export function montarPreloader() {
      * Devolve assim que a saída COMEÇA, não quando termina: a cortina desce junto com
      * o nome apagando, e a passagem é um movimento só em vez de dois tempos mortos.
      */
-    async sair() {
-      // A hero precisa estar pronta mesmo quando a abertura não aparece — na segunda
-      // visita ela é pulada, e sem esta espera a cortina subia sobre uma hero ainda
-      // sem fonte e sem imagem: a pessoa via a página se montando.
+    /**
+     * Apaga a roda. Volta quando ela sumiu — o painel ainda cobre a tela.
+     *
+     * Espera a hero ficar pronta e o tempo mínimo da marca, o que demorar mais. Vale
+     * também quando a abertura não aparece (segunda visita): sem isso, a página era
+     * revelada com a fonte e as imagens ainda chegando.
+     */
+    async apagarRoda() {
       if (!preloader?.isConnected) {
         await Promise.race([heroPronta(), esperar(TETO)]);
         return;
       }
-
-      // com a abertura na tela, as duas condições correm juntas: manda a que demorar mais
       await Promise.all([
         esperar(Math.max(0, MINIMO - (performance.now() - comecou))),
         Promise.race([heroPronta(), esperar(MINIMO + TETO)]),
       ]);
+      preloader.setAttribute('data-sair', '');
+      await esperar(FADE);
+    },
 
-      // devolve quando a roda TERMINA de apagar, não quando começa: a folha só desce
-      // depois, e a passagem vira um movimento de cada vez em vez de dois ao mesmo
-      // tempo, que era o que se via como duas quedas
-      const saiu = new Promise((resolver) => {
-        const aoTerminar = (evento) => {
-          if (evento.target !== preloader || evento.animationName !== ANIMACAO) return;
-          preloader.removeEventListener('animationend', aoTerminar);
+    /** O painel desce e revela a página. Volta quando terminou de sair. */
+    async descer() {
+      if (!preloader?.isConnected) return;
+      const chegou = new Promise((resolver) => {
+        const aoFim = (evento) => {
+          if (evento.target !== preloader || evento.propertyName !== 'transform') return;
+          preloader.removeEventListener('transitionend', aoFim);
           clearTimeout(reserva);
           resolver();
         };
-        const reserva = setTimeout(resolver, LIMITE); // aba em segundo plano não anima
-        preloader.addEventListener('animationend', aoTerminar);
+        const reserva = setTimeout(resolver, DESCIDA + 400); // aba em segundo plano não anima
+        preloader.addEventListener('transitionend', aoFim);
       });
-
-      setTimeout(() => preloader.remove(), LIMITE + 2000);
-
-      preloader.setAttribute('data-sair', '');
-      await saiu;
+      preloader.setAttribute('data-desce', '');
+      await chegou;
       preloader.remove();
     },
   };
