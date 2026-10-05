@@ -26,6 +26,7 @@ Atacado de alianças em Salvador (desde 2000; hoje quem atende é o Leandro). O 
 index.html                    a home: uma página com as cinco dobras (data-dobra), na ordem do menu; body data-page="home"
 vercel.json                   publicação: site estático, sem build, com cache longo em assets/, assets/ e vendor/
 .gitignore                    o que não sobe (e, na Vercel, o que não fica público): .claude, design-system, todo .pdf, fontes das fotos e o estudo 3D. Regra de pasta sempre presa à raiz (/utils/ pegaria src/js/utils)
+src/js/inicio.js              a única coisa que roda antes do corpo: desfaz o salto de rolagem que o navegador agenda. Síncrono no cabeçalho por isso
 src/js/main.js                monta o que é global (cabeçalho, menu, login, rolagem do Lenis, 03LM) e importa a página por body[data-page]; não conhece as dobras
 src/js/components/            cabecalho, area-cliente, reveal, rolagem-suave (Lenis), preloader (nome girando 8 s, uma vez por visita), cortina (revela a página), anel3d (03LM percorrendo as seções)
 src/js/libs/                  estudio3d.js (cena 3D aprovada) e visualizador3d.js (ferramentas de GLB); three.js em assets/img/modelos-3d/vendor/three (importmap)

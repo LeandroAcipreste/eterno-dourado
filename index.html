@@ -21,35 +21,10 @@
     <meta property="og:image:alt" content="Par de alianças douradas com interior em aço, sobre fundo azul-noite" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- loja online: sem endereço e sem horário, porque não existem. Só o que é verdade. -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "OnlineStore",
-        "name": "Eterno Dourado",
-        "alternateName": "Eterno Dourado Alianças",
-        "url": "https://www.eternodourado.com/",
-        "logo": "https://www.eternodourado.com/assets/marca/emblema.png",
-        "image": "https://www.eternodourado.com/assets/img-produzidas/og.jpg",
-        "description": "Atacado de alianças para lojistas e revendedores, com interior em aço inoxidável. Em Salvador desde 2000.",
-        "foundingDate": "2000",
-        "areaServed": { "@type": "Country", "name": "Brasil" },
-        "currenciesAccepted": "BRL",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "sales",
-          "telephone": "+55-71-99183-8595",
-          "availableLanguage": "Portuguese",
-          "areaServed": "BR"
-        }
-      }
-    </script>
-    <!-- a visita começa sempre na abertura: isto precisa rodar antes do corpo existir,
-         senão o navegador já agendou a volta à posição antiga ou à âncora da URL -->
-    <script>
-      history.scrollRestoration = 'manual';
-      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-    </script>
+    <!-- Síncrono e no cabeçalho de propósito: ele desfaz o salto que o navegador já
+         agendou (posição guardada ou âncora da URL) e isso é decidido antes de o corpo
+         existir. O resto do JS é módulo, no fim do corpo. -->
+    <script src="/src/js/inicio.js"></script>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
     <link rel="preload" as="image" href="/assets/marca/nome-circular.png" fetchpriority="high" />
@@ -586,6 +561,32 @@
         </p>
       </div>
     </dialog>
+
+    <!-- Dados do negócio para o buscador. Fica aqui, e não no cabeçalho: é conteúdo,
+         não código, e o rastreador lê do mesmo jeito em qualquer ponto do documento.
+         Loja online — sem endereço e sem horário, porque não existem. Só o que é verdade. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "name": "Eterno Dourado",
+        "alternateName": "Eterno Dourado Alianças",
+        "url": "https://www.eternodourado.com/",
+        "logo": "https://www.eternodourado.com/assets/marca/emblema.png",
+        "image": "https://www.eternodourado.com/assets/img-produzidas/og.jpg",
+        "description": "Atacado de alianças para lojistas e revendedores, com interior em aço inoxidável. Em Salvador desde 2000.",
+        "foundingDate": "2000",
+        "areaServed": { "@type": "Country", "name": "Brasil" },
+        "currenciesAccepted": "BRL",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+55-71-99183-8595",
+          "availableLanguage": "Portuguese",
+          "areaServed": "BR"
+        }
+      }
+    </script>
 
     <script type="module" src="/src/js/main.js"></script>
   </body>
