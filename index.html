@@ -556,9 +556,11 @@
     <svg class="cortina" data-cortina data-estado="coberta" data-sentido="ir" viewBox="0 0 120 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
       <defs>
         <linearGradient id="cortina-veu" x1="0" y1="0" x2="0" y2="1">
+          <!-- o véu é sólido até a curva: a faixa semitransparente que havia aqui
+               aparecia como um borrão atravessando a tela. Quem marca a borda é o
+               filete de ouro, não um esmaecimento. -->
           <stop offset="0" stop-color="#050912" stop-opacity="1" />
-          <stop offset="0.78" stop-color="#050912" stop-opacity="1" />
-          <stop offset="1" stop-color="#050912" stop-opacity="0.35" />
+          <stop offset="1" stop-color="#091321" stop-opacity="1" />
         </linearGradient>
       </defs>
       <path class="cortina__arco" d="M0 0 H120 V86 Q60 126 0 86 Z" fill="url(#cortina-veu)" />

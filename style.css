@@ -1170,8 +1170,13 @@
     width: 100%;
     height: 120vh;
     pointer-events: none;
-    translate: 0 -105%; /* indo, o véu espera acima da tela */
+    /* Anima transform, não a propriedade translate: o will-change precisa nomear a
+       mesma propriedade que anima, senão o navegador não promove a camada e redesenha
+       o SVG inteiro — tela cheia, com degradê e traço — a cada quadro. Era isso que
+       fazia o véu engasgar. */
+    transform: translate3d(0, -105%, 0); /* indo, o véu espera acima da tela */
     will-change: transform;
+    backface-visibility: hidden;
   }
 
   /* o degradê do véu vem no atributo fill do SVG: em CSS, url(#id) procuraria o
@@ -1186,35 +1191,36 @@
 
   .cortina[data-estado="coberta"],
   .cortina[data-estado="cobrindo"] {
-    translate: 0 0;
+    transform: translate3d(0, 0, 0);
   }
 
   .cortina[data-estado="revelando"] {
-    translate: 0 105%;
+    transform: translate3d(0, 105%, 0);
   }
 
   /* voltando, o véu sobe: espera abaixo da tela, sai por cima e vem espelhado, para
      a borda curva ser sempre a da frente (escala depois do translate: espelha o
      desenho no lugar, sem mexer na posição) */
-  .cortina[data-sentido="voltar"] {
-    scale: 1 -1;
+  .cortina[data-sentido="voltar"][data-estado="parada"] {
+    transform: translate3d(0, 105%, 0) scaleY(-1);
   }
 
-  .cortina[data-sentido="voltar"][data-estado="parada"] {
-    translate: 0 105%;
+  .cortina[data-sentido="voltar"][data-estado="coberta"],
+  .cortina[data-sentido="voltar"][data-estado="cobrindo"] {
+    transform: translate3d(0, 0, 0) scaleY(-1);
   }
 
   .cortina[data-sentido="voltar"][data-estado="revelando"] {
-    translate: 0 -105%;
+    transform: translate3d(0, -105%, 0) scaleY(-1);
   }
 
   /* sem pressa, como folhear uma revista: entra e sai com aceleração macia */
   .cortina[data-estado="cobrindo"] {
-    transition: translate 900ms cubic-bezier(0.4, 0, 0.22, 1);
+    transition: transform 900ms cubic-bezier(0.4, 0, 0.22, 1);
   }
 
   .cortina[data-estado="revelando"] {
-    transition: translate 1000ms cubic-bezier(0.22, 1, 0.3, 1);
+    transition: transform 1000ms cubic-bezier(0.22, 1, 0.3, 1);
   }
 
   /* se o JS não rodar, o arco da primeira carga não prende a página */

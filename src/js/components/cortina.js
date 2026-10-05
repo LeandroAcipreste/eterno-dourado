@@ -21,7 +21,7 @@ export function montarCortina() {
       // o estado anterior precisa ser pintado antes, senão não existe transição
       await dosQuadros();
       cortina.dataset.estado = 'revelando';
-      await esperarTransicao(cortina, 'translate', 1400);
+      await esperarTransicao(cortina, 'transform', 1400);
       cortina.dataset.estado = 'parada';
     },
   };
