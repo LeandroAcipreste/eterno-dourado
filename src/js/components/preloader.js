@@ -130,29 +130,25 @@ export function montarPreloader() {
         Promise.race([heroPronta(), esperar(MINIMO + TETO)]),
       ]);
 
+      // devolve quando a roda TERMINA de apagar, não quando começa: a folha só desce
+      // depois, e a passagem vira um movimento de cada vez em vez de dois ao mesmo
+      // tempo, que era o que se via como duas quedas
       const saiu = new Promise((resolver) => {
-        const aoComecar = (evento) => {
+        const aoTerminar = (evento) => {
           if (evento.target !== preloader || evento.animationName !== ANIMACAO) return;
-          preloader.removeEventListener('animationstart', aoComecar);
+          preloader.removeEventListener('animationend', aoTerminar);
           clearTimeout(reserva);
           resolver();
         };
         const reserva = setTimeout(resolver, LIMITE); // aba em segundo plano não anima
-        preloader.addEventListener('animationstart', aoComecar);
+        preloader.addEventListener('animationend', aoTerminar);
       });
 
-      // some do documento sozinha quando a animação acaba; quem chamou não espera por
-      // isso, para a cortina poder começar a sair junto com o nome
-      const aoTerminar = (evento) => {
-        if (evento.target !== preloader || evento.animationName !== ANIMACAO) return;
-        preloader.removeEventListener('animationend', aoTerminar);
-        preloader.remove();
-      };
-      preloader.addEventListener('animationend', aoTerminar);
       setTimeout(() => preloader.remove(), LIMITE + 2000);
 
       preloader.setAttribute('data-sair', '');
       await saiu;
+      preloader.remove();
     },
   };
 }

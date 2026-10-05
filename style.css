@@ -1091,13 +1091,16 @@
   /* Abertura: o nome em círculo dá uma volta completa em 8 s e sai. Acontece em toda
      carga da página, como o preloader do novo-site. */
 
+  /* Sem fundo próprio: quem cobre a tela é a folha, logo atrás. Quando o preloader
+     tinha fundo, eram duas camadas escuras fazendo dois movimentos — o painel apagava
+     e só então a folha descia, e isso se via como duas quedas com um vazio no meio. */
   .preloader {
     position: fixed;
     inset: 0;
     z-index: var(--z-preloader);
     display: grid;
     place-items: center;
-    background: var(--noite);
+    pointer-events: none;
   }
 
   /* A roda é uma imagem, não um SVG com texto curvo. O navegador desenha o PNG uma
@@ -1128,7 +1131,7 @@
   }
 
   .preloader[data-sair] {
-    animation: preloader-sair 900ms cubic-bezier(0.5, 0, 0.75, 0) forwards;
+    animation: preloader-sair 420ms ease-out forwards;
   }
 
   @keyframes preloader-seguranca {
@@ -1234,8 +1237,10 @@
     transition: transform 900ms cubic-bezier(0.4, 0, 0.22, 1);
   }
 
+  /* A descida é o movimento da abertura: sem pressa, saindo macio no fim. Era aqui
+     que ela parecia cair em vez de descer. */
   .cortina[data-estado="revelando"] {
-    transition: transform 1000ms cubic-bezier(0.22, 1, 0.3, 1);
+    transition: transform 1500ms cubic-bezier(0.33, 0, 0.1, 1);
   }
 
   /* se o JS não rodar, o arco da primeira carga não prende a página */
