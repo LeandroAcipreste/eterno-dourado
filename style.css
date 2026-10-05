@@ -1100,10 +1100,24 @@
     background: var(--noite);
   }
 
-  .preloader__roda {
+  /* O que gira é este invólucro, não o SVG. Girar o SVG obrigava o navegador a
+     redesenhar o texto curvo a cada quadro, e isso engasga enquanto a página carrega
+     o GSAP, o three.js e as fotos. Aqui a curva é desenhada uma vez e só a camada roda. */
+  .preloader__giro {
     width: min(62vmin, 460px);
-    /* no compositor: a roda continua girando mesmo se o fio principal engasgar */
     will-change: transform;
+    transform: translateZ(0);
+    /* parada até a fonte da marca chegar: trocar de fonte no meio do giro é um tranco */
+    animation-play-state: paused;
+  }
+
+  .preloader[data-pronta] .preloader__giro {
+    animation-play-state: running;
+  }
+
+  .preloader__roda {
+    display: block;
+    width: 100%;
     height: auto;
   }
 
@@ -1132,19 +1146,19 @@
     animation: preloader-sair 900ms cubic-bezier(0.5, 0, 0.75, 0) 8s forwards;
   }
 
-  .preloader__roda {
+  .preloader__giro {
     animation: preloader-girar 3.2s linear infinite;
   }
 
   /* no celular a roda fica perto do olho e a mesma volta parece corrida */
   @media (max-width: 767px) {
-    .preloader__roda {
+    .preloader__giro {
       animation-duration: 6s;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .preloader__roda {
+    .preloader__giro {
       animation-duration: 12s;
     }
   }
@@ -1158,7 +1172,7 @@
 
   @keyframes preloader-girar {
     to {
-      rotate: 360deg;
+      transform: translateZ(0) rotate(360deg);
     }
   }
 

@@ -531,15 +531,17 @@
 
     <!-- Abertura da visita: o nome girando enquanto a primeira dobra se prepara -->
     <div class="preloader" data-preloader>
-      <svg class="preloader__roda" viewBox="0 0 200 200" role="img" aria-label="Eterno Dourado">
+      <div class="preloader__giro">
+        <svg class="preloader__roda" viewBox="0 0 200 200" role="img" aria-label="Eterno Dourado">
         <defs>
           <path id="preloader-circulo" fill="none" d="M100 100 m -76 0 a 76 76 0 1 1 152 0 a 76 76 0 1 1 -152 0" />
         </defs>
         <text>
           <textPath href="#preloader-circulo" startOffset="0">Eterno Dourado · Eterno Dourado ·</textPath>
         </text>
-        <circle class="preloader__ponto" cx="100" cy="100" r="3" />
-      </svg>
+          <circle class="preloader__ponto" cx="100" cy="100" r="3" />
+        </svg>
+      </div>
     </div>
 
     <svg class="cortina" data-cortina data-estado="coberta" data-sentido="ir" viewBox="0 0 120 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">

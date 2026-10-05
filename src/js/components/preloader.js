@@ -25,10 +25,14 @@ const TEMPO_ATE_SAIR = 8000; // o que o CSS espera antes de começar a esmaecer
  * "o navegador está com animação desligada", que é a causa silenciosa mais comum.
  */
 function conferirGiro(preloader) {
-  const roda = preloader.querySelector('.preloader__roda');
+  const roda = preloader.querySelector('.preloader__giro');
   if (!roda) return;
   const estilo = getComputedStyle(roda);
-  const angulo = () => parseFloat(getComputedStyle(roda).rotate) || 0;
+  // a roda gira por transform: o ângulo sai da matriz, não de uma propriedade solta
+  const angulo = () => {
+    const m = new DOMMatrixReadOnly(getComputedStyle(roda).transform);
+    return (Math.atan2(m.b, m.a) * 180) / Math.PI;
+  };
   const antes = angulo();
   setTimeout(() => {
     const andou = Math.abs(angulo() - antes);
@@ -44,6 +48,25 @@ function conferirGiro(preloader) {
   }, 600);
 }
 
+/**
+ * O giro só começa com a fonte da marca já na tela.
+ *
+ * As fontes são carregadas com font-display: swap, então o nome desenha primeiro numa
+ * fonte substituta e salta para a Bodoni quando ela chega. Com a roda já girando, esse
+ * salto aparece como um tranco. Esperar a fonte custa alguns milésimos — ela vem com
+ * preload — e troca um tranco por um começo limpo.
+ *
+ * Meio segundo é o teto: fonte que não chegou não pode deixar a roda parada.
+ */
+function liberarGiro(preloader) {
+  const liberar = () => preloader.setAttribute('data-pronta', '');
+  const reserva = setTimeout(liberar, 500);
+  document.fonts?.ready.then(() => {
+    clearTimeout(reserva);
+    liberar();
+  }) ?? liberar();
+}
+
 export function montarPreloader() {
   const preloader = el('[data-preloader]');
   // no teste ela sai do documento aqui, antes de a página montar: parada por cima
@@ -53,6 +76,7 @@ export function montarPreloader() {
   return {
     async abrir() {
       if (!preloader?.isConnected) return;
+      liberarGiro(preloader);
       conferirGiro(preloader);
 
       // some do documento sozinha quando a animação acaba; quem chamou não espera por
