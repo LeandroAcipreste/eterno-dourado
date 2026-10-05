@@ -3,7 +3,8 @@
  * a cortina já começa a revelar a página: as duas coisas se sobrepõem, e a passagem é
  * um movimento só em vez de dois tempos mortos.
  *
- * Quem faz o efeito é o CSS: a roda gira e a abertura esmaece sozinha ao fim dos
+ * A roda é um PNG com fundo transparente: o navegador o desenha uma vez e só gira a
+ * camada. Quem faz o efeito é o CSS: a roda gira e a abertura esmaece sozinha ao fim dos
  * 8 s (e some de vez, com visibility). Isso vale inclusive para quem pediu menos
  * movimento no sistema, que recebe a mesma abertura girando devagar. Aqui o JS só
  * espera a animação terminar para tirar o elemento e liberar o resto da montagem.
@@ -25,7 +26,7 @@ const TEMPO_ATE_SAIR = 8000; // o que o CSS espera antes de começar a esmaecer
  * "o navegador está com animação desligada", que é a causa silenciosa mais comum.
  */
 function conferirGiro(preloader) {
-  const roda = preloader.querySelector('.preloader__giro');
+  const roda = preloader.querySelector('.preloader__roda');
   if (!roda) return;
   const estilo = getComputedStyle(roda);
   // a roda gira por transform: o ângulo sai da matriz, não de uma propriedade solta
@@ -48,25 +49,6 @@ function conferirGiro(preloader) {
   }, 600);
 }
 
-/**
- * O giro só começa com a fonte da marca já na tela.
- *
- * As fontes são carregadas com font-display: swap, então o nome desenha primeiro numa
- * fonte substituta e salta para a Bodoni quando ela chega. Com a roda já girando, esse
- * salto aparece como um tranco. Esperar a fonte custa alguns milésimos — ela vem com
- * preload — e troca um tranco por um começo limpo.
- *
- * Meio segundo é o teto: fonte que não chegou não pode deixar a roda parada.
- */
-function liberarGiro(preloader) {
-  const liberar = () => preloader.setAttribute('data-pronta', '');
-  const reserva = setTimeout(liberar, 500);
-  document.fonts?.ready.then(() => {
-    clearTimeout(reserva);
-    liberar();
-  }) ?? liberar();
-}
-
 export function montarPreloader() {
   const preloader = el('[data-preloader]');
   // no teste ela sai do documento aqui, antes de a página montar: parada por cima
@@ -76,7 +58,6 @@ export function montarPreloader() {
   return {
     async abrir() {
       if (!preloader?.isConnected) return;
-      liberarGiro(preloader);
       conferirGiro(preloader);
 
       // some do documento sozinha quando a animação acaba; quem chamou não espera por
