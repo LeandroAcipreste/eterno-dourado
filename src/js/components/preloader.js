@@ -25,7 +25,7 @@ const ANIMACAO = 'preloader-sair';
 const MINIMO = 8000; // o tempo da marca: a chegada não pode ser atropelada
 const TETO = 6000; // o quanto se espera pela hero DEPOIS do mínimo, e não mais
 const FADE = 420; // o tempo em que a roda apaga, igual ao do CSS
-const DESCIDA = 1500; // o tempo em que o painel desce, igual ao do CSS
+const DESCIDA = 1600; // o tempo em que o painel desce, igual ao do CSS
 
 // A abertura é uma chegada, não um pedágio: ela vale a primeira vez da visita. Quem
 // recarrega, volta do pedido ou abre outra página não espera de novo.
