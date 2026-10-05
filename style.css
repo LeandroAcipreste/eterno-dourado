@@ -1166,9 +1166,14 @@
     transition: transform 1600ms cubic-bezier(0.65, 0, 0.35, 1);
   }
 
-  /* sem JS, a abertura libera a página aos 14 s */
-  .preloader:not([data-desce]) {
-    animation: preloader-seguranca 0s linear 14s forwards;
+  /* A rede para o caso de o JS não rodar: a abertura libera a página sozinha.
+     Trinta segundos, não catorze — a abertura espera a hero ficar pronta e já mediu
+     mais de quinze. Com o prazo curto, a rede disparava ANTES da descida e o painel
+     sumia por opacidade: era o "fade" no lugar da folha descendo.
+     Qualquer sinal de que o JS está vivo (a roda apagando ou o painel descendo)
+     cancela a rede. */
+  .preloader:not([data-sair]):not([data-desce]) {
+    animation: preloader-seguranca 0s linear 30s forwards;
   }
 
   @keyframes preloader-seguranca {
