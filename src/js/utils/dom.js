@@ -1,3 +1,15 @@
+/**
+ * Texto do banco ou de quem digita não é marcação: entra como letra, nunca como tag.
+ * Um nome de cliente ou uma descrição com "<" quebraria a página — ou pior, traria
+ * script junto.
+ */
+export const escapar = (valor) =>
+  String(valor ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
 export const el = (seletor, raiz = document) => raiz.querySelector(seletor);
 export const els = (seletor, raiz = document) => [...raiz.querySelectorAll(seletor)];
 

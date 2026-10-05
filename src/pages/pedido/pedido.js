@@ -10,6 +10,7 @@
  */
 
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
+import { escapar } from '../../js/utils/dom.js';
 import { pedir, quemEstaLogado, sair } from '../../js/utils/api.js';
 import { valorDaUnidade } from '../../js/precificacao.js';
 
@@ -44,8 +45,8 @@ function mostrarSugestoes(modelos) {
       item.innerHTML = `
         ${m.foto ? `<img src="/${m.foto}" alt="" loading="lazy" />` : '<span class="pedido__sem-foto" aria-hidden="true"></span>'}
         <span class="pedido__sugestao-texto">
-          <strong>${m.codigoTabela ?? m.code}</strong>
-          <span>${m.descricaoTabela ?? ''}</span>
+          <strong>${escapar(m.codigoTabela ?? m.code)}</strong>
+          <span>${escapar(m.descricaoTabela ?? '')}</span>
         </span>
         <span class="pedido__sugestao-valor">${m.sobConsulta ? 'sob consulta' : `R$ ${dinheiro(m.precoUnidade)}`}</span>`;
       item._modelo = m;
@@ -209,10 +210,10 @@ function desenharItens(linhas) {
       const linha = document.createElement('tr');
       linha.innerHTML = `
         <td>
-          <strong>${item.referencia}</strong>
+          <strong>${escapar(item.referencia)}</strong>
           <span class="admin__cidade">${[item.forro ? 'com forro' : '', item.pedras ? 'com pedra' : ''].filter(Boolean).join(' · ') || item.nome}</span>
         </td>
-        <td>${item.numeracao || '—'}</td>
+        <td>${escapar(item.numeracao) || '—'}</td>
         <td>${item.qt}</td>
         <td>${daApi?.valorTotal != null ? dinheiro(daApi.valorTotal) : 'sob consulta'}</td>
         <td><button class="pedido__remover" type="button" data-remover="${i}">Remover</button></td>`;

@@ -8,6 +8,7 @@
  * O desconto e o frete gravados aqui são os que entram no pedido do lojista.
  */
 
+import { escapar } from '../../js/utils/dom.js';
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
 import { pedir, quemEstaLogado, sair } from '../../js/utils/api.js';
 import { dividirPedido } from '../../js/precificacao.js';
@@ -21,8 +22,6 @@ const contagem = el('[data-contagem]');
 const forma = el('[data-forma-cliente]');
 
 const dinheiro = (valor) => Number(valor).toFixed(2).replace('.', ',');
-// a observação é texto livre do Leandro: vai para dentro de um atributo, então escapa
-const escapar = (texto) => String(texto ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function avisar(texto, { erro = false } = {}) {
   aviso.textContent = texto;
@@ -39,16 +38,16 @@ function desenhar(clientes) {
       linha.dataset.id = c.id;
       linha.innerHTML = `
         <td>
-          <strong>${c.nome}</strong>
-          ${c.cidade ? `<span class="admin__cidade">${c.cidade}</span>` : ''}
+          <strong>${escapar(c.nome)}</strong>
+          ${c.cidade ? `<span class="admin__cidade">${escapar(c.cidade)}</span>` : ''}
         </td>
         <td>
-          ${c.email}
-          ${c.cnpj ? `<span class="admin__cidade">${c.cnpj}</span>` : ''}
+          ${escapar(c.email)}
+          ${c.cnpj ? `<span class="admin__cidade">${escapar(c.cnpj)}</span>` : ''}
           ${c.admin ? '<span class="admin__marca">administrador</span>' : ''}
         </td>
-        <td><input type="number" min="0" max="100" step="0.5" value="${c.desconto}" data-campo="desconto" aria-label="Desconto de ${c.nome}" /></td>
-        <td><input type="number" min="0" step="0.01" value="${dinheiro(c.frete)}" data-campo="frete" aria-label="Frete de ${c.nome}" ${c.paga_frete ? '' : 'disabled'} /></td>
+        <td><input type="number" min="0" max="100" step="0.5" value="${c.desconto}" data-campo="desconto" aria-label="Desconto de ${escapar(c.nome)}" /></td>
+        <td><input type="number" min="0" step="0.01" value="${dinheiro(c.frete)}" data-campo="frete" aria-label="Frete de ${escapar(c.nome)}" ${c.paga_frete ? '' : 'disabled'} /></td>
         <td>
           <label class="admin__marcar">
             <input type="checkbox" data-campo="pagaFrete" ${c.paga_frete ? 'checked' : ''} />
@@ -59,7 +58,7 @@ function desenhar(clientes) {
             <span>Ativo</span>
           </label>
         </td>
-        <td><input type="text" maxlength="200" value="${escapar(c.observacao)}" data-campo="observacao" aria-label="Observação fixa de ${c.nome}" /></td>`;
+        <td><input type="text" maxlength="200" value="${escapar(c.observacao)}" data-campo="observacao" aria-label="Observação fixa de ${escapar(c.nome)}" /></td>`;
       return linha;
     }),
   );
@@ -145,7 +144,7 @@ function desenharMinhaFicha(conta) {
     ['CNPJ', conta.cnpj ?? '—'],
     ['Cidade', conta.cidade ?? '—'],
   ]
-    .map(([rotulo, valor]) => `<dt>${rotulo}</dt><dd>${valor}</dd>`)
+    .map(([rotulo, valor]) => `<dt>${rotulo}</dt><dd>${escapar(valor)}</dd>`)
     .join('');
 }
 

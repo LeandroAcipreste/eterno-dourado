@@ -9,6 +9,7 @@
  */
 
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
+import { escapar } from '../../js/utils/dom.js';
 import { pedir, quemEstaLogado } from '../../js/utils/api.js';
 import { ADICIONAL_FORRO, ADICIONAL_PEDRA, valorDaUnidade } from '../../js/precificacao.js';
 
@@ -46,10 +47,10 @@ function desenhar(modelos) {
         : '';
       linha.innerHTML = `
         <td>
-          <strong>${m.codigoTabela ?? m.code}</strong>
+          <strong>${escapar(m.codigoTabela ?? m.code)}</strong>
           <button class="tabela__alterar" type="button" data-alterar>Alterar</button>
         </td>
-        <td>${m.descricaoTabela ?? '<span class="admin__cidade">fora da tabela</span>'}</td>
+        <td>${m.descricaoTabela ? escapar(m.descricaoTabela) : '<span class="admin__cidade">fora da tabela</span>'}</td>
         <td>${m.larguraMm ? `${String(m.larguraMm).replace('.', ',')} mm` : '—'}</td>
         <td class="tabela__opcoes">
           <label class="tabela__opcao">

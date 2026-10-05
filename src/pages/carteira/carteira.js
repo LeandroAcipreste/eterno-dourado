@@ -9,6 +9,7 @@
  */
 
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
+import { escapar } from '../../js/utils/dom.js';
 import { pedir, quemEstaLogado } from '../../js/utils/api.js';
 import { dividirPedido } from '../../js/precificacao.js';
 
@@ -45,7 +46,7 @@ function desenhar(pedidos) {
       const linha = document.createElement('tr');
       linha.innerHTML = `
         <td><strong>${p.numero}</strong><span class="admin__cidade">${data(p.criado_em)}</span></td>
-        <td>${p.cliente_nome}</td>
+        <td>${escapar(p.cliente_nome)}</td>
         <td>${dinheiro(p.total_bruto)}</td>
         <td>${Number(p.desconto) > 0 ? `${Number(p.desconto)}% · ${dinheiro(p.abatimento)}` : '—'}</td>
         <td>${Number(p.frete) > 0 ? `${dinheiro(p.frete)}<span class="admin__cidade">${p.clientePagaFrete ? 'cliente paga' : 'por minha conta'}</span>` : '—'}</td>
