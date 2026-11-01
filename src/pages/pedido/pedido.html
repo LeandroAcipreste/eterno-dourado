@@ -19,6 +19,11 @@
     <!-- A página do lojista. Ele procura a referência, vê a foto, escolhe numeração e
          quantidade, e o pé da folha mostra soma, desconto e frete do cadastro dele.
          Nenhum valor sai daqui: quem soma é o servidor. -->
+    <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
+      <ol class="menu__lista" role="list"></ol>
+      <div class="menu__acoes"></div>
+    </nav>
+
     <main class="admin pedido" id="conteudo">
       <header class="admin__topo">
         <a class="marca" href="/" aria-label="Eterno Dourado, início">
@@ -27,7 +32,11 @@
         </a>
         <div class="admin__conta">
           <span data-quem></span>
-          <button class="btn btn--contorno btn--compacto" type="button" data-sair hidden>Sair</button>
+          <button class="cabecalho__botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-abrir hidden>
+            <span class="sr">Abrir menu</span>
+            <span aria-hidden="true">Menu</span>
+            <span class="cabecalho__hamburguer" aria-hidden="true"></span>
+          </button>
         </div>
       </header>
 
@@ -36,6 +45,14 @@
       <div class="pedido__colunas" data-painel hidden>
         <section class="admin__bloco">
           <h1 class="admin__titulo">Fazer pedido</h1>
+
+          <!-- só para o administrador: o pedido sai com o desconto, o frete e a OBS deste cliente -->
+          <div class="campo" data-escolher-cliente hidden>
+            <label for="cliente">Cliente</label>
+            <select id="cliente" data-cliente>
+              <option value="">Escolha o cliente</option>
+            </select>
+          </div>
 
           <div class="campo pedido__busca">
             <label for="referencia">Referência ou nome do modelo</label>
@@ -98,7 +115,7 @@
         </section>
 
         <section class="admin__bloco pedido__folha">
-          <h2 class="admin__subtitulo">Seu pedido <span data-contagem></span></h2>
+          <h2 class="admin__subtitulo"><span data-titulo-folha>Seu pedido</span> <span data-contagem></span></h2>
           <p class="pedido__observacao" data-observacao hidden></p>
 
           <div class="admin__tabela">

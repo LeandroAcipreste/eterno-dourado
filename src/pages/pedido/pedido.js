@@ -10,8 +10,9 @@
  */
 
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
+import { montarMenuDoPainel } from '../../js/components/cabecalho.js';
 import { escapar } from '../../js/utils/dom.js';
-import { pedir, quemEstaLogado, sair } from '../../js/utils/api.js';
+import { pedir, quemEstaLogado } from '../../js/utils/api.js';
 import { valorDaUnidade } from '../../js/precificacao.js';
 
 const el = (selecao, raiz = document) => raiz.querySelector(selecao);
@@ -27,6 +28,13 @@ const dinheiro = (valor) => Number(valor).toFixed(2).replace('.', ',');
 /** As peças escolhidas, na ordem em que entraram na folha. */
 const itens = [];
 let peca = null; // a que está aberta na tela
+
+/**
+ * O cliente em nome de quem o administrador tira o pedido. Para o lojista fica vazio:
+ * o servidor usa a conta logada, e mandar clienteId sem ser administrador é recusado.
+ */
+let paraCliente = null;
+const corpoDoPedido = () => JSON.stringify(paraCliente ? { itens, clienteId: paraCliente.id } : { itens });
 
 function avisar(texto, { erro = false } = {}) {
   aviso.textContent = texto;
@@ -238,10 +246,7 @@ async function atualizarFolha() {
 
   vazio.hidden = true;
   try {
-    const { resumo: conta } = await pedir('/api/pedidos/resumo', {
-      method: 'POST',
-      body: JSON.stringify({ itens }),
-    });
+    const { resumo: conta } = await pedir('/api/pedidos/resumo', { method: 'POST', body: corpoDoPedido() });
     desenharItens(conta.itens);
 
     el('[data-soma]').textContent = `R$ ${dinheiro(conta.soma)}`;
@@ -265,10 +270,14 @@ el('[data-enviar]')?.addEventListener('click', async () => {
   const botao = el('[data-enviar]');
   botao.disabled = true;
   try {
-    const { pedido } = await pedir('/api/pedidos', { method: 'POST', body: JSON.stringify({ itens }) });
+    const { pedido } = await pedir('/api/pedidos', { method: 'POST', body: corpoDoPedido() });
     itens.length = 0;
     await atualizarFolha();
-    avisar(`Pedido ${pedido.numero} enviado. O Leandro recebe e fala com você pelo WhatsApp.`);
+    avisar(
+      paraCliente
+        ? `Pedido ${pedido.numero} de ${paraCliente.nome} registrado.`
+        : `Pedido ${pedido.numero} enviado. O Leandro recebe e fala com você pelo WhatsApp.`,
+    );
   } catch (erro) {
     avisar(erro.message, { erro: true });
   } finally {
@@ -276,26 +285,58 @@ el('[data-enviar]')?.addEventListener('click', async () => {
   }
 });
 
-el('[data-sair]')?.addEventListener('click', async () => {
-  await sair().catch(() => {});
-  location.href = '/';
-});
+/* ---- o cliente do pedido, quando quem entrou é o administrador ----------------- */
+
+function mostrarObservacao(conta) {
+  // a observação do cadastro acompanha todo pedido deste cliente, e é ela que sai na folha
+  const obs = el('[data-observacao]');
+  obs.textContent = conta?.observacao ? `OBS: ${conta.observacao}` : '';
+  obs.hidden = !conta?.observacao;
+}
+
+async function prepararEscolhaDoCliente() {
+  const seletor = el('[data-cliente]');
+  const { clientes } = await pedir('/api/clientes');
+  const ativos = clientes.filter((c) => c.ativo);
+  seletor.append(
+    ...ativos.map((c) => {
+      const opcao = document.createElement('option');
+      opcao.value = c.id;
+      opcao.textContent = c.cidade ? `${c.nome} · ${c.cidade}` : c.nome;
+      return opcao;
+    }),
+  );
+  el('[data-escolher-cliente]').hidden = false;
+
+  // sem cliente não há desconto nem frete para somar: a busca espera a escolha
+  busca.disabled = true;
+  seletor.addEventListener('change', async () => {
+    paraCliente = ativos.find((c) => String(c.id) === seletor.value) ?? null;
+    busca.disabled = !paraCliente;
+    el('[data-titulo-folha]').textContent = paraCliente ? `Pedido de ${paraCliente.nome}` : 'Seu pedido';
+    mostrarObservacao(paraCliente);
+    // trocar de cliente troca o desconto e o frete das peças que já estão na folha
+    await atualizarFolha();
+    if (paraCliente) busca.focus();
+  });
+  seletor.focus();
+}
 
 /* ---- entrada ------------------------------------------------------------------ */
 
 const cliente = await quemEstaLogado();
+montarMenuDoPainel(cliente);
 if (!cliente) {
   avisar('Entre para fazer seu pedido.', { erro: true });
   montarAreaCliente().abrir();
 } else {
   el('[data-quem]').textContent = cliente.nome;
-  // a observação do cadastro acompanha todo pedido deste cliente, e é ela que sai na folha
-  if (cliente.observacao) {
-    el('[data-observacao]').textContent = `OBS: ${cliente.observacao}`;
-    el('[data-observacao]').hidden = false;
-  }
-  el('[data-sair]').hidden = false;
   painel.hidden = false;
-  await atualizarFolha();
-  busca.focus();
+  if (cliente.admin) {
+    await prepararEscolhaDoCliente().catch((erro) => avisar(`clientes: ${erro.message}`, { erro: true }));
+  } else {
+    mostrarObservacao(cliente);
+    await atualizarFolha();
+    busca.focus();
+  }
 }

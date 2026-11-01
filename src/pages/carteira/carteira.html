@@ -18,6 +18,11 @@
   <body data-page="carteira">
     <!-- A divisão do dinheiro, pedido a pedido: a fábrica fica com metade do valor de
          tabela mais o frete; o desconto dado e o frete incluso saem da comissão. -->
+    <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
+      <ol class="menu__lista" role="list"></ol>
+      <div class="menu__acoes"></div>
+    </nav>
+
     <main class="admin" id="conteudo">
       <header class="admin__topo">
         <a class="marca" href="/" aria-label="Eterno Dourado, início">
@@ -25,7 +30,11 @@
           <span class="marca__dourado">Dourado</span>
         </a>
         <div class="admin__conta">
-          <a class="btn btn--contorno btn--compacto" href="/src/pages/admin/admin.html">Voltar ao painel</a>
+          <button class="cabecalho__botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-abrir hidden>
+            <span class="sr">Abrir menu</span>
+            <span aria-hidden="true">Menu</span>
+            <span class="cabecalho__hamburguer" aria-hidden="true"></span>
+          </button>
         </div>
       </header>
 

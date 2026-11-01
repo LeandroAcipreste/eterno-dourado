@@ -1311,7 +1311,8 @@
   /* A borda é desenhada em duas camadas: o fundo do campo até a borda interna e a
      cor (ou o degradê) na faixa da borda. É o que permite a borda em degradê, coisa
      que outline e border-color não fazem. */
-  .campo input {
+  .campo input,
+  .campo select {
     min-height: 52px;
     padding: 0 var(--e-4);
     border: 2px solid transparent;
@@ -1323,7 +1324,8 @@
     font-size: 1rem;
   }
 
-  .campo input:hover {
+  .campo input:hover,
+  .campo select:hover {
     background:
       linear-gradient(var(--marinho), var(--marinho)) padding-box,
       linear-gradient(var(--champagne), var(--champagne)) border-box;
@@ -1331,7 +1333,8 @@
 
   /* Em foco, a mesma faixa dourada do título da abertura. O anel de foco geral não
      serve aqui: com 3px de folga mais a sombra, ele cobria o rótulo do campo de baixo. */
-  .campo input:focus-visible {
+  .campo input:focus-visible,
+  .campo select:focus-visible {
     outline: none;
     box-shadow: none;
     background:

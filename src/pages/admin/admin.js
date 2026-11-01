@@ -10,7 +10,8 @@
 
 import { escapar } from '../../js/utils/dom.js';
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
-import { pedir, quemEstaLogado, sair } from '../../js/utils/api.js';
+import { montarMenuDoPainel } from '../../js/components/cabecalho.js';
+import { pedir, quemEstaLogado } from '../../js/utils/api.js';
 import { dividirPedido } from '../../js/precificacao.js';
 
 const el = (selecao, raiz = document) => raiz.querySelector(selecao);
@@ -110,11 +111,6 @@ forma?.addEventListener('submit', async (evento) => {
   }
 });
 
-el('[data-sair]')?.addEventListener('click', async () => {
-  await sair().catch(() => {});
-  location.href = '/';
-});
-
 /* ---- financeiro ------------------------------------------------------------ */
 
 async function carregarFinanceiro() {
@@ -164,14 +160,16 @@ el('[data-forma-senha]')?.addEventListener('submit', async (evento) => {
 /* ---- entrada --------------------------------------------------------------- */
 
 const cliente = await quemEstaLogado();
-if (!cliente) {
+if (cliente && !cliente.admin) {
+  // a página é do administrador: o lojista nem a vê, vai para a conta dele
+  location.replace('/src/pages/conta/conta.html');
+} else if (!cliente) {
+  montarMenuDoPainel(null);
   avisar('Entre para abrir o painel.', { erro: true });
   montarAreaCliente().abrir();
-} else if (!cliente.admin) {
-  avisar(`${cliente.nome}, esta página é do administrador.`, { erro: true });
 } else {
+  montarMenuDoPainel(cliente);
   el('[data-quem]').textContent = cliente.nome;
-  el('[data-sair]').hidden = false;
   painel.hidden = false;
   desenharMinhaFicha(cliente);
   // cada seção carrega a sua parte; uma que falhe não apaga as outras

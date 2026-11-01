@@ -17,6 +17,11 @@
   <body data-page="admin">
     <!-- Página do Leandro: é aqui que nasce o desconto e o frete de cada lojista, e os
          dois entram no pedido dele sozinhos. Quem não é administrador não passa daqui. -->
+    <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
+      <ol class="menu__lista" role="list"></ol>
+      <div class="menu__acoes"></div>
+    </nav>
+
     <main class="admin" id="conteudo">
       <header class="admin__topo">
         <a class="marca" href="/" aria-label="Eterno Dourado, início">
@@ -25,7 +30,11 @@
         </a>
         <div class="admin__conta">
           <span data-quem></span>
-          <button class="btn btn--contorno btn--compacto" type="button" data-sair hidden>Sair</button>
+          <button class="cabecalho__botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-abrir hidden>
+            <span class="sr">Abrir menu</span>
+            <span aria-hidden="true">Menu</span>
+            <span class="cabecalho__hamburguer" aria-hidden="true"></span>
+          </button>
         </div>
       </header>
 

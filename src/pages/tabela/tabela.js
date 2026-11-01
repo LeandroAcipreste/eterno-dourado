@@ -9,6 +9,7 @@
  */
 
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
+import { montarMenuDoPainel } from '../../js/components/cabecalho.js';
 import { escapar } from '../../js/utils/dom.js';
 import { pedir, quemEstaLogado } from '../../js/utils/api.js';
 import { ADICIONAL_FORRO, ADICIONAL_PEDRA, valorDaUnidade } from '../../js/precificacao.js';
@@ -181,12 +182,15 @@ formaNovo?.addEventListener('submit', async (evento) => {
 /* ---- entrada --------------------------------------------------------------- */
 
 const cliente = await quemEstaLogado();
-if (!cliente) {
+if (cliente && !cliente.admin) {
+  // a página é do administrador: o lojista nem a vê, vai para a conta dele
+  location.replace('/src/pages/conta/conta.html');
+} else if (!cliente) {
+  montarMenuDoPainel(null);
   avisar('Entre para ver a tabela.', { erro: true });
   montarAreaCliente().abrir();
-} else if (!cliente.admin) {
-  avisar(`${cliente.nome}, esta página é do administrador.`, { erro: true });
 } else {
+  montarMenuDoPainel(cliente);
   painel.hidden = false;
   await carregar().catch((erro) => avisar(erro.message, { erro: true }));
 }

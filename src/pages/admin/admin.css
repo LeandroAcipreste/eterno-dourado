@@ -13,7 +13,10 @@
   padding-block: var(--e-8) var(--e-10);
 }
 
+/* fica acima do menu aberto, como o cabeçalho da home: o botão que fecha continua à mão */
 .admin__topo {
+  position: relative;
+  z-index: var(--z-cabecalho);
   display: flex;
   flex-wrap: wrap;
   align-items: center;

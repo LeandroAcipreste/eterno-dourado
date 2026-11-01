@@ -33,6 +33,8 @@ src/js/libs/                  estudio3d.js (cena 3D aprovada) e visualizador3d.j
 src/js/utils/                 dom, formato, imagem, whatsapp, dialogo
 style.css                     todo o CSS global em @layer global + @import de src/pages/home/home.css em layer(pagina)
 src/pages/home/               a home inteira: home.css e home.js reúnem as dobras, cada uma na pasta dela — abertura, colecao (fotos + provas), catalogo (vitrine em x, 12 cartões + filtro), como-comprar, nossa-historia (com rodapé)
+src/pages/admin|tabela|carteira/  só do administrador; lojista logado é mandado para a conta. O menu da conta vem de montarMenuDoPainel (cabecalho.js)
+src/pages/conta/              a do lojista: cadastro (muda só nome, e-mail, CNPJ e senha, por PATCH /api/eu) e os pedidos com a folha em PDF
 src/pages/obrigado/           a página /obrigado: html, css e js dela. A URL sem extensão vem do rewrite no vercel.json e do mesmo atalho no servidor.js
 vendor/lenis/                 Lenis: rolagem suave com os ajustes do novo-site (duração 1,2 s, curva exponencial)
 publicacao/                   como o site sobe no VPS: nginx atrás do Traefik, /api repassado ao ERP, e atualizar.sh puxando o main a cada minuto
