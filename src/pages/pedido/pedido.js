@@ -223,7 +223,7 @@ function desenharItens(linhas) {
         </td>
         <td>${escapar(item.numeracao) || '—'}</td>
         <td>${item.qt}</td>
-        <td>${daApi?.valorTotal != null ? dinheiro(daApi.valorTotal) : 'sob consulta'}</td>
+        <td>${daApi?.valorTotal != null ? dinheiro(daApi.valorTotal) : linhas ? 'sob consulta' : '—'}</td>
         <td><button class="pedido__remover" type="button" data-remover="${i}">Remover</button></td>`;
       return linha;
     }),
@@ -236,15 +236,25 @@ async function atualizarFolha() {
   const resumo = el('[data-resumo]');
   const enviar = el('[data-enviar]');
 
+  // o botão fica sempre no fim da folha; só destrava quando há o que finalizar
+  enviar.hidden = false;
+  enviar.disabled = true;
+  vazio.hidden = itens.length > 0;
+
   if (itens.length === 0) {
     desenharItens(null);
-    vazio.hidden = false;
     resumo.hidden = true;
-    enviar.hidden = true;
     return;
   }
 
-  vazio.hidden = true;
+  // sem cliente escolhido não há desconto nem frete: as peças entram, a conta espera
+  if (cliente?.admin && !paraCliente) {
+    desenharItens(null);
+    resumo.hidden = true;
+    avisar('Escolha o cliente para fechar a conta do pedido.');
+    return;
+  }
+
   try {
     const { resumo: conta } = await pedir('/api/pedidos/resumo', { method: 'POST', body: corpoDoPedido() });
     desenharItens(conta.itens);
@@ -259,7 +269,7 @@ async function atualizarFolha() {
     el('[data-total]').textContent = `R$ ${dinheiro(conta.total)}`;
 
     resumo.hidden = false;
-    enviar.hidden = false;
+    enviar.disabled = false;
     avisar(conta.temSobConsulta ? 'Há peça sob consulta: o Leandro confirma o valor dela com você.' : '');
   } catch (erro) {
     avisar(erro.message, { erro: true });
@@ -270,17 +280,19 @@ el('[data-enviar]')?.addEventListener('click', async () => {
   const botao = el('[data-enviar]');
   botao.disabled = true;
   try {
-    const { pedido } = await pedir('/api/pedidos', { method: 'POST', body: corpoDoPedido() });
+    // o servidor salva, gera a folha e manda resumo e PDF para o Telegram do Leandro
+    const { pedido, telegram } = await pedir('/api/pedidos', { method: 'POST', body: corpoDoPedido() });
     itens.length = 0;
     await atualizarFolha();
-    avisar(
-      paraCliente
-        ? `Pedido ${pedido.numero} de ${paraCliente.nome} registrado.`
-        : `Pedido ${pedido.numero} enviado. O Leandro recebe e fala com você pelo WhatsApp.`,
-    );
+    if (!paraCliente) {
+      avisar(`Pedido ${pedido.numero} enviado. O Leandro recebe e fala com você pelo WhatsApp.`);
+    } else if (telegram) {
+      avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} salvo e enviado ao Telegram com a folha.`);
+    } else {
+      avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} salvo, mas o Telegram não recebeu. A folha está no Financeiro.`, { erro: true });
+    }
   } catch (erro) {
     avisar(erro.message, { erro: true });
-  } finally {
     botao.disabled = false;
   }
 });
@@ -308,11 +320,8 @@ async function prepararEscolhaDoCliente() {
   );
   el('[data-escolher-cliente]').hidden = false;
 
-  // sem cliente não há desconto nem frete para somar: a busca espera a escolha
-  busca.disabled = true;
   seletor.addEventListener('change', async () => {
     paraCliente = ativos.find((c) => String(c.id) === seletor.value) ?? null;
-    busca.disabled = !paraCliente;
     el('[data-titulo-folha]').textContent = paraCliente ? `Pedido de ${paraCliente.nome}` : 'Seu pedido';
     mostrarObservacao(paraCliente);
     // trocar de cliente troca o desconto e o frete das peças que já estão na folha
@@ -334,6 +343,7 @@ if (!cliente) {
   painel.hidden = false;
   if (cliente.admin) {
     await prepararEscolhaDoCliente().catch((erro) => avisar(`clientes: ${erro.message}`, { erro: true }));
+    await atualizarFolha();
   } else {
     mostrarObservacao(cliente);
     await atualizarFolha();

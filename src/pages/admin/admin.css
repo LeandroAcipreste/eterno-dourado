@@ -5,7 +5,9 @@
    com o mesmo tamanho de toque do resto do site.
    =========================================================================== */
 
+/* tema escuro para o que o navegador desenha: a lista do select e a barra de rolagem */
 .admin {
+  color-scheme: dark;
   display: grid;
   gap: var(--e-6);
   width: min(1200px, 100% - 40px);

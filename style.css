@@ -1324,6 +1324,12 @@
     font-size: 1rem;
   }
 
+  /* a lista aberta do select: o Windows ignora o fundo do campo e pintava branco */
+  .campo option {
+    background: var(--marinho);
+    color: var(--claro);
+  }
+
   .campo input:hover,
   .campo select:hover {
     background:

@@ -1,8 +1,7 @@
 /* ===========================================================================
-   Página de pedido: escolher à esquerda, folha à direita.
-
-   Em tela estreita vira uma coluna só, com a folha embaixo — é a ordem em que a
-   pessoa trabalha. O resto do visual vem do admin.css, que esta página carrega.
+   Página de pedido: uma coluna só, na ordem em que a pessoa trabalha. Em cima
+   escolhe a peça; embaixo, a folha com o resumo e, no fim, finalizar.
+   O resto do visual vem do admin.css, que esta página carrega.
    =========================================================================== */
 
 .pedido__colunas {
@@ -10,17 +9,8 @@
   gap: var(--e-6);
 }
 
-@media (min-width: 1000px) {
-  .pedido__colunas {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    align-items: start;
-  }
-
-  /* a folha acompanha quem rola procurando a próxima peça */
-  .pedido__folha {
-    position: sticky;
-    top: var(--e-6);
-  }
+.pedido__folha [data-enviar] {
+  justify-self: start;
 }
 
 /* ---- busca com sugestões --------------------------------------------------- */
