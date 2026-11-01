@@ -306,29 +306,72 @@ function mostrarObservacao(conta) {
   obs.hidden = !conta?.observacao;
 }
 
+/**
+ * A lista de clientes é desenhada aqui, como as sugestões de referência: a do <select>
+ * quem pinta é o sistema, e no Windows ela vinha branca com o nome branco.
+ */
 async function prepararEscolhaDoCliente() {
-  const seletor = el('[data-cliente]');
+  const campo = el('[data-cliente-busca]');
+  const lista = el('[data-clientes-lista]');
   const { clientes } = await pedir('/api/clientes');
   const ativos = clientes.filter((c) => c.ativo);
-  seletor.append(
-    ...ativos.map((c) => {
-      const opcao = document.createElement('option');
-      opcao.value = c.id;
-      opcao.textContent = c.cidade ? `${c.nome} · ${c.cidade}` : c.nome;
-      return opcao;
-    }),
-  );
-  el('[data-escolher-cliente]').hidden = false;
+  const semAcento = (texto) => String(texto ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-  seletor.addEventListener('change', async () => {
-    paraCliente = ativos.find((c) => String(c.id) === seletor.value) ?? null;
+  const mostrar = (aberta) => {
+    lista.hidden = !aberta;
+    campo.setAttribute('aria-expanded', String(aberta));
+  };
+
+  const filtrar = () => {
+    const termo = semAcento(campo.value.trim());
+    const achados = ativos.filter((c) => !termo || semAcento(`${c.nome} ${c.cidade} ${c.cnpj}`).includes(termo));
+    lista.replaceChildren(
+      ...achados.map((c) => {
+        const item = document.createElement('li');
+        item.setAttribute('role', 'option');
+        item.dataset.id = c.id;
+        item.innerHTML = `
+          <span class="pedido__sugestao-texto">
+            <strong>${escapar(c.nome)}</strong>
+            ${c.cidade ? `<span>${escapar(c.cidade)}</span>` : ''}
+          </span>`;
+        return item;
+      }),
+    );
+    mostrar(achados.length > 0);
+  };
+
+  async function escolher(id) {
+    paraCliente = ativos.find((c) => String(c.id) === String(id)) ?? null;
+    campo.value = paraCliente?.nome ?? '';
+    mostrar(false);
     el('[data-titulo-folha]').textContent = paraCliente ? `Pedido de ${paraCliente.nome}` : 'Seu pedido';
     mostrarObservacao(paraCliente);
     // trocar de cliente troca o desconto e o frete das peças que já estão na folha
     await atualizarFolha();
     if (paraCliente) busca.focus();
+  }
+
+  campo.addEventListener('focus', filtrar);
+  campo.addEventListener('input', filtrar);
+  lista.addEventListener('click', (evento) => {
+    const item = evento.target.closest('li');
+    if (item) escolher(item.dataset.id);
   });
-  seletor.focus();
+  // Enter com um só achado escolhe esse; fora da lista, ela fecha
+  campo.addEventListener('keydown', (evento) => {
+    if (evento.key === 'Escape') mostrar(false);
+    if (evento.key === 'Enter' && lista.children.length === 1) {
+      evento.preventDefault();
+      escolher(lista.firstElementChild.dataset.id);
+    }
+  });
+  document.addEventListener('click', (evento) => {
+    if (!evento.target.closest('[data-escolher-cliente]')) mostrar(false);
+  });
+
+  el('[data-escolher-cliente]').hidden = false;
+  campo.focus();
 }
 
 /* ---- entrada ------------------------------------------------------------------ */

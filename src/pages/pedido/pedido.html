@@ -47,11 +47,19 @@
           <h1 class="admin__titulo">Fazer pedido</h1>
 
           <!-- só para o administrador: o pedido sai com o desconto, o frete e a OBS deste cliente -->
-          <div class="campo" data-escolher-cliente hidden>
+          <div class="campo pedido__busca" data-escolher-cliente hidden>
             <label for="cliente">Cliente</label>
-            <select id="cliente" data-cliente>
-              <option value="">Escolha o cliente</option>
-            </select>
+            <input
+              id="cliente"
+              type="search"
+              autocomplete="off"
+              role="combobox"
+              aria-expanded="false"
+              aria-controls="clientes-lista"
+              placeholder="Nome, cidade ou CNPJ"
+              data-cliente-busca
+            />
+            <ul class="pedido__sugestoes pedido__sugestoes--clientes" id="clientes-lista" role="listbox" data-clientes-lista hidden></ul>
           </div>
 
           <div class="campo pedido__busca">

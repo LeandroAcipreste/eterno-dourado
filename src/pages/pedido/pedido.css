@@ -47,6 +47,11 @@
   cursor: pointer;
 }
 
+/* cliente não tem foto nem valor: o nome ocupa a linha */
+.pedido__sugestoes--clientes li {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .pedido__sugestoes li:hover,
 .pedido__sugestoes li:focus-visible {
   background: var(--safira);
