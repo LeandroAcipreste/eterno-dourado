@@ -11,6 +11,7 @@
 
 import { montarAreaCliente } from '../../js/components/area-cliente.js';
 import { montarMenuDoPainel } from '../../js/components/cabecalho.js';
+import { formularioDeEmail } from '../../js/components/email-do-pedido.js';
 import { escapar } from '../../js/utils/dom.js';
 import { pedir, quemEstaLogado } from '../../js/utils/api.js';
 import { valorDaUnidade } from '../../js/precificacao.js';
@@ -286,11 +287,15 @@ el('[data-enviar]')?.addEventListener('click', async () => {
     await atualizarFolha();
     if (!paraCliente) {
       avisar(`Pedido ${pedido.numero} enviado. O Leandro recebe e fala com você pelo WhatsApp.`);
-    } else if (telegram) {
+      return;
+    }
+    if (telegram) {
       avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} salvo e enviado ao Telegram com a folha.`);
     } else {
-      avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} salvo, mas o Telegram não recebeu. A folha está no Financeiro.`, { erro: true });
+      avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} salvo, mas o Telegram não recebeu. A folha está na ficha do cliente.`, { erro: true });
     }
+    // o mesmo pedido pode seguir por e-mail, para o cliente ou para quem o Leandro quiser
+    el('[data-email-pedido]').replaceChildren(formularioDeEmail(pedido, { sugestao: paraCliente.email, avisar }));
   } catch (erro) {
     avisar(erro.message, { erro: true });
     botao.disabled = false;
@@ -371,7 +376,11 @@ async function prepararEscolhaDoCliente() {
   });
 
   el('[data-escolher-cliente]').hidden = false;
-  campo.focus();
+
+  // vindo da ficha do cliente (?cliente=), ele já chega escolhido
+  const daFicha = new URLSearchParams(location.search).get('cliente');
+  if (daFicha && ativos.some((c) => String(c.id) === daFicha)) await escolher(daFicha);
+  else campo.focus();
 }
 
 /* ---- entrada ------------------------------------------------------------------ */

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cliente · Eterno Dourado</title>
+    <meta name="description" content="O cadastro de um lojista e os pedidos dele." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#050912" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/src/pages/admin/admin.css" />
+  </head>
+
+  <body data-page="cliente">
+    <!-- A ficha de um lojista, aberta da lista do painel: o cadastro, os pedidos com a
+         folha de cada um e o envio por e-mail. Só o administrador. -->
+    <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
+      <ol class="menu__lista" role="list"></ol>
+      <div class="menu__acoes"></div>
+    </nav>
+
+    <main class="admin" id="conteudo">
+      <header class="admin__topo">
+        <a class="marca" href="/" aria-label="Eterno Dourado, início">
+          <span class="marca__eterno">Eterno</span>
+          <span class="marca__dourado">Dourado</span>
+        </a>
+        <div class="admin__conta">
+          <span data-quem></span>
+          <button class="cabecalho__botao" type="button" aria-expanded="false" aria-controls="menu" data-menu-abrir hidden>
+            <span class="sr">Abrir menu</span>
+            <span aria-hidden="true">Menu</span>
+            <span class="cabecalho__hamburguer" aria-hidden="true"></span>
+          </button>
+        </div>
+      </header>
+
+      <p class="admin__aviso" data-aviso role="status" hidden></p>
+
+      <div class="admin__conteudo" data-painel hidden>
+        <section class="admin__bloco">
+          <h1 class="admin__titulo" data-nome></h1>
+          <dl class="admin__ficha" data-ficha></dl>
+          <a class="btn btn--ouro btn--compacto" data-fazer-pedido href="/src/pages/pedido/pedido.html">Fazer pedido</a>
+        </section>
+
+        <section class="admin__bloco">
+          <h2 class="admin__subtitulo">Pedidos <span data-contagem></span></h2>
+          <div class="admin__tabela" data-tabela-pedidos hidden>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Pedido</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Alianças</th>
+                  <th scope="col">Total R$</th>
+                  <th scope="col">Situação</th>
+                  <th scope="col">Folha</th>
+                </tr>
+              </thead>
+              <tbody data-pedidos></tbody>
+            </table>
+          </div>
+          <p class="admin__texto" data-sem-pedidos hidden>Nenhum pedido ainda.</p>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="/src/pages/cliente/cliente.js"></script>
+  </body>
+</html>

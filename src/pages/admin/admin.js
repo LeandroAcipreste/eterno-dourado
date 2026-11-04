@@ -41,6 +41,7 @@ function desenhar(clientes) {
         <td>
           <strong>${escapar(c.nome)}</strong>
           ${c.cidade ? `<span class="admin__cidade">${escapar(c.cidade)}</span>` : ''}
+          <a class="admin__acao" href="/src/pages/cliente/cliente.html?id=${Number(c.id)}">Abrir ficha</a>
         </td>
         <td>
           ${escapar(c.email)}

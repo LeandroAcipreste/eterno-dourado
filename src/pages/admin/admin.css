@@ -206,3 +206,22 @@
 .admin__forma .campo--larga {
   grid-column: 1 / -1;
 }
+
+/* ação de texto dentro da tabela (abrir ficha, enviar por e-mail): alvo de 44px */
+.admin__acao {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-right: var(--e-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.admin__acao:hover {
+  color: var(--ouro);
+}
