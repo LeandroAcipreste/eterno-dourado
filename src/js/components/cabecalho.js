@@ -38,10 +38,11 @@ export function montarCabecalho() {
 
   /**
    * O menu do administrador. Logado, as cinco seções do site não dizem nada a quem
-   * entrou para trabalhar: o que ele precisa é tirar pedido, cadastrar cliente, mexer
+   * entrou para trabalhar: o que ele precisa é voltar ao painel, tirar pedido, cadastrar cliente, mexer
    * na tabela, ver o financeiro e sair.
    */
   const MENU_ADMIN = [
+    ['Painel', '/src/pages/admin/admin.html'],
     ['Fazer pedido', '/src/pages/pedido/pedido.html'],
     ['Cadastrar cliente', '/src/pages/admin/admin.html#clientes'],
     ['Alterar tabela de preço', '/src/pages/tabela/tabela.html'],
