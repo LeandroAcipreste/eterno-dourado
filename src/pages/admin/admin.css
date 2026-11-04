@@ -225,3 +225,8 @@
 .admin__acao:hover {
   color: var(--ouro);
 }
+
+/* a resposta de um formulário ocupa a linha inteira, embaixo do botão */
+.admin__forma .admin__aviso {
+  grid-column: 1 / -1;
+}
