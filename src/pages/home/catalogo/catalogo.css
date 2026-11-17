@@ -269,19 +269,6 @@
   outline: 2px solid var(--champagne);
   outline-offset: 3px;
 }
-.modelo__adicionais {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--claro-suave);
-}
-
-.modelo__acoes {
-  display: grid;
-  gap: var(--e-2);
-  margin-top: auto;
-  padding-top: var(--e-2);
-}
-
 /* ---------------------------------------------------------------------------
    Filtros
    --------------------------------------------------------------------------- */

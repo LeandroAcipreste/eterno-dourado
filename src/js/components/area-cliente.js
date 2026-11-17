@@ -52,7 +52,7 @@ function criarDialogo() {
 
         <p class="entrar__rodape">
           Ainda não é cliente?
-          <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Solicite seu cadastro</a>
+          <a href="https://wa.me/5571991669999" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Solicite seu cadastro</a>
         </p>
       </div>
     `;

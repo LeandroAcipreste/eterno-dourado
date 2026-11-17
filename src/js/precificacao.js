@@ -168,8 +168,3 @@ export function referenciaDoItem({ modelo, forro, pedras }) {
   if (n > 0) partes.push(n === 1 ? '1 pedra' : `${n} pedras`);
   return partes.join(' · ');
 }
-
-/** Chave de agrupamento: o mesmo modelo com as mesmas opções é um grupo só. */
-export function chaveDoGrupo({ code, forro, pedras }) {
-  return `${code}|${forro ? 'aco' : 'liso'}|${pedras || 0}`;
-}

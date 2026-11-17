@@ -11,12 +11,6 @@ export function progressoDaSecao(secao) {
   return limitar(-secao.getBoundingClientRect().top / Math.max(1, percurso));
 }
 
-/** 0 no topo da página; 1 no fim. */
-export function progressoDaPagina() {
-  const percurso = document.documentElement.scrollHeight - window.innerHeight;
-  return percurso > 0 ? limitar(window.scrollY / percurso) : 0;
-}
-
 /** Chama `fn` no máximo uma vez por quadro enquanto houver rolagem ou mudança de tamanho. Devolve a função que desliga. */
 export function aCadaQuadroDeRolagem(fn) {
   let pedido = 0;

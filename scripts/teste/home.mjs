@@ -46,7 +46,7 @@ export default async function testarSite(ctx) {
 
   await passo(ctx, 'a página rola por todas as seções', async () => {
     const nomes = [];
-    for (const secao of ['colecao', 'catalogo', 'como-comprar', 'nossa-historia']) {
+    for (const secao of ['catalogo', 'colecao', 'como-comprar', 'nossa-historia']) {
       await d.ev(`(() => {
         const alvo = document.querySelector("#${secao}");
         window.scrollTo({ top: alvo.getBoundingClientRect().top + scrollY + alvo.offsetHeight / 2 - innerHeight / 2, behavior: "instant" });
@@ -55,7 +55,7 @@ export default async function testarSite(ctx) {
       nomes.push(await d.ev(SECAO));
     }
     exigir(
-      nomes.join(' · ') === 'colecao · catalogo · como-comprar · nossa-historia',
+      nomes.join(' · ') === 'catalogo · colecao · como-comprar · nossa-historia',
       `o cabeçalho não acompanhou as seções: ${nomes.join(' · ')}`,
     );
     await d.ev('window.scrollTo({ top: 0, behavior: "instant" })');
@@ -121,7 +121,7 @@ export default async function testarSite(ctx) {
   await passo(ctx, 'os títulos entram escondidos e se escrevem', async () => {
     // CSS anima, GSAP dispara: antes da dobra entrar o título está escondido; com ela
     // na tela, e dado o tempo da transição, ele está inteiro no lugar
-    for (const secao of ['colecao', 'catalogo', 'nossa-historia']) {
+    for (const secao of ['catalogo', 'colecao', 'nossa-historia']) {
       // uma parte só está escrita quando está opaca E no lugar: a máscara esconde pelo
       // deslocamento, então medir opacidade sozinha diria "pronta" com a letra fora dela
       const contar = `(() => {
@@ -397,11 +397,11 @@ export default async function testarSite(ctx) {
   // a abertura da visita é a única aba que não pula o preloader
   const a = await ctx.abrir({ largura: 1440, altura: 900, semAbertura: false });
   await passo(ctx, 'abertura da visita', async () => {
-    exigir(await a.esperarQue('!!document.querySelector("[data-preloader]")', 6000), 'o nome em círculo não apareceu');
-    const roda = await a.ev('getComputedStyle(document.querySelector(".preloader__roda")).animationName');
-    exigir(roda === 'preloader-girar', `a roda do nome não está girando (${roda})`);
-    exigir(await a.esperarQue('!document.querySelector("[data-preloader]")', 16000), 'a abertura não saiu depois dos 8 s');
-    exigir(await a.esperarQue('document.querySelector("[data-cortina]").dataset.estado === "parada"', 12000), 'a cortina não revelou a página');
+    exigir(await a.esperarQue('!!document.querySelector("[data-preloader]")', 6000), 'o painel da abertura não apareceu');
+    // a 03LM sobe por cima do painel e gira no centro antes de o furo abrir
+    exigir(await a.esperarQue('document.querySelector("[data-anel3d]").classList.contains("is-pronto") && "abertura" in document.documentElement.dataset', 15000), 'a 03LM não apareceu por cima da abertura');
+    exigir(await a.esperarQue('document.querySelector("[data-preloader]")?.hasAttribute("data-abre")', 8000), 'o furo não abriu depois da volta');
+    exigir(await a.esperarQue('!document.querySelector("[data-preloader]") && !("abertura" in document.documentElement.dataset)', 4000), 'a abertura não saiu');
   });
 
   await passo(ctx, 'o título da abertura chega letra a letra', async () => {
@@ -437,16 +437,9 @@ export default async function testarSite(ctx) {
   // se aplica, e é exatamente o caso que os outros testes nunca veem
   const r = await ctx.abrir({ largura: 1440, altura: 900, semAbertura: false, reduzido: true });
   await passo(ctx, 'abertura com movimento reduzido', async () => {
-    // gira mesmo aqui, só que devagar: o que não pode é ficar congelada na tela
-    const girou = await r.ev(`(() => new Promise((ok) => {
-      const roda = document.querySelector(".preloader__roda");
-      const angulo = () => parseFloat(getComputedStyle(roda).rotate) || 0;
-      const antes = angulo();
-      setTimeout(() => ok(Math.abs(angulo() - antes)), 800);
-    }))()`);
-    exigir(girou > 1, `com movimento reduzido a roda ficou parada (${girou}°)`);
-    exigir(await r.esperarQue('!document.querySelector("[data-preloader]")', 16000), 'a abertura ficou presa na tela');
-    exigir(await r.esperarQue('document.querySelector("[data-cortina]").dataset.estado === "parada"', 12000), 'a cortina não liberou a página');
+    // a volta e o furo acontecem aqui também: o que não pode é a abertura ficar presa
+    exigir(await r.esperarQue('document.querySelector("[data-preloader]")?.hasAttribute("data-abre")', 20000), 'com movimento reduzido o furo não abriu');
+    exigir(await r.esperarQue('!document.querySelector("[data-preloader]")', 4000), 'a abertura ficou presa na tela');
     exigir(await r.ev('document.querySelectorAll(".modelo").length > 0'), 'o catálogo não montou');
   });
   await r.fechar();

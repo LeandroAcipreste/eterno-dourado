@@ -24,37 +24,10 @@ export function milimetro(valor) {
   return `${texto} mm`;
 }
 
-export function porcento(valor) {
-  if (!Number.isFinite(valor)) return '—';
-  const texto = Number.isInteger(valor) ? String(valor) : valor.toFixed(1).replace('.', ',');
-  return `${texto}%`;
-}
-
 /** Texto sem acento e em minúscula, para a busca do catálogo. */
 export function achatar(texto) {
   return String(texto ?? '')
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
     .toLowerCase();
-}
-
-const NOME_FAMILIA = {
-  liso: 'Liso',
-  'pedra-unica': 'Pedra única',
-  'meia-alianca': 'Meia aliança',
-  solitario: 'Solitário',
-};
-
-const NOME_TIPO = {
-  alianca: 'Aliança',
-  anel: 'Anel',
-};
-
-export const nomeDaFamilia = (chave) => NOME_FAMILIA[chave] ?? chave;
-export const nomeDoTipo = (chave) => NOME_TIPO[chave] ?? chave;
-
-/** Rótulo curto de frisos, para a ficha técnica. */
-export function frisos(quantidade) {
-  if (!Number.isFinite(quantidade) || quantidade === 0) return 'sem friso';
-  return quantidade === 1 ? '1 friso' : `${quantidade} frisos`;
 }

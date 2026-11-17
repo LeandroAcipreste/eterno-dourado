@@ -7,7 +7,7 @@ Atacado de alianças em Salvador (desde 2000; hoje quem atende é o Leandro). O 
 - Lojistas e revendedores que compram no atacado **para revender no próprio negócio**. Nunca escrever "vender alianças", como se ele fornecesse para venda.
 - Todo texto segue a skill `texto-e-conteudo`: cada informação uma vez, nada de preenchimento, frase ditada pelo Leandro vai literal (com a pontuação dele).
 - Nome de cada modelo = descrição de `utils/TAB LM 26.pdf`, literal (`descricaoTabela`). RLM e RDLM são diferentes ("Reta" × "Reta … Diamantada"); a largura também vem da descrição. Nada é deduzido do código.
-- WhatsApp: (71) 99183-8595, em `src/js/config.js`.
+- WhatsApp: (71) 99166-9999, em `src/js/config.js`.
 
 ## Regras de negócio (`src/js/precificacao.js`)
 
@@ -28,12 +28,12 @@ vercel.json                   publicação: site estático, sem build, com cache
 .gitignore                    o que não sobe (e, na Vercel, o que não fica público): .claude, design-system, todo .pdf, fontes das fotos e o estudo 3D. Regra de pasta sempre presa à raiz (/utils/ pegaria src/js/utils)
 src/js/inicio.js              a única coisa que roda antes do corpo: desfaz o salto de rolagem que o navegador agenda. Síncrono no cabeçalho por isso
 src/js/main.js                monta o que é global (cabeçalho, menu, login, rolagem do Lenis, 03LM) e importa a página por body[data-page]; não conhece as dobras
-src/js/components/            cabecalho, area-cliente, reveal, rolagem-suave (Lenis), preloader (nome girando 8 s, uma vez por visita), cortina (revela a página), anel3d (03LM percorrendo as seções)
+src/js/components/            cabecalho, area-cliente, reveal, rolagem-suave (Lenis), preloader (a 03LM dá uma volta de 360° no centro e a hero abre de dentro dela por um furo que cresce; uma vez por visita), anel3d (03LM percorrendo as seções; na abertura nasce no centro, por cima do painel)
 src/js/libs/                  estudio3d.js (cena 3D aprovada) e visualizador3d.js (ferramentas de GLB); three.js em assets/img/modelos-3d/vendor/three (importmap)
 src/js/utils/                 dom, formato, imagem, whatsapp, dialogo
 style.css                     todo o CSS global em @layer global + @import de src/pages/home/home.css em layer(pagina)
-src/pages/home/               a home inteira: home.css e home.js reúnem as dobras, cada uma na pasta dela — abertura, colecao (fotos + provas), catalogo (vitrine em x, 12 cartões + filtro), como-comprar, nossa-historia (com rodapé)
-src/pages/admin|tabela|carteira/  só do administrador; lojista logado é mandado para a conta. O menu da conta vem de montarMenuDoPainel (cabecalho.js)
+src/pages/home/               a home inteira: home.css e home.js reúnem as dobras, cada uma na pasta dela — abertura, catalogo (vitrine em x, 12 cartões + filtro; segunda de propósito, direto ao ponto), colecao (fotos + provas), como-comprar, nossa-historia (com rodapé)
+src/pages/admin|tabela|carteira/  só do administrador. admin: visão do mês (saldo com a fábrica, comissão, pedidos, lojistas) + lojistas; carteira: saldo, lançamento de acerto e um mês por vez; lojista logado é mandado para a conta. O menu da conta vem de montarMenuDoPainel (cabecalho.js)
 src/pages/cliente/            ficha de um lojista para o administrador (?id=): cadastro, pedidos, PDF e envio por e-mail (components/email-do-pedido.js)
 src/pages/conta/              a do lojista: cadastro (muda só nome, e-mail, CNPJ e senha, por PATCH /api/eu) e os pedidos com a folha em PDF
 src/pages/obrigado/           a página /obrigado: html, css e js dela. A URL sem extensão vem do rewrite no vercel.json e do mesmo atalho no servidor.js
@@ -58,7 +58,7 @@ Os caminhos em `modelos.json` são relativos à raiz (`assets/...`): página for
 
 ## Design
 
-Fonte: `Downloads/Eterno Dourado — Design do Marketplace Atacadista.pdf`; tokens na seção "variáveis" do `style.css`. Noite `#050912`, Marinho `#091321`, Safira `#0D1C2D`, Ouro `#D6A84E` (ação e seleção), Champagne `#F0CF82`, Marfim `#F7F3EA`. Bodoni Moda nos títulos (no lugar da ambroise-francois-std do novo-site, que é paga), DM Mono nos rótulos, Manrope no texto. Container 1200px, botão pílula 48–52px, H1 no celular 38–44px, nenhum texto de venda abaixo de 16px, contraste AA. Ouro como texto sobre marfim usa `--ouro-texto`.
+Fonte: `Downloads/Eterno Dourado — Design do Marketplace Atacadista.pdf`; tokens na seção "variáveis" do `style.css`. Noite `#050912`, Marinho `#091321`, Safira `#0D1C2D`, Ouro `#D6A84E` (ação e seleção), Champagne `#F0CF82`, Marfim `#F7F3EA`. Roboto em todo o texto (títulos e rótulos inclusive); Oleo Script Swash Caps 700 só no título da hero e no "Fazer pedido" (10/11/2026). Container 1200px, botão pílula 48–52px, H1 no celular 38–44px, nenhum texto de venda abaixo de 16px, contraste AA. Ouro como texto sobre marfim usa `--ouro-texto`.
 
 ## Comandos
 

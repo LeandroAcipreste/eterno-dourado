@@ -14,8 +14,8 @@ import { init as iniciarCatalogo } from './catalogo/catalogo.js';
 
 const DOBRAS = [
   ['abertura', iniciarAbertura],
-  ['coleção', iniciarColecao],
   ['catálogo', iniciarCatalogo],
+  ['coleção', iniciarColecao],
 ];
 
 /**

@@ -4,20 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Minha carteira · Eterno Dourado</title>
-    <meta name="description" content="A conta de cada pedido: o que fica com a fábrica e o que é comissão." />
+    <meta name="description" content="Saldo com a fábrica, acertos e a conta de cada pedido, mês a mês." />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#050912" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-latin-normal-100-900.woff2" crossorigin />
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/src/pages/admin/admin.css" />
     <link rel="stylesheet" href="/src/pages/carteira/carteira.css" />
   </head>
 
   <body data-page="carteira">
-    <!-- A divisão do dinheiro, pedido a pedido: a fábrica fica com metade do valor de
-         tabela mais o frete; o desconto dado e o frete incluso saem da comissão. -->
     <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
       <ol class="menu__lista" role="list"></ol>
       <div class="menu__acoes"></div>
@@ -40,52 +38,78 @@
 
       <p class="admin__aviso" data-aviso role="status" hidden></p>
 
-      <div data-painel hidden>
-        <section class="admin__bloco">
-          <h1 class="admin__titulo">Minha carteira</h1>
+      <div class="carteira" data-painel hidden>
+        <h1 class="admin__titulo">Minha carteira</h1>
 
-          <dl class="carteira__totais">
-            <div class="carteira__total carteira__total--destaque">
-              <dt>Minha comissão</dt>
-              <dd data-total-comissao>—</dd>
+        <section class="carteira__saldo" aria-labelledby="saldo-titulo">
+          <div class="saldo">
+            <p class="saldo__rotulo" id="saldo-titulo">Em aberto com a fábrica</p>
+            <p class="saldo__valor" data-saldo-aberto>R$ 0,00</p>
+            <div class="saldo__barra" role="img" data-saldo-barra aria-label="Quanto da parte da fábrica já foi pago">
+              <span class="saldo__pago" data-saldo-pago-barra></span>
             </div>
-            <div class="carteira__total">
-              <dt>Fábrica</dt>
-              <dd data-total-fabrica>—</dd>
+            <dl class="saldo__conta">
+              <div><dt>Parte da fábrica</dt><dd data-saldo-devido>R$ 0,00</dd></div>
+              <div><dt>Já paguei</dt><dd data-saldo-pago>R$ 0,00</dd></div>
+            </dl>
+          </div>
+
+          <form class="acerto" data-forma-acerto novalidate>
+            <h2 class="admin__subtitulo">Lançar acerto</h2>
+            <div class="campo">
+              <label for="acerto-valor">Valor pago R$</label>
+              <input id="acerto-valor" name="valor" type="text" inputmode="decimal" placeholder="0,00" required />
             </div>
-            <div class="carteira__total">
-              <dt>Faturado</dt>
-              <dd data-total-faturado>—</dd>
+            <div class="campo">
+              <label for="acerto-dia">Data</label>
+              <input id="acerto-dia" name="dia" type="date" required />
             </div>
-            <div class="carteira__total">
-              <dt>Descontos dados</dt>
-              <dd data-total-desconto>—</dd>
+            <div class="campo">
+              <label for="acerto-obs">Observação</label>
+              <input id="acerto-obs" name="observacao" type="text" maxlength="200" placeholder="PIX, depósito, acerto da semana" />
             </div>
-            <div class="carteira__total">
-              <dt>Fretes por minha conta</dt>
-              <dd data-total-frete>—</dd>
-            </div>
-          </dl>
+            <button class="btn btn--ouro" type="submit">Abater do saldo</button>
+          </form>
         </section>
 
-        <section class="admin__bloco">
-          <h2 class="admin__subtitulo">Pedido a pedido <span data-contagem></span></h2>
-          <div class="admin__tabela">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Pedido</th>
-                  <th scope="col">Cliente</th>
-                  <th scope="col">Tabela R$</th>
-                  <th scope="col">Desconto</th>
-                  <th scope="col">Frete R$</th>
-                  <th scope="col">Faturado R$</th>
-                  <th scope="col">Fábrica R$</th>
-                  <th scope="col">Comissão R$</th>
-                </tr>
-              </thead>
-              <tbody data-pedidos></tbody>
-            </table>
+        <nav class="meses" aria-label="Meses" data-meses></nav>
+
+        <section class="mes" data-mes aria-live="polite">
+          <dl class="mes__totais">
+            <div class="mes__total mes__total--destaque"><dt>Minha comissão</dt><dd data-mes-comissao>R$ 0,00</dd></div>
+            <div class="mes__total"><dt>Fábrica</dt><dd data-mes-fabrica>R$ 0,00</dd></div>
+            <div class="mes__total"><dt>Paguei à fábrica</dt><dd data-mes-acertos>R$ 0,00</dd></div>
+            <div class="mes__total"><dt>Faturado</dt><dd data-mes-faturado>R$ 0,00</dd></div>
+            <div class="mes__total"><dt>Descontos dados</dt><dd data-mes-desconto>R$ 0,00</dd></div>
+            <div class="mes__total"><dt>Fretes por minha conta</dt><dd data-mes-frete>R$ 0,00</dd></div>
+          </dl>
+
+          <div class="mes__colunas">
+            <div class="admin__bloco">
+              <h2 class="admin__subtitulo">Pedidos <span data-contagem></span></h2>
+              <div class="admin__tabela">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Pedido</th>
+                      <th scope="col">Cliente</th>
+                      <th scope="col">Tabela R$</th>
+                      <th scope="col">Desconto</th>
+                      <th scope="col">Frete R$</th>
+                      <th scope="col">Faturado R$</th>
+                      <th scope="col">Fábrica R$</th>
+                      <th scope="col">Comissão R$</th>
+                    </tr>
+                  </thead>
+                  <tbody data-pedidos></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="admin__bloco">
+              <h2 class="admin__subtitulo">Acertos do mês</h2>
+              <ul class="acertos" data-acertos></ul>
+            </div>
           </div>
         </section>
       </div>

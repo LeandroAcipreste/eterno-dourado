@@ -2,8 +2,8 @@
  * A ficha de um lojista, aberta da lista do painel (?id=).
  *
  * Mostra o cadastro como ele está (mudar desconto, frete e OBS continua no painel) e os
- * pedidos dele: cada um com a folha em PDF e o envio por e-mail, que abre embaixo da
- * linha com o e-mail do cliente já escrito.
+ * pedidos dele: cada um com alterar (reabre na página de pedido), a folha em PDF e o
+ * envio por e-mail, que abre embaixo da linha com o e-mail do cliente já escrito.
  */
 
 import { API } from '../../js/config.js';
@@ -67,6 +67,7 @@ function desenharPedidos(pedidos, cliente) {
         <td>${p.tem_sob_consulta ? `${dinheiro(p.total)} + sob consulta` : dinheiro(p.total)}</td>
         <td>${SITUACAO[p.situacao] ?? escapar(p.situacao)}</td>
         <td>
+          <a class="admin__acao" href="/src/pages/pedido/pedido.html?editar=${Number(p.numero)}">Alterar pedido</a>
           <a class="admin__acao" href="${API}/api/pedidos/${Number(p.id)}/folha.pdf">Baixar PDF</a>
           <button class="admin__acao" type="button" data-email>Enviar por e-mail</button>
         </td>`;

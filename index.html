@@ -27,10 +27,7 @@
     <script src="/src/js/inicio.js"></script>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
-    <link rel="preload" as="image" href="/assets/marca/nome-circular.png?v=2" fetchpriority="high" />
-    <link rel="preload" as="image" href="/assets/marca/veu-borda.png" fetchpriority="high" />
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-normal-200-800.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-latin-normal-100-900.woff2" crossorigin />
     <!-- O CSS da home entra por @import encadeado, que o navegador só descobre depois de
          baixar e ler cada nível: style.css → home.css → as cinco dobras. Medido, um
          arquivo de 2 KB terminava aos 7 s. Buscando todos aqui, em paralelo, eles já
@@ -38,8 +35,8 @@
          porque é ele que põe cada um na camada certa. -->
     <link rel="preload" as="style" href="/src/pages/home/home.css" />
     <link rel="preload" as="style" href="/src/pages/home/abertura/abertura.css" />
-    <link rel="preload" as="style" href="/src/pages/home/colecao/colecao.css" />
     <link rel="preload" as="style" href="/src/pages/home/catalogo/catalogo.css" />
+    <link rel="preload" as="style" href="/src/pages/home/colecao/colecao.css" />
     <link rel="preload" as="style" href="/src/pages/home/como-comprar/como-comprar.css" />
     <link rel="preload" as="style" href="/src/pages/home/nossa-historia/nossa-historia.css" />
     <link rel="stylesheet" href="/style.css" />
@@ -47,11 +44,20 @@
     <script type="importmap">
       {
         "imports": {
-          "three": "/assets/img/modelos-3d/vendor/three/build/three.module.js",
+          "three": "/assets/img/modelos-3d/vendor/three/build/three.module.min.js",
           "three/addons/": "/assets/img/modelos-3d/vendor/three/examples/jsm/"
         }
       }
     </script>
+    <!-- a 03LM é a abertura: three, módulos e GLB começam a baixar já, em paralelo -->
+    <link rel="modulepreload" href="/assets/img/modelos-3d/vendor/three/build/three.module.min.js" />
+    <link rel="modulepreload" href="/assets/img/modelos-3d/vendor/three/build/three.core.min.js" />
+    <link rel="modulepreload" href="/assets/img/modelos-3d/vendor/three/examples/jsm/loaders/GLTFLoader.js" />
+    <link rel="modulepreload" href="/assets/img/modelos-3d/vendor/three/examples/jsm/libs/meshopt_decoder.module.js" />
+    <link rel="modulepreload" href="/assets/img/modelos-3d/vendor/three/examples/jsm/environments/RoomEnvironment.js" />
+    <link rel="modulepreload" href="/src/js/components/anel3d.js" />
+    <link rel="modulepreload" href="/src/js/libs/estudio3d.js" />
+    <link rel="preload" as="fetch" href="/assets/img/aliancas-web/modelo-03LM/individuais/03LM.glb" crossorigin="anonymous" />
     <script src="/vendor/gsap/gsap.min.js" defer></script>
     <script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
     <script src="/vendor/lenis/lenis.min.js" defer></script>
@@ -80,13 +86,12 @@
     <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
       <ol class="menu__lista" role="list">
         <li><a class="menu__link" href="#home" data-pagina="home"><span class="menu__numero">01</span><span class="menu__nome">Início</span></a></li>
-        <li><a class="menu__link" href="#colecao" data-pagina="colecao"><span class="menu__numero">02</span><span class="menu__nome">Coleção</span></a></li>
-        <li><a class="menu__link" href="#catalogo" data-pagina="catalogo"><span class="menu__numero">03</span><span class="menu__nome">Catálogo</span></a></li>
+        <li><a class="menu__link" href="#catalogo" data-pagina="catalogo"><span class="menu__numero">02</span><span class="menu__nome">Catálogo</span></a></li>
+        <li><a class="menu__link" href="#colecao" data-pagina="colecao"><span class="menu__numero">03</span><span class="menu__nome">Coleção</span></a></li>
         <li><a class="menu__link" href="#como-comprar" data-pagina="como-comprar"><span class="menu__numero">04</span><span class="menu__nome">Como comprar</span></a></li>
         <li><a class="menu__link" href="#nossa-historia" data-pagina="nossa-historia"><span class="menu__numero">05</span><span class="menu__nome">Nossa história</span></a></li>
       </ol>
       <div class="menu__acoes">
-        <a class="btn btn--contorno" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Torne-se cliente</a>
         <button class="btn btn--ouro" type="button" data-entrar>Entrar na área do cliente</button>
       </div>
     </nav>
@@ -118,13 +123,44 @@
                 </p>
                 <div class="abertura__acoes" data-anim="sobe">
                   <a class="btn btn--ouro" href="#catalogo">Abrir catálogo</a>
-                  <!-- quem não é cliente ainda precisa saber como se torna um: a dobra
-                       dos três passos é a resposta, e o WhatsApp está no fim dela -->
-                  <a class="btn btn--contorno" href="#como-comprar">Torne-se cliente</a>
                 </div>
               </div>
 
               <span class="abertura__role" aria-hidden="true">Role</span>
+            </div>
+          </section>
+        </section>
+
+        <section class="dobra" id="catalogo" data-dobra="catalogo" data-secao-nome="Catálogo" tabindex="-1">
+
+          <section class="catalogo" data-catalogo aria-labelledby="catalogo-titulo">
+            <div class="catalogo__cabeca container">
+              <p class="rotulo" data-anim="entra">Catálogo de atacado</p>
+              <h2 class="catalogo__titulo" id="catalogo-titulo" data-anim="onda">Selecione nos botões os milímetros das alianças e conheça os modelos</h2>
+              <p class="catalogo__regua">é interessante ter uma régua em mãos para ter a real noção da largura</p>
+              <p class="catalogo__subtitulo">São 80 modelos no catálogo, além dos modelos existe a possibilidade de personalizar um modelo exclusivo para sua loja</p>
+              <p class="catalogo__contagem" data-catalogo-contagem aria-live="polite"></p>
+              <p class="catalogo__adicionais" data-catalogo-adicionais></p>
+            </div>
+
+            <div class="vitrine" data-vitrine>
+              <div class="vitrine__palco" data-vitrine-palco>
+                <div class="filtros">
+                  <div class="filtros__grupo">
+                    <span class="filtros__rotulo" id="rotulo-largura">Largura</span>
+                    <div class="pilulas" role="group" aria-labelledby="rotulo-largura" data-filtro="largura"></div>
+                  </div>
+                  <div class="busca">
+                    <label class="sr" for="busca">Buscar por código</label>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
+                    <input id="busca" type="search" placeholder="Buscar por código" autocomplete="off" data-catalogo-busca />
+                  </div>
+                </div>
+
+                <ul class="vitrine__trilho" role="list" data-catalogo-grade></ul>
+                <p class="catalogo__vazio" data-catalogo-vazio hidden>Nenhum modelo com esses filtros. Escolha outra largura ou limpe a busca.</p>
+                <div class="vitrine__progresso" aria-hidden="true"></div>
+              </div>
             </div>
           </section>
         </section>
@@ -337,40 +373,6 @@
           </section>
         </section>
 
-        <section class="dobra" id="catalogo" data-dobra="catalogo" data-secao-nome="Catálogo" tabindex="-1">
-
-          <section class="catalogo" data-catalogo aria-labelledby="catalogo-titulo">
-            <div class="catalogo__cabeca container">
-              <p class="rotulo" data-anim="entra">Catálogo de atacado</p>
-              <h2 class="catalogo__titulo" id="catalogo-titulo" data-anim="onda">Selecione nos botões os milímetros das alianças e conheça os modelos</h2>
-              <p class="catalogo__regua">é interessante ter uma régua em mãos para ter a real noção da largura</p>
-              <p class="catalogo__subtitulo">São 80 modelos no catálogo, além dos modelos existe a possibilidade de personalizar um modelo exclusivo para sua loja</p>
-              <p class="catalogo__contagem" data-catalogo-contagem aria-live="polite"></p>
-              <p class="catalogo__adicionais" data-catalogo-adicionais></p>
-            </div>
-
-            <div class="vitrine" data-vitrine>
-              <div class="vitrine__palco" data-vitrine-palco>
-                <div class="filtros">
-                  <div class="filtros__grupo">
-                    <span class="filtros__rotulo" id="rotulo-largura">Largura</span>
-                    <div class="pilulas" role="group" aria-labelledby="rotulo-largura" data-filtro="largura"></div>
-                  </div>
-                  <div class="busca">
-                    <label class="sr" for="busca">Buscar por código</label>
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4 4" /></svg>
-                    <input id="busca" type="search" placeholder="Buscar por código" autocomplete="off" data-catalogo-busca />
-                  </div>
-                </div>
-
-                <ul class="vitrine__trilho" role="list" data-catalogo-grade></ul>
-                <p class="catalogo__vazio" data-catalogo-vazio hidden>Nenhum modelo com esses filtros. Escolha outra largura ou limpe a busca.</p>
-                <div class="vitrine__progresso" aria-hidden="true"></div>
-              </div>
-            </div>
-          </section>
-        </section>
-
         <section class="dobra" id="como-comprar" data-dobra="como-comprar" data-secao-nome="Como comprar" tabindex="-1">
 
           <section class="como-comprar" aria-labelledby="como-comprar-titulo">
@@ -379,8 +381,7 @@
                 <p class="rotulo" data-anim="entra">Como comprar</p>
                 <h2 class="como-comprar__titulo" data-anim="revelar" id="como-comprar-titulo">Do catálogo ao pedido em três passos</h2>
                 <div class="como-comprar__acoes" data-anim="sobe">
-                  <button class="btn btn--ouro" type="button" data-entrar>Entrar na área do cliente</button>
-                  <a class="btn btn--texto" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Ainda não é cliente? Fale comigo</a>
+                  <a class="btn btn--ouro" href="https://wa.me/5571991669999" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Fale comigo no WhatsApp</a>
                 </div>
               </div>
 
@@ -457,7 +458,7 @@
             <div class="container">
               <div class="chamada__faixa" data-anim="cartao">
                 <h2 class="chamada__titulo" data-anim="revelar" id="chamada-titulo">Tenha as melhores alianças do mercado, com o melhor acabamento e preço.</h2>
-                <a class="btn btn--ouro" href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero comprar alianças no atacado.">Fale comigo no WhatsApp</a>
+                <a class="btn btn--ouro" href="https://wa.me/5571991669999" data-whatsapp="Olá, Leandro! Quero comprar alianças no atacado.">Fale comigo no WhatsApp</a>
               </div>
             </div>
           </section>
@@ -492,8 +493,8 @@
           <div>
             <p class="rodape__titulo">Seções</p>
             <ul class="rodape__lista">
-              <li><a href="#colecao">Coleção</a></li>
               <li><a href="#catalogo">Catálogo</a></li>
+              <li><a href="#colecao">Coleção</a></li>
               <li><a href="#como-comprar">Como comprar</a></li>
               <li><a href="#nossa-historia">Nossa história</a></li>
             </ul>
@@ -503,7 +504,7 @@
             <p class="rodape__titulo">Contato</p>
             <ul class="rodape__lista">
               <li>
-                <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero comprar alianças no atacado.">WhatsApp (71) 99183-8595</a>
+                <a href="https://wa.me/5571991669999" data-whatsapp="Olá, Leandro! Quero comprar alianças no atacado.">WhatsApp (71) 99166-9999</a>
               </li>
               <li><button type="button" data-entrar>Área do cliente</button></li>
             </ul>
@@ -517,17 +518,8 @@
       </div>
     </footer>
 
-    <!-- Abertura da visita: o nome girando enquanto a primeira dobra se prepara -->
-    <div class="preloader" data-preloader>
-      <img
-        class="preloader__roda"
-        src="/assets/marca/nome-circular.png?v=2"
-        alt="Eterno Dourado"
-        width="1024"
-        height="1024"
-        fetchpriority="high"
-      />
-    </div>
+    <!-- Abertura da visita: o painel por baixo da 03LM girando; a hero abre de dentro dela -->
+    <div class="preloader" data-preloader aria-hidden="true"></div>
     <!-- Área do cliente ----------------------------------------------------- -->
     <dialog class="modal modal--estreito" data-dialogo-entrar aria-labelledby="entrar-titulo">
       <div class="entrar">
@@ -557,7 +549,7 @@
 
         <p class="entrar__rodape">
           Ainda não é cliente?
-          <a href="https://wa.me/5571991838595" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Solicite seu cadastro</a>
+          <a href="https://wa.me/5571991669999" data-whatsapp="Olá, Leandro! Quero me tornar cliente da Eterno Dourado.">Solicite seu cadastro</a>
         </p>
       </div>
     </dialog>
@@ -581,7 +573,7 @@
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "sales",
-          "telephone": "+55-71-99183-8595",
+          "telephone": "+55-71-99166-9999",
           "availableLanguage": "Portuguese",
           "areaServed": "BR"
         }

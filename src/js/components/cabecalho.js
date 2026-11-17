@@ -44,7 +44,7 @@ export function montarCabecalho() {
   const MENU_ADMIN = [
     ['Painel', '/src/pages/admin/admin.html'],
     ['Fazer pedido', '/src/pages/pedido/pedido.html'],
-    ['Cadastrar cliente', '/src/pages/admin/admin.html#clientes'],
+    ['Cadastrar cliente', '/src/pages/admin/admin.html#cadastrar'],
     ['Alterar tabela de preço', '/src/pages/tabela/tabela.html'],
     ['Financeiro', '/src/pages/carteira/carteira.html'],
     ['Meu cadastro', '/src/pages/admin/admin.html#meu-cadastro'],

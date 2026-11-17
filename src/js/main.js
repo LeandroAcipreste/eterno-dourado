@@ -16,7 +16,7 @@ import { montarRolagemSuave } from './components/rolagem-suave.js';
 import { aCadaQuadroDeRolagem } from './utils/rolagem.js';
 import { quemEstaLogado, sair } from './utils/api.js';
 
-const ESPERA_PELO_ANEL = 1200; // o 3D só começa a carregar depois que a abertura entra
+const ESPERA_PELO_ANEL = 1200; // sem abertura, o 3D só começa a carregar depois que a hero entra
 
 const areaCliente = montarAreaCliente();
 const cabecalho = montarCabecalho();
@@ -26,14 +26,17 @@ let anel = null;
 
 const SECOES = els('[data-dobra]');
 
+let aberturaAcabou = false;
+
 /**
- * O three.js e o GLB custam segundos de fio principal nesta máquina: são chamados com
- * a abertura ainda na tela, para o engasgo cair onde ninguém está olhando.
+ * Com abertura, a 03LM sobe no começo e gira no centro. Sem abertura, sobe depois de a
+ * hero entrar, para o three.js não disputar o fio principal com a entrada.
  */
-async function subirAnel() {
+async function subirAnel({ abertura = false } = {}) {
   try {
     const { montarAnel3d } = await import('./components/anel3d.js');
-    anel = montarAnel3d();
+    // chegou depois dos 5 s: nasce já solta, sem prender no centro
+    anel = montarAnel3d({ abertura: abertura && !aberturaAcabou });
     anel.medirTrilha();
   } catch (erro) {
     console.error('a 03LM não subiu:', erro);
@@ -169,7 +172,10 @@ async function iniciar() {
   window.addEventListener('pageshow', (evento) => {
     if (evento.persisted) irParaAbertura();
   });
-  preloader.abrir(); // começa a contar o tempo mínimo já, não depois de montar tudo
+  preloader.abrir();
+  // a 03LM é a abertura: começa a carregar já, junto com o resto da página
+  const comAbertura = preloader.ativo;
+  if (comAbertura) subirAnel({ abertura: true });
   ligarLinksWhatsApp(document);
   prepararAnimacao(document); // o texto já nasce escondido, atrás da abertura
   ligarMenu();
@@ -192,15 +198,15 @@ async function iniciar() {
   remedirAnimacao();
 
 
-  // só agora a abertura pode sair: a página está medida, a fonte chegou e a primeira
-  // dobra tem o que mostrar. Antes disso, sair é entregar uma tela se montando.
-  // a roda apaga primeiro; o painel ainda cobre a tela
-  await preloader.apagarRoda();
+  // a hero abre depois dos 5 s da abertura, com a página medida, fonte e imagem prontas
+  await Promise.all([preloader.esperarAbertura(), preloader.esperarHero()]);
+  aberturaAcabou = true;
+  anel?.soltar?.();
 
-  // a dobra é liberada com o painel ainda em cima: quando ele descer, a hero já está
-  // entrando, em vez de aparecer parada esperando a vez dela
+  // a dobra é liberada quando o furo começa a abrir: a hero já vem entrando de dentro
+  // da aliança, em vez de aparecer parada esperando a vez dela
   liberarPrimeiraDobra();
-  await preloader.descer();
+  await preloader.abrirFuro();
 
   // A página só tem a altura final depois das fontes, das imagens e dos cartões do
   // catálogo. As faixas de rolagem dos títulos são contas em cima dessa geometria:
@@ -223,9 +229,9 @@ async function iniciar() {
   await new Promise((resolver) => setTimeout(resolver, 700));
   document.documentElement.dataset.pronto = ''; // e o cabeçalho desce por último
 
-  // a 03LM por último: o three.js e o GLB custam segundos de fio principal nesta
-  // máquina, e durante a abertura isso congelava o nome girando
-  setTimeout(subirAnel, ESPERA_PELO_ANEL);
+  // sem abertura, a 03LM por último: o three.js e o GLB custam segundos de fio
+  // principal, e a hero entrando não pode engasgar
+  if (!comAbertura) setTimeout(subirAnel, ESPERA_PELO_ANEL);
   setTimeout(conferirAbertura, 1400); // com a entrada já terminada, o relato é o que se vê
 }
 

@@ -13,98 +13,30 @@
 @layer global {
   /* ---- fontes ------------------------------------------------------------------ */
 
-  /* Cormorant Garamond nos títulos, Manrope na interface. O trecho entre as marcas
-     veio do Google Fonts junto com os .woff2 em assets/fonts. */
+  /* Duas fontes: Roboto em tudo e Oleo Script Swash Caps só no título da página de pedido. Os .woff2 vieram do Google Fonts e moram em assets/fonts. */
   /* fontes:inicio */
+  /* Roboto em todo o texto do site, títulos e rótulos inclusive (pedido do Leandro em
+     10/11/2026). Fonte variável: um arquivo cobre do 100 ao 900 */
   @font-face {
-    font-family: "Bodoni Moda";
+    font-family: "Roboto";
     font-style: normal;
-    font-weight: 400 700;
+    font-weight: 100 900;
     font-display: swap;
-    src: url("assets/fonts/bodoni-latin-ext-normal-400-700.woff2") format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-
-  @font-face {
-    font-family: "Bodoni Moda";
-    font-style: normal;
-    font-weight: 400 700;
-    font-display: swap;
-    src: url("assets/fonts/bodoni-latin-normal-400-700.woff2") format("woff2");
+    src: url("assets/fonts/roboto-latin-normal-100-900.woff2") format("woff2");
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
+  /* só o título da página de pedido: Oleo Script Swash Caps (10/11/2026).
+     Só o subconjunto latino, que cobre o português */
   @font-face {
-    font-family: "DM Mono";
+    font-family: "Oleo Script Swash Caps";
     font-style: normal;
-    font-weight: 300;
+    font-weight: 700;
     font-display: swap;
-    src: url("assets/fonts/dmmono-latin-ext-normal-300.woff2") format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-
-  @font-face {
-    font-family: "DM Mono";
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url("assets/fonts/dmmono-latin-normal-300.woff2") format("woff2");
+    src: url("assets/fonts/oleo-swash-latin-normal-700.woff2") format("woff2");
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
-  @font-face {
-    font-family: "DM Mono";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("assets/fonts/dmmono-latin-ext-normal-400.woff2") format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-
-  @font-face {
-    font-family: "DM Mono";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("assets/fonts/dmmono-latin-normal-400.woff2") format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
-  @font-face {
-    font-family: "DM Mono";
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url("assets/fonts/dmmono-latin-ext-normal-500.woff2") format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-
-  @font-face {
-    font-family: "DM Mono";
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url("assets/fonts/dmmono-latin-normal-500.woff2") format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
-  @font-face {
-    font-family: "Manrope";
-    font-style: normal;
-    font-weight: 200 800;
-    font-display: swap;
-    src: url("assets/fonts/manrope-latin-ext-normal-200-800.woff2") format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-
-  @font-face {
-    font-family: "Manrope";
-    font-style: normal;
-    font-weight: 200 800;
-    font-display: swap;
-    src: url("assets/fonts/manrope-latin-normal-200-800.woff2") format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
   /* fontes:fim */
 
   /* ---- reset ----------------------------------------------------------------- */
@@ -199,11 +131,7 @@
     summary,
     label:has(input),
     .btn.btn,
-    .btn--compacto.btn--compacto,
-    .nav__pedido.nav__pedido,
-    .faceta__rotulo.faceta__rotulo,
-    .planilha__remover.planilha__remover,
-    .planilha__qt.planilha__qt {
+    .btn--compacto.btn--compacto {
       min-height: 44px;
     }
   }
@@ -235,7 +163,6 @@
 
     /* --- texto ------------------------------------------------------------- */
     --tinta: #0b1220; /* texto sobre claro */
-    --tinta-suave: #525c6b; /* secundário sobre marfim, 5,6:1 */
     --ouro-texto: #8a6420; /* ouro legível sobre marfim, 4,8:1 */
 
     /* o degradê do título da abertura; também é a borda do campo em foco */
@@ -244,22 +171,16 @@
     --claro-suave: #a3abb8; /* secundário sobre azul, 7:1 */
 
     /* --- linhas e estados -------------------------------------------------- */
-    --linha-clara: #e4dccb;
     --linha-escura: #1c2b3e;
-    --sucesso: #5f8f6f;
-    --erro: #b25b5b;
 
     /* --- tipografia (pág. 4) ----------------------------------------------- */
-    --fonte-titulo: "Bodoni Moda", Georgia, "Times New Roman", serif;
-    --fonte-mono: "DM Mono", ui-monospace, "Cascadia Mono", monospace;
-    --fonte-texto: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --fonte-titulo: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --fonte-mono: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --fonte-texto: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
 
     /* Escala web: Display 72/76 · H1 56/62 · H2 40/48 · H3 28/36 · Body 16/26
        · Small 13/20. No celular o H1 fica entre 38 e 44 px (pág. 5). */
-    --t-display: clamp(2.5rem, 1.55rem + 3.8vw, 4.5rem);
-    --t-h1: clamp(2.375rem, 1.85rem + 2.1vw, 3.5rem);
     --t-h2: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem);
-    --t-h3: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
     --t-corpo: 1rem;
     --t-corpo-g: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
     --t-pequeno: 0.8125rem;
@@ -275,7 +196,6 @@
     --e-10: 40px;
     --e-12: 48px;
     --e-16: 64px;
-    --e-24: 96px;
 
     --secao: clamp(48px, 2rem + 4vw, 96px); /* respiro de seção 48–96 */
     --container: min(100% - 40px, 1200px); /* margem mínima de 20 px, máximo 1200 */
@@ -361,16 +281,6 @@
     padding-block: var(--secao);
   }
 
-  .secao--clara {
-    background: var(--marfim);
-    color: var(--tinta);
-  }
-
-  .secao--escura {
-    background: var(--marinho);
-    color: var(--claro);
-  }
-
   /* ---------------------------------------------------------------------------
      Tipografia
      --------------------------------------------------------------------------- */
@@ -385,45 +295,8 @@
     color: var(--ouro);
   }
 
-  .secao--clara .rotulo,
   .modal .rotulo {
     color: var(--ouro-texto);
-  }
-
-  .titulo-1,
-  .titulo-2,
-  .titulo-3 {
-    font-family: var(--fonte-titulo);
-    font-weight: 400;
-    font-synthesis: none; /* os pesos vêm da fonte variável: nada de negrito falso */
-    text-wrap: balance;
-  }
-
-  .titulo-1 {
-    font-size: var(--t-h1);
-    line-height: 1.1;
-  }
-
-  .titulo-2 {
-    font-size: var(--t-h2);
-    line-height: 1.18;
-  }
-
-  .titulo-3 {
-    font-size: var(--t-h3);
-    line-height: 1.28;
-  }
-
-  .texto-intro {
-    font-size: var(--t-corpo-g);
-    line-height: 1.6;
-    max-width: 60ch;
-    color: var(--claro-suave);
-    text-wrap: pretty;
-  }
-
-  .secao--clara .texto-intro {
-    color: var(--tinta-suave);
   }
 
   /* ---------------------------------------------------------------------------
@@ -511,15 +384,13 @@
 
   /* Secundária sobre azul. A borda é o mesmo degradê, desenhada por uma máscara:
      border-image ignoraria o arredondamento e deixaria a pílula quadrada. */
-  .btn--contorno,
-  .btn--safira {
+  .btn--contorno {
     position: relative;
     border-color: transparent;
     color: var(--champagne);
   }
 
-  .btn--contorno::before,
-  .btn--safira::before {
+  .btn--contorno::before {
     content: "";
     position: absolute;
     inset: -1.5px;
@@ -540,27 +411,6 @@
   .btn--contorno:hover {
     background: rgb(214 168 78 / 0.12);
     color: var(--marfim);
-  }
-
-  /* secundária sobre claro: o "Ver detalhes" da pág. 7 */
-  .btn--safira {
-    background: var(--safira);
-  }
-
-  .btn--safira:hover {
-    background: var(--marinho);
-    color: var(--marfim);
-  }
-
-  /* sobre a faixa dourada */
-  .btn--marinho {
-    background: var(--marinho);
-    color: var(--marfim);
-  }
-
-  .btn--marinho:hover {
-    background: var(--safira);
-    color: var(--champagne);
   }
 
   /* terciária: só texto */
@@ -1088,93 +938,57 @@
 
   /* ---- preloader --------------------------------------------------------------- */
 
-  /* Abertura: o nome em círculo dá uma volta completa em 8 s e sai. Acontece em toda
-     carga da página, como o preloader do novo-site. */
+  /* Abertura: a 03LM dá uma volta de 360° no centro, por cima deste painel, e a hero
+     se abre de dentro dela. O painel é um só; a saída é um furo no centro que cresce
+     até a tela inteira. O furo é uma máscara: onde ela é transparente, o painel some
+     (a máscara lê o alfa, não a cor). */
+  @property --furo {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+  }
 
-  /* A ABERTURA É UM PAINEL SÓ.
-     Antes eram dois: o preloader com fundo próprio e, atrás dele, uma folha também
-     escura. Um apagava, a outra descia — e isso se via como duas quedas com um vazio
-     no meio. Tirar o fundo do preloader abriu outro buraco: a folha não cobria os
-     últimos 4vh da tela, e a hero aparecia por baixo durante toda a abertura.
-
-     Agora o painel cobre a tela inteira e a borda curva fica colada embaixo dele, numa
-     tira que desce junto. Uma camada, um movimento. */
   .preloader {
+    --furo: 0px;
     position: fixed;
     inset: 0;
     z-index: var(--z-preloader);
-    display: grid;
-    place-items: center;
-    background: linear-gradient(180deg, var(--noite) 0%, var(--marinho) 100%);
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    backface-visibility: hidden;
+    background: radial-gradient(circle at 50% 50%, var(--safira) 0%, var(--marinho) 45%, var(--noite) 100%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent var(--furo), #000 calc(var(--furo) + 2px));
+    mask-image: radial-gradient(circle at 50% 50%, transparent var(--furo), #000 calc(var(--furo) + 2px));
   }
 
-  /* a borda curva com o filete de ouro, logo abaixo do painel */
-  .preloader::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 20vh;
-    background: url("assets/marca/veu-borda.png") center top / 100% 100% no-repeat;
+  /* durante a abertura a 03LM fica por cima do painel; depois volta para baixo do texto */
+  :root[data-abertura] .anel3d {
+    z-index: calc(var(--z-preloader) + 1);
+    transition-duration: 250ms; /* na abertura a peça aparece já, sem o fade longo da página */
   }
 
-  /* A roda é uma imagem, não um SVG com texto curvo: o navegador a desenha uma vez e
-     depois só gira a camada — não há curva para recalcular a cada quadro nem fonte
-     para trocar no meio do giro, que eram as duas causas do tranco. */
-  .preloader__roda {
-    display: block;
-    width: min(62vmin, 460px);
-    height: auto;
-    will-change: transform;
-    transform: translateZ(0);
-    animation: preloader-girar 3.2s linear infinite;
+  /* começa devagar, no tamanho do miolo da aliança, e acelera até a tela inteira.
+     O fim apaga junto: onde @property não existe, o furo não cresce e o painel sai
+     pela opacidade, sem ficar preso */
+  .preloader[data-abre] {
+    animation: preloader-furo 1000ms cubic-bezier(0.7, 0, 0.25, 1) forwards;
   }
 
-  /* no celular a roda fica perto do olho e a mesma volta parece corrida */
-  @media (max-width: 767px) {
-    .preloader__roda {
-      animation-duration: 6s;
+  @keyframes preloader-furo {
+    0% {
+      --furo: 0px;
+      opacity: 1;
     }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .preloader__roda {
-      animation-duration: 12s;
+    85% {
+      opacity: 1;
     }
-  }
-
-  @keyframes preloader-girar {
-    to {
-      transform: translateZ(0) rotate(360deg);
+    100% {
+      --furo: 80vmax;
+      opacity: 0;
     }
-  }
-
-  /* a saída tem dois tempos, nunca ao mesmo tempo: primeiro a roda apaga… */
-  .preloader[data-sair] .preloader__roda {
-    opacity: 0;
-    transition: opacity 420ms ease-out;
-  }
-
-  /* …e só então o painel inteiro desce, sem pressa e saindo macio */
-  .preloader[data-desce] {
-    transform: translate3d(0, 121%, 0);
-    /* curva com partida e chegada macias: a anterior jogava 40% do percurso nos
-       primeiros 250 ms e depois rastejava — era isso que parecia queda */
-    transition: transform 1600ms cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   /* A rede para o caso de o JS não rodar: a abertura libera a página sozinha.
-     Trinta segundos, não catorze — a abertura espera a hero ficar pronta e já mediu
-     mais de quinze. Com o prazo curto, a rede disparava ANTES da descida e o painel
-     sumia por opacidade: era o "fade" no lugar da folha descendo.
-     Qualquer sinal de que o JS está vivo (a roda apagando ou o painel descendo)
-     cancela a rede. */
-  .preloader:not([data-sair]):not([data-desce]) {
-    animation: preloader-seguranca 0s linear 30s forwards;
+     Qualquer sinal de que o JS está vivo (o furo abrindo) cancela a rede. */
+  .preloader:not([data-abre]) {
+    animation: preloader-seguranca 0s linear 20s forwards;
   }
 
   @keyframes preloader-seguranca {

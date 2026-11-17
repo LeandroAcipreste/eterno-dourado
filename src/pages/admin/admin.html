@@ -9,14 +9,12 @@
     <meta name="theme-color" content="#050912" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bodoni-latin-normal-400-700.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-latin-normal-100-900.woff2" crossorigin />
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/src/pages/admin/admin.css" />
   </head>
 
   <body data-page="admin">
-    <!-- Página do Leandro: é aqui que nasce o desconto e o frete de cada lojista, e os
-         dois entram no pedido dele sozinhos. Quem não é administrador não passa daqui. -->
     <nav class="menu" id="menu" aria-label="Principal" data-menu data-aberto="nao" inert>
       <ol class="menu__lista" role="list"></ol>
       <div class="menu__acoes"></div>
@@ -41,12 +39,59 @@
       <p class="admin__aviso" data-aviso role="status" hidden></p>
 
       <div class="admin__conteudo" data-painel hidden>
-        <section class="admin__bloco" id="clientes">
-          <h1 class="admin__titulo">Cadastro de clientes</h1>
-          <p class="admin__texto">
-            O desconto, o frete e a observação daqui entram sozinhos no pedido do lojista. Desconto zero não aparece na folha.
-          </p>
+        <section class="visao" aria-labelledby="visao-titulo">
+          <h1 class="admin__titulo" id="visao-titulo" data-visao-mes>Painel</h1>
+          <div class="visao__grade">
+            <a class="visao__cartao visao__cartao--saldo" href="/src/pages/carteira/carteira.html">
+              <span class="visao__rotulo">Em aberto com a fábrica</span>
+              <span class="visao__valor" data-visao-saldo>R$ 0,00</span>
+              <span class="visao__nota" data-visao-saldo-nota>Abrir carteira e lançar acerto</span>
+            </a>
+            <div class="visao__cartao">
+              <span class="visao__rotulo">Minha comissão no mês</span>
+              <span class="visao__valor" data-visao-comissao>R$ 0,00</span>
+              <span class="visao__nota" data-visao-comissao-nota></span>
+            </div>
+            <div class="visao__cartao">
+              <span class="visao__rotulo">Pedidos no mês</span>
+              <span class="visao__valor" data-visao-pedidos>0</span>
+              <span class="visao__nota" data-visao-pedidos-nota></span>
+            </div>
+            <div class="visao__cartao">
+              <span class="visao__rotulo">Lojistas ativos</span>
+              <span class="visao__valor" data-visao-lojistas>0</span>
+              <span class="visao__nota" data-visao-lojistas-nota></span>
+            </div>
+          </div>
+          <nav class="atalhos" aria-label="Atalhos">
+            <a class="btn btn--ouro btn--compacto" href="/src/pages/pedido/pedido.html">Fazer pedido</a>
+            <a class="btn btn--contorno btn--compacto" href="/src/pages/carteira/carteira.html">Carteira</a>
+            <a class="btn btn--contorno btn--compacto" href="/src/pages/tabela/tabela.html">Tabela de preço</a>
+          </nav>
+        </section>
 
+        <section class="admin__bloco" id="clientes">
+          <h2 class="admin__subtitulo">Lojistas <span data-contagem></span></h2>
+          <p class="admin__texto">Desconto, frete e observação entram sozinhos no pedido do lojista. Desconto zero não aparece na folha.</p>
+          <div class="admin__tabela">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Acesso</th>
+                  <th scope="col">Desconto %</th>
+                  <th scope="col">Frete R$</th>
+                  <th scope="col">Situação</th>
+                  <th scope="col">Observação fixa</th>
+                </tr>
+              </thead>
+              <tbody data-clientes></tbody>
+            </table>
+          </div>
+        </section>
+
+        <details class="admin__bloco admin__dobra" id="cadastrar">
+          <summary class="admin__subtitulo">Cadastrar lojista</summary>
           <form class="admin__forma" data-forma-cliente novalidate>
             <div class="campo">
               <label for="novo-nome">Nome</label>
@@ -86,45 +131,10 @@
             </label>
             <button class="btn btn--ouro" type="submit">Cadastrar cliente</button>
           </form>
-        </section>
+        </details>
 
-        <section class="admin__bloco">
-          <h2 class="admin__subtitulo">Clientes <span data-contagem></span></h2>
-          <div class="admin__tabela">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Acesso</th>
-                  <th scope="col">Desconto %</th>
-                  <th scope="col">Frete R$</th>
-                  <th scope="col">Situação</th>
-                  <th scope="col">Observação fixa</th>
-                </tr>
-              </thead>
-              <tbody data-clientes></tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="admin__bloco admin__bloco--linha" id="precos">
-          <div>
-            <h2 class="admin__subtitulo">Tabela de preço</h2>
-            <p class="admin__texto">As 80 referências, com o valor de uma aliança.</p>
-          </div>
-          <a class="btn btn--ouro btn--compacto" href="/src/pages/tabela/tabela.html">Visualizar tabela</a>
-        </section>
-
-        <section class="admin__bloco admin__bloco--linha" id="financeiro">
-          <div>
-            <h2 class="admin__subtitulo">Financeiro</h2>
-            <p class="admin__texto" data-resumo-financeiro>—</p>
-          </div>
-          <a class="btn btn--ouro btn--compacto" href="/src/pages/carteira/carteira.html">Abrir carteira</a>
-        </section>
-
-        <section class="admin__bloco" id="meu-cadastro">
-          <h2 class="admin__subtitulo">Meu cadastro</h2>
+        <details class="admin__bloco admin__dobra" id="meu-cadastro">
+          <summary class="admin__subtitulo">Meu cadastro</summary>
           <dl class="admin__ficha" data-minha-ficha></dl>
           <form class="admin__forma" data-forma-senha novalidate>
             <div class="campo">
@@ -133,7 +143,7 @@
             </div>
             <button class="btn btn--contorno" type="submit">Trocar minha senha</button>
           </form>
-        </section>
+        </details>
       </div>
     </main>
 

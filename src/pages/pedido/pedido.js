@@ -37,6 +37,9 @@ let peca = null; // a que está aberta na tela
 let paraCliente = null;
 const corpoDoPedido = () => JSON.stringify(paraCliente ? { itens, clienteId: paraCliente.id } : { itens });
 
+/** ?editar=1033: o administrador reabre um pedido fechado; salvar regrava o mesmo número. */
+const editando = Number(new URLSearchParams(location.search).get('editar')) || null;
+
 function avisar(texto, { erro = false } = {}) {
   aviso.textContent = texto;
   aviso.hidden = !texto;
@@ -101,12 +104,9 @@ function abrirPeca(modelo) {
 
   el('[data-codigo]').textContent = modelo.codigoTabela ?? modelo.code;
   el('[data-nome]').textContent = modelo.descricaoTabela ?? 'Modelo fora da tabela';
-  el('[data-valor]').textContent = modelo.sobConsulta
-    ? 'Valor sob consulta'
-    : `R$ ${dinheiro(modelo.precoUnidade)} por aliança`;
-
   el('[data-forro]').checked = false;
   el('[data-pedra]').checked = false;
+  desenharValor();
   // pedra avulsa só em liso e pedra única: nas outras ela já está no valor da tabela
   el('[data-pedra-linha]').hidden = !modelo.aceitaPedraAvulsa;
   numeracoes = [];
@@ -123,6 +123,16 @@ let numeracoes = [];
 /** O valor de uma aliança com o que estiver marcado agora: só para ele ver somando. */
 const valorDaPeca = () =>
   valorDaUnidade(peca, { forro: el('[data-forro]').checked, pedras: el('[data-pedra]').checked ? 1 : 0 });
+
+/** O valor de uma aliança já com forro e pedra marcados: soma na hora em que ele marca. */
+function desenharValor() {
+  const unidade = valorDaPeca();
+  const extras = [el('[data-forro]').checked && 'forro', el('[data-pedra]').checked && 'pedra'].filter(Boolean);
+  el('[data-valor]').textContent =
+    unidade === null
+      ? 'Valor sob consulta'
+      : `R$ ${dinheiro(unidade)} por aliança${extras.length ? ` com ${extras.join(' e ')}` : ''}`;
+}
 
 function desenharNumeracoes() {
   const lista = el('[data-numeracoes]');
@@ -164,9 +174,12 @@ el('[data-adicionar-numeracao]')?.addEventListener('click', () => {
   el('[data-numeracao]').select();
 });
 
-// marcar forro ou pedra depois de escolher numeração recalcula o que está na tela
+// marcar forro ou pedra recalcula na hora o valor da peça e o subtotal
 for (const opcao of ['[data-forro]', '[data-pedra]']) {
-  el(opcao)?.addEventListener('change', () => desenharNumeracoes());
+  el(opcao)?.addEventListener('change', () => {
+    desenharValor();
+    desenharNumeracoes();
+  });
 }
 
 el('[data-numeracoes]')?.addEventListener('click', (evento) => {
@@ -281,6 +294,16 @@ el('[data-enviar]')?.addEventListener('click', async () => {
   const botao = el('[data-enviar]');
   botao.disabled = true;
   try {
+    if (editando) {
+      const { pedido } = await pedir(`/api/pedidos/${editando}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ substituir: itens }),
+      });
+      avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} alterado. A folha em PDF já sai com as mudanças.`);
+      el('[data-email-pedido]').replaceChildren(formularioDeEmail(pedido, { sugestao: paraCliente.email, avisar }));
+      botao.disabled = false;
+      return;
+    }
     // o servidor salva, gera a folha e manda resumo e PDF para o Telegram do Leandro
     const { pedido, telegram } = await pedir('/api/pedidos', { method: 'POST', body: corpoDoPedido() });
     itens.length = 0;
@@ -383,6 +406,31 @@ async function prepararEscolhaDoCliente() {
   else campo.focus();
 }
 
+/* ---- reabrir um pedido fechado ------------------------------------------------- */
+
+async function abrirPedidoParaAlterar(numero) {
+  const { pedido, cliente: dono, itens: linhas } = await pedir(`/api/pedidos/${numero}/itens`);
+  paraCliente = dono;
+  itens.push(
+    ...linhas.map((l) => ({
+      codigo: l.modelo_codigo,
+      referencia: l.codigo_tabela ?? l.modelo_codigo,
+      nome: l.descricao_tabela ?? '',
+      numeracao: l.numeracao ?? '',
+      qt: l.qt,
+      forro: l.forro,
+      pedras: l.pedras,
+    })),
+  );
+  // o cliente é o do pedido: trocar mudaria desconto e frete de um pedido já fechado
+  el('[data-escolher-cliente]').hidden = true;
+  el('[data-titulo-folha]').textContent = `Pedido ${pedido.numero} de ${dono.nome}`;
+  el('[data-enviar]').textContent = 'Salvar alterações';
+  mostrarObservacao(dono);
+  await atualizarFolha();
+  busca.focus();
+}
+
 /* ---- entrada ------------------------------------------------------------------ */
 
 const cliente = await quemEstaLogado();
@@ -393,7 +441,9 @@ if (!cliente) {
 } else {
   el('[data-quem]').textContent = cliente.nome;
   painel.hidden = false;
-  if (cliente.admin) {
+  if (cliente.admin && editando) {
+    await abrirPedidoParaAlterar(editando).catch((erro) => avisar(erro.message, { erro: true }));
+  } else if (cliente.admin) {
     await prepararEscolhaDoCliente().catch((erro) => avisar(`clientes: ${erro.message}`, { erro: true }));
     await atualizarFolha();
   } else {

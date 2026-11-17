@@ -13,6 +13,7 @@
 
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { aplicarReflexo, aplicarTons, temWebGL } from '../libs/estudio3d.js';
 import { el, els, movimentoReduzido } from '../utils/dom.js';
 
@@ -54,24 +55,25 @@ const TRILHA = [
     pose: { x: 0.7, y: -0.34, escala: 0.62, giroX: 0.5, giroY: Math.PI * 2.6 },
     retrato: { x: 0.4, y: 0.5, escala: 0.52, giroX: 0.7, giroY: Math.PI * 2.6 },
   },
-  {
-    secao: 'colecao',
-    em: 0.5,
-    pose: { x: -0.1, y: 0.16, escala: 0.6, giroX: 0.85, giroY: Math.PI * 4.2 },
-    retrato: { x: -0.2, y: 0.46, escala: 0.46, giroX: 0.85, giroY: Math.PI * 4.2 },
-  },
-  // a vitrine precisa da tela inteira: a peça sai antes dos cartões e volta depois
+  // a vitrine vem logo depois da hero e precisa da tela inteira: a peça sai antes
+  // dos cartões e volta depois, já na coleção
   {
     secao: 'catalogo',
     em: 0.05,
-    pose: { x: -0.62, y: 0.2, escala: 0, giroX: 0.95, giroY: Math.PI * 5 },
-    retrato: { x: -0.35, y: 0.45, escala: 0, giroX: 0.95, giroY: Math.PI * 5 },
+    pose: { x: 0.9, y: -0.3, escala: 0, giroX: 0.6, giroY: Math.PI * 3.2 },
+    retrato: { x: 0.5, y: 0.5, escala: 0, giroX: 0.7, giroY: Math.PI * 3.2 },
   },
   {
     secao: 'catalogo',
     em: 0.95,
-    pose: { x: -0.62, y: 0.2, escala: 0, giroX: 0.95, giroY: Math.PI * 5.8 },
-    retrato: { x: -0.35, y: 0.45, escala: 0, giroX: 0.95, giroY: Math.PI * 5.8 },
+    pose: { x: -0.62, y: 0.2, escala: 0, giroX: 0.8, giroY: Math.PI * 4 },
+    retrato: { x: -0.35, y: 0.45, escala: 0, giroX: 0.8, giroY: Math.PI * 4 },
+  },
+  {
+    secao: 'colecao',
+    em: 0.5,
+    pose: { x: -0.1, y: 0.16, escala: 0.6, giroX: 0.85, giroY: Math.PI * 5.4 },
+    retrato: { x: -0.2, y: 0.46, escala: 0.46, giroX: 0.85, giroY: Math.PI * 5.4 },
   },
   {
     secao: 'como-comprar',
@@ -103,9 +105,13 @@ const TRILHA = [
 
 const CHAVES = ['x', 'y', 'escala', 'giroX', 'giroY'];
 
-export function montarAnel3d() {
+/**
+ * @param {{abertura?: boolean}} opcoes abertura: a peça nasce no centro da tela, parada
+ *   na pose da chegada, até a abertura dar a volta (girarVolta) e soltá-la na trilha.
+ */
+export function montarAnel3d({ abertura = false } = {}) {
   const canvas = el('[data-anel3d]');
-  if (!canvas || !temWebGL()) return { medirTrilha() {} };
+  if (!canvas || !temWebGL()) return { medirTrilha() {}, soltar() {} };
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
@@ -122,9 +128,15 @@ export function montarAnel3d() {
   cena.add(grupo);
 
   let pronto = false;
+  // abertura: a peça fica no centro girando (giroDaAbertura) até soltar()
+  let noCentro = abertura;
+  let inicioDoGiro = null;
+  let giroDaAbertura = 0;
   const atual = { x: 0, y: -0.04, escala: 0, giroX: 0.28, giroY: 0 };
 
+  // o GLB vem quantizado e comprimido com meshopt (224 KB em vez de 1,8 MB)
   new GLTFLoader()
+    .setMeshoptDecoder(MeshoptDecoder)
     .loadAsync(GLB)
     .then((gltf) => {
       const modelo = gltf.scene;
@@ -133,10 +145,20 @@ export function montarAnel3d() {
       modelo.position.sub(caixa.getCenter(new THREE.Vector3()));
       peca.scale.setScalar(1 / raio);
       peca.add(modelo);
+      // na abertura a peça nasce no centro
+      if (noCentro) {
+        const chegada = camera.aspect < 0.8 ? TRILHA[0].retrato : TRILHA[0].pose;
+        Object.assign(atual, chegada, { x: 0, y: 0, escala: 0 }); // entra crescendo, já girando
+      }
+      // compila os shaders agora: sem isso o primeiro quadro da volta trava
+      renderer.compile(cena, camera);
       pronto = true;
       canvas.classList.add('is-pronto');
     })
-    .catch((erro) => console.error('a 03LM não carregou:', erro));
+    .catch((erro) => {
+      console.error('a 03LM não carregou:', erro);
+      noCentro = false;
+    });
 
   /**
    * Onde cada ponto da trilha cai na página, em pixels de rolagem. Medir aqui, e
@@ -198,7 +220,10 @@ export function montarAnel3d() {
     }
 
     const retrato = camera.aspect < 0.8;
-    const pose = poseAgora(retrato);
+    // na abertura, a pose da chegada no meio exato da tela: é de lá que o furo abre
+    const pose = noCentro ? { ...(retrato ? TRILHA[0].retrato : TRILHA[0].pose), x: 0, y: 0 } : poseAgora(retrato);
+    // uma volta a cada 1,25 s enquanto a abertura dura; depois o ângulo fica onde parou
+    if (noCentro) giroDaAbertura = (tempo - (inicioDoGiro ??= tempo)) * ((Math.PI * 2) / 1250);
     // a suavização vale sempre: ela diminui o movimento, não aumenta. Com movimento
     // reduzido a peça saltava de pose em pose, que é o pior dos dois mundos.
     const aproximacao = 0.08;
@@ -216,14 +241,19 @@ export function montarAnel3d() {
     grupo.scale.setScalar(atual.escala * meiaAltura * 0.5 * fatorLargura);
     grupo.visible = atual.escala > 0.01;
     const respiro = Math.sin(tempo * 0.00041) * 0.06 * calmo;
-    grupo.rotation.set(atual.giroX + respiro, atual.giroY + tempo * 0.00012 * calmo, respiro * 0.5);
+    grupo.rotation.set(atual.giroX + respiro, atual.giroY + giroDaAbertura + tempo * 0.00012 * calmo, respiro * 0.5);
 
     renderer.render(cena, camera);
   };
   requestAnimationFrame(quadro);
 
-  return {
+  const controle = {
     /** A página mudou de tamanho (cartões novos, fonte carregada): remede a trilha. */
     medirTrilha,
+    /** Fim da abertura: a peça para de girar no centro e desliza para a trilha. */
+    soltar() {
+      noCentro = false;
+    },
   };
+  return controle;
 }

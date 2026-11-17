@@ -4,6 +4,13 @@
    O resto do visual vem do admin.css, que esta página carrega.
    =========================================================================== */
 
+/* o título da página na mesma fonte da hero da inicial (o @font-face está no style.css) */
+[data-page="pedido"] .admin__titulo {
+  font-family: "Oleo Script Swash Caps", var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
 .pedido__colunas {
   display: grid;
   gap: var(--e-6);

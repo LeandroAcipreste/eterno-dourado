@@ -1,5 +1,5 @@
 /**
- * Página do administrador: cadastro dos lojistas.
+ * Painel do administrador: visão do mês, lojistas e cadastro.
  *
  * Quem decide se você entra aqui é o servidor, não esta página: toda rota de cliente
  * exige a sessão de administrador, e o que se faz aqui é só desenhar o que ela devolve.
@@ -69,6 +69,9 @@ function desenhar(clientes) {
 async function carregar() {
   const { clientes } = await pedir('/api/clientes');
   desenhar(clientes);
+  const ativos = clientes.filter((c) => c.ativo && !c.admin);
+  el('[data-visao-lojistas]').textContent = String(ativos.length);
+  el('[data-visao-lojistas-nota]').textContent = `de ${clientes.filter((c) => !c.admin).length} cadastrados`;
 }
 
 /** Mudança em qualquer campo da tabela grava só aquele campo, naquele cliente. */
@@ -112,11 +115,18 @@ forma?.addEventListener('submit', async (evento) => {
   }
 });
 
-/* ---- financeiro ------------------------------------------------------------ */
+/* ---- visão do mês --------------------------------------------------------- */
 
-async function carregarFinanceiro() {
-  const { pedidos } = await pedir('/api/financeiro');
-  const comissao = pedidos.reduce(
+const reais = (valor) => `R$ ${Number(valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+async function carregarVisao() {
+  const [{ pedidos }, { saldo }] = await Promise.all([pedir('/api/financeiro?limite=500'), pedir('/api/acertos')]);
+  const agora = new Date();
+  const doMes = pedidos.filter((p) => {
+    const d = new Date(p.criado_em);
+    return d.getMonth() === agora.getMonth() && d.getFullYear() === agora.getFullYear();
+  });
+  const comissao = doMes.reduce(
     (total, p) =>
       total +
       dividirPedido({
@@ -127,9 +137,16 @@ async function carregarFinanceiro() {
       }).comissao,
     0,
   );
-  el('[data-resumo-financeiro]').textContent = pedidos.length
-    ? `${pedidos.length} pedidos · sua comissão soma R$ ${dinheiro(comissao)}`
-    : 'Nenhum pedido fechado ainda.';
+  const mes = agora.toLocaleDateString('pt-BR', { month: 'long' });
+  const pecas = doMes.reduce((total, p) => total + Number(p.pecas || 0), 0);
+
+  el('[data-visao-mes]').textContent = `Painel de ${mes}`;
+  el('[data-visao-saldo]').textContent = reais(saldo.emAberto);
+  el('[data-visao-saldo-nota]').textContent = `${reais(saldo.pago)} pagos de ${reais(saldo.devido)}. Abrir carteira`;
+  el('[data-visao-comissao]').textContent = reais(comissao);
+  el('[data-visao-comissao-nota]').textContent = doMes.length ? `sobre ${reais(doMes.reduce((t, p) => t + Number(p.total), 0))} faturados` : 'nenhum pedido ainda neste mês';
+  el('[data-visao-pedidos]').textContent = String(doMes.length);
+  el('[data-visao-pedidos-nota]').textContent = `${pecas} ${pecas === 1 ? 'aliança' : 'alianças'}`;
 }
 
 /* ---- meu cadastro ---------------------------------------------------------- */
@@ -173,8 +190,11 @@ if (cliente && !cliente.admin) {
   el('[data-quem]').textContent = cliente.nome;
   painel.hidden = false;
   desenharMinhaFicha(cliente);
+  // o link do menu abre a seção recolhida que ele aponta
+  const alvo = location.hash && el(location.hash);
+  if (alvo instanceof HTMLDetailsElement) alvo.open = true;
   // cada seção carrega a sua parte; uma que falhe não apaga as outras
-  for (const [nome, carregarSecao] of [['clientes', carregar], ['financeiro', carregarFinanceiro]]) {
+  for (const [nome, carregarSecao] of [['lojistas', carregar], ['visão do mês', carregarVisao]]) {
     await carregarSecao().catch((erro) => avisar(`${nome}: ${erro.message}`, { erro: true }));
   }
 }
