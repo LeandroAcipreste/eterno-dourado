@@ -13,7 +13,8 @@ const painel = el('[data-painel]');
 const formaAcerto = el('[data-forma-acerto]');
 const campoValor = el('[data-acerto-valor]');
 const campoForma = el('[data-acerto-forma]');
-const listaDoCard = el('[data-acerto-pedidos]');
+const campoPedido = el('[data-acerto-pedido]');
+const quitados = el('[data-acerto-quitados]');
 const conta = el('[data-acerto-conta]');
 const campoSobra = el('[data-acerto-sobra]');
 
@@ -80,30 +81,31 @@ function desenharTotais() {
 /* ---- card: a conta é do backend (/api/acertos/simular e /lancar) ---- */
 
 let simulacao = null;
-let marcadoAMao = false;
-
-const linhaDoCard = (p, marcado) => `
-      <li><label class="acerto__pedido">
-        <input type="checkbox" data-quita="${p.id}"${marcado ? ' checked' : ''} />
-        <span>${p.numero} · ${escapar(p.cliente ?? p.cliente_nome)}</span>
-        <span class="acerto__falta">falta ${dinheiro(p.falta ?? falta(p))}</span>
-      </label></li>`;
 
 function desenharCard() {
   campoForma.innerHTML = opcoesDeForma();
-  simulacao = null;
-  marcadoAMao = false;
   const abertos = pedidos.filter((p) => falta(p) > 0).reverse();
-  listaDoCard.innerHTML = abertos.length ? abertos.map((p) => linhaDoCard(p, false)).join('') : '<li class="carteira__vazio">Nenhum pedido em aberto.</li>';
+  campoPedido.innerHTML = abertos.length
+    ? ['<option value="">Do mais antigo</option>',
+       ...abertos.map((p) => `<option value="${p.id}">${p.numero} · ${escapar(p.cliente_nome)} · falta ${dinheiro(falta(p))}</option>`)].join('')
+    : '<option value="">Nenhum pedido em aberto</option>';
+  limparSimulacao();
+}
+
+function limparSimulacao() {
+  simulacao = null;
+  quitados.innerHTML = '';
   conta.textContent = '';
+  campoSobra.innerHTML = '';
   el('[data-acerto-sobra-campo]').hidden = true;
 }
 
 function desenharSimulacao(s) {
-  const ids = s.quitados.map((p) => p.id);
-  listaDoCard.innerHTML = s.abertos.map((p) => linhaDoCard(p, ids.includes(p.id))).join('');
+  quitados.innerHTML = s.quitados
+    .map((p) => `<li><span>${p.numero} · ${escapar(p.cliente)}</span><span>quita ${dinheiro(p.falta)}</span></li>`)
+    .join('');
   conta.dataset.erro = 'nao';
-  conta.textContent = `Quita ${ids.length} ${ids.length === 1 ? 'pedido' : 'pedidos'} (${dinheiro(s.usado)}). Sobram ${dinheiro(s.sobra)}.`;
+  conta.textContent = `Quita ${s.quitados.length} ${s.quitados.length === 1 ? 'pedido' : 'pedidos'} (${dinheiro(s.usado)}). Sobram ${dinheiro(s.sobra)}.`;
   const campoDaSobra = el('[data-acerto-sobra-campo]');
   campoDaSobra.hidden = !s.destino;
   if (!s.destino) return;
@@ -115,10 +117,10 @@ function desenharSimulacao(s) {
 let ultimaConsulta = 0;
 async function simular() {
   const valor = campoValor.value.trim();
-  if (!valor) return desenharCard();
+  if (!valor) return limparSimulacao();
   const params = new URLSearchParams({ valor });
-  if (marcadoAMao) params.set('quitar', [...listaDoCard.querySelectorAll('[data-quita]:checked')].map((c) => c.dataset.quita).join(',') || '0');
-  if (!el('[data-acerto-sobra-campo]').hidden && campoSobra.value) params.set('sobra', campoSobra.value);
+  if (campoPedido.value) params.set('pedido', campoPedido.value);
+  if (campoSobra.value) params.set('sobra', campoSobra.value);
   const esta = ++ultimaConsulta;
   try {
     const s = await pedir(`/api/acertos/simular?${params}`);
@@ -127,22 +129,19 @@ async function simular() {
     desenharSimulacao(s);
   } catch (erro) {
     if (esta !== ultimaConsulta) return;
-    simulacao = null;
+    limparSimulacao();
     conta.dataset.erro = 'sim';
     conta.textContent = erro.message;
-    el('[data-acerto-sobra-campo]').hidden = true;
   }
 }
 
 let espera;
 campoValor.addEventListener('input', () => {
-  marcadoAMao = false;
   campoSobra.innerHTML = '';
   clearTimeout(espera);
   espera = setTimeout(simular, 300);
 });
-listaDoCard.addEventListener('change', () => {
-  marcadoAMao = true;
+campoPedido.addEventListener('change', () => {
   campoSobra.innerHTML = '';
   simular();
 });

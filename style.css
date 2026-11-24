@@ -1142,6 +1142,54 @@
     font-size: 1rem;
   }
 
+  /* lista aberta do select: fundo azul, letra branca, item sob o mouse em dourado */
+  select option {
+    background: var(--marinho);
+    color: #fff;
+  }
+
+  @supports (appearance: base-select) {
+    select,
+    ::picker(select) {
+      appearance: base-select;
+    }
+
+    select {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    select::picker-icon {
+      color: var(--ouro);
+    }
+
+    ::picker(select) {
+      margin-top: 4px;
+      padding: 4px;
+      border: 1px solid var(--linha-escura);
+      border-radius: 12px;
+      background: var(--marinho);
+    }
+
+    select option {
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    select option::checkmark {
+      display: none;
+    }
+
+    select option:hover,
+    select option:focus-visible {
+      background: var(--ouro);
+      color: var(--marinho);
+      outline: none;
+    }
+  }
+
   .campo input:hover,
   .campo select:hover {
     background:

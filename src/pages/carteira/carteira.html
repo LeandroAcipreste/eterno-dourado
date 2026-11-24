@@ -64,10 +64,11 @@
               <label for="acerto-forma">Forma de pagamento</label>
               <select id="acerto-forma" name="forma" required data-acerto-forma></select>
             </div>
-            <fieldset class="acerto__pedidos">
-              <legend>Pedidos que esse valor paga</legend>
-              <ul data-acerto-pedidos></ul>
-            </fieldset>
+            <div class="campo">
+              <label for="acerto-pedido">Pedido</label>
+              <select id="acerto-pedido" name="pedido" data-acerto-pedido></select>
+            </div>
+            <ul class="acerto__quitados" data-acerto-quitados></ul>
             <p class="acerto__conta" data-acerto-conta aria-live="polite"></p>
             <div class="campo" data-acerto-sobra-campo hidden>
               <label for="acerto-sobra">A sobra vai para o pedido</label>

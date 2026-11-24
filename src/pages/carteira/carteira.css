@@ -188,54 +188,27 @@
   gap: var(--e-4);
 }
 
-.acerto__pedidos {
-  display: grid;
-  gap: var(--e-2);
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.acerto__pedidos legend {
-  margin-bottom: var(--e-2);
-  font-weight: 600;
-}
-
-.acerto__pedidos ul {
+.acerto__quitados {
   display: grid;
   gap: 6px;
-  max-height: 240px;
-  overflow-y: auto;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.acerto__pedido {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
+.acerto__quitados li {
+  display: flex;
+  justify-content: space-between;
   gap: var(--e-2);
-  min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid var(--linha-escura);
+  border: 1px solid #7fb69a;
   border-radius: 10px;
-  background: var(--marinho);
-  cursor: pointer;
-}
-
-.acerto__pedido:has(:checked) {
-  border-color: var(--ouro);
-}
-
-.acerto__pedido input {
-  accent-color: var(--ouro);
-}
-
-.acerto__falta {
-  font-size: 0.875rem;
+  background: color-mix(in srgb, #7fb69a 8%, var(--marinho));
   font-variant-numeric: tabular-nums;
-  color: var(--claro-suave);
+}
+
+.acerto__quitados li span:last-child {
+  color: #7fb69a;
 }
 
 .acerto__conta:empty {
