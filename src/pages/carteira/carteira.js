@@ -31,6 +31,16 @@ const nomeDoMes = (chave) => {
 };
 const hoje = () => new Date().toLocaleDateString('sv-SE');
 
+// a mesma lista está em acertos.js, no backend
+const FORMAS = ['Cheques', 'Boleto', 'Minha comissão'];
+const opcoesDeForma = (atual) =>
+  ['<option value="">Escolha</option>', ...FORMAS.map((f) => `<option${f === atual ? ' selected' : ''}>${f}</option>`)].join('');
+// acerto pago com a comissão sai da comissão do pedido
+const abatido = (p) => (p.acerto_forma === 'Minha comissão' ? Number(p.acerto_valor || 0) : 0);
+const comissaoLiquida = (p) => p.comissao - abatido(p);
+const textoDaComissao = (p) =>
+  `${dinheiro(comissaoLiquida(p))}${abatido(p) > 0 ? `<span class="admin__cidade">${dinheiro(abatido(p))} abatidos</span>` : ''}`;
+
 let pedidos = [];
 let acertos = [];
 let mesAberto = chaveDoMes(hoje());
@@ -87,7 +97,7 @@ const falta = (p) => Math.max(0, p.fabrica - Number(p.acerto_valor || 0));
 /** Pago à fábrica no mês = acertos avulsos com data no mês + acertos dos pedidos do mês. */
 function desenharTotaisDoMes() {
   const doMes = doMesAberto();
-  el('[data-mes-comissao]').textContent = reais(soma(doMes, (p) => p.comissao));
+  el('[data-mes-comissao]').textContent = reais(soma(doMes, comissaoLiquida));
   el('[data-mes-fabrica]').textContent = reais(soma(doMes, (p) => p.fabrica));
   el('[data-mes-acertos]').textContent = reais(soma(acertosDoMesAberto(), (a) => a.valor) + soma(doMes, (p) => p.acerto_valor));
   el('[data-mes-faturado]').textContent = reais(soma(doMes, (p) => p.total));
@@ -117,8 +127,8 @@ function desenharMes() {
           <td>${Number(p.frete) > 0 ? `${dinheiro(p.frete)}<span class="admin__cidade">${p.clientePagaFrete ? 'cliente paga' : 'por minha conta'}</span>` : '—'}</td>
           <td>${dinheiro(p.total)}</td>
           <td>${dinheiro(p.fabrica)}</td>
-          <td class="carteira__comissao">${dinheiro(p.comissao)}</td>
-          <td><input class="carteira__campo carteira__campo--forma" type="text" maxlength="200" value="${escapar(p.acerto_forma ?? '')}" placeholder="PIX, abatido da comissão do 1033" data-acerto="forma" aria-label="Como foi acertado o pedido ${p.numero}" /></td>
+          <td class="carteira__comissao" data-comissao>${textoDaComissao(p)}</td>
+          <td><select class="carteira__campo carteira__campo--forma" data-acerto="forma" aria-label="Como foi acertado o pedido ${p.numero}">${opcoesDeForma(p.acerto_forma)}</select></td>
           <td>
             <input class="carteira__campo carteira__campo--valor" type="text" inputmode="decimal" value="${p.acerto_valor != null ? dinheiro(p.acerto_valor) : ''}" placeholder="0,00" data-acerto="valor" aria-label="Valor pago à fábrica pelo pedido ${p.numero}" />
             <span class="admin__cidade" data-falta>${falta(p) > 0 ? `falta ${dinheiro(falta(p))}` : 'quitado'}</span>
@@ -175,6 +185,7 @@ el('[data-pedidos]').addEventListener('change', async (evento) => {
     pedido.acerto_valor = salvo.acerto_valor;
     pedido.acerto_forma = salvo.acerto_forma;
     el('[data-falta]', linha).textContent = falta(pedido) > 0 ? `falta ${dinheiro(falta(pedido))}` : 'quitado';
+    el('[data-comissao]', linha).innerHTML = textoDaComissao(pedido);
     desenharTotaisDoMes();
     desenharSaldo((await pedir('/api/acertos')).saldo);
     avisar('');

@@ -205,7 +205,13 @@
 }
 
 .carteira__campo--forma {
-  min-width: 200px;
+  min-width: 170px;
+  cursor: pointer;
+}
+
+.carteira__campo--forma option {
+  background: var(--marinho);
+  color: var(--claro);
 }
 
 .carteira__campo--valor {

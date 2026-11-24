@@ -849,9 +849,11 @@
     inset: 0;
     z-index: var(--z-menu);
     display: grid;
-    align-content: center;
+    /* safe: se não couber, começa embaixo do cabeçalho em vez de subir por cima da logo */
+    align-content: safe center;
     gap: var(--e-10);
     padding: 96px clamp(20px, 6vw, 96px) var(--e-10);
+    overflow-y: auto;
     background: var(--noite);
     color: var(--claro);
     visibility: hidden;
@@ -888,9 +890,10 @@
     display: flex;
     align-items: baseline;
     gap: var(--e-5);
-    min-height: 56px;
+    min-height: 48px;
     font-family: var(--fonte-titulo);
-    font-size: clamp(2.25rem, 1.3rem + 4vw, 5rem);
+    /* limitada também pela altura: os seis itens do menu do administrador cabem numa tela baixa */
+    font-size: clamp(1.75rem, min(1.3rem + 4vw, 7.5vh), 4.5rem);
     line-height: 1.05;
     color: var(--claro);
     text-decoration: none;
