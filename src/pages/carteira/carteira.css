@@ -251,6 +251,55 @@
   color: #f0a3a3;
 }
 
+/* linha do pedido: verde sálvia quitado, âmbar em aberto */
+.carteira__linha {
+  --status: #e0a84e;
+}
+
+.carteira__linha[data-status="quitado"] {
+  --status: #7fb69a;
+}
+
+.carteira__linha td {
+  background: color-mix(in srgb, var(--status) 7%, transparent);
+  transition: background-color 300ms var(--curva);
+}
+
+.carteira__linha td:first-child {
+  box-shadow: inset 3px 0 0 var(--status);
+}
+
+.carteira__acerto {
+  white-space: nowrap;
+}
+
+.carteira__pago {
+  font-variant-numeric: tabular-nums;
+}
+
+.carteira__status {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--status);
+}
+
+.carteira__editar {
+  margin-top: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--linha-escura);
+  border-radius: 999px;
+  background: none;
+  color: var(--claro);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: border-color 180ms var(--curva);
+}
+
+.carteira__editar:hover {
+  border-color: var(--ouro);
+}
+
 /* acerto na linha da tabela */
 .carteira__campo {
   width: 100%;
@@ -265,16 +314,6 @@
 .carteira__campo:focus {
   border-color: var(--ouro);
   outline: none;
-}
-
-.carteira__campo--forma {
-  min-width: 170px;
-  cursor: pointer;
-}
-
-.carteira__campo--forma option {
-  background: var(--marinho);
-  color: var(--claro);
 }
 
 .carteira__campo--valor {
