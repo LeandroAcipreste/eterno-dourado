@@ -57,6 +57,14 @@
           <form class="acerto" data-forma-acerto novalidate>
             <h2 class="admin__subtitulo">Lançar acerto</h2>
             <div class="campo">
+              <label for="acerto-pedido">Pedido</label>
+              <select id="acerto-pedido" name="pedido" required data-acerto-pedido></select>
+            </div>
+            <div class="campo">
+              <label for="acerto-forma">Forma de pagamento</label>
+              <select id="acerto-forma" name="forma" required data-acerto-forma></select>
+            </div>
+            <div class="campo">
               <label for="acerto-valor">Valor pago R$</label>
               <input id="acerto-valor" name="valor" type="text" inputmode="decimal" placeholder="0,00" required />
             </div>
@@ -66,16 +74,13 @@
             </div>
             <div class="campo">
               <label for="acerto-obs">Observação</label>
-              <input id="acerto-obs" name="observacao" type="text" maxlength="200" placeholder="PIX, depósito, acerto da semana" />
+              <input id="acerto-obs" name="observacao" type="text" maxlength="200" placeholder="Cheques em 5x, comissão do pedido 1032" />
             </div>
             <button class="btn btn--ouro" type="submit">Abater do saldo</button>
           </form>
         </section>
 
-        <nav class="meses" aria-label="Meses" data-meses></nav>
-
-        <section class="mes" data-mes aria-live="polite">
-          <dl class="mes__totais">
+        <dl class="mes__totais">
             <div class="mes__total mes__total--destaque"><dt>Minha comissão</dt><dd data-mes-comissao>R$ 0,00</dd></div>
             <div class="mes__total"><dt>Fábrica</dt><dd data-mes-fabrica>R$ 0,00</dd></div>
             <div class="mes__total"><dt>Paguei à fábrica</dt><dd data-mes-acertos>R$ 0,00</dd></div>
@@ -84,6 +89,9 @@
             <div class="mes__total"><dt>Fretes por minha conta</dt><dd data-mes-frete>R$ 0,00</dd></div>
           </dl>
 
+        <nav class="meses" aria-label="Meses" data-meses></nav>
+
+        <section class="mes" data-mes aria-live="polite">
           <div class="mes__colunas">
             <div class="admin__bloco">
               <h2 class="admin__subtitulo">Pedidos <span data-contagem></span></h2>
@@ -106,11 +114,6 @@
                   <tbody data-pedidos></tbody>
                 </table>
               </div>
-            </div>
-
-            <div class="admin__bloco">
-              <h2 class="admin__subtitulo">Acertos avulsos do mês</h2>
-              <ul class="acertos" data-acertos></ul>
             </div>
           </div>
         </section>

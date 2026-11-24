@@ -1,4 +1,4 @@
-/* Carteira: saldo com a fábrica e lançamento de acerto em cima, um mês por vez embaixo.
+/* Carteira.
    Base visual: admin.css. */
 
 .carteira {
@@ -188,86 +188,9 @@
   gap: var(--e-4);
 }
 
-/* acerto do pedido, na própria linha da tabela */
-.carteira__campo {
-  width: 100%;
-  min-height: 44px;
-  padding: 0 10px;
-  border: 1px solid var(--linha-escura);
-  border-radius: 10px;
-  background: var(--marinho);
-  color: var(--claro);
-}
-
-.carteira__campo:focus {
-  border-color: var(--ouro);
-  outline: none;
-}
-
-.carteira__campo--forma {
-  min-width: 170px;
-  cursor: pointer;
-}
-
-.carteira__campo--forma option {
-  background: var(--marinho);
-  color: var(--claro);
-}
-
-.carteira__campo--valor {
-  width: 110px;
-  font-variant-numeric: tabular-nums;
-}
-
 .carteira__vazio {
   color: var(--claro-suave);
   padding: var(--e-3) 0;
-}
-
-.acertos {
-  display: grid;
-  gap: var(--e-2);
-  list-style: none;
-  padding: 0;
-}
-
-.acertos__item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2px var(--e-3);
-  padding: 12px 14px;
-  border: 1px solid var(--linha-escura);
-  border-radius: 12px;
-  background: var(--marinho);
-}
-
-.acertos__valor {
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  color: var(--champagne);
-}
-
-.acertos__info {
-  grid-column: 1;
-  font-size: 0.875rem;
-  color: var(--claro-suave);
-}
-
-.acertos__apagar {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: center;
-  padding: 6px 12px;
-  border: 1px solid rgb(229 115 115 / 0.5);
-  border-radius: 999px;
-  background: none;
-  color: #f0a3a3;
-  font-size: 0.875rem;
-  cursor: pointer;
-}
-
-.acertos__apagar:hover {
-  background: rgb(229 115 115 / 0.12);
 }
 
 @media (max-width: 900px) {
