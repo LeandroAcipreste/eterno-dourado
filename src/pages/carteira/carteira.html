@@ -57,16 +57,21 @@
           <form class="acerto" data-forma-acerto novalidate>
             <h2 class="admin__subtitulo">Lançar acerto</h2>
             <div class="campo">
-              <label for="acerto-pedido">Pedido</label>
-              <select id="acerto-pedido" name="pedido" required data-acerto-pedido></select>
+              <label for="acerto-valor">Valor enviado à fábrica R$</label>
+              <input id="acerto-valor" name="valor" type="text" inputmode="decimal" placeholder="0,00" required data-acerto-valor />
             </div>
             <div class="campo">
               <label for="acerto-forma">Forma de pagamento</label>
               <select id="acerto-forma" name="forma" required data-acerto-forma></select>
             </div>
-            <div class="campo">
-              <label for="acerto-valor">Valor pago R$</label>
-              <input id="acerto-valor" name="valor" type="text" inputmode="decimal" placeholder="0,00" required />
+            <fieldset class="acerto__pedidos">
+              <legend>Pedidos que esse valor paga</legend>
+              <ul data-acerto-pedidos></ul>
+            </fieldset>
+            <p class="acerto__conta" data-acerto-conta aria-live="polite"></p>
+            <div class="campo" data-acerto-sobra-campo hidden>
+              <label for="acerto-sobra">A sobra vai para o pedido</label>
+              <select id="acerto-sobra" name="sobra" data-acerto-sobra></select>
             </div>
             <div class="campo">
               <label for="acerto-dia">Data</label>
@@ -76,7 +81,7 @@
               <label for="acerto-obs">Observação</label>
               <input id="acerto-obs" name="observacao" type="text" maxlength="200" placeholder="Cheques em 5x, comissão do pedido 1032" />
             </div>
-            <button class="btn btn--ouro" type="submit">Abater do saldo</button>
+            <button class="btn btn--ouro" type="submit">Lançar acerto</button>
           </form>
         </section>
 

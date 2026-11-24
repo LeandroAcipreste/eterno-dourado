@@ -11,8 +11,11 @@ const el = (selecao, raiz = document) => raiz.querySelector(selecao);
 const aviso = el('[data-aviso]');
 const painel = el('[data-painel]');
 const formaAcerto = el('[data-forma-acerto]');
-const campoPedido = el('[data-acerto-pedido]');
+const campoValor = el('[data-acerto-valor]');
 const campoForma = el('[data-acerto-forma]');
+const listaDoCard = el('[data-acerto-pedidos]');
+const conta = el('[data-acerto-conta]');
+const campoSobra = el('[data-acerto-sobra]');
 
 const reais = (valor) => `R$ ${Number(valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const dinheiro = (valor) => Number(valor).toFixed(2).replace('.', ',');
@@ -29,9 +32,11 @@ const hoje = () => new Date().toLocaleDateString('sv-SE');
 
 // igual a acertos.js no backend
 const FORMAS = ['Cheques', 'Boleto', 'Minha comissão'];
+const opcoesDeForma = (atual = '') =>
+  ['<option value="">Escolha</option>', ...FORMAS.map((f) => `<option${f === atual ? ' selected' : ''}>${f}</option>`)].join('');
 const abatido = (p) => (p.acerto_forma === 'Minha comissão' ? Number(p.acerto_valor || 0) : 0);
 const comissaoLiquida = (p) => p.comissao - abatido(p);
-const falta = (p) => Math.max(0, p.fabrica - Number(p.acerto_valor || 0));
+const falta = (p) => Math.max(0, Math.round((p.fabrica - Number(p.acerto_valor || 0)) * 100) / 100);
 
 let pedidos = [];
 let acertos = [];
@@ -74,25 +79,111 @@ function desenharTotais() {
   el('[data-mes-frete]').textContent = reais(soma(pedidos, (p) => p.freteNaComissao));
 }
 
-// card: só pedidos em aberto
+/* ---- card: a conta é do backend (/api/acertos/simular e /lancar) ---- */
+
+let simulacao = null;
+let marcadoAMao = false;
+
+const linhaDoCard = (p, marcado) => `
+      <li><label class="acerto__pedido">
+        <input type="checkbox" data-quita="${p.id}"${marcado ? ' checked' : ''} />
+        <span>${p.numero} · ${escapar(p.cliente ?? p.cliente_nome)}</span>
+        <span class="acerto__falta">falta ${dinheiro(p.falta ?? falta(p))}</span>
+      </label></li>`;
+
 function desenharCard() {
-  const abertos = pedidos.filter((p) => falta(p) > 0);
-  campoPedido.innerHTML = abertos.length
-    ? ['<option value="">Escolha o pedido</option>',
-       ...abertos.map((p) => `<option value="${p.id}">${p.numero} · ${escapar(p.cliente_nome)} · falta ${dinheiro(falta(p))}</option>`)].join('')
-    : '<option value="">Nenhum pedido em aberto</option>';
-  campoForma.innerHTML = ['<option value="">Escolha a forma</option>', ...FORMAS.map((f) => `<option>${f}</option>`)].join('');
+  campoForma.innerHTML = opcoesDeForma();
+  simulacao = null;
+  marcadoAMao = false;
+  const abertos = pedidos.filter((p) => falta(p) > 0).reverse();
+  listaDoCard.innerHTML = abertos.length ? abertos.map((p) => linhaDoCard(p, false)).join('') : '<li class="carteira__vazio">Nenhum pedido em aberto.</li>';
+  conta.textContent = '';
+  el('[data-acerto-sobra-campo]').hidden = true;
 }
 
-// preenche o card com o acerto do pedido ou com o que falta
-campoPedido.addEventListener('change', () => {
-  const p = pedidos.find((item) => String(item.id) === campoPedido.value);
-  if (!p) return;
-  campoForma.value = p.acerto_forma ?? '';
-  formaAcerto.elements.valor.value = dinheiro(p.acerto_valor != null ? p.acerto_valor : falta(p));
-  formaAcerto.elements.dia.value = p.acerto_dia ? String(p.acerto_dia).slice(0, 10) : hoje();
-  formaAcerto.elements.observacao.value = p.acerto_obs ?? '';
+function desenharSimulacao(s) {
+  const ids = s.quitados.map((p) => p.id);
+  listaDoCard.innerHTML = s.abertos.map((p) => linhaDoCard(p, ids.includes(p.id))).join('');
+  conta.dataset.erro = 'nao';
+  conta.textContent = `Quita ${ids.length} ${ids.length === 1 ? 'pedido' : 'pedidos'} (${dinheiro(s.usado)}). Sobram ${dinheiro(s.sobra)}.`;
+  const campoDaSobra = el('[data-acerto-sobra-campo]');
+  campoDaSobra.hidden = !s.destino;
+  if (!s.destino) return;
+  campoSobra.innerHTML = s.candidatos
+    .map((p) => `<option value="${p.id}"${p.id === s.destino.id ? ' selected' : ''}>${p.numero} · ${escapar(p.cliente)} · fica faltando ${dinheiro(Math.max(0, p.falta - s.sobra))}</option>`)
+    .join('');
+}
+
+let ultimaConsulta = 0;
+async function simular() {
+  const valor = campoValor.value.trim();
+  if (!valor) return desenharCard();
+  const params = new URLSearchParams({ valor });
+  if (marcadoAMao) params.set('quitar', [...listaDoCard.querySelectorAll('[data-quita]:checked')].map((c) => c.dataset.quita).join(',') || '0');
+  if (!el('[data-acerto-sobra-campo]').hidden && campoSobra.value) params.set('sobra', campoSobra.value);
+  const esta = ++ultimaConsulta;
+  try {
+    const s = await pedir(`/api/acertos/simular?${params}`);
+    if (esta !== ultimaConsulta) return;
+    simulacao = s;
+    desenharSimulacao(s);
+  } catch (erro) {
+    if (esta !== ultimaConsulta) return;
+    simulacao = null;
+    conta.dataset.erro = 'sim';
+    conta.textContent = erro.message;
+    el('[data-acerto-sobra-campo]').hidden = true;
+  }
+}
+
+let espera;
+campoValor.addEventListener('input', () => {
+  marcadoAMao = false;
+  campoSobra.innerHTML = '';
+  clearTimeout(espera);
+  espera = setTimeout(simular, 300);
 });
+listaDoCard.addEventListener('change', () => {
+  marcadoAMao = true;
+  campoSobra.innerHTML = '';
+  simular();
+});
+campoSobra.addEventListener('change', simular);
+
+const gravarAcerto = (p, { valor, forma, dia, observacao }) =>
+  pedir(`/api/pedidos/${p.id}/acerto`, { method: 'PATCH', body: JSON.stringify({ valor, forma, dia, observacao }) });
+
+formaAcerto.addEventListener('submit', async (evento) => {
+  evento.preventDefault();
+  if (!simulacao) return avisar('Digite o valor enviado à fábrica.', { erro: true });
+  if (!campoForma.value) return avisar('Escolha a forma de pagamento.', { erro: true });
+  const { dia, observacao } = Object.fromEntries(new FormData(formaAcerto));
+  const botao = formaAcerto.querySelector('[type="submit"]');
+  botao.disabled = true;
+  try {
+    await pedir('/api/acertos/lancar', {
+      method: 'POST',
+      body: JSON.stringify({
+        valor: simulacao.valor,
+        quitar: simulacao.quitados.map((p) => p.id),
+        sobraPara: simulacao.destino?.id ?? null,
+        forma: campoForma.value,
+        dia,
+        observacao,
+      }),
+    });
+    formaAcerto.reset();
+    formaAcerto.elements.dia.value = hoje();
+    avisar('');
+    await carregar();
+  } catch (erro) {
+    avisar(erro.message, { erro: true });
+  } finally {
+    botao.disabled = false;
+  }
+});
+
+/* ---- pedidos do mês ---- */
 
 function desenharMeses() {
   const meses = [...new Set([chaveDoMes(new Date()), ...pedidos.map((p) => p.mes)])].sort().reverse();
@@ -110,13 +201,10 @@ function desenharMeses() {
   );
 }
 
-function celulaDoAcerto(p) {
-  if (p.acerto_valor == null) return `<td>—</td><td>—<span class="admin__cidade">falta ${dinheiro(falta(p))}</span></td>`;
-  const detalhe = [p.acerto_dia && dataDoDia(p.acerto_dia), p.acerto_obs && escapar(p.acerto_obs)].filter(Boolean).join(' · ');
-  return `
-    <td>${escapar(p.acerto_forma ?? '—')}${detalhe ? `<span class="admin__cidade">${detalhe}</span>` : ''}</td>
-    <td>${dinheiro(p.acerto_valor)}<span class="admin__cidade">${falta(p) > 0 ? `falta ${dinheiro(falta(p))}` : 'quitado'}</span></td>`;
-}
+const textoDaComissao = (p) =>
+  `${dinheiro(comissaoLiquida(p))}${abatido(p) > 0 ? `<span class="admin__cidade">${dinheiro(abatido(p))} abatidos</span>` : ''}`;
+const textoDaFalta = (p) => (falta(p) > 0 ? `falta ${dinheiro(falta(p))}` : 'quitado');
+const detalheDoAcerto = (p) => [p.acerto_dia && dataDoDia(p.acerto_dia), p.acerto_obs && escapar(p.acerto_obs)].filter(Boolean).join(' · ');
 
 function desenharMes() {
   const doMes = pedidos.filter((p) => p.mes === mesAberto);
@@ -129,7 +217,7 @@ function desenharMes() {
   corpo.innerHTML = doMes
     .map(
       (p) => `
-      <tr>
+      <tr data-pedido="${p.id}">
         <td><strong>${p.numero}</strong><span class="admin__cidade">${data(p.criado_em)}</span></td>
         <td>${escapar(p.cliente_nome)}</td>
         <td>${dinheiro(p.total_bruto)}</td>
@@ -137,12 +225,44 @@ function desenharMes() {
         <td>${Number(p.frete) > 0 ? `${dinheiro(p.frete)}<span class="admin__cidade">${p.clientePagaFrete ? 'cliente paga' : 'por minha conta'}</span>` : '—'}</td>
         <td>${dinheiro(p.total)}</td>
         <td>${dinheiro(p.fabrica)}</td>
-        <td class="carteira__comissao">${dinheiro(comissaoLiquida(p))}${abatido(p) > 0 ? `<span class="admin__cidade">${dinheiro(abatido(p))} abatidos</span>` : ''}</td>
-        ${celulaDoAcerto(p)}
+        <td class="carteira__comissao" data-comissao>${textoDaComissao(p)}</td>
+        <td>
+          <select class="carteira__campo carteira__campo--forma" data-acerto="forma" aria-label="Como foi acertado o pedido ${p.numero}">${opcoesDeForma(p.acerto_forma ?? '')}</select>
+          <span class="admin__cidade" data-detalhe>${detalheDoAcerto(p)}</span>
+        </td>
+        <td>
+          <input class="carteira__campo carteira__campo--valor" type="text" inputmode="decimal" value="${p.acerto_valor != null ? dinheiro(p.acerto_valor) : ''}" placeholder="0,00" data-acerto="valor" aria-label="Valor pago à fábrica pelo pedido ${p.numero}" />
+          <span class="admin__cidade" data-falta>${textoDaFalta(p)}</span>
+        </td>
       </tr>`,
     )
     .join('');
 }
+
+// correção na linha: grava forma e valor, mantém data e observação
+el('[data-pedidos]').addEventListener('change', async (evento) => {
+  const linha = evento.target.closest('[data-pedido]');
+  if (!linha || !evento.target.matches('[data-acerto]')) return;
+  const p = pedidos.find((item) => String(item.id) === linha.dataset.pedido);
+  try {
+    const { pedido: salvo } = await gravarAcerto(p, {
+      forma: el('[data-acerto="forma"]', linha).value,
+      valor: el('[data-acerto="valor"]', linha).value,
+      dia: p.acerto_dia ? String(p.acerto_dia).slice(0, 10) : hoje(),
+      observacao: p.acerto_obs ?? '',
+    });
+    Object.assign(p, salvo);
+    el('[data-falta]', linha).textContent = textoDaFalta(p);
+    el('[data-comissao]', linha).innerHTML = textoDaComissao(p);
+    el('[data-detalhe]', linha).innerHTML = detalheDoAcerto(p);
+    desenharTotais();
+    desenharCard();
+    desenharSaldo((await pedir('/api/acertos')).saldo);
+    avisar('');
+  } catch (erro) {
+    avisar(erro.message, { erro: true });
+  }
+});
 
 async function carregar() {
   const [{ pedidos: lista }, { acertos: pagos, saldo }] = await Promise.all([
@@ -164,26 +284,6 @@ el('[data-meses]').addEventListener('click', (evento) => {
   mesAberto = botao.dataset.mes;
   for (const outro of el('[data-meses]').children) outro.setAttribute('aria-pressed', String(outro === botao));
   desenharMes();
-});
-
-formaAcerto.addEventListener('submit', async (evento) => {
-  evento.preventDefault();
-  const { pedido, ...dados } = Object.fromEntries(new FormData(formaAcerto));
-  if (!pedido) return avisar('Escolha o pedido.', { erro: true });
-  if (!dados.forma) return avisar('Escolha a forma de pagamento.', { erro: true });
-  const botao = formaAcerto.querySelector('[type="submit"]');
-  botao.disabled = true;
-  try {
-    await pedir(`/api/pedidos/${pedido}/acerto`, { method: 'PATCH', body: JSON.stringify(dados) });
-    formaAcerto.reset();
-    formaAcerto.elements.dia.value = hoje();
-    avisar('');
-    await carregar();
-  } catch (erro) {
-    avisar(erro.message, { erro: true });
-  } finally {
-    botao.disabled = false;
-  }
 });
 
 const cliente = await quemEstaLogado();
