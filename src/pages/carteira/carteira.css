@@ -185,9 +185,32 @@
 
 .mes__colunas {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
   gap: var(--e-4);
-  align-items: start;
+}
+
+/* acerto do pedido, na própria linha da tabela */
+.carteira__campo {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--linha-escura);
+  border-radius: 10px;
+  background: var(--marinho);
+  color: var(--claro);
+}
+
+.carteira__campo:focus {
+  border-color: var(--ouro);
+  outline: none;
+}
+
+.carteira__campo--forma {
+  min-width: 200px;
+}
+
+.carteira__campo--valor {
+  width: 110px;
+  font-variant-numeric: tabular-nums;
 }
 
 .carteira__vazio {
@@ -242,8 +265,7 @@
 }
 
 @media (max-width: 900px) {
-  .carteira__saldo,
-  .mes__colunas {
+  .carteira__saldo {
     grid-template-columns: 1fr;
   }
 }

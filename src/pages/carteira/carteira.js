@@ -79,26 +79,36 @@ function desenharMeses() {
   );
 }
 
-function desenharMes() {
-  const doMes = pedidos.filter((p) => p.mes === mesAberto);
-  const acertosDoMes = acertos.filter((a) => chaveDoMes(a.dia) === mesAberto);
-  const soma = (lista, pegar) => lista.reduce((total, item) => total + Number(pegar(item)), 0);
+const soma = (lista, pegar) => lista.reduce((total, item) => total + Number(pegar(item) || 0), 0);
+const doMesAberto = () => pedidos.filter((p) => p.mes === mesAberto);
+const acertosDoMesAberto = () => acertos.filter((a) => chaveDoMes(a.dia) === mesAberto);
+const falta = (p) => Math.max(0, p.fabrica - Number(p.acerto_valor || 0));
 
+/** Pago à fábrica no mês = acertos avulsos com data no mês + acertos dos pedidos do mês. */
+function desenharTotaisDoMes() {
+  const doMes = doMesAberto();
   el('[data-mes-comissao]').textContent = reais(soma(doMes, (p) => p.comissao));
   el('[data-mes-fabrica]').textContent = reais(soma(doMes, (p) => p.fabrica));
-  el('[data-mes-acertos]').textContent = reais(soma(acertosDoMes, (a) => a.valor));
+  el('[data-mes-acertos]').textContent = reais(soma(acertosDoMesAberto(), (a) => a.valor) + soma(doMes, (p) => p.acerto_valor));
   el('[data-mes-faturado]').textContent = reais(soma(doMes, (p) => p.total));
   el('[data-mes-desconto]').textContent = reais(soma(doMes, (p) => p.abatimento));
   el('[data-mes-frete]').textContent = reais(soma(doMes, (p) => p.freteNaComissao));
+}
+
+function desenharMes() {
+  const doMes = doMesAberto();
+  const acertosDoMes = acertosDoMesAberto();
+  desenharTotaisDoMes();
 
   el('[data-contagem]').textContent = `(${doMes.length})`;
   const corpo = el('[data-pedidos]');
   if (doMes.length === 0) {
-    corpo.innerHTML = `<tr><td colspan="8" class="carteira__vazio">Nenhum pedido em ${nomeDoMes(mesAberto).toLowerCase()}.</td></tr>`;
+    corpo.innerHTML = `<tr><td colspan="10" class="carteira__vazio">Nenhum pedido em ${nomeDoMes(mesAberto).toLowerCase()}.</td></tr>`;
   } else {
     corpo.replaceChildren(
       ...doMes.map((p) => {
         const linha = document.createElement('tr');
+        linha.dataset.pedido = p.id;
         linha.innerHTML = `
           <td><strong>${p.numero}</strong><span class="admin__cidade">${data(p.criado_em)}</span></td>
           <td>${escapar(p.cliente_nome)}</td>
@@ -107,7 +117,12 @@ function desenharMes() {
           <td>${Number(p.frete) > 0 ? `${dinheiro(p.frete)}<span class="admin__cidade">${p.clientePagaFrete ? 'cliente paga' : 'por minha conta'}</span>` : '—'}</td>
           <td>${dinheiro(p.total)}</td>
           <td>${dinheiro(p.fabrica)}</td>
-          <td class="carteira__comissao">${dinheiro(p.comissao)}</td>`;
+          <td class="carteira__comissao">${dinheiro(p.comissao)}</td>
+          <td><input class="carteira__campo carteira__campo--forma" type="text" maxlength="200" value="${escapar(p.acerto_forma ?? '')}" placeholder="PIX, abatido da comissão do 1033" data-acerto="forma" aria-label="Como foi acertado o pedido ${p.numero}" /></td>
+          <td>
+            <input class="carteira__campo carteira__campo--valor" type="text" inputmode="decimal" value="${p.acerto_valor != null ? dinheiro(p.acerto_valor) : ''}" placeholder="0,00" data-acerto="valor" aria-label="Valor pago à fábrica pelo pedido ${p.numero}" />
+            <span class="admin__cidade" data-falta>${falta(p) > 0 ? `falta ${dinheiro(falta(p))}` : 'quitado'}</span>
+          </td>`;
         return linha;
       }),
     );
@@ -142,6 +157,31 @@ async function carregar() {
   desenharMeses();
   desenharMes();
 }
+
+// o acerto do pedido grava ao sair do campo; os dois campos vão juntos
+el('[data-pedidos]').addEventListener('change', async (evento) => {
+  const campo = evento.target.closest('[data-acerto]');
+  if (!campo) return;
+  const linha = campo.closest('tr');
+  const pedido = pedidos.find((p) => String(p.id) === linha.dataset.pedido);
+  try {
+    const { pedido: salvo } = await pedir(`/api/pedidos/${pedido.id}/acerto`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        forma: el('[data-acerto="forma"]', linha).value,
+        valor: el('[data-acerto="valor"]', linha).value,
+      }),
+    });
+    pedido.acerto_valor = salvo.acerto_valor;
+    pedido.acerto_forma = salvo.acerto_forma;
+    el('[data-falta]', linha).textContent = falta(pedido) > 0 ? `falta ${dinheiro(falta(pedido))}` : 'quitado';
+    desenharTotaisDoMes();
+    desenharSaldo((await pedir('/api/acertos')).saldo);
+    avisar('');
+  } catch (erro) {
+    avisar(erro.message, { erro: true });
+  }
+});
 
 el('[data-meses]').addEventListener('click', (evento) => {
   const botao = evento.target.closest('[data-mes]');
