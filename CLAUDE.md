@@ -58,7 +58,7 @@ Os caminhos em `modelos.json` são relativos à raiz (`assets/...`): página for
 
 ## Design
 
-Fonte: `Downloads/Eterno Dourado — Design do Marketplace Atacadista.pdf`; tokens na seção "variáveis" do `style.css`. Noite `#050912`, Marinho `#091321`, Safira `#0D1C2D`, Ouro `#D6A84E` (ação e seleção), Champagne `#F0CF82`, Marfim `#F7F3EA`. Roboto em todo o texto (títulos e rótulos inclusive); Oleo Script Swash Caps 700 só no título da hero e no "Fazer pedido" (10/11/2026). Container 1200px, botão pílula 48–52px, H1 no celular 38–44px, nenhum texto de venda abaixo de 16px, contraste AA. Ouro como texto sobre marfim usa `--ouro-texto`.
+Fonte: `Downloads/Eterno Dourado — Design do Marketplace Atacadista.pdf`; tokens na seção "variáveis" do `style.css`. Noite `#050912`, Marinho `#091321`, Safira `#0D1C2D`, Ouro `#D6A84E` (ação e seleção), Champagne `#F0CF82`, Marfim `#F7F3EA`. Roboto em todo o texto, títulos inclusive; o "Fazer pedido" saiu da Oleo Script para Roboto em 25/11/2026. Container 1200px, botão pílula 48–52px, H1 no celular 38–44px, nenhum texto de venda abaixo de 16px, contraste AA. Ouro como texto sobre marfim usa `--ouro-texto`.
 
 ## Comandos
 
