@@ -33,7 +33,7 @@ const hoje = () => new Date().toLocaleDateString('sv-SE');
 const FORMAS = ['Cheques', 'Boleto', 'Minha comissão', 'Devolução'];
 const opcoesDeForma = (atual = '') =>
   ['<option value="">Escolha</option>', ...FORMAS.map((f) => `<option${f === atual ? ' selected' : ''}>${f}</option>`)].join('');
-const abatido = (p) => (p.acerto_forma === 'Minha comissão' ? Number(p.acerto_valor || 0) : 0);
+const abatido = (p) => Number(p.acerto_comissao || 0);
 const comissaoLiquida = (p) => p.comissao - abatido(p);
 const falta = (p) => Math.max(0, Math.round((p.fabrica - Number(p.acerto_valor || 0)) * 100) / 100);
 

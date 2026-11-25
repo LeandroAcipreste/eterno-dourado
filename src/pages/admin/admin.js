@@ -135,7 +135,7 @@ async function carregarVisao() {
         frete: Number(p.frete),
         clientePagaFrete: p.frete_pago_pelo_cliente !== false,
       }).comissao -
-      (p.acerto_forma === 'Minha comissão' ? Number(p.acerto_valor || 0) : 0),
+      Number(p.acerto_comissao || 0),
     0,
   );
   const mes = agora.toLocaleDateString('pt-BR', { month: 'long' });
