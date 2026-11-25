@@ -14,6 +14,7 @@ import { montarMenuDoPainel } from '../../js/components/cabecalho.js';
 import { formularioDeEmail } from '../../js/components/email-do-pedido.js';
 import { escapar } from '../../js/utils/dom.js';
 import { pedir, quemEstaLogado } from '../../js/utils/api.js';
+import { API } from '../../js/config.js';
 import { valorDaUnidade } from '../../js/precificacao.js';
 
 const el = (selecao, raiz = document) => raiz.querySelector(selecao);
@@ -92,6 +93,8 @@ sugestoes?.addEventListener('click', (evento) => {
 /* ---- a peça escolhida -------------------------------------------------------- */
 
 function abrirPeca(modelo) {
+  // numeração já lançada do modelo aberto entra na folha antes de trocar; nunca se perde
+  if (guardarModeloAberto()) atualizarFolha();
   peca = modelo;
   sugestoes.hidden = true;
   busca.setAttribute('aria-expanded', 'false');
@@ -189,9 +192,9 @@ el('[data-numeracoes]')?.addEventListener('click', (evento) => {
   desenharNumeracoes();
 });
 
-/** Fecha o modelo: as numerações dele viram linhas da folha e o campo volta a esperar. */
-el('[data-finalizar-modelo]')?.addEventListener('click', async () => {
-  if (!peca || numeracoes.length === 0) return;
+// passa as numerações do modelo aberto para a folha; devolve se havia alguma
+function guardarModeloAberto() {
+  if (!peca || numeracoes.length === 0) return false;
   const forro = el('[data-forro]').checked;
   const pedras = el('[data-pedra]').checked ? 1 : 0;
 
@@ -210,6 +213,11 @@ el('[data-finalizar-modelo]')?.addEventListener('click', async () => {
   numeracoes = [];
   peca = null;
   escolha.hidden = true;
+  return true;
+}
+
+el('[data-finalizar-modelo]')?.addEventListener('click', async () => {
+  if (!guardarModeloAberto()) return;
   busca.value = '';
   busca.focus();
   await atualizarFolha();
@@ -286,21 +294,31 @@ async function atualizarFolha() {
     enviar.disabled = false;
     avisar(conta.temSobConsulta ? 'Há peça sob consulta: o Leandro confirma o valor dela com você.' : '');
   } catch (erro) {
+    desenharItens(null);
     avisar(erro.message, { erro: true });
   }
 }
+
+const baixarPdf = (pedido) => {
+  const link = document.createElement('a');
+  link.className = 'btn btn--contorno btn--compacto pedido__baixar';
+  link.href = `${API}/api/pedidos/${Number(pedido.id)}/folha.pdf`;
+  link.textContent = `Baixar PDF do pedido ${pedido.numero}`;
+  return link;
+};
 
 el('[data-enviar]')?.addEventListener('click', async () => {
   const botao = el('[data-enviar]');
   botao.disabled = true;
   try {
+    if (guardarModeloAberto()) await atualizarFolha();
     if (editando) {
       const { pedido } = await pedir(`/api/pedidos/${editando}`, {
         method: 'PATCH',
         body: JSON.stringify({ substituir: itens }),
       });
       avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} alterado. A folha em PDF já sai com as mudanças.`);
-      el('[data-email-pedido]').replaceChildren(formularioDeEmail(pedido, { sugestao: paraCliente.email, avisar }));
+      el('[data-email-pedido]').replaceChildren(baixarPdf(pedido), formularioDeEmail(pedido, { sugestao: paraCliente.email, avisar }));
       botao.disabled = false;
       return;
     }
@@ -310,6 +328,7 @@ el('[data-enviar]')?.addEventListener('click', async () => {
     await atualizarFolha();
     if (!paraCliente) {
       avisar(`Pedido ${pedido.numero} enviado. O Leandro recebe e fala com você pelo WhatsApp.`);
+      el('[data-email-pedido]').replaceChildren(baixarPdf(pedido));
       return;
     }
     if (telegram) {
@@ -317,8 +336,7 @@ el('[data-enviar]')?.addEventListener('click', async () => {
     } else {
       avisar(`Pedido ${pedido.numero} de ${paraCliente.nome} salvo, mas o Telegram não recebeu. A folha está na ficha do cliente.`, { erro: true });
     }
-    // o mesmo pedido pode seguir por e-mail, para o cliente ou para quem o Leandro quiser
-    el('[data-email-pedido]').replaceChildren(formularioDeEmail(pedido, { sugestao: paraCliente.email, avisar }));
+    el('[data-email-pedido]').replaceChildren(baixarPdf(pedido), formularioDeEmail(pedido, { sugestao: paraCliente.email, avisar }));
   } catch (erro) {
     avisar(erro.message, { erro: true });
     botao.disabled = false;

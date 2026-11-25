@@ -252,3 +252,7 @@
   font-weight: 600;
   line-height: 1.4;
 }
+
+.pedido__baixar {
+  margin-block: var(--e-4) var(--e-3);
+}
