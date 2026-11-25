@@ -256,3 +256,36 @@
 .pedido__baixar {
   margin-block: var(--e-4) var(--e-3);
 }
+
+.pedido__acoes-linha {
+  display: flex;
+  align-items: center;
+  gap: var(--e-5, 24px);
+  white-space: nowrap;
+}
+
+.pedido__editar {
+  display: flex;
+  gap: var(--e-2);
+}
+
+.pedido__editar-campo {
+  width: 5.5rem;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--linha-escura);
+  border-radius: 10px;
+  background: var(--marinho);
+  color: var(--claro);
+}
+
+.pedido__editar-campo:focus {
+  border-color: var(--ouro);
+  outline: none;
+}
+
+/* prata: forro bloqueado */
+.tabela__opcao[data-bloqueado="sim"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

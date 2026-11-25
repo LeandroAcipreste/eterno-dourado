@@ -51,6 +51,7 @@ function comDivisao(p) {
   const clientePagaFrete = p.frete_pago_pelo_cliente !== false;
   const divisao = dividirPedido({
     bruto: Number(p.total_bruto),
+    brutoPrata: Number(p.total_prata || 0),
     abatimento: Number(p.abatimento),
     frete: Number(p.frete),
     clientePagaFrete,

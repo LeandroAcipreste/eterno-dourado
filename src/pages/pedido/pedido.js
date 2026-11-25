@@ -108,6 +108,9 @@ function abrirPeca(modelo) {
   el('[data-codigo]').textContent = modelo.codigoTabela ?? modelo.code;
   el('[data-nome]').textContent = modelo.descricaoTabela ?? 'Modelo fora da tabela';
   el('[data-forro]').checked = false;
+  // prata não leva forro
+  el('[data-forro]').disabled = modelo.metal === 'prata';
+  el('[data-forro]').closest('label').dataset.bloqueado = modelo.metal === 'prata' ? 'sim' : 'nao';
   el('[data-pedra]').checked = false;
   desenharValor();
   // pedra avulsa só em liso e pedra única: nas outras ela já está no valor da tabela
@@ -137,17 +140,42 @@ function desenharValor() {
       : `R$ ${dinheiro(unidade)} por aliança${extras.length ? ` com ${extras.join(' e ')}` : ''}`;
 }
 
+// campos de numeração e quantidade da linha em edição
+const camposDeEdicao = (n, rotulo) => `
+  <input class="pedido__editar-campo" type="number" min="8" max="34" step="1" value="${escapar(n.numeracao)}" data-ed-numeracao aria-label="Numeração ${rotulo}" />
+  <input class="pedido__editar-campo" type="number" min="1" step="1" value="${n.qt}" data-ed-qt aria-label="Quantidade ${rotulo}" />`;
+
+// lê os campos da linha; devolve null e avisa se a quantidade for inválida
+function lerEdicao(raiz) {
+  const qt = Number.parseInt(el('[data-ed-qt]', raiz).value, 10);
+  if (!Number.isFinite(qt) || qt < 1) {
+    avisar('Diga quantas alianças.', { erro: true });
+    return null;
+  }
+  avisar('');
+  return { numeracao: el('[data-ed-numeracao]', raiz).value.trim(), qt };
+}
+
+let numeracaoEmEdicao = null;
+
 function desenharNumeracoes() {
   const lista = el('[data-numeracoes]');
   lista.replaceChildren(
     ...numeracoes.map((n, i) => {
       const item = document.createElement('li');
+      const editando = numeracaoEmEdicao === i;
       item.innerHTML = `
-        <span><strong>${n.numeracao || 'sem numeração'}</strong> · ${n.qt} ${n.qt === 1 ? 'aliança' : 'alianças'}</span>
+        <span class="pedido__acoes-linha">
+          ${editando
+            ? `<span class="pedido__editar">${camposDeEdicao(n, 'em edição')}</span>`
+            : `<span><strong>${n.numeracao || 'sem numeração'}</strong> · ${n.qt} ${n.qt === 1 ? 'aliança' : 'alianças'}</span>`}
+          <button class="pedido__remover" type="button" data-alterar-num="${i}">${editando ? 'Concluir' : 'Alterar'}</button>
+        </span>
         <button class="pedido__remover" type="button" data-tirar="${i}">Tirar</button>`;
       return item;
     }),
   );
+  if (numeracaoEmEdicao !== null) el('[data-ed-numeracao]', lista)?.focus();
 
   const pecas = numeracoes.reduce((soma, n) => soma + n.qt, 0);
   const unidade = valorDaPeca();
@@ -185,11 +213,33 @@ for (const opcao of ['[data-forro]', '[data-pedra]']) {
   });
 }
 
+function concluirNumeracao(raiz) {
+  const lido = lerEdicao(raiz);
+  if (!lido) return;
+  numeracoes[numeracaoEmEdicao] = lido;
+  numeracaoEmEdicao = null;
+  desenharNumeracoes();
+}
+
 el('[data-numeracoes]')?.addEventListener('click', (evento) => {
+  const alterar = evento.target.closest('[data-alterar-num]');
+  if (alterar) {
+    const i = Number(alterar.dataset.alterarNum);
+    if (numeracaoEmEdicao === i) return concluirNumeracao(alterar.closest('li'));
+    numeracaoEmEdicao = i;
+    return desenharNumeracoes();
+  }
   const botao = evento.target.closest('[data-tirar]');
   if (!botao) return;
   numeracoes.splice(Number(botao.dataset.tirar), 1);
+  numeracaoEmEdicao = null;
   desenharNumeracoes();
+});
+
+el('[data-numeracoes]')?.addEventListener('keydown', (evento) => {
+  if (evento.key !== 'Enter' || numeracaoEmEdicao === null) return;
+  evento.preventDefault();
+  concluirNumeracao(evento.target.closest('li'));
 });
 
 // passa as numerações do modelo aberto para a folha; devolve se havia alguma
@@ -211,6 +261,7 @@ function guardarModeloAberto() {
   }
 
   numeracoes = [];
+  numeracaoEmEdicao = null;
   peca = null;
   escolha.hidden = true;
   return true;
@@ -225,26 +276,57 @@ el('[data-finalizar-modelo]')?.addEventListener('click', async () => {
 
 /* ---- a folha ----------------------------------------------------------------- */
 
+let itemEmEdicao = null;
+
+async function concluirItem(linha) {
+  const lido = lerEdicao(linha);
+  if (!lido) return;
+  Object.assign(itens[itemEmEdicao], lido);
+  itemEmEdicao = null;
+  await atualizarFolha();
+}
+
 el('[data-itens]')?.addEventListener('click', async (evento) => {
+  const alterar = evento.target.closest('[data-alterar-item]');
+  if (alterar) {
+    const i = Number(alterar.dataset.alterarItem);
+    if (itemEmEdicao === i) return concluirItem(alterar.closest('tr'));
+    itemEmEdicao = i;
+    desenharItens(ultimasLinhas);
+    el('[data-ed-numeracao]', alterar.closest('tbody'))?.focus();
+    return;
+  }
   const botao = evento.target.closest('[data-remover]');
   if (!botao) return;
   itens.splice(Number(botao.dataset.remover), 1);
+  itemEmEdicao = null;
   await atualizarFolha();
 });
 
+el('[data-itens]')?.addEventListener('keydown', (evento) => {
+  if (evento.key !== 'Enter' || itemEmEdicao === null) return;
+  evento.preventDefault();
+  concluirItem(evento.target.closest('tr'));
+});
+
+let ultimasLinhas = null;
+
 function desenharItens(linhas) {
+  ultimasLinhas = linhas;
   el('[data-contagem]').textContent = itens.length ? `(${itens.length})` : '';
   el('[data-itens]').replaceChildren(
     ...itens.map((item, i) => {
       const daApi = linhas?.[i];
+      const editando = itemEmEdicao === i;
       const linha = document.createElement('tr');
       linha.innerHTML = `
         <td>
           <strong>${escapar(item.referencia)}</strong>
           <span class="admin__cidade">${[item.forro ? 'com forro' : '', item.pedras ? 'com pedra' : ''].filter(Boolean).join(' · ') || item.nome}</span>
         </td>
-        <td>${escapar(item.numeracao) || '—'}</td>
-        <td>${item.qt}</td>
+        ${editando
+          ? `<td colspan="2"><span class="pedido__acoes-linha"><span class="pedido__editar">${camposDeEdicao(item, `da linha ${i + 1}`)}</span><button class="pedido__remover" type="button" data-alterar-item="${i}">Concluir</button></span></td>`
+          : `<td><span class="pedido__acoes-linha">${escapar(item.numeracao) || '—'}<button class="pedido__remover" type="button" data-alterar-item="${i}">Alterar</button></span></td><td>${item.qt}</td>`}
         <td>${daApi?.valorTotal != null ? dinheiro(daApi.valorTotal) : linhas ? 'sob consulta' : '—'}</td>
         <td><button class="pedido__remover" type="button" data-remover="${i}">Remover</button></td>`;
       return linha;

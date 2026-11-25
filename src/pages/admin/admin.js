@@ -131,6 +131,7 @@ async function carregarVisao() {
       total +
       dividirPedido({
         bruto: Number(p.total_bruto),
+        brutoPrata: Number(p.total_prata || 0),
         abatimento: Number(p.abatimento),
         frete: Number(p.frete),
         clientePagaFrete: p.frete_pago_pelo_cliente !== false,

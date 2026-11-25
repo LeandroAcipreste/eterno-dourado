@@ -18,6 +18,10 @@ export const ALIANCAS_POR_PAR = 2;
 
 /** A fábrica fica com metade do valor de tabela do pedido. A outra metade é do Leandro. */
 export const PARTE_DA_FABRICA = 0.5;
+// prata: fábrica 80%, Leandro 20%; sem forro e sem desconto
+export const PARTE_DA_FABRICA_PRATA = 0.8;
+
+export const ehPrata = (modelo) => modelo?.metal === 'prata';
 
 /** Centavos, para a soma não acumular erro de ponto flutuante. */
 const centavos = (reais) => Math.round(reais * 100);
@@ -32,7 +36,7 @@ const reais = (cent) => cent / 100;
  * @returns {{linhas: Array<{rotulo: string, valor: number|null}>, unidade: number|null, par: number|null, sobConsulta: boolean}}
  */
 export function contaDaUnidade(modelo, opcoes = {}) {
-  const forro = Boolean(opcoes.forro);
+  const forro = Boolean(opcoes.forro) && !ehPrata(modelo);
   const pedras = pedrasValidas(modelo, opcoes.pedras);
 
   if (!modelo || modelo.sobConsulta) {
@@ -95,6 +99,7 @@ export function fecharPedido(itens, ajustes = {}) {
   const frete = Math.max(0, Number(ajustes.frete) || 0);
 
   let bruto = 0;
+  let brutoPrata = 0;
   let pecas = 0;
   let pecasSobConsulta = 0;
 
@@ -109,9 +114,11 @@ export function fecharPedido(itens, ajustes = {}) {
       continue;
     }
     bruto += centavos(unidade) * qt;
+    if (ehPrata(item.modelo)) brutoPrata += centavos(unidade) * qt;
   }
 
-  const abatimento = Math.round((bruto * desconto) / 100);
+  // o desconto só vale para o ouro
+  const abatimento = Math.round(((bruto - brutoPrata) * desconto) / 100);
   const comDesconto = bruto - abatimento;
   const pedido = comDesconto + centavos(frete);
 
@@ -120,6 +127,7 @@ export function fecharPedido(itens, ajustes = {}) {
     pecasSobConsulta,
     temSobConsulta: pecasSobConsulta > 0,
     bruto: reais(bruto),
+    brutoPrata: reais(brutoPrata),
     desconto,
     abatimento: reais(abatimento),
     comDesconto: reais(comDesconto),
@@ -140,12 +148,14 @@ export function fecharPedido(itens, ajustes = {}) {
  *
  * @param {{bruto: number, abatimento?: number, frete?: number, clientePagaFrete?: boolean}} pedido
  */
-export function dividirPedido({ bruto, abatimento = 0, frete = 0, clientePagaFrete = true }) {
-  const metade = centavos(bruto) * PARTE_DA_FABRICA;
+export function dividirPedido({ bruto, brutoPrata = 0, abatimento = 0, frete = 0, clientePagaFrete = true }) {
+  const prata = centavos(Number(brutoPrata) || 0);
+  const ouro = centavos(bruto) - prata;
+  const daFabrica = ouro * PARTE_DA_FABRICA + prata * PARTE_DA_FABRICA_PRATA;
   const fretePorConta = clientePagaFrete ? 0 : centavos(frete);
-  const comissao = metade - centavos(abatimento) - fretePorConta;
+  const comissao = ouro + prata - daFabrica - centavos(abatimento) - fretePorConta;
   return {
-    fabrica: reais(Math.round(metade + centavos(frete))),
+    fabrica: reais(Math.round(daFabrica + centavos(frete))),
     comissao: reais(Math.round(comissao)),
     freteNaComissao: reais(fretePorConta),
   };
