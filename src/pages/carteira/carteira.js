@@ -30,7 +30,7 @@ const nomeDoMes = (chave) => {
 const hoje = () => new Date().toLocaleDateString('sv-SE');
 
 // igual a acertos.js no backend
-const FORMAS = ['Cheques', 'Boleto', 'Minha comissão'];
+const FORMAS = ['Cheques', 'Boleto', 'Minha comissão', 'Devolução'];
 const opcoesDeForma = (atual = '') =>
   ['<option value="">Escolha</option>', ...FORMAS.map((f) => `<option${f === atual ? ' selected' : ''}>${f}</option>`)].join('');
 const abatido = (p) => (p.acerto_forma === 'Minha comissão' ? Number(p.acerto_valor || 0) : 0);
